@@ -10,33 +10,19 @@ interface MyComponentProps {
 }
 
 const ContactStatus: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
+    const [isChecked1, setIsChecked1] = useState(false);
+    const [isChecked2, setIsChecked2] = useState(false);
 
-    const contactStatus: string[] = [
-        "yes",
-        "no"
-    ];
-    const [isChecked, setIsChecked] = useState<boolean[]>([]);
-    const [query, setQuery] = useState('');
-
-    const handleCheckboxChange = (index: number) => {
-        setIsChecked((prevState) => {
-            const newCheckedItems = [...prevState];
-            newCheckedItems[index] = !newCheckedItems[index]; // Toggle the checked state at the specific index
-            return newCheckedItems;
-
-        });
-
-    };
-    const filteredItems = contactStatus.filter((item) =>
-        item.toLowerCase().includes(query.toLowerCase())
-    );
-
-    console.log(isOpen, "isOpen")
-
-
-
-
-
+    const handleCheckboxChange = (checkboxId:number) => {
+        if (checkboxId === 1) {
+          setIsChecked1(true);
+          setIsChecked2(false);
+        } else {
+          setIsChecked1(false);
+          setIsChecked2(true);
+        }
+      };
+    
 
     const handleCheckbox = () => !isOpen;
     document.addEventListener('mousedown', handleCheckbox);
@@ -46,7 +32,7 @@ const ContactStatus: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                onToggle(); // Close the dropdown when clicking outside
+                onToggle(); 
             }
         };
 
@@ -74,33 +60,42 @@ const ContactStatus: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
                 </div>
 
                 <div className='flex flex-col gap-[10px]'>
-                   
+
                     <div>
 
 
+                    <div className='flex items-center justify-between px-[10px] mt-[10px]'>
+                            <label htmlFor="checkbox-yes" className='flex relative items-center mt-2 cursor-pointer w-full'>
+                                <input
+                                    id="checkbox-yes"
+                                    checked={isChecked1} 
+                                    onChange={() => handleCheckboxChange(1)}
+                                  type="checkbox"
+                                    className="peer cursor-pointer absolute appearance-none h-[16px] w-[16px] border border-[#22385F] ml-[14rem] rounded-full bg-white checked:bg-[#22385F] checked:border-transparent focus:outline-none"
+                                />
+                                <span className='ml-2 text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px] peer-checked:text-[#22385F]'>
+                                    Yes
+                                </span>
+                            </label>
+                        </div>
+
+                        <div className='flex items-center justify-between px-[10px] mt-[10px]'>
+                            <label htmlFor="checkbox-no" className='flex relative items-center mt-2 cursor-pointer w-full'>
+                                <input
+                                    id="checkbox-no"
+                                     type="checkbox"
+                                     checked={isChecked2} 
+                                    onChange={() => handleCheckboxChange(2)}
+                                    className="peer cursor-pointer absolute appearance-none h-[16px] w-[16px] border border-[#22385F] ml-[14rem] rounded-full bg-white checked:bg-[#22385F] checked:border-transparent focus:outline-none"
+                                />
+                                <span className='ml-2 text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px] peer-checked:text-[#22385F]'>
+                                    No
+                                </span>
+                            </label>
+                        </div>
 
 
-
-
-                        {
-                            filteredItems.map((item, index) => (
-                                <div key={index} className='flex items-center justify-between px-[10px] mt-[10px]'>
-                                    <label htmlFor={`checkbox-${index}`} className='flex relative items-center mt-2 cursor-pointer w-full'>
-                                        <input
-                                            id={`checkbox-${index}`}
-                                            checked={isChecked[index] || false}
-                                            onChange={() => handleCheckboxChange(index)}
-                                            type="checkbox"
-                                            className="peer cursor-pointer absolute appearance-none h-[16px] w-[16px] border border-[#22385F] ml-[14rem] rounded-full bg-white checked:bg-[#22385F] checked:border-transparent focus:outline-none"
-                                        />
-                                        <span className='ml-2 text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px] peer-checked:text-[#22385F]'>
-                                            {item}
-                                        </span>
-                                    </label>
-                                </div>
-                            ))
-                        }
-
+                      
                         <div className='flex justify-center mt-5'>
                             <button className='w-[282px] h-[40px] mt-1 rounded-md bg-[#22385F] text-white font-noto text-[14px] leading-[19.07px] cursor-pointer hover:bg-white hover:text-[#22385F] transition-all duration-[1000ms] hover:border-[#22385F] hover:border-[1px]'>Göstər</button>
                         </div>
