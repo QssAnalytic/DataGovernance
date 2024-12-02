@@ -5,6 +5,7 @@ interface TableProps {
   headers: string[];
   data: { [key: string]: any }[];
 }
+//test
 
 const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
   const getCapacityStyles = (capacity: string) => {
