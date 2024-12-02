@@ -1,10 +1,11 @@
 import Filter from "./components/filter"
-
+import Table from './components/table'
 const  ApplicationData = () => {
   
     return (
-        <div>
+        <div className="flex relative flex-col">
           <Filter />
+          <Table />
         </div>
     )
 }

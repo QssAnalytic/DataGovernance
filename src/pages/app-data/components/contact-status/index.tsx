@@ -62,7 +62,7 @@ const ContactStatus: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
     return (
         <div  >
             <div className='w-[212px] cursor-pointer p-4 flex h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
-                <p className='font-montserrat font-normal text-[14px] text-[#969696] leading-[17.07px]'>Contact Status</p>
+                <p className='font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]'>Contact Status</p>
                 <img src={filterIcn} className='w-[24px] h-[24px]' alt="" />
             </div>
             {isOpen ? <div ref={dropdownRef} className="w-[323px]  h-[200px] rounded-xl shadow-lg p-4 bg-white " >
