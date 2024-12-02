@@ -41,10 +41,10 @@ const ContactedFilter = () => {
   }, [isDropdownOpen]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       <div
         onClick={toggleDropdown}
-        className="py-[12px] px-[16px] flex items-center h-[100%] gap-[10px] border rounded-[12px] cursor-pointer"
+        className="py-[12px] px-[16px]  flex items-center h-[100%] gap-[10px] border rounded-[12px] cursor-pointer"
       >
         <span className="text-[#969696]">Contacted</span>
         <img
