@@ -1,19 +1,17 @@
 import React from "react";
 import { useUIStore } from "../../services/store/useUIStore";
-
+import { SearchInput } from "./SearchInput";
 const OverviewPage: React.FC = () => {
-  const setButtonLabel = useUIStore((state) => state.setButtonLabel);
-  const setModalContent = useUIStore((state) => state.setModalContent);
-
+  const {setButtonLabel,setModalContent,setPageCustomHeader} = useUIStore()
   React.useEffect(() => {
     setButtonLabel("Add Candidate");
-    setModalContent(<div>Overview Modal</div>);
+    setModalContent(<div className="text-black flex flex-col bg-white p-2">Overview Modal</div>);
+    setPageCustomHeader(<SearchInput/>)
   }, [setButtonLabel, setModalContent]);
 
   return (
     <div>
       <h2>Overview Page</h2>
-      {/* Add more dynamic content here */}
     </div>
   );
 };
