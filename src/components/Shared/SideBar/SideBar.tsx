@@ -11,6 +11,12 @@ export const SideBar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const closeMenu = () =>{
+    setIsMenuOpen(false)
+  }
+  const openMenu = () =>{
+    setIsMenuOpen(true)
+  }
   return (
     <div 
     className={`pt-[60px] bg-white text-black px-[18px] border-r border-[rgba(236,236,236,1)] transition-all duration-300 absolute`}
@@ -19,7 +25,7 @@ export const SideBar = () => {
 
       }}
     >
-      <MiniMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+      <MiniMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu}/>
       
     </div>
   )
