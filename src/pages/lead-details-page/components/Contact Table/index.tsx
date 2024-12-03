@@ -17,7 +17,7 @@ interface TableProps {
 const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
   const rowsPerPage = 7;
   const totalPages = Math.ceil(data.length / rowsPerPage);
-  const startIndex = (currentPage - 1) * rowsPerPage;
+  const startIndex = (totalPages - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
   const columnWidths: string[] = [
