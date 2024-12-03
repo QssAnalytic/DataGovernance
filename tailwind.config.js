@@ -15,7 +15,7 @@ module.exports = {
     		raleway: ["Raleway", 'sans-serif'],
     		lato: ["Lato", 'sans-serif',],
     		noto: ["Noto Sans", 'sans-serif'],
-			montserrat: ['Montserrat', 'sans-serif'],
+    		montserrat: ['Montserrat', 'sans-serif']
     	},
     	container: {
     		center: 'true',
