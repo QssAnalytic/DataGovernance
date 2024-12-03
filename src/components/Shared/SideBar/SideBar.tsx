@@ -1,21 +1,14 @@
-import {useState} from 'react'
-import { OverMenu } from './OverMenu'
 import { MiniMenu } from './MiniMenu'
 import { useMenuStore } from '@/services/store/useMenuStore'
 export const SideBar = () => {
   const isMenuOpen = useMenuStore((state) => state.isMenuOpen);
   const setIsMenuOpen = useMenuStore((state) => state.setIsMenuOpen);
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // // Toggle menu state
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const closeMenu = () =>{
     setIsMenuOpen(false)
-  }
-  const openMenu = () =>{
-    setIsMenuOpen(true)
   }
   return (
     <div 

@@ -1,4 +1,4 @@
-import useStore from "@/services/store/useTestZustand"
+import useStore from "@/services/store/useAdminStore"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 

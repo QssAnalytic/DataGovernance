@@ -1,4 +1,3 @@
-import './SidebarCustom.css';
 import { FiMenu } from "react-icons/fi";
 import { useState, useEffect } from 'react';
 import { IoPricetagsOutline } from "react-icons/io5";

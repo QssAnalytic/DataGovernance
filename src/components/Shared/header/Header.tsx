@@ -1,5 +1,5 @@
-import DSA_Logo from '../../assets/DSA_logo (left align) 1.png'
-import { useUIStore } from "../../services/store/useUIStore";
+import DSA_Logo from '../../../assets/DSA_logo (left align) 1.png'
+import { useUIStore } from "../../../services/store/useUIStore";
 import { Plus } from 'lucide-react';
 export const Header = () => {
     const buttonLabel = useUIStore((state) => state.buttonLabel);

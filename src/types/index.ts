@@ -9,7 +9,6 @@ interface ITest {
     name: string,
 }
 
-
 export enum TestEnum {
     NOT_STARTED = "NOT_STARTED", // bu oldugu kimi gelmelidir
   }
