@@ -14,7 +14,8 @@ module.exports = {
     		inter: ["Inter", 'sans-serif',],
     		raleway: ["Raleway", 'sans-serif'],
     		lato: ["Lato", 'sans-serif',],
-    		noto: ["Noto Sans", 'sans-serif']
+    		noto: ["Noto Sans", 'sans-serif'],
+			montserrat: ['Montserrat', 'sans-serif'],
     	},
     	container: {
     		center: 'true',
