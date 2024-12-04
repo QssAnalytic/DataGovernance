@@ -4,11 +4,6 @@ import { MdOutlineRefresh } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-
-interface TableProps {
-    searchTerm: string;
-    }
-
 interface TableRow {
     id: number;
     name: string;
@@ -17,8 +12,13 @@ interface TableRow {
     trainingName: string;
     date: string;
 }
+
+interface TableProps {
+    searchTerm: string;
+}
+
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
-    const data: TableRow[] = [
+    const [data, setData] = useState<TableRow[]>([
         { id: 1, name: 'Fidan Mammadova', applicationSource: 'DSA Instagram', trainingName: 'Data Science Bootcamp', phone: '+994 552345678', date: '11.05.2024' },
         { id: 2, name: 'Ali Hasanov', applicationSource: 'LinkedIn', trainingName: 'Web Development', phone: '+994 502345678', date: '12.05.2024' },
         { id: 3, name: 'Nigar Safarova', applicationSource: 'Google Ads', trainingName: 'AI & ML Course', phone: '+994 552345679', date: '13.05.2024' },
@@ -49,15 +49,53 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         { id: 28, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 29, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 30, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
-        // Add more data here as needed...
-    ];
-    const filteredData = data.filter(
-        (item) =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.phone.includes(searchTerm) ||
-            item.applicationSource.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.trainingName.toLowerCase().includes(searchTerm.toLowerCase())
+    ]);
+    const [editRowId, setEditRowId] = useState<number | null>(null);
+    const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
+
+    const [showModal, setShowModal] = useState(false);
+    const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
+
+
+    const handleDeleteClick = (id: number) => {
+        setDeleteRowId(id);
+        setShowModal(true);
+    };
+    const handleConfirmDelete = () => {
+        if (deleteRowId !== null) {
+            setData(data.filter((row) => row.id !== deleteRowId));
+        }
+        setShowModal(false);
+        setDeleteRowId(null);
+    };
+
+    const handleCancelDelete = () => {
+        setShowModal(false);
+        setDeleteRowId(null);
+    };
+    const handleEditClick = (row: TableRow) => {
+        setEditRowId(row.id);
+        setEditFormData(row);
+    };
+
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
+        setEditFormData({ ...editFormData, [field]: e.target.value });
+    };
+
+    const handleSave = (id: number) => {
+        setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
+        setEditRowId(null);
+        setEditFormData({});
+    };
+
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.phone.includes(searchTerm) ||
+        item.applicationSource.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.trainingName.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 10; // Number of rows to display per page
 
@@ -69,53 +107,103 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const handlePageChange = (page: any) => {
         setCurrentPage(page);
     };
-
     return (
-        <div className="overflow-x-auto rounded-lg">
-            <table className="min-w-full table-auto rounded-lg border-collapse border border-gray-200">
-                <thead className="bg-[#FAFAFA] rounded-lg">
-                    <tr>
-                        <th className="border-none px-2 py-2 font-montserrat text-[12px] font-medium leading-normal text-[#000000]">ID</th>
-                        <th className="border-none text-center px-2 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
-                            < HiOutlinePhone className="ml-11 w-[24px] h-[24px]" />
-                        </th>
-                        <th className="border-none px-4 py-2 text-left font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Ad və Soyad</th>
-                        <th className="border-none px-4 py-2 text-left font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Application Source</th>
-                        <th className="border-none px-4 py-2 text-left font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Training Name</th>
-                        <th className="border-none px-4 py-2  text-left font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Mobil nömrə</th>
-                        <th className="border-none px-4 py-2  text-left font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Tarix</th>
-                        <th className="border-none text-left px-4 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
-                            <div className=" ml-11 w-[24px] h-[24px] ">
-                                <MdOutlineRefresh className="w-[24px] h-[24px]" />
+        <div className=" overflow-y-scroll flex rounded-lg  ">
+            <table className="min-w-full table-auto rounded-lg border-collapse border border-gray-200 ">
+                <thead className="bg-[#FAFAFA]  rounded-lg">
+                    <tr className="text-left">
+                        <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
+                        <th className="border-none text-center px-3 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
+                            <div className='flex justify-center'>
+                            < HiOutlinePhone className="w-[24px] h-[24px]" />
+
                             </div>
-                        </th>
+                            </th>
+                        <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Ad və Soyad</th>
+                        <th className="font-montserrat text-[12px] font-medium leading-normal text-[#000000] ">Application Source</th>
+                        <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Training Name</th>
+                        <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Mobil nömrə</th>
+                        <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Tarix</th>
+                        <div className=" ml-[7px]  w-[24px] h-[24px] ">
+                            <MdOutlineRefresh className="w-[24px] h-[24px]" />
+                        </div>
+
                     </tr>
                 </thead>
                 <tbody>
-                    {currentData.map((item, index) => (
-                        <tr key={index} className="even:bg-[#fafafa] odd:bg-white hover:bg-gray-50">
-                            <td className="border-none text-center px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.id}</td>
-                            <td className="border-none  text-center  px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
-                                <input type="checkbox" className="appearance-none w-4 h-4 border  checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa]  checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
-                            </td>
-                            <td className="border-none  px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.name}</td>
-                            <td className="border-none    px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.applicationSource}</td>
-                            <td className="border-none   px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.trainingName}</td>
-                            <td className="border-none    px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.phone}</td>
-                            <td className="border-none   px-4 py-2 font-montserrat text-[14px] font-medium text-[#000000]">{item.date}</td>
-                            <td className="border-none    px-4 py-2">
-                                <div className="flex justify-center gap-3">
-                                    <FaRegEdit className="cursor-pointer w-5 h-5" />
-                                    <RiDeleteBinLine className="cursor-pointer w-5 h-5" />
-                                </div>
-                            </td>
+                    {currentData.map(item => (
+                        <tr key={item.id} className="border-b even:bg-[#fafafa] odd:bg-white">
+                            {editRowId === item.id ? (
+                                <>
+                                    <td className="p-3 text-sm text-gray-700">{item.id}</td>
+                                    <td className="p-3">
+                                        <input
+                                            value={editFormData.name || ''}
+                                            onChange={(e) => handleFormChange(e, 'name')}
+                                            className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </td>
+                                    <td className="p-3">
+                                        <input
+                                            value={editFormData.applicationSource || ''}
+                                            onChange={(e) => handleFormChange(e, 'applicationSource')}
+                                            className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </td>
+                                    <td className="p-3">
+                                        <input
+                                            value={editFormData.trainingName || ''}
+                                            onChange={(e) => handleFormChange(e, 'trainingName')}
+                                            className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </td>
+                                    <td className="p-3">
+                                        <input
+                                            value={editFormData.phone || ''}
+                                            onChange={(e) => handleFormChange(e, 'phone')}
+                                            className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </td>
+                                    <td className="p-3">
+                                        <input
+                                            value={editFormData.date || ''}
+                                            onChange={(e) => handleFormChange(e, 'date')}
+                                            className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </td>
+                                    <td className="p-3 text-center">
+                                        <button
+                                            onClick={() => handleSave(item.id)}
+                                            className="px-3 py-2 bg-[#22385F] text-white rounded-lg text-sm "
+                                        >
+                                            Save
+                                        </button>
+                                    </td>
+                                </>
+                            ) : (
+                                <>
+                                    <td className="p-3 text-sm text-gray-700">{item.id}</td>
+                                    <td className="border-none  text-center  px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
+                                        <input type="checkbox" className="appearance-none w-4 h-4 border  checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa]  checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
+                                    </td>
+                                    <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.name}</td>
+                                    <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.applicationSource}</td>
+                                    <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.trainingName}</td>
+                                    <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.phone}</td>
+                                    <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
+                                    <td className=" text-center">
+                                        <div className="flex gap-3">
+                                            <FaRegEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
+                                            <RiDeleteBinLine className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
+                                        </div>
+                                    </td>
+                                </>
+                            )}
                         </tr>
                     ))}
                 </tbody>
             </table>
-
-            {/* Pagination Controls */}
-            <div className="flex justify-center mt-4 space-x-2">
+            <div className="flex justify-center mt-4">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
@@ -126,8 +214,36 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                         {index + 1}
                     </button>
                 ))}
+                {showModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center   bg-[#000000] rounded-lg bg-opacity-70">
+                        <div className="bg-white p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
+                            <h2 className="text-lg font-semibold">
+                                Əminsinizmi ?
+                            </h2>
+
+                            <div className="mt-4 flex justify-center space-x-2">
+                                <button
+                                    onClick={handleCancelDelete}
+                                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#fff] border border-[1px] font-montserrat border-[#22385F] text-[#22385F] text-[14px] font-medium"
+                                >
+                                    Xeyr
+                                </button>
+                                <button
+                                    onClick={handleConfirmDelete}
+                                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#DC4242] text-[#fff] font-montserrat text-[14px] font-medium "
+                                >
+                                    Bəli, sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+
+
             </div>
         </div>
+
     );
 };
 

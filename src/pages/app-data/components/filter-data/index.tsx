@@ -1,5 +1,4 @@
-import filterIcn from '../../../../assets/icons/chevron-down.svg';
-import { useState, useRef, useEffect} from 'react';
+import { useState} from 'react';
 import SourceModal from '../sourceModal';
 import TrainingName from '../training-name';
 import ContactStatus from '../contact-status';
