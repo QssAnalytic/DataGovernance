@@ -108,17 +108,18 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setCurrentPage(page);
     };
     return (
-        <div className=" overflow-y-scroll flex rounded-lg  ">
+        <div>
+ <div className=" overflow-y-scroll flex rounded-lg  ">
             <table className="min-w-full table-auto rounded-lg border-collapse border border-gray-200 ">
                 <thead className="bg-[#FAFAFA]  rounded-lg">
                     <tr className="text-left">
                         <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
                         <th className="border-none text-center px-3 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
                             <div className='flex justify-center'>
-                            < HiOutlinePhone className="w-[24px] h-[24px]" />
+                                < HiOutlinePhone className="w-[24px] h-[24px]" />
 
                             </div>
-                            </th>
+                        </th>
                         <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Ad və Soyad</th>
                         <th className="font-montserrat text-[12px] font-medium leading-normal text-[#000000] ">Application Source</th>
                         <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Training Name</th>
@@ -203,7 +204,11 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                     ))}
                 </tbody>
             </table>
-            <div className="flex justify-center mt-4">
+           
+          
+
+        </div>
+        <div className="  flex justify-center mt-4">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
@@ -214,35 +219,36 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                         {index + 1}
                     </button>
                 ))}
-                {showModal && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center   bg-[#000000] rounded-lg bg-opacity-70">
-                        <div className="bg-white p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
-                            <h2 className="text-lg font-semibold">
-                                Əminsinizmi ?
-                            </h2>
-
-                            <div className="mt-4 flex justify-center space-x-2">
-                                <button
-                                    onClick={handleCancelDelete}
-                                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#fff] border border-[1px] font-montserrat border-[#22385F] text-[#22385F] text-[14px] font-medium"
-                                >
-                                    Xeyr
-                                </button>
-                                <button
-                                    onClick={handleConfirmDelete}
-                                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#DC4242] text-[#fff] font-montserrat text-[14px] font-medium "
-                                >
-                                    Bəli, sil
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
 
 
 
             </div>
+          {showModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center   bg-[#000000] rounded-lg bg-opacity-70">
+                    <div className="bg-white p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
+                        <h2 className="text-lg font-semibold">
+                            Əminsinizmi ?
+                        </h2>
+
+                        <div className="mt-4 flex justify-center space-x-2">
+                            <button
+                                onClick={handleCancelDelete}
+                                className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#fff] border border-[1px] font-montserrat border-[#22385F] text-[#22385F] text-[14px] font-medium"
+                            >
+                                Xeyr
+                            </button>
+                            <button
+                                onClick={handleConfirmDelete}
+                                className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#DC4242] text-[#fff] font-montserrat text-[14px] font-medium "
+                            >
+                                Bəli, sil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
+       
 
     );
 };
