@@ -17,7 +17,7 @@ const router = createBrowserRouter(
 <Route path="/details" element={<DetailsPage />} />
             </Route>
         </Route>,
-    ),
+    ),)
 
 
 export { router };
