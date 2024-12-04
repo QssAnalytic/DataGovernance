@@ -8,10 +8,9 @@ export const ChangingContent = () => {
 
     return (
         <div className="flex gap-x-[20px] items-center">
-            {/* Render a dynamic header */}
+            
             {pageCustomHeader}
 
-            {/* Show the button only for admin users */}
             {isAdmin && (
                 <button
                     className="px-[16px] min-w-fit py-3 flex items-center gap-x-[12px] rounded-xl bg-[#22385F] text-sm font-medium text-white"
