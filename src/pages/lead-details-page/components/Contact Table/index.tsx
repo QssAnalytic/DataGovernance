@@ -8,8 +8,7 @@ import {
 } from "@/helpers/changinColorTable";
 import PaginationControls from "../Pagination Controller";
 import { IContactTableProps } from "../../types";
-
-import EditDeleteModal from "../Edit Delete Modal";
+import EditDeleteModal from "../Edit Delete Section";
 
 const ContactTable: React.FC<IContactTableProps> = ({ headers, data }) => {
   const [currentPage, setCurrentPage] = useState(1);
