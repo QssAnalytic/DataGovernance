@@ -120,3 +120,5 @@ ol {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* remove the X icon for delete modal  */
