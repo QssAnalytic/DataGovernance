@@ -4,13 +4,9 @@ import { IoPricetagsOutline } from "react-icons/io5";
 import { FaRegChartBar } from "react-icons/fa";
 import { BiChalkboard } from "react-icons/bi";
 import { FiFileText } from "react-icons/fi";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
+
 import { FiBriefcase } from "react-icons/fi";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./CustomAccordion";
 
 export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: boolean; toggleMenu: () => void;closeMenu: () => void; }) => {
     const [openAccordions, setOpenAccordions] = useState<{ [key: string]: boolean }>({

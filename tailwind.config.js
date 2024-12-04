@@ -25,11 +25,11 @@ module.exports = {
     		}
     	},
     	extend: {
-			boxShadow: {
-				custom: "0px 0px 20px 0px rgba(0, 0, 0, 0.10)", // Custom shadow
-			  },
+    		boxShadow: {
+    			custom: '0px 0px 20px 0px rgba(0, 0, 0, 0.10)'
+    		},
     		colors: {
-				border: 'hsl(var(--border))',
+    			border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
     			ring: 'hsl(var(--ring))',
     			background: 'hsl(var(--background))',
