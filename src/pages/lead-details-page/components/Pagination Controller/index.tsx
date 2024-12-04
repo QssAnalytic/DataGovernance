@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { IPaginationControlsProps } from "../../types";
 
-const PaginationControls = ({ data }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 7;
+const PaginationControls: React.FC<IPaginationControlsProps> = ({
+  data,
+  currentPage,
+  setCurrentPage,
+  rowsPerPage,
+}) => {
   const totalPages = Math.ceil(data.length / rowsPerPage);
-  const startIndex = (currentPage - 1) * rowsPerPage;
-  const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

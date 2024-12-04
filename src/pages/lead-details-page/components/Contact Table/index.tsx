@@ -1,23 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { GrRefresh } from "react-icons/gr";
-import { FiEdit } from "react-icons/fi";
-import { GoTrash } from "react-icons/go";
+
 import {
   getCapacityStyles,
   getStatusStyles,
 } from "@/helpers/changinColorTable";
-import PaginationControls from "../Pagination Buttons";
+import PaginationControls from "../Pagination Controller";
+import { IContactTableProps } from "../../types";
 
-interface TableProps {
-  headers: string[];
-  data: { [key: string]: any }[];
-}
+import EditDeleteModal from "../Edit Delete Modal";
 
-const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
+const ContactTable: React.FC<IContactTableProps> = ({ headers, data }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 7;
-  const totalPages = Math.ceil(data.length / rowsPerPage);
-  const startIndex = (totalPages - 1) * rowsPerPage;
+  const startIndex = (currentPage - 1) * rowsPerPage;
+
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
   const columnWidths: string[] = [
@@ -102,14 +100,11 @@ const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
                   })}
                   <td
                     key={"icons"}
-                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px]  text-center whitespace-nowrap ${
+                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px] text-center whitespace-nowrap ${
                       columnWidths[columnWidths.length - 1]
                     }`}
                   >
-                    <div className="flex justify-center items-center space-x-4">
-                      <FiEdit size={20} />
-                      <GoTrash size={20} />
-                    </div>
+                    <EditDeleteModal />
                   </td>
                 </tr>
               ))}
@@ -120,7 +115,12 @@ const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
 
       {/* Pagination Controls */}
 
-      <PaginationControls data={data} />
+      <PaginationControls
+        data={data}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        rowsPerPage={rowsPerPage}
+      />
     </div>
   );
 };
