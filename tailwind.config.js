@@ -14,7 +14,8 @@ module.exports = {
     		inter: ["Inter", 'sans-serif',],
     		raleway: ["Raleway", 'sans-serif'],
     		lato: ["Lato", 'sans-serif',],
-    		noto: ["Noto Sans", 'sans-serif']
+    		noto: ["Noto Sans", 'sans-serif'],
+    		montserrat: ['Montserrat', 'sans-serif']
     	},
     	container: {
     		center: 'true',
@@ -24,8 +25,11 @@ module.exports = {
     		}
     	},
     	extend: {
+			boxShadow: {
+				custom: "0px 0px 20px 0px rgba(0, 0, 0, 0.10)", // Custom shadow
+			  },
     		colors: {
-    			border: 'hsl(var(--border))',
+				border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
     			ring: 'hsl(var(--ring))',
     			background: 'hsl(var(--background))',

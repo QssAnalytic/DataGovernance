@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React from "react";
 import { GrRefresh } from "react-icons/gr";
 
 import {
@@ -15,6 +15,7 @@ const ContactTable: React.FC<IContactTableProps> = ({ headers, data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 7;
   const startIndex = (currentPage - 1) * rowsPerPage;
+
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
   const columnWidths: string[] = [
