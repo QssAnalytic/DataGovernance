@@ -6,7 +6,7 @@ import {
 import Layout from "./layout";
 import Home from "./pages/home";
 import ApplicationData from "./pages/app-data";
-import DetailsPage from "./pages/lead-details-page";
+import DetailsPage from "./pages/lead-details";
 import OverviewPage from "./pages/overview";
 
 const router = createBrowserRouter(
