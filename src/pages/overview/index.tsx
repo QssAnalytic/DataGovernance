@@ -1,6 +1,7 @@
 import React from "react";
 import { useUIStore } from "../../services/store/useUIStore";
 import { SearchInput } from "./SearchInput";
+import { ComboboxCustom } from "./CustomDropDown";
 const OverviewPage: React.FC = () => {
   const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
   React.useEffect(() => {
@@ -16,6 +17,9 @@ const OverviewPage: React.FC = () => {
   return (
     <div>
       <h2>Overview Page</h2>
+      <div>
+        <ComboboxCustom/>
+      </div>
     </div>
   );
 };
