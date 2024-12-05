@@ -1,4 +1,10 @@
-import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
+import { FiX } from "react-icons/fi";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+} from "../Custom Dialog";
 
 const EditModal = ({
   isOpen,
@@ -9,70 +15,49 @@ const EditModal = ({
 }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-white shadow-lg rounded-lg p-6 w-[400px]">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Add New Lead</h2>
+      <DialogContent className="bg-white shadow-lg rounded-lg p-6 w-[100%]">
+        {/* Add DialogTitle for accessibility */}
+        <DialogTitle className="sr-only">Edit Modal</DialogTitle>
+
+        <div className="flex justify-between items-center ">
+          <h2 className="text-[24px]  font-[700]">Add new lead</h2>
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
+            className=" text-black p-[5px] hover:text-gray-700 focus:outline-none focus:ring-0 text-[20px] rounded-[10px] border border-solid border-[#E9E9E9]"
           >
-            &times;
+            <FiX />
           </button>
         </div>
-
-        <div className="space-y-6">
-          {/* Section 1 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Section 1</h3>
-            <form>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Field 1
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Field 2
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </form>
+        <div className="flex items-center justify-between gap-4 border-b-solid border-b-[1px] border-b-[gray-300]">
+          <div className="flex">
+            <button className="text-[#22385F] border-b-solid border-b-[#22385F] border-b-[2px] py-[12px] px-[16px] font-[600] whitespace-nowrap">
+              Contact Details
+            </button>
+            <button className="text-[#BCBCBC] py-[12px] px-[16px] font-[600] whitespace-nowrap">
+              Education Status
+            </button>
+            <button className="text-[#BCBCBC] py-[12px] px-[16px] font-[600] whitespace-nowrap">
+              Employment Status
+            </button>
           </div>
 
-          {/* Section 2 */}
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Section 2</h3>
-            <form>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Field 3
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </form>
-          </div>
+          <span className="text-[16px] py-[10px] px-[5px] text-[#22385F] flex-shrink-0 font-[600] ">
+            1/3
+          </span>
         </div>
 
         <DialogFooter>
-          <button
-            className="px-4 py-2 bg-gray-200 rounded-lg"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-            Save Changes
-          </button>
+          <div className="flex w-[100%] gap-[20px] mt-[20px]">
+            <button
+              className="font-[600] text-[14px]  bg-gray-200 py-[12px] px-[16px]  text-[#22385F] rounded-lg w-[100%]"
+              onClick={onClose}
+            >
+              Ləğv et
+            </button>
+            <button className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]">
+              İrəli
+            </button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
