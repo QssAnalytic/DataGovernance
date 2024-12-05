@@ -7,10 +7,10 @@ import {
   getStatusStyles,
 } from "@/helpers/changinColorTable";
 import PaginationControls from "../Pagination Controller";
-import { IContactTableProps } from "../../types";
 import EditDeleteModal from "../Edit Delete Section";
+import { ContactTableProps } from "../../types";
 
-const ContactTable: React.FC<IContactTableProps> = ({ headers, data }) => {
+const ContactTable: React.FC<ContactTableProps> = ({ headers, data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 7;
   const startIndex = (currentPage - 1) * rowsPerPage;
