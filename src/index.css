@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -11,22 +10,17 @@
   list-style-type: none;
 }
 
-
-
 ul,
 li,
 ol {
   list-style: none;
 }
 
-
-
-
 @layer base {
   .parent:last-child > :nth-child(2) {
-    border-bottom: #22385F ;
+    border-bottom: #22385f;
   }
-  
+
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -107,9 +101,6 @@ ol {
   }
 }
 
-
-
-
 @layer base {
   * {
     @apply border-border;
@@ -119,3 +110,15 @@ ol {
   }
 }
 
+/* no scrollbar visible */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* remove the X icon for delete modal  */

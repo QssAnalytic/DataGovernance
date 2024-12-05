@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChevronDown from "../../../../assets/icons/chevronDown.svg";
 import CloseIcon from "../../../../assets/icons/closeIcon.svg";
 
@@ -7,6 +7,7 @@ const ContactedFilter = () => {
   const [selectedOption, setSelectedOption] = useState<"Yes" | "No" | null>(
     null
   );
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -16,11 +17,34 @@ const ContactedFilter = () => {
     setSelectedOption(option);
   };
 
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        closeDropdown();
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   return (
-    <div className="relative">
+    <div className="relative z-50" ref={dropdownRef}>
       <div
         onClick={toggleDropdown}
-        className="py-[12px] px-[16px] flex items-center h-[100%] gap-[10px] border rounded-[12px] cursor-pointer"
+        className="py-[12px] px-[16px]  flex items-center h-[100%] gap-[10px] border border-[#22385F] rounded-[12px] cursor-pointer"
       >
         <span className="text-[#969696]">Contacted</span>
         <img
@@ -41,7 +65,7 @@ const ContactedFilter = () => {
                 src={CloseIcon}
                 alt="close"
                 className="cursor-pointer"
-                onClick={() => setIsDropdownOpen(false)}
+                onClick={closeDropdown}
               />
             </div>
 
@@ -63,6 +87,13 @@ const ContactedFilter = () => {
                 </div>
               ))}
             </div>
+
+            <button
+              className="bg-[#22385F] text-white py-[12px] px-[16px] rounded-[12px]"
+              onClick={closeDropdown}
+            >
+              Göstər
+            </button>
           </div>
         </div>
       )}
