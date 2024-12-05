@@ -282,7 +282,7 @@ const DetailsPage = () => {
   ];
 
   return (
-    <div>
+    <div className="p-[50px]">
       <TableInfoSection />
       <ContactTable headers={headers} data={data} />
     </div>

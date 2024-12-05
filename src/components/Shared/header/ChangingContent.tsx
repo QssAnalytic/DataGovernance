@@ -13,19 +13,20 @@ export const ChangingContent = () => {
   const { isAdmin } = useAdminStore();
 
   return (
-    <div className="flex gap-x-[20px] items-center">
-      {pageCustomHeader}
-      {isAdmin && (
-        <button
-          className="px-[16px] min-w-fit py-3 flex items-center gap-x-[12px] rounded-xl bg-[#22385F] text-sm font-medium text-white"
-          onClick={() => {
-            setIsModalOpen(!isModalOpen);
-          }}
-        >
-          <Plus />
-          {buttonLabel}
-        </button>
-      )}
+        <div className="flex gap-x-[20px] items-center">
+            
+            {pageCustomHeader}
+
+            {isAdmin && (
+                <button
+                    className="px-[16px] min-w-fit py-3 flex items-center gap-x-[12px] rounded-xl bg-[#22385F] text-sm font-medium text-white"
+                    onClick={() => { setIsModalOpen(!isModalOpen); }} // Toggle modal visibility
+                >
+                    <Plus />
+                    {buttonLabel} {/* Dynamic label for the button */}
+                </button>
+            )}
+
 
       {isModalOpen && (
         <div className="z-[100px] w-full top-0 left-0 h-[100vh] flex items-center justify-center absolute">
