@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
@@ -24,8 +25,10 @@ const DialogOverlay = React.forwardRef<
     )}
     {...props}
   />
+
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
@@ -48,6 +51,7 @@ const DialogContent = React.forwardRef<
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   </DialogPortal>
+
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
@@ -62,6 +66,7 @@ const DialogHeader = ({
     )}
     {...props}
   />
+
 );
 DialogHeader.displayName = "DialogHeader";
 
@@ -76,6 +81,7 @@ const DialogFooter = ({
     )}
     {...props}
   />
+
 );
 DialogFooter.displayName = "DialogFooter";
 
@@ -91,6 +97,7 @@ const DialogTitle = React.forwardRef<
     )}
     {...props}
   />
+
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
@@ -103,6 +110,7 @@ const DialogDescription = React.forwardRef<
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
+
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
@@ -117,4 +125,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+
 };
