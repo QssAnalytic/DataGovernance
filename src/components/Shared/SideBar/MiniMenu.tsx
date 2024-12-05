@@ -37,16 +37,16 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
     };
 
     return (
-        <div className={`mini w-full flex flex-col items-start gap-y-[40px] overflow-hidden`} onMouseLeave={closeMenu}>
+        <div className={`mini w-full flex flex-col items-start gap-y-[40px] overflow-hidden`} >
             <div className='flex items-center gap-x-[34px]'>
-                <div onClick={toggleMenu} className='miniBarIcon group flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)]'>
+                <div onClick={toggleMenu} className='miniBarIcon group flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] hover:cursor-pointer'>
                     <FiMenu className='group-hover:text-white text-[rgba(34,56,95,1)] w-[24px] h-[24px]' />
                 </div>
                 <p className='pl-[1.3rem] text-[rgba(34,56,95,1)] font-bold'>Menu</p>
             </div>
 
             <div className='flex items-start gap-x-[34px]'>
-                <div className={`miniBarIcon group h-fit flex p-2 items-start rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.sales ? "bg-[rgba(34,56,95,1)]" : ""}`}>
+                <div className={`miniBarIcon group hover:cursor-pointer h-fit flex p-2 items-start rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.sales ? "bg-[rgba(34,56,95,1)]" : ""}`}>
                     <IoPricetagsOutline className={`group-hover:text-white rotate-[270deg] text-[rgba(34,56,95,1)] w-[24px] h-[24px] ${openAccordions.sales ? "text-white" : ""}`} />
                 </div>
                 <Accordion type="single"  collapsible onClick={() => handleAccordionToggle("sales")}>
@@ -66,7 +66,7 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
 
             {/* Finance Section */}
             <div className='flex items-start gap-x-[34px]'>
-                <div className={`miniBarIcon group flex p-2 items-start rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.finance ? "bg-[rgba(34,56,95,1)]" : ""}`}>
+                <div className={`miniBarIcon group hover:cursor-pointer flex p-2 items-start rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.finance ? "bg-[rgba(34,56,95,1)]" : ""}`}>
                     <FaRegChartBar className={`group-hover:text-white text-[rgba(34,56,95,1)] w-[24px] h-[24px] ${openAccordions.finance ? "text-white" : ""}`} />
                 </div>
                 <Accordion type="single" collapsible onClick={() => handleAccordionToggle("finance")}>
@@ -86,7 +86,7 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
 
             {/* Training Section */}
             <div className='flex items-start gap-x-[34px]'>
-                <div className={`miniBarIcon group flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.training ? "bg-[rgba(34,56,95,1)]" : ""}`}>
+                <div className={`miniBarIcon group hover:cursor-pointer flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.training ? "bg-[rgba(34,56,95,1)]" : ""}`}>
                     <BiChalkboard className={`group-hover:text-white text-[rgba(34,56,95,1)] w-[24px] h-[24px] ${openAccordions.training ? "text-white" : ""}`} />
                 </div>
                 <Accordion type="single" collapsible onClick={() => handleAccordionToggle("training")}>
@@ -109,7 +109,7 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
 
             {/* Internship Section */}
             <div className='flex items-start gap-x-[34px]'>
-                <div className={`miniBarIcon group flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.internship ? "bg-[rgba(34,56,95,1)]" : ""}`}>
+                <div className={`miniBarIcon group hover:cursor-pointer flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.internship ? "bg-[rgba(34,56,95,1)]" : ""}`}>
                     <FiFileText className={`group-hover:text-white text-[rgba(34,56,95,1)] w-[24px] h-[24px] ${openAccordions.internship ? "text-white" : ""}`} />
                 </div>
                 <Accordion type="single" collapsible onClick={() => handleAccordionToggle("internship")}>
@@ -123,7 +123,7 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
 
             {/* Career Section */}
             <div className='flex items-start gap-x-[34px]'>
-                <div className={`miniBarIcon group flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.career ? "bg-[rgba(34,56,95,1)]" : ""}`}>
+                <div className={`miniBarIcon group hover:cursor-pointer flex p-2 items-center rounded-xl justify-center hover:bg-[rgba(34,56,95,1)] ${openAccordions.career ? "bg-[rgba(34,56,95,1)]" : ""}`}>
                     <FiBriefcase className={`group-hover:text-white text-[rgba(34,56,95,1)] w-[24px] h-[24px] ${openAccordions.career ? "text-white" : ""}`} />
                 </div>
                 <Accordion type="single" collapsible onClick={() => handleAccordionToggle("career")}>

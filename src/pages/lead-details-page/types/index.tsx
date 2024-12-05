@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-<<<<<<< Updated upstream
 export interface IContactTableProps {
   headers: string[];
   data: { [key: string]: any }[];
@@ -10,7 +9,7 @@ export interface IPaginationControlsProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   rowsPerPage: number;
-=======
+}
 export interface RowData {
   ID: number;
   "Ad Soyad": string;
@@ -27,5 +26,4 @@ export interface RowData {
 export interface ContactTableProps {
   headers: string[];
   data: RowData[];
->>>>>>> Stashed changes
 }

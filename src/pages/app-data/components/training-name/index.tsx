@@ -3,7 +3,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
-import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 
 
@@ -19,6 +18,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>('');
     const [isSearch, setIsSearch] = useState<boolean>(false);
+    const [isInputFocused, setIsInputFocused] = useState(false);
 
     const applicationSource: string[] = [
         'Data Science Bootcamp',
@@ -138,7 +138,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
         setIsSearch(false);     // Close the input field
         setQuery("");           // Reset the search query
     };
-    
+
     return (
         <div  >
             <div className='w-[212px] cursor-pointer p-4 flex h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
@@ -161,36 +161,30 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
 
 
                 <div className='flex flex-col mt-3  gap-[10px]'>
-                    <div className='flex mt-2 px-3 py-1 gap-[7px] '>
+                    <div className='flex flex-col mt-2 px-3 py-1 gap-[7px] '>
 
-                        {!isSearch ? <div className="flex  gap-[5px]">
+                        <div className="flex  gap-[5px]">
                             <span className='cursor-pointer font-montserrat font-normal w-[110px] text-[16px] text-[#1D7EB7] leading-[19.05px]'
                                 onClick={() => (!isCustomized ? selectAll() : selectCustomized())}>
                                 Hamısını seç
                             </span>
                             <div className='w-[5px] h-[5px] rounded bg-[#1D7EB7] mt-[0.5rem]'></div>
                             <span className=' cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]' onClick={() => (!isCustomized ? reseAll() : resetCustomized())}>Sıfırla</span>
-                        </div> : null}
+                        </div>
 
-                        {isCustomized ? <div className={`flex ml-[2px]  justify-end gap-1 ${isSearch && "w-[200px] h-[30px]  border transition-all duration-700 ease-in-out rounded-lg px-2 py-1"} `} >
-                            {!isSearch ? <div className="w-[1px] transition-all  ease-in-out h-[20px] bg-[#8F8F8F]"></div> : null}
+                        {isCustomized ? <div className={`flex ml-[2px] mt-2 flex-col gap-1 w-[200px]   h-[30px]  border transition-all duration-700 ease-in-out rounded-lg px-2 py-1 `} >
 
-                            {isSearch &&
-                                <input type="text" name="search" className="peer absolute border-none focus:outline-none " value={query}
-                                    onChange={(e) => setQuery(e.target.value)} />
 
-                            }
-                            <IoSearch className={`text-[#8F8F8F] w-[20px] h-[20px] text-end  cursor-pointer peer-focus:hidden ${isSearch && 'transition-all  z-10 relative duration-700 ease-in-out  mr-[10rem]'}`} onClick={toggleSearchBtn} />
-                            <RxCross1
-                                className={`text-[#8F8F8F] z-10 w-[20px] h-[20px] cursor-pointer ${isSearch ? 'block' : 'hidden'
-                                    }`}
-                                onClick={handleToggleCustomized}
-                            />
+                             <input type="text" name="search" className="peer absolute  border-none focus:outline-none " value={query}
+                                onChange={(e) => setQuery(e.target.value)} />
+
+
+                            <IoSearch className={`text-[#8F8F8F] z-10 w-[20px] h-[20px] text-end  cursor-pointer peer-focus:hidden `} onClick={toggleSearchBtn} />
+
 
                         </div>
                             : null
                         }
-
                     </div>
                     <div>
 
