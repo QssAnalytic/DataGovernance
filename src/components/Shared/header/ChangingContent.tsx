@@ -36,6 +36,7 @@ export const ChangingContent = () => {
           <div className="flex bg-white flex-col min-w-[200px] min-h-[200px] z-50">
             {modalContent}
           </div>
+
         </div>
       )}
     </div>
