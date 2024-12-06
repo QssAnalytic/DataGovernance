@@ -121,4 +121,6 @@ ol {
   scrollbar-width: none; /* Firefox */
 }
 
-/* remove the X icon for delete modal  */
+body {
+  font-family: "Montserrat", sans-serif;
+}
