@@ -1,30 +1,33 @@
 import { useState, useRef, useEffect } from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
+import { ShowButton } from "../showButton";
+import { CheckBoxes } from "../checkBoxes";
+import { CheckboxTitle } from "../checboxTitle";
 
 
 
 interface MyComponentProps {
     isOpen: boolean;
     onToggle: () => void;
+    searchTerm: string;
+    inputValue: React.RefObject<HTMLInputElement>;
+    setSearchTerm: (value: string) => void;
 }
 
-const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
-    const [isChecked, setIsChecked] = useState<boolean[]>([]);
-    const [isCustomizedChecked, setIsCustomizedChecked] = useState<boolean[]>([]);
+const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm, setSearchTerm, inputValue }) => {
+
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>('');
     const [isSearch, setIsSearch] = useState<boolean>(false);
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
+   
     const applicationSource: string[] = [
         'Data Science Bootcamp',
         'Data Analytics Bootcamp',
         "Machine Learning",
-        "Machine Learning",
+        "Blockchain"
 
     ];
 
@@ -48,18 +51,22 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
 
     ];
 
+    const [isChecked, setIsChecked] = useState<boolean[]>(new Array(applicationSource.length).fill(false));
+    const [isCustomizedChecked, setIsCustomizedChecked] = useState<boolean[]>(new Array(customized.length).fill(false));
 
-    const handleCheckboxChange = (index: number) => {
+
+    const handleCheckboxChange = (index: number, value: string) => {
         setIsChecked((prevState) => {
             const newCheckedItems = [...prevState];
             newCheckedItems[index] = !newCheckedItems[index]; // Toggle the checked state at the specific index
+            console.log(newCheckedItems[index], 'new checked items')
             return newCheckedItems;
 
         });
 
     };
 
-    const handleCustomizedsCheckboxChange = (index: number) => {
+    const handleCustomizedsCheckboxChange = (index: number, value: string) => {
         setIsCustomizedChecked((prevState) => {
             const newCheckedItems = [...prevState];
             newCheckedItems[index] = !newCheckedItems[index]; // Toggle the checked state at the specific index
@@ -67,13 +74,26 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
 
         });
 
-    };
 
+    };
+    const handleShowFilter = () => {
+        const selectedApplicationSources = applicationSource.filter((_, index) => isChecked[index]);
+        const selectedCustomizedItems = customized.filter((_, index) => isCustomizedChecked[index]);
+
+        // Combine both arrays into one
+        const selectedItems = [...selectedApplicationSources, ...selectedCustomizedItems];
+
+        // Log the selected items for debugging
+        console.log("Selected items:", selectedItems);
+
+        // Update the searchTerm with all selected items
+        setSearchTerm(selectedItems.join(', ')); // Combine the items into a comma-separated string
+
+    };
 
     const filteredItems = applicationSource.filter((item) =>
         item.toLowerCase().includes(query.toLowerCase())
     );
-
 
 
 
@@ -87,7 +107,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
         setIsChecked(new Array(applicationSource.length).fill(true));
     };
 
-    const reseAll = () => {
+    const resetAll = () => {
         setIsChecked(new Array(applicationSource.length).fill(false));
     };
 
@@ -158,30 +178,14 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
                     <p className="font-montserrat font-semibold leading-[19.05px] mt-[2px] text-[16px] text-[#000000] text-left" > Customized</p>
                 </div>}
 
-
-
                 <div className='flex flex-col mt-3  gap-[10px]'>
                     <div className='flex flex-col mt-2 px-3 py-1 gap-[7px] '>
-
-                        <div className="flex  gap-[5px]">
-                            <span className='cursor-pointer font-montserrat font-normal w-[110px] text-[16px] text-[#1D7EB7] leading-[19.05px]'
-                                onClick={() => (!isCustomized ? selectAll() : selectCustomized())}>
-                                Hamısını seç
-                            </span>
-                            <div className='w-[5px] h-[5px] rounded bg-[#1D7EB7] mt-[0.5rem]'></div>
-                            <span className=' cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]' onClick={() => (!isCustomized ? reseAll() : resetCustomized())}>Sıfırla</span>
-                        </div>
-
+                        <CheckboxTitle isCustomized={isCustomized} selectAll={selectAll} selectCustomized={selectCustomized} resetAll={resetAll} resetCustomized={resetCustomized} />
                         {isCustomized ? <div className={`flex ml-[2px] mt-2 flex-col gap-1 w-[200px]   h-[30px]  border transition-all duration-700 ease-in-out rounded-lg px-2 py-1 `} >
-
-
-                             <input type="text" name="search" className="peer absolute  border-none focus:outline-none " value={query}
+                            <input type="text" name="search" className="peer absolute  border-none focus:outline-none " value={query}
                                 onChange={(e) => setQuery(e.target.value)} />
 
-
                             <IoSearch className={`text-[#8F8F8F] z-10 w-[20px] h-[20px] text-end  cursor-pointer peer-focus:hidden `} onClick={toggleSearchBtn} />
-
-
                         </div>
                             : null
                         }
@@ -190,47 +194,17 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
 
                         {!isCustomized ? filteredItems.map((item, index) => (
                             <div key={index} className='flex  items-center justify-between px-[10px] mt-[10px]'>
-                                <label htmlFor={`checkbox-${index}`} className='flex relative items-center mt-2 cursor-pointer w-full'>
-                                    <input
-                                        id={`checkbox-${index}`}
-                                        checked={isChecked[index] || false}
-                                        onChange={() => handleCheckboxChange(index)}
-                                        type="checkbox"
-                                        className="peer cursor-pointer absolute appearance-none h-[16px] w-[16px] border border-[#22385F] ml-[16rem] rounded-full bg-white checked:bg-[#22385F] checked:border-transparent focus:outline-none"
-                                    />
-                                    <span className='ml-2 text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px] peer-checked:text-[#22385F]'>
-                                        {item}
-                                    </span>
-                                </label>
+                                <CheckBoxes item={item} index={index} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange} />
                             </div>
                         )) : customizedItems.map((item, index) => (
                             <div key={index} className='flex items-center justify-between px-[10px] mt-[10px]'>
-                                <label htmlFor={`checkbox-${index}`} className='flex relative items-center mt-2 cursor-pointer w-full'>
-                                    <input
-                                        id={`checkbox-${index}`}
-                                        checked={isCustomizedChecked[index] || false}
-                                        onChange={() => handleCustomizedsCheckboxChange(index)}
-                                        type="checkbox"
-                                        className="peer cursor-pointer absolute appearance-none h-[16px] w-[16px] border border-[#22385F] ml-[16rem] rounded-full bg-white checked:bg-[#22385F] checked:border-transparent focus:outline-none"
-                                    />
-                                    <span className='ml-2 text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px] peer-checked:text-[#22385F]'>
-                                        {item}
-                                    </span>
-                                </label>
+                                <CheckBoxes item={item} index={index} isChecked={isCustomizedChecked} handleCheckboxChange={handleCustomizedsCheckboxChange} />
+
                             </div>
                         ))
                         }
 
-
-
-                        {!isCustomized ? <button onClick={() => setIsCustomized(true)} className="px-5 mt-3 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
-                            Customized
-                            <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
-                        </button> : null}
-                        <div className='flex justify-center mt-5'>
-                            <button className='w-[282px] h-[40px] mt-1 rounded-md bg-[#22385F] text-white font-noto text-[14px] leading-[19.07px] cursor-pointer ease-in-out hover:bg-white hover:text-[#22385F] transition-all duration-700 hover:border-[#22385F] hover:border-[1px]'>Göstər</button>
-                        </div>
-
+                        {!isCustomized ? <ShowButton setIsCustomized={selectCustomized} handleShowFilter={handleShowFilter} /> : null}
                     </div>
                 </div>
             </div> : null}

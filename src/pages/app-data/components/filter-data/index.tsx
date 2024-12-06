@@ -4,7 +4,13 @@ import TrainingName from '../training-name';
 import ContactStatus from '../contact-status';
 
 
-const FilterData = () => {
+interface FilterProps {
+    searchTerm: string;
+    inputValue: React.RefObject<HTMLInputElement>; 
+    setSearchTerm: (value: string) => void;
+}
+
+const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValue} ) => {
 
     const [isSourceModal, setSourceModal] = useState(false);
     const [isTrainingName, setTrainingName] = useState(false);
@@ -17,7 +23,6 @@ const FilterData = () => {
             setSourceModal(true)
         }
     }
-
 
     const toggleTrainingName = () => {
       if (isTrainingName) {
@@ -40,14 +45,10 @@ const FilterData = () => {
             <div className='w-[250px]' >
              <SourceModal isOpen = {isSourceModal} onToggle = {toggleSourceModal } />
             </div>
-
-
             <div className='w-[250px]' >
-             <TrainingName isOpen = {isTrainingName} onToggle = {toggleTrainingName } />
+             <TrainingName inputValue = {inputValue} isOpen = {isTrainingName} onToggle = {toggleTrainingName }  searchTerm = {searchTerm} setSearchTerm ={setSearchTerm}/>
             </div>
-
-
-            <div className='w-[250px]' >
+           <div className='w-[250px]' >
              <ContactStatus isOpen = {isContactStatus} onToggle = {toggleContactStatus } />
             </div>
 
