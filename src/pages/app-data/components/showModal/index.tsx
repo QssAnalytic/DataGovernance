@@ -1,10 +1,5 @@
-
-
-interface MyComponentProps {
-    handleCancelDelete: () => void;
-    handleConfirmDelete: () => void;
-};
-const ShowModal: React.FC<MyComponentProps> = ({ handleCancelDelete, handleConfirmDelete }) => {
+import { ShowModalProps } from "../../types"
+const ShowModal: React.FC<ShowModalProps> = ({ handleCancelDelete, handleConfirmDelete }) => {
     return <div className="fixed inset-0 z-50 flex items-center justify-center   bg-[#000000] rounded-lg bg-opacity-70">
         <div className="bg-white p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
             <h2 className="text-lg font-semibold">

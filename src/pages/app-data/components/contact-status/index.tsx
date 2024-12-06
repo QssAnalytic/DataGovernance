@@ -1,16 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
+import { ContactStatusProps } from "../../types";
 
-
-
-
-interface MyComponentProps {
-    isOpen: boolean;
-    onToggle: () => void;
-}
-
-const ContactStatus: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
+const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle }) => {
     const [isChecked1, setIsChecked1] = useState(false);
     const [isChecked2, setIsChecked2] = useState(false);
 

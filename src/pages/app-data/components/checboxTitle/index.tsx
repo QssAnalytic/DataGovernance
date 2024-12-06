@@ -1,12 +1,5 @@
-interface MyComponentProps {
-    isCustomized: boolean;
-    selectAll: () => void;
-    selectCustomized: () => void;
-    resetAll: () => void;
-    resetCustomized: () => void;
-  
-}
-export const CheckboxTitle: React.FC<MyComponentProps> = ({ isCustomized, selectAll, selectCustomized, resetAll, resetCustomized}) => {
+import { CheckBoxesPropsTitle } from "../../types"
+export const CheckboxTitle: React.FC<CheckBoxesPropsTitle> = ({ isCustomized, selectAll, selectCustomized, resetAll, resetCustomized}) => {
     return (
         <div className="flex  gap-[5px]">
         <span className='cursor-pointer font-montserrat font-normal w-[110px] text-[16px] text-[#1D7EB7] leading-[19.05px]'

@@ -1,7 +1,4 @@
-
 import { MdKeyboardArrowRight } from "react-icons/md";
-
-
 export const ShowButton = ({ setIsCustomized, handleShowFilter }: any) => {
     return (
         <>

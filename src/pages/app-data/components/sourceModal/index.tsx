@@ -1,13 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
+import { SourceModalProps } from "../../types";
 
-interface MyComponentProps {
-  isOpen: boolean;
-  onToggle: () => void;
-}
 
-const SourceModal: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
+const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
 
   const applicationSource: string[] = [
     'DSA Whatsapp',

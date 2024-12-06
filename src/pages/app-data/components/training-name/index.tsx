@@ -6,18 +6,9 @@ import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
 import { CheckBoxes } from "../checkBoxes";
 import { CheckboxTitle } from "../checboxTitle";
+import { TrainingNameProps } from "../../types";
 
-
-
-interface MyComponentProps {
-    isOpen: boolean;
-    onToggle: () => void;
-    searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>;
-    setSearchTerm: (value: string) => void;
-}
-
-const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm, setSearchTerm, inputValue }) => {
+const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, searchTerm, setSearchTerm, inputValue }) => {
 
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>('');

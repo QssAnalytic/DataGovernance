@@ -2,17 +2,10 @@ import { useState} from 'react';
 import SourceModal from '../sourceModal';
 import TrainingName from '../training-name';
 import ContactStatus from '../contact-status';
-
-
-interface FilterProps {
-    searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>; 
-    setSearchTerm: (value: string) => void;
-}
+import { FilterProps } from '../../types';
 
 const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValue} ) => {
-
-    const [isSourceModal, setSourceModal] = useState(false);
+  const [isSourceModal, setSourceModal] = useState(false);
     const [isTrainingName, setTrainingName] = useState(false);
     const [isContactStatus, setIsContactStatus] = useState(false);
 
