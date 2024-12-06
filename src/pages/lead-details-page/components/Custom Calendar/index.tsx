@@ -22,12 +22,12 @@ export function DatePickerDemo({ placeholder }: { placeholder: string }) {
         <Button
           variant={"outline"}
           className={cn(
-            "focus:outline-none w-[100%] focus:ring-0 border py-[12px] px-[16px] placeholder:text-[14px] placeholder:text-[#969696] rounded-[12px]  justify-between text-left font-normal",
-            !date && "text-muted-foreground"
+            "focus:outline-none w-[100%] focus:ring-0 border py-[12px] px-[16px] rounded-[12px] justify-between text-left font-normal",
+            !date ? "text-muted-foreground" : "text-black" // Add black text color when a date is selected
           )}
           style={{ height: "auto", lineHeight: "1.7" }} // Ensure consistent height/line-height
         >
-          <span className="text-[#969696]">
+          <span className="placeholder:text-[#969696]">
             {date ? format(date, "PPP") : placeholder}
           </span>
           <CalendarIcon className="ml-2 h-4 w-4" />
