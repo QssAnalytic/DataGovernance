@@ -1,3 +1,4 @@
+import TrainingName from "@/pages/app-data/components/training-name";
 import { DatePickerDemo } from "../../Custom Calendar";
 import {
   Select,
@@ -6,8 +7,36 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../Custom Selector";
+import { useState } from "react";
 
 const ContactDetailsForm = () => {
+  const [isSourceModal, setSourceModal] = useState(false);
+  const [isTrainingName, setTrainingName] = useState(false);
+  const [isContactStatus, setIsContactStatus] = useState(false);
+
+  const toggleSourceModal = () => {
+    if (isSourceModal) {
+      setSourceModal(false);
+    } else {
+      setSourceModal(true);
+    }
+  };
+
+  const toggleTrainingName = () => {
+    if (isTrainingName) {
+      setTrainingName(false);
+    } else {
+      setTrainingName(true);
+    }
+  };
+
+  const toggleContactStatus = () => {
+    if (isContactStatus) {
+      setIsContactStatus(false);
+    } else {
+      setIsContactStatus(true);
+    }
+  };
   return (
     <div>
       <form className="flex gap-[20px]">
@@ -35,6 +64,13 @@ const ContactDetailsForm = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-[10px] flex-1">
+          {/* <TrainingName
+            inputValue={inputValue}
+            isOpen={isTrainingName}
+            onToggle={toggleTrainingName}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          /> */}
           <DatePickerDemo placeholder="When to Call Again" />
           <Select>
             <SelectTrigger className="w-[100%]">
