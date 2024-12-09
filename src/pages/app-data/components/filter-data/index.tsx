@@ -6,6 +6,7 @@ import { FilterProps } from '../../types';
 
 const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValue} ) => {
   const [isSourceModal, setSourceModal] = useState(false);
+
     const [isTrainingName, setTrainingName] = useState(false);
     const [isContactStatus, setIsContactStatus] = useState(false);
 

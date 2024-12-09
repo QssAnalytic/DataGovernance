@@ -7,6 +7,7 @@ import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
 
+
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
     const [editRowId, setEditRowId] = useState<number | null>(null);

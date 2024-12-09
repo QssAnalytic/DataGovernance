@@ -8,7 +8,9 @@ import { CheckBoxes } from "../checkBoxes";
 import { CheckboxTitle } from "../checboxTitle";
 import { TrainingNameProps } from "../../types";
 
-const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, searchTerm, setSearchTerm, inputValue }) => {
+
+const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearchTerm }) => {
+
 
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>('');
@@ -76,6 +78,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, searchTer
 
         // Log the selected items for debugging
         console.log("Selected items:", selectedItems);
+
 
         // Update the searchTerm with all selected items
         setSearchTerm(selectedItems.join(', ')); // Combine the items into a comma-separated string

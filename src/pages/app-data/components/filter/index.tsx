@@ -7,6 +7,7 @@ import { FilterProps } from "../../types";
 const Filter: React.FC<FilterProps>  = ({ searchTerm, setSearchTerm }) => {
     const inputValue = useRef<HTMLInputElement>(null);
        
+
     return (
         <div className="flex mt-10 h-[90px] px-7 z-10 justify-around gap-[10rem]">
             <div className='flex relative justify-center  w-[296px]  border-[0.5px]  bg-[#FAFCFF] border-[#22385F] rounded-xl h-[56px]  px-[16px] py-[14px] '>

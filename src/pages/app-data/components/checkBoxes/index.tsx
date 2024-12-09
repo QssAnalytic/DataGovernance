@@ -1,5 +1,6 @@
 import { CheckBoxesProps } from "../../types"
 export const CheckBoxes: React.FC<CheckBoxesProps> = ({ item, index, handleCheckboxChange, isChecked }) => {
+
     return (
         <label htmlFor={`checkbox-${index}`} className='flex relative items-center mt-2 cursor-pointer w-full'>
             <input
