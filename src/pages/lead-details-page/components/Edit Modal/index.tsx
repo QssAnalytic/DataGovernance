@@ -21,8 +21,16 @@ const EditModal = ({
 
   const steps = ["Contact Details", "Education Status", "Employment Status"];
 
-  const handleStepChange = (step: number) => {
-    setCurrentStep(step);
+  const handleNext = () => {
+    if (currentStep < steps.length) {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentStep > 1) {
+      setCurrentStep((prevStep) => prevStep - 1);
+    }
   };
 
   const renderStepForm = () => {
@@ -43,7 +51,7 @@ const EditModal = ({
       <DialogContent className="bg-white shadow-lg rounded-lg p-6 w-[100%]">
         <DialogTitle className="sr-only">Edit Modal</DialogTitle>
 
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center">
           <h2 className="text-[24px] font-[700]">Add new lead</h2>
           <button
             onClick={onClose}
@@ -52,24 +60,25 @@ const EditModal = ({
             <FiX />
           </button>
         </div>
+
         <div className="flex items-center justify-between gap-4 border-b-solid border-b-[1px] border-b-[gray-300]">
           <div className="flex">
             {steps.map((step, index) => (
               <button
                 key={index}
-                className={`py-[12px] px-[16px] font-[600] whitespace-nowrap ${
+                className={`py-[12px] px-[16px] font-[500] whitespace-nowrap ${
                   currentStep === index + 1
                     ? "text-[#22385F] border-b-solid border-b-[#22385F] border-b-[2px]"
                     : "text-[#BCBCBC]"
                 }`}
-                onClick={() => handleStepChange(index + 1)}
+                onClick={() => setCurrentStep(index + 1)}
               >
                 {step}
               </button>
             ))}
           </div>
-          <span className="text-[16px] py-[10px] px-[5px] text-[#22385F] flex-shrink-0 font-[600] ">
-            {currentStep}/3
+          <span className="text-[16px] py-[10px] px-[5px] text-[#22385F] flex-shrink-0 font-[600]">
+            {currentStep}/{steps.length}
           </span>
         </div>
 
@@ -78,15 +87,54 @@ const EditModal = ({
 
         <DialogFooter>
           <div className="flex w-[100%] gap-[20px] mt-[20px]">
-            <button
-              className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
-              onClick={onClose}
-            >
-              Ləğv et
-            </button>
-            <button className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]">
-              İrəli
-            </button>
+            {currentStep === 1 && (
+              <>
+                <button
+                  className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
+                  onClick={onClose}
+                >
+                  Ləğv et
+                </button>
+                <button
+                  className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
+                  onClick={handleNext}
+                >
+                  İrəli
+                </button>
+              </>
+            )}
+            {currentStep > 1 && currentStep < steps.length && (
+              <>
+                <button
+                  className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
+                  onClick={handlePrevious}
+                >
+                  Geri
+                </button>
+                <button
+                  className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
+                  onClick={handleNext}
+                >
+                  İrəli
+                </button>
+              </>
+            )}
+            {currentStep === steps.length && (
+              <>
+                <button
+                  className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
+                  onClick={handlePrevious}
+                >
+                  Geri
+                </button>
+                <button
+                  className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
+                  onClick={() => alert("Changes saved!")}
+                >
+                  Yadda saxla
+                </button>
+              </>
+            )}
           </div>
         </DialogFooter>
       </DialogContent>
