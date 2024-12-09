@@ -159,15 +159,15 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
 
 
     return (
-        <div className="w-full flex-1" >
-            <div className=' whitespace-nowrap cursor-pointer p-4  flex rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
+        <div className="relative w-[100%]">
+            <div className=' w-full whitespace-nowrap cursor-pointer justify-between p-4 flex  rounded-xl border-[0.5px] bg-[#FAFCFF]   border-[#22385F] ' onClick={onToggle}>
                 <p className='font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]'>Training Name</p>
                 <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
             </div>
-            {isOpen ? <div ref={dropdownRef} className="  w-[323px]  max-h-[650px] rounded-xl shadow-lg p-4 bg-white " >
-                {!isCustomized ? <div className='flex w-full  justify-between mt-3  px-3 '>
-                    <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" > Training Name</p>
-                    <button className="bg-none border-none ml-[10px]" onClick={onToggle}>
+            {isOpen ? <div ref={dropdownRef} className=" w-[323px] absolute right-0 z-10 max-h-[650px] p-4 rounded-xl shadow-lg  bg-white " >
+                {!isCustomized ? <div className='flex justify-between mt-7   '>
+                    <p className="font-montserrat font-semibold ml-3 leading-[19.05px] text-[16px] text-[#000000] text-left" > Training Name</p>
+                    <button className=" bg-none border-none  ml-[10px]" onClick={onToggle}>
                         <IoCloseSharp className="text-[24px] " />
                     </button>
                 </div> : <div className='flex w-full  justify-start gap-[15px] mt-3  px-3'>
@@ -186,14 +186,14 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
                             : null
                         }
                     </div>
-                    <div>
+                    <div className="w-[100%]">
 
                         {!isCustomized ? filteredItems.map((item, index) => (
-                            <div key={index} className='flex w-full items-center justify-between px-[10px] mt-[10px]'>
+                            <div key={index} className='flex  items-center justify-between px-[10px] mt-[10px]'>
                                 <CheckBoxes item={item} index={index} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange} />
                             </div>
                         )) : customizedItems.map((item, index) => (
-                            <div key={index} className='flex items-center justify-between px-[10px] mt-[10px]'>
+                            <div key={index} className='flex  items-center  justify-between px-[10px] mt-[10px]'>
                                 <CheckBoxes item={item} index={index} isChecked={isCustomizedChecked} handleCheckboxChange={handleCustomizedsCheckboxChange} />
 
                             </div>
@@ -202,7 +202,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
 
 
                     {
-                        !isCustomized && <button onClick={toggleCustomizedBtn} className="px-[10px] mt-3 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
+                        !isCustomized && <button onClick={toggleCustomizedBtn} className="px-[10px] mt-5 flex justify-between   w-[310px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
                         Customized
                         <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
                     </button>
@@ -214,7 +214,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
 
 
 
-                        {/* {!isCustomized ? <ShowButton isCustomized ={isCustomized} setIsCustomized={pathToCustomized} handleShowFilter={handleShowFilter} /> : null} */}
+                        
                     </div>
                 </div>
             </div> : null}

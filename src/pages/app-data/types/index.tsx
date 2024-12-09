@@ -7,7 +7,6 @@ export interface FilterProps {
     isOpen: boolean;
     onToggle: () => void;
     searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>;
     setSearchTerm: (value: string) => void;
 }
 
@@ -36,7 +35,6 @@ export interface SourceModalProps {
 
  export interface FilterProps {
     searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>; 
     setSearchTerm: (value: string) => void;
 }
 

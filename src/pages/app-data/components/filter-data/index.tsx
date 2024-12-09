@@ -4,7 +4,7 @@ import TrainingName from '../training-name';
 import ContactStatus from '../contact-status';
 import { FilterProps } from '../../types';
 
-const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValue} ) => {
+const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm} ) => {
   const [isSourceModal, setSourceModal] = useState(false);
 
     const [isTrainingName, setTrainingName] = useState(false);
@@ -35,12 +35,12 @@ const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValu
 }
 
     return (
-        <div className="flex w-[100%] justify-center gap-[20px]">
+        <div className="flex w-[60%] justify-end gap-[20px]">
             
              <SourceModal isOpen = {isSourceModal} onToggle = {toggleSourceModal } />
    
           
-             <TrainingName inputValue = {inputValue} isOpen = {isTrainingName} onToggle = {toggleTrainingName }  searchTerm = {searchTerm} setSearchTerm ={setSearchTerm}/>
+             <TrainingName isOpen = {isTrainingName} onToggle = {toggleTrainingName }  searchTerm = {searchTerm} setSearchTerm ={setSearchTerm}/>
         
            
              <ContactStatus isOpen = {isContactStatus} onToggle = {toggleContactStatus } />

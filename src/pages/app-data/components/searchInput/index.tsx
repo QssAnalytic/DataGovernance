@@ -37,9 +37,9 @@ const SearchInput = ( {isSearch, setIsSearch} :any) => {
             onClick={handleInput}
           />
         )}
-        {isInput && <IoClose className="ml-[10rem] cursor-pointer text-[24px] z-10  transition-all duration-1000 ease-in-out" onClick={handleSearchIcon} />
+        {isInput && <IoClose className="ml-[10rem]   mt-1  cursor-pointer text-[24px] z-10  transition-all duration-1000 ease-in-out" onClick={handleSearchIcon} />
         }
-        <IoSearchSharp className={`text-[24px]   mr-2 z-10  ${isSearch ? 'ml-0 ' : 'ml-2 '
+        <IoSearchSharp className={`text-[24px]   z-10  ${isSearch ? 'ml-1 mt-1 ' : 'ml-2  '
           } transition-all duration-1000 ease-in-out ${isInput && "hidden"} `}
           onClick={handleSearchIcon}
         />

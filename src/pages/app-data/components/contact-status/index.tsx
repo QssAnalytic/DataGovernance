@@ -40,12 +40,12 @@ const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle }) => {
     }, [isOpen, onToggle]);
 
     return (
-        <div className="w-full flex-1" >
-            <div className='whitespace-nowrap  cursor-pointer p-4 flex h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
+        <div className="relative w-[100%]" >
+            <div className='flex cursor-pointer p-4 justify-between rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
                 <p className='font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]'>Contact Status</p>
                 <IoIosArrowDown  className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]"/>
             </div>
-            {isOpen ? <div ref={dropdownRef} className="  h-[200px] rounded-xl shadow-lg p-4 bg-white " >
+            {isOpen ? <div ref={dropdownRef} className=" absolute right-0 h-[200px] rounded-xl shadow-lg p-4 bg-white " >
                 <div className='flex justify-between mt-3  px-3 w-[265px]  h-[22px]'>
                     <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" >Contact Status</p>
                     <button className="bg-none border-none" onClick={onToggle}>
