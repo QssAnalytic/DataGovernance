@@ -65,14 +65,14 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
   }, [isOpen, onToggle]);
 
   return (
-    <div  >
-      <div className='w-[212px] cursor-pointer p-4 flex h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
+    <div className="flex-1 w-full" >
+      <div className='flex-1 whitespace-nowrap cursor-pointer p-4 flex w-full rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
         <p className='font-montserrat font-normal text-[14px] text-[#969696] mt-1 bg-[#FAFCFF] leading-[17.07px]'>Application Source</p>
         <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
       </div>
-      {isOpen ? <div ref={dropdownRef} className="w-[323px]  h-[350px] rounded-xl shadow-lg p-4 bg-white " >
-        <div className='flex justify-between mt-3  px-3 w-[295px]  h-[22px]'>
-          <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" >Application Source</p>
+      {isOpen ? <div ref={dropdownRef} className=" w-full rounded-xl shadow-lg p-4 bg-white " >
+        <div className='flex w-full justify-between mt-3  px-3 '>
+          <p className="font-montserrat w-full font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" >Application Source</p>
           <button className="bg-none border-none" onClick={onToggle}>
             <IoCloseSharp className="text-[24px] " />
           </button>
@@ -83,11 +83,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
             <span className='cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]' onClick={selectAll}>Hamısını seç</span>
             <div className='w-[5px] h-[5px] rounded bg-[#1D7EB7] mt-[0.5rem]'></div>
             <span className=' cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]' onClick={reseAll}>Sıfırla</span>
-
-
-
-
-          </div>
+         </div>
           <div>
 
 
