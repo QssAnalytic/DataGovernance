@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
-import { IoSearch } from "react-icons/io5";
+
 import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -178,7 +178,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
                 </div>}
 
                 <div className='flex w-full  flex-col mt-3  gap-[10px]'>
-                    <div className='flex  w-full  justify-left mt-2 px-3 py-1  '>
+                    <div className='flex w-full  justify-left mt-2 px-3 py-1  '>
 
 
                         {!isSearch && <CheckboxTitle isCustomized={isCustomized} selectAll={selectAll} selectCustomized={selectCustomized} resetAll={resetAll} resetCustomized={resetCustomized} />}
@@ -186,7 +186,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
                             : null
                         }
                     </div>
-                    <div className="w-[100%]">
+                    <div className=" w-[100%] ">
 
                         {!isCustomized ? filteredItems.map((item, index) => (
                             <div key={index} className='flex  items-center justify-between px-[10px] mt-[10px]'>
@@ -202,7 +202,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearch
 
 
                     {
-                        !isCustomized && <button onClick={toggleCustomizedBtn} className="px-[10px] mt-5 flex justify-between   w-[310px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
+                        !isCustomized && <button onClick={toggleCustomizedBtn} className="px-[10px] mt-5 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
                         Customized
                         <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
                     </button>
