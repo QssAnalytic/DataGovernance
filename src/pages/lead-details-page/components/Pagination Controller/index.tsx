@@ -1,3 +1,12 @@
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { IPaginationControlsProps } from "../../types";
 
 const PaginationControls: React.FC<IPaginationControlsProps> = ({
@@ -8,23 +17,111 @@ const PaginationControls: React.FC<IPaginationControlsProps> = ({
 }) => {
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
+  // Calculate the range of pages to display
+  const visiblePages = 2; // The number of visible page links at a time
+  const startPage = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+  const endPage = Math.min(totalPages, startPage + visiblePages - 1);
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) handlePageChange(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) handlePageChange(currentPage + 1);
+  };
+
   return (
-    <div className="flex justify-center mt-4 space-x-2">
-      {Array.from({ length: totalPages }, (_, index) => (
-        <button
-          key={index}
-          onClick={() => handlePageChange(index + 1)}
-          className={`px-4 py-2 border-[#22385F] border rounded-lg ${
-            currentPage === index + 1 ? "bg-[#22385F] text-white" : "bg-white"
-          }`}
-        >
-          {index + 1}
-        </button>
-      ))}
-    </div>
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              handlePrevPage();
+            }}
+          />
+        </PaginationItem>
+
+        {/* Display page numbers with ellipsis for skipped pages */}
+        {startPage > 1 && (
+          <>
+            <PaginationItem>
+              <PaginationLink
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePageChange(1);
+                }}
+              >
+                1
+              </PaginationLink>
+            </PaginationItem>
+            {startPage > 2 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+          </>
+        )}
+
+        {/* Display visible page numbers */}
+        {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+          <PaginationItem key={startPage + index}>
+            <PaginationLink
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handlePageChange(startPage + index);
+              }}
+              className={
+                currentPage === startPage + index
+                  ? "bg-[#22385F] text-white"
+                  : "bg-white"
+              }
+            >
+              {startPage + index}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+
+        {/* Display ellipsis and last page */}
+        {endPage < totalPages && (
+          <>
+            {endPage < totalPages - 1 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+            <PaginationItem>
+              <PaginationLink
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePageChange(totalPages);
+                }}
+              >
+                {totalPages}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+
+        <PaginationItem>
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNextPage();
+            }}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   );
 };
 
