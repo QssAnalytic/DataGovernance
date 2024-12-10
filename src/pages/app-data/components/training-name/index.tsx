@@ -1,28 +1,23 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
-import { IoSearch } from "react-icons/io5";
+
 import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { CheckBoxes } from "../checkBoxes";
 import { CheckboxTitle } from "../checboxTitle";
+import { TrainingNameProps } from "../../types";
+import SearchInput from "../searchInput";
 
 
+const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, setSearchTerm }) => {
 
-interface MyComponentProps {
-    isOpen: boolean;
-    onToggle: () => void;
-    searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>;
-    setSearchTerm: (value: string) => void;
-}
-
-const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm, setSearchTerm, inputValue }) => {
 
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>('');
     const [isSearch, setIsSearch] = useState<boolean>(false);
-   
+
     const applicationSource: string[] = [
         'Data Science Bootcamp',
         'Data Analytics Bootcamp',
@@ -86,6 +81,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm
         // Log the selected items for debugging
         console.log("Selected items:", selectedItems);
 
+
         // Update the searchTerm with all selected items
         setSearchTerm(selectedItems.join(', ')); // Combine the items into a comma-separated string
 
@@ -143,11 +139,11 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm
         };
     }, [isOpen, onToggle]);
 
-    const toggleSearchBtn = () => {
-        if (isSearch) {
-            setIsSearch(false)
+    const toggleCustomizedBtn = () => {
+        if (isCustomized) {
+            setIsCustomized(false)
         } else {
-            setIsSearch(true)
+            setIsCustomized(true)
 
         }
     }
@@ -157,54 +153,68 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle, searchTerm
         setIsCustomized(false); // Close the modal
         setIsSearch(false);     // Close the input field
         setQuery("");           // Reset the search query
+
     };
 
+
+
     return (
-        <div  >
-            <div className='w-[212px] cursor-pointer p-4 flex h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
+        <div className="relative w-[100%]">
+            <div className=' w-full whitespace-nowrap cursor-pointer justify-between p-4 flex  rounded-xl border-[0.5px] bg-[#FAFCFF]   border-[#22385F] ' onClick={onToggle}>
                 <p className='font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]'>Training Name</p>
                 <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
             </div>
-            {isOpen ? <div ref={dropdownRef} className="w-[323px]  max-h-[650px] rounded-xl shadow-lg p-4 bg-white " >
-                {!isCustomized ? <div className='flex justify-between mt-3  px-3 w-[295px]  h-[22px]'>
-                    <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" > Training Name</p>
-                    <button className="bg-none border-none ml-[10px]" onClick={onToggle}>
+            {isOpen ? <div ref={dropdownRef} className=" w-[323px] absolute right-0 z-10 max-h-[650px] p-4 rounded-xl shadow-lg  bg-white " >
+                {!isCustomized ? <div className='flex justify-between mt-7   '>
+                    <p className="font-montserrat font-semibold ml-3 leading-[19.05px] text-[16px] text-[#000000] text-left" > Training Name</p>
+                    <button className=" bg-none border-none  ml-[10px]" onClick={onToggle}>
                         <IoCloseSharp className="text-[24px] " />
                     </button>
-                </div> : <div className='flex justify-start gap-[15px] mt-3  px-3 w-[311px]  h-[22px]'>
+                </div> : <div className='flex w-full  justify-start gap-[15px] mt-3  px-3'>
                     <button onClick={handleToggleCustomized} className="bg-none border-none">
                         <FaArrowLeft className="text-[18px]" />
                     </button>
                     <p className="font-montserrat font-semibold leading-[19.05px] mt-[2px] text-[16px] text-[#000000] text-left" > Customized</p>
                 </div>}
 
-                <div className='flex flex-col mt-3  gap-[10px]'>
-                    <div className='flex flex-col mt-2 px-3 py-1 gap-[7px] '>
-                        <CheckboxTitle isCustomized={isCustomized} selectAll={selectAll} selectCustomized={selectCustomized} resetAll={resetAll} resetCustomized={resetCustomized} />
-                        {isCustomized ? <div className={`flex ml-[2px] mt-2 flex-col gap-1 w-[200px]   h-[30px]  border transition-all duration-700 ease-in-out rounded-lg px-2 py-1 `} >
-                            <input type="text" name="search" className="peer absolute  border-none focus:outline-none " value={query}
-                                onChange={(e) => setQuery(e.target.value)} />
+                <div className='flex w-full  flex-col mt-3  gap-[10px]'>
+                    <div className='flex w-full  justify-left mt-2 px-3 py-1  '>
 
-                            <IoSearch className={`text-[#8F8F8F] z-10 w-[20px] h-[20px] text-end  cursor-pointer peer-focus:hidden `} onClick={toggleSearchBtn} />
-                        </div>
+
+                        {!isSearch && <CheckboxTitle isCustomized={isCustomized} selectAll={selectAll} selectCustomized={selectCustomized} resetAll={resetAll} resetCustomized={resetCustomized} />}
+                        {isCustomized ? <SearchInput isSearch={isSearch} setIsSearch={setIsSearch} />
                             : null
                         }
                     </div>
-                    <div>
+                    <div className=" w-[100%] ">
 
                         {!isCustomized ? filteredItems.map((item, index) => (
                             <div key={index} className='flex  items-center justify-between px-[10px] mt-[10px]'>
                                 <CheckBoxes item={item} index={index} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange} />
                             </div>
                         )) : customizedItems.map((item, index) => (
-                            <div key={index} className='flex items-center justify-between px-[10px] mt-[10px]'>
+                            <div key={index} className='flex  items-center  justify-between px-[10px] mt-[10px]'>
                                 <CheckBoxes item={item} index={index} isChecked={isCustomizedChecked} handleCheckboxChange={handleCustomizedsCheckboxChange} />
 
                             </div>
                         ))
                         }
 
-                        {!isCustomized ? <ShowButton setIsCustomized={selectCustomized} handleShowFilter={handleShowFilter} /> : null}
+
+                    {
+                        !isCustomized && <button onClick={toggleCustomizedBtn} className="px-[10px] mt-5 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
+                        Customized
+                        <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
+                    </button>
+                    }    
+
+                        <div className='flex w-full justify-center mt-5'>
+                            <button className='mt-1 w-full  rounded-md bg-[#22385F] p-2 text-white font-noto text-[14px] leading-[19.07px] cursor-pointer ease-in-out hover:bg-white hover:text-[#22385F] transition-all duration-700 hover:border-[#22385F] hover:border-[1px]' onClick={() => handleShowFilter()}>Göstər</button>
+                        </div>
+
+
+
+                        
                     </div>
                 </div>
             </div> : null}

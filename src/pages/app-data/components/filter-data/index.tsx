@@ -2,17 +2,11 @@ import { useState} from 'react';
 import SourceModal from '../sourceModal';
 import TrainingName from '../training-name';
 import ContactStatus from '../contact-status';
+import { FilterProps } from '../../types';
 
+const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm} ) => {
+  const [isSourceModal, setSourceModal] = useState(false);
 
-interface FilterProps {
-    searchTerm: string;
-    inputValue: React.RefObject<HTMLInputElement>; 
-    setSearchTerm: (value: string) => void;
-}
-
-const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValue} ) => {
-
-    const [isSourceModal, setSourceModal] = useState(false);
     const [isTrainingName, setTrainingName] = useState(false);
     const [isContactStatus, setIsContactStatus] = useState(false);
 
@@ -41,16 +35,16 @@ const FilterData: React.FC<FilterProps> = ({searchTerm, setSearchTerm, inputValu
 }
 
     return (
-        <div className="flex justify-center gap-[20px]">
-            <div className='w-[250px]' >
+        <div className="flex w-[60%] justify-end gap-[20px]">
+            
              <SourceModal isOpen = {isSourceModal} onToggle = {toggleSourceModal } />
-            </div>
-            <div className='w-[250px]' >
-             <TrainingName inputValue = {inputValue} isOpen = {isTrainingName} onToggle = {toggleTrainingName }  searchTerm = {searchTerm} setSearchTerm ={setSearchTerm}/>
-            </div>
-           <div className='w-[250px]' >
+   
+          
+             <TrainingName isOpen = {isTrainingName} onToggle = {toggleTrainingName }  searchTerm = {searchTerm} setSearchTerm ={setSearchTerm}/>
+        
+           
              <ContactStatus isOpen = {isContactStatus} onToggle = {toggleContactStatus } />
-            </div>
+         
 
 
         </div>

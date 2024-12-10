@@ -1,11 +1,14 @@
-
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 
-export const ShowButton = ({ setIsCustomized, handleShowFilter }: any) => {
+
+
+export const ShowButton = ({ isCustomized ,setIsCustomized, handleShowFilter }: any) => {
+
+      
     return (
         <>
-            <button onClick={() => setIsCustomized(true)} className="px-5 mt-3 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
+            <button onClick={setIsCustomized} className="px-5 mt-3 flex justify-between   w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
                 Customized
                 <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
             </button>
