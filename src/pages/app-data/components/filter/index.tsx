@@ -26,3 +26,4 @@ const Filter: React.FC<FilterProps> = ({ searchTerm, setSearchTerm }) => {
 };
 
 export default Filter;
+

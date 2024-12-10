@@ -13,6 +13,7 @@ const FilterData: React.FC = () => {
       setSourceModal(false);
     } else {
       setSourceModal(true);
+
     }
   };
 
@@ -51,3 +52,4 @@ const FilterData: React.FC = () => {
 };
 
 export default FilterData;
+
