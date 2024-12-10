@@ -11,7 +11,7 @@ const ShowModal: React.FC<ShowModalProps> = ({ handleCancelDelete, handleConfirm
             <div className="mt-4 flex justify-center space-x-2">
                 <button
                     onClick={handleCancelDelete}
-                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#fff] border border-[1px] font-montserrat border-[#22385F] text-[#22385F] text-[14px] font-medium"
+                    className="w-[140px] h-[43px] py-[12] px-[16px] rounded-lg flex justify-center items-center gap-12px bg-[#fff]  border-[1px] font-montserrat border-[#22385F] text-[#22385F] text-[14px] font-medium"
                 >
                     Xeyr
                 </button>

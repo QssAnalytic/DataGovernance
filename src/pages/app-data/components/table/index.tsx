@@ -172,7 +172,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                     <button
                         key={index}
                         onClick={() => handlePageChange(index + 1)}
-                        className={`px-4 py-2 border-[#22385F] border border-[0.5px] rounded-lg ${currentPage === index + 1 ? 'bg-[#22385F] text-white' : 'bg-white'
+                        className={`px-4 py-2 border-[#22385F]  border-[0.5px] rounded-lg ${currentPage === index + 1 ? 'bg-[#22385F] text-white' : 'bg-white'
                             }`}
                     >
                         {index + 1}

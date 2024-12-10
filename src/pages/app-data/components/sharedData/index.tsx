@@ -32,3 +32,27 @@
         { id: 29, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 30, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
     ];
+
+
+    export const applicationSource: string[] = [
+        "Data Science Bootcamp",
+        "Data Analytics Bootcamp",
+        "Machine Learning",
+        "Blockchain",
+    ];
+
+    export const customized: string[] = [
+        "Excel for Data Analytics",
+        "Vizualization with Power BI ",
+        "Tableau for Data Analytics",
+        "Data Analytics with SPSS",
+        "Data Analytics with SPSS",
+        "Data Analytics with SQL",
+        "Machine learning with SPSS",
+        "R for Data Analytics",
+        "Data Analytics with R(2)",
+        "Introduction to Python",
+        "Machine learning with Python",
+        "Big Data",
+        "Deep learning with Python",
+    ];
