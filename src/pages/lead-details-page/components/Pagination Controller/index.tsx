@@ -35,7 +35,7 @@ const PaginationControls: React.FC<IPaginationControlsProps> = ({
   };
 
   return (
-    <Pagination>
+    <Pagination className="py-[50px]">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
