@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import { IoCloseSharp, IoSearch } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
 import { CheckBoxes } from "../checkBoxes";
 import { CheckboxTitle } from "../checboxTitle";
 import { TrainingNameProps } from "../../types";
 import SearchInput from "../searchInput";
+import { applicationSource, customized } from "../sharedData";
 
 
 
@@ -15,29 +16,6 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>("");
     const [isSearch, setIsSearch] = useState<boolean>(false);
-
-    const applicationSource: string[] = [
-        "Data Science Bootcamp",
-        "Data Analytics Bootcamp",
-        "Machine Learning",
-        "Blockchain",
-    ];
-
-    const customized: string[] = [
-        "Excel for Data Analytics",
-        "Vizualization with Power BI ",
-        "Tableau for Data Analytics",
-        "Data Analytics with SPSS",
-        "Data Analytics with SPSS",
-        "Data Analytics with SQL",
-        "Machine learning with SPSS",
-        "R for Data Analytics",
-        "Data Analytics with R(2)",
-        "Introduction to Python",
-        "Machine learning with Python",
-        "Big Data",
-        "Deep learning with Python",
-    ];
 
     const [isChecked, setIsChecked] = useState<boolean[]>(
         new Array(applicationSource.length).fill(false)
@@ -55,11 +33,11 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
         });
     };
 
- 
+
     useEffect(() => {
         console.log("isSearch:", isSearch);
     }, [isSearch]);
-    
+
 
     const handleCustomizedsCheckboxChange = (index: number) => {
         setIsCustomizedChecked((prevState) => {
@@ -118,7 +96,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
         };
     }, [isOpen, onToggle]);
 
-  
+
 
     const toggleCostomized = () => {
         if (isCustomized) {
