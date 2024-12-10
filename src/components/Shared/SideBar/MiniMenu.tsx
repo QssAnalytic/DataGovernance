@@ -7,8 +7,14 @@ import { FiFileText } from "react-icons/fi";
 
 import { FiBriefcase } from "react-icons/fi";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./CustomAccordion";
+import { useNavigate } from 'react-router-dom';
 
 export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: boolean; toggleMenu: () => void;closeMenu: () => void; }) => {
+    const navigate = useNavigate();
+
+    const handleNavigation = (path:string) => {
+        navigate(path);
+    };
     const [openAccordions, setOpenAccordions] = useState<{ [key: string]: boolean }>({
         sales: false,
         finance: false,
@@ -54,10 +60,10 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
                         <AccordionTrigger isOpen={openAccordions.sales} className={`text-[#22385F] ${openAccordions.sales ? "bg-[rgba(34,56,95,1)] text-white" : ""}`}>
                             Sales
                         </AccordionTrigger>
-                        <AccordionContent className="flex items-center gap-x-[8px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
+                        <AccordionContent onClick={() => handleNavigation('application-data')} className="flex items-center gap-x-[8px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
                             <span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Application Data
                         </AccordionContent>
-                        <AccordionContent className="flex items-center gap-x-[8px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
+                        <AccordionContent onClick={() => handleNavigation('details')} className="flex items-center gap-x-[8px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
                             <span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Lead Details
                         </AccordionContent>
                     </AccordionItem>
@@ -129,8 +135,8 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
                 <Accordion type="single" collapsible onClick={() => handleAccordionToggle("career")}>
                     <AccordionItem value="item-1">
                         <AccordionTrigger isOpen={openAccordions.career} className={`text-[#22385F]  ${openAccordions.career ? "bg-[rgba(34,56,95,1)] text-white" : ""}`}>Career</AccordionTrigger>
-                        <AccordionContent className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group"><span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Talent Pool</AccordionContent>
-                        <AccordionContent className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group"><span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Vacancies</AccordionContent>
+                        <AccordionContent onClick={() => handleNavigation('talent-pool')} className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group"><span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Talent Pool</AccordionContent>
+                        <AccordionContent onClick={() => handleNavigation('vacancies')} className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group"><span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Vacancies</AccordionContent>
                     </AccordionItem>
                 </Accordion>
             </div>
