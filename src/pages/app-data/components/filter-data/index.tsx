@@ -34,20 +34,16 @@ const FilterData: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center gap-[20px]">
-      <div className="w-[250px]">
-        <SourceModal isOpen={isSourceModal} onToggle={toggleSourceModal} />
-      </div>
-      <div className="w-[250px]">
-        <TrainingName isOpen={isTrainingName} onToggle={toggleTrainingName} />
-      </div>
-      <div className="w-[250px]">
-        <ContactStatus
-          isOpen={isContactStatus}
-          onToggle={toggleContactStatus}
-        />
-      </div>
+    <div className="flex w-[60%] justify-end gap-[20px]">
+      <SourceModal isOpen={isSourceModal} onToggle={toggleSourceModal} />
+      <TrainingName isOpen={isTrainingName} onToggle={toggleTrainingName} />
+
+      <ContactStatus
+        isOpen={isContactStatus}
+        onToggle={toggleContactStatus}
+      />
     </div>
+
   );
 };
 

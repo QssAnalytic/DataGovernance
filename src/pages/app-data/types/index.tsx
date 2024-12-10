@@ -6,8 +6,6 @@ export interface FilterProps {
  export interface TrainingNameProps {
     isOpen: boolean;
     onToggle: () => void;
-    searchTerm: string;
-    setSearchTerm: (value: string) => void;
 }
 
 export interface TableRow {
