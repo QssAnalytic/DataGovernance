@@ -151,7 +151,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
                     className="absolute right-0 rounded-xl shadow-lg p-4 bg-white "
                 >
                     {!isCustomized ? (
-                        <div className="flex justify-between mt-3  px-3 w-[295px]  h-[22px]">
+                        <div className="flex justify-between mt-3 px-3 pr-0 w-[295px]  h-[22px]">
                             <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left">
                                 {" "}
                                 Training Name
