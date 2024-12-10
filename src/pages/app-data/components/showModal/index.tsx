@@ -1,8 +1,9 @@
 import { ShowModalProps } from "../../types"
 const ShowModal: React.FC<ShowModalProps> = ({ handleCancelDelete, handleConfirmDelete }) => {
 
-    return <div className="fixed inset-0 z-50 flex items-center justify-center   bg-[#000000] rounded-lg bg-opacity-70">
-        <div className="bg-white p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
+    return <div className="fixed inset-0 z-50 flex items-center justify-center   rounded-lg ">
+        <div className="overlay w-[100%] h-[100%] bg-black bg-opacity-70 absolute top-0 left-0" onClick={handleCancelDelete}></div>
+        <div className="bg-white relative z-[1000000000] flex flex-col justify-between p-6 rounded-lg shadow-custom w-[328px] h-[153px]">
             <h2 className="text-lg font-semibold">
                 Əminsinizmi ?
             </h2>
