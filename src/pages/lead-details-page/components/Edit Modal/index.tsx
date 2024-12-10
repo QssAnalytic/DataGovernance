@@ -1,15 +1,11 @@
 import { FiX } from "react-icons/fi";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-} from "../Custom Dialog";
+import { Dialog, DialogContent, DialogTitle } from "../Custom Dialog";
 import { useState } from "react";
 import ContactDetailsForm from "./Contact Details Form";
 import EducationStatusForm from "./Education Status Form";
 import EmploymentStatusForm from "./Employment Status Form";
 import Succesfully from "../../../../assets/icons/succesfully.svg";
+import ButtonChanger from "./Button Changer";
 
 const EditModal = ({
   isOpen,
@@ -18,22 +14,10 @@ const EditModal = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null); // State to track success message
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const steps = ["Contact Details", "Education Status", "Employment Status"];
-
-  const handleNext = () => {
-    if (currentStep < steps.length) {
-      setCurrentStep((prevStep) => prevStep + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prevStep) => prevStep - 1);
-    }
-  };
 
   const renderStepForm = () => {
     switch (currentStep) {
@@ -46,17 +30,6 @@ const EditModal = ({
       default:
         return null;
     }
-  };
-
-  const handleSave = () => {
-    // Show the success message
-    setSuccessMessage("Successfully added");
-
-    // Close the modal after 2 seconds
-    setTimeout(() => {
-      setSuccessMessage(null);
-      onClose();
-    }, 1000);
   };
 
   return (
@@ -113,58 +86,14 @@ const EditModal = ({
             {/* Render the form based on the current step */}
             <div className="mt-4">{renderStepForm()}</div>
 
-            <DialogFooter>
-              <div className="flex w-[100%] gap-[20px] mt-[20px]">
-                {currentStep === 1 && (
-                  <>
-                    <button
-                      className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
-                      onClick={onClose}
-                    >
-                      Ləğv et
-                    </button>
-                    <button
-                      className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
-                      onClick={handleNext}
-                    >
-                      İrəli
-                    </button>
-                  </>
-                )}
-                {currentStep > 1 && currentStep < steps.length && (
-                  <>
-                    <button
-                      className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
-                      onClick={handlePrevious}
-                    >
-                      Geri
-                    </button>
-                    <button
-                      className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
-                      onClick={handleNext}
-                    >
-                      İrəli
-                    </button>
-                  </>
-                )}
-                {currentStep === steps.length && (
-                  <>
-                    <button
-                      className="font-[600] text-[14px] bg-gray-200 py-[12px] px-[16px] text-[#22385F] rounded-lg w-[100%]"
-                      onClick={handlePrevious}
-                    >
-                      Geri
-                    </button>
-                    <button
-                      className="font-[600] text-[14px] px-4 py-2 bg-[#22385F] text-white rounded-lg w-[100%]"
-                      onClick={handleSave} // Trigger save and success message
-                    >
-                      Yadda saxla
-                    </button>
-                  </>
-                )}
-              </div>
-            </DialogFooter>
+            {/* Changing Buttons Depends on section  */}
+            <ButtonChanger
+              setSuccessMessage={setSuccessMessage}
+              currentStep={currentStep}
+              steps={steps}
+              setCurrentStep={setCurrentStep}
+              onClose={onClose}
+            />
           </>
         )}
       </DialogContent>
