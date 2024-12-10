@@ -1,18 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React from "react";
 import { GrRefresh } from "react-icons/gr";
 
 import {
   getCapacityStyles,
   getStatusStyles,
 } from "@/helpers/changinColorTable";
-import PaginationControls from "../Pagination Controller";
 import EditDeleteModal from "../Edit Delete Section";
 import { ContactTableProps } from "../../types";
 
-const ContactTable: React.FC<ContactTableProps> = ({ headers, data }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 7;
+const ContactTable: React.FC<ContactTableProps> = ({
+  headers,
+  data,
+  currentPage,
+  rowsPerPage,
+}) => {
   const startIndex = (currentPage - 1) * rowsPerPage;
 
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
@@ -111,15 +112,6 @@ const ContactTable: React.FC<ContactTableProps> = ({ headers, data }) => {
           </table>
         </div>
       </div>
-
-      {/* Pagination Controls */}
-
-      <PaginationControls
-        data={data}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        rowsPerPage={rowsPerPage}
-      />
     </div>
   );
 };
