@@ -1,3 +1,4 @@
+import TrainingName from "@/pages/app-data/components/training-name";
 import { DatePickerDemo } from "../../Custom Calendar";
 import {
   Select,
@@ -6,8 +7,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../Custom Selector";
+import { useState } from "react";
 
 const ContactDetailsForm = () => {
+  const [isTrainingName, setTrainingName] = useState(false);
+
+  const toggleTrainingName = () => {
+    if (isTrainingName) {
+      setTrainingName(false);
+    } else {
+      setTrainingName(true);
+    }
+  };
+
   return (
     <div>
       <form className="flex gap-[20px]">
@@ -18,7 +30,6 @@ const ContactDetailsForm = () => {
             className="focus:outline-none focus:ring-0  border py-[12px] placeholder:text-[14px] text-[14px] placeholder:text-[#969696] px-[16px] rounded-[12px]"
             placeholder="Contact Number"
           />
-
           <DatePickerDemo placeholder="Last Contact Date" />
           <Select>
             <SelectTrigger className="w-[100%]">
@@ -35,6 +46,7 @@ const ContactDetailsForm = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-[10px] flex-1">
+          <TrainingName isOpen={isTrainingName} onToggle={toggleTrainingName} />
           <DatePickerDemo placeholder="When to Call Again" />
           <Select>
             <SelectTrigger className="w-[100%]">
@@ -43,57 +55,51 @@ const ContactDetailsForm = () => {
             <SelectContent className="max-h-72 overflow-y-auto">
               <SelectItem
                 value="Ödəniş şərtləri atıldı"
-                className="bg-blue-100 text-blue-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(97,73,0,0.2)] text-[#614900] cursor-pointer font-[500] py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px] "
               >
                 Ödəniş şərtləri atıldı
               </SelectItem>
               <SelectItem
                 value="Almağı düşünür"
-                className=" text-[#04AC7C] bg-[rgba(4,172,124,0.2)] bg:opacity-30 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className=" text-[#04AC7C] bg-[rgba(4,172,124,0.2)] cursor-pointer font-[500] bg:opacity-30 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Almağı düşünür
               </SelectItem>
               <SelectItem
                 value="Alıb"
-                className="bg-yellow-100 text-yellow-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(48,172,4,0.2)]  text-[#30AC04] cursor-pointer font-[500] py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Alıb
               </SelectItem>
               <SelectItem
                 value="Görüş istəyir"
-                className="bg-purple-100 text-purple-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-purple-100 text-purple-800 py-[8px] cursor-pointer font-[500] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Görüş istəyir
               </SelectItem>
               <SelectItem
                 value="Maraqlanır"
-                className="bg-pink-100 text-pink-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(23,92,255,0.2)] text-[#175CFF] cursor-pointer py-[8px] px-[16px] font-[500] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Maraqlanır
               </SelectItem>
               <SelectItem
                 value="Maraqlanmır"
-                className="bg-gray-100 text-gray-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(226,25,91,0.2)] text-[#E2195B] cursor-pointer py-[8px] px-[16px] font-[500] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Maraqlanmır
               </SelectItem>
               <SelectItem
                 value="Zəng gözləyir"
-                className="bg-red-100 text-red-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(255,110,0,0.2)] text-[#FF6E00] cursor-pointer py-[8px] px-[16px] font-[500] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Zəng gözləyir
               </SelectItem>
               <SelectItem
                 value="Cavab gözləyirik"
-                className="bg-teal-100 text-teal-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
+                className="bg-[rgba(16,49,127,0.2)] text-[#10317F] cursor-pointer font-[500] py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
               >
                 Cavab gözləyirik
-              </SelectItem>
-              <SelectItem
-                value="Məlumatlıdır"
-                className="bg-indigo-100 text-indigo-800 py-[8px] px-[16px] w-[148px] text-center mt-[16px] rounded-[16px]"
-              >
-                Məlumatlıdır
               </SelectItem>
             </SelectContent>
           </Select>
