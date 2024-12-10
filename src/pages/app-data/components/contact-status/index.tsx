@@ -54,10 +54,7 @@ const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle }) => {
                 </div>
 
                 <div className='flex flex-col gap-[10px]'>
-
                     <div>
-
-
                     <div className='flex items-center justify-between px-[10px] mt-[10px]'>
                             <label htmlFor="checkbox-yes" className='flex relative items-center mt-2 cursor-pointer w-full'>
                                 <input

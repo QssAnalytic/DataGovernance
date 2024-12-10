@@ -71,9 +71,9 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
         <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
       </div>
       {isOpen ? <div ref={dropdownRef} className=" absolute right-0 rounded-xl shadow-lg p-4 bg-white " >
-        <div className='flex justify-between mt-7 '>
+        <div className='flex justify-between   pr-[7px] w-[295px]  mt-7 '>
           <p className="font-montserrat w-full ml-3 font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left" >Application Source</p>
-          <button className="bg-none border-none  ml-[10px]" onClick={onToggle}>
+          <button className="bg-none border-none " onClick={onToggle}>
             <IoCloseSharp className="text-[24px]  " />
           </button>
         </div>
@@ -85,6 +85,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
             <span className=' cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]' onClick={reseAll}>Sıfırla</span>
          </div>
           <div>
+
 
             {
               filteredItems.map((item, index) => (
