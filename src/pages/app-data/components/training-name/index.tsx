@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp, IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
 import { MdKeyboardArrowRight } from "react-icons/md";
