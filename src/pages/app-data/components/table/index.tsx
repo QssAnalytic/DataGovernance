@@ -5,19 +5,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
+import { TableRow, TableProps } from '../../types';
 
-interface TableRow {
-    id: number;
-    name: string;
-    phone: string;
-    applicationSource: string;
-    trainingName: string;
-    date: string;
-}
-
-interface TableProps {
-    searchTerm: string;
-}
 
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);

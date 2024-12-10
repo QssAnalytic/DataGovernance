@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
-import { IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { ShowButton } from "../showButton";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { CheckBoxes } from "../checkBoxes";
 import { CheckboxTitle } from "../checboxTitle";
+import { TrainingNameProps } from "../../types";
+import SearchInput from "../searchInput";
 
 interface MyComponentProps {
   isOpen: boolean;
@@ -101,6 +103,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
         onToggle(); // Close the dropdown when clicking outside
         setIsCustomized(false);
       }
+
     };
 
     if (isOpen) {
@@ -117,6 +120,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
       setIsSearch(false);
     } else {
       setIsSearch(true);
+
     }
   };
 
@@ -232,6 +236,7 @@ const TrainingName: React.FC<MyComponentProps> = ({ isOpen, onToggle }) => {
                         isChecked={isCustomizedChecked}
                         handleCheckboxChange={handleCustomizedsCheckboxChange}
                       />
+
                     </div>
                   ))}
 
