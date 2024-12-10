@@ -1,17 +1,26 @@
 const EmploymentStatusForm = () => {
   return (
     <div>
-      <h3 className="text-[18px] font-[600]">Employment Status</h3>
-      <form>
-        <div className="mt-4">
-          <label className="text-[#666]" htmlFor="employment">
-            Employment Status
-          </label>
-          <select id="employment" className="mt-2 w-full p-3 border rounded-lg">
-            <option value="employed">Employed</option>
-            <option value="unemployed">Unemployed</option>
-            <option value="student">Student</option>
-          </select>
+      <form className="flex gap-[20px]">
+        <div className="flex flex-col gap-[10px] flex-1">
+          <input
+            type="text"
+            id="name"
+            className="focus:outline-none focus:ring-0  border py-[12px] placeholder:text-[14px] text-[14px] placeholder:text-[#969696] px-[16px] rounded-[12px]"
+            placeholder="Workplace"
+          />
+          <input
+            type="text"
+            id="name"
+            className="focus:outline-none focus:ring-0  border py-[12px] placeholder:text-[14px] text-[14px] placeholder:text-[#969696] px-[16px] rounded-[12px]"
+            placeholder="Position"
+          />
+        </div>
+        <div className="flex flex-col gap-[10px] flex-1">
+          <textarea
+            className=" rounded-[12px] border py-[12px]  bg-transparent left-0 focus:outline-none focus:ring-0 h-[100%] w-[100%] px-[16px] text-[14px] text-[#000] placeholder:text-left resize-none"
+            placeholder="Note"
+          />
         </div>
       </form>
     </div>
