@@ -115,8 +115,8 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, height })
     return (
         <div className="relative w-[100%]">
             <div
-                className={`flex cursor-pointer justify-between p-4 rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]`}
-                style={{ height: height }}
+                className={`flex cursor-pointer justify-between  rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]`}
+                style={{ padding: height }}
                 onClick={onToggle}
             >
                 <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
@@ -173,7 +173,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, height })
 
                             ) : null}
                         </div>
-                        <div className="overflow-y-scroll max-h-[305px]">
+                        <div className="overflow-y-scroll max-h-[155px]">
                             {!isCustomized
                                 ? filteredItems.map((item, index) => (
                                     <div
