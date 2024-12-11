@@ -1,59 +1,51 @@
-import { useState} from 'react';
-import SourceModal from '../sourceModal';
-import TrainingName from '../training-name';
-import ContactStatus from '../contact-status';
+import { useState } from "react";
+import SourceModal from "../sourceModal";
+import TrainingName from "../training-name";
+import ContactStatus from "../contact-status";
 
+const FilterData: React.FC = () => {
+  const [isSourceModal, setSourceModal] = useState(false);
+  const [isTrainingName, setTrainingName] = useState(false);
+  const [isContactStatus, setIsContactStatus] = useState(false);
 
-const FilterData = () => {
+  const toggleSourceModal = () => {
+    if (isSourceModal) {
+      setSourceModal(false);
+    } else {
+      setSourceModal(true);
 
-    const [isSourceModal, setSourceModal] = useState(false);
-    const [isTrainingName, setTrainingName] = useState(false);
-    const [isContactStatus, setIsContactStatus] = useState(false);
-
-    const toggleSourceModal = () => {
-        if (isSourceModal) {
-            setSourceModal(false)
-        } else {
-            setSourceModal(true)
-        }
     }
+  };
 
-
-    const toggleTrainingName = () => {
-      if (isTrainingName) {
-          setTrainingName(false)
-      } else {
-          setTrainingName(true)
-      }
-  }
+  const toggleTrainingName = () => {
+    if (isTrainingName) {
+      setTrainingName(false);
+    } else {
+      setTrainingName(true);
+    }
+  };
 
   const toggleContactStatus = () => {
     if (isContactStatus) {
-        setIsContactStatus(false)
+      setIsContactStatus(false);
     } else {
-        setIsContactStatus(true)
+      setIsContactStatus(true);
     }
-}
+  };
 
-    return (
-        <div className="flex justify-center gap-[20px]">
-            <div className='w-[250px]' >
-             <SourceModal isOpen = {isSourceModal} onToggle = {toggleSourceModal } />
-            </div>
+  return (
+    <div className="flex w-[60%] justify-end gap-[20px]">
+      <SourceModal isOpen={isSourceModal} onToggle={toggleSourceModal} />
+      <TrainingName paddingx ="16px" paddingy = "16px" isOpen={isTrainingName} onToggle={toggleTrainingName} />
 
+      <ContactStatus
+        isOpen={isContactStatus}
+        onToggle={toggleContactStatus}
+      />
+    </div>
 
-            <div className='w-[250px]' >
-             <TrainingName isOpen = {isTrainingName} onToggle = {toggleTrainingName } />
-            </div>
+  );
+};
 
+export default FilterData;
 
-            <div className='w-[250px]' >
-             <ContactStatus isOpen = {isContactStatus} onToggle = {toggleContactStatus } />
-            </div>
-
-
-        </div>
-    )
-}
-
-export default FilterData

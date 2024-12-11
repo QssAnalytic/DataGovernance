@@ -8,7 +8,8 @@ import Home from "./pages/home";
 import ApplicationData from "./pages/app-data";
 import DetailsPage from "./pages/lead-details-page";
 import Tracker from "./pages/tracker";
-import OverviewPage from "./pages/overview";
+import { Vacancies } from "./pages/career/vacancies";
+import { TalentPool } from "./pages/career/talent-pool";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -18,7 +19,8 @@ const router = createBrowserRouter(
                 <Route path="/application-data" element={< ApplicationData />} />
                 <Route path="/details" element={<DetailsPage />} />
                 <Route path="t" element={<Tracker/>} />
-                <Route path="/overview" element={<OverviewPage />} />
+                <Route path="/vacancies" element={<Vacancies/>} />
+                <Route path="/talent-pool" element={<TalentPool/>} />
             </Route>
         </Route>,
     ),)

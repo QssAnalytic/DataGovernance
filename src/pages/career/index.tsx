@@ -2,7 +2,7 @@ import React from "react";
 import { useUIStore } from "../../services/store/useUIStore";
 import { SearchInput } from "./SearchInput";
 import { ComboboxCustom } from "./CustomDropDown";
-const OverviewPage: React.FC = () => {
+const Career: React.FC = () => {
   const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
   React.useEffect(() => {
     setButtonLabel("Add Candidate");
@@ -24,4 +24,4 @@ const OverviewPage: React.FC = () => {
   );
 };
 
-export default OverviewPage;
+export default Career;

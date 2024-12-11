@@ -29,7 +29,7 @@ export const ChangingContent = () => {
 
 
       {isModalOpen && (
-        <div className="z-[100px] w-full top-0 left-0 h-[100vh] flex items-center justify-center absolute">
+        <div className="z-[100] w-full top-0 left-0 h-[100vh] flex items-center justify-center absolute">
           <div
             className="overlay absolute z-40 bg-black bg-opacity-50 w-full h-[100vh]"
             onClick={() => setIsModalOpen(false)}
