@@ -12,7 +12,7 @@ import { applicationSource, customized } from "../sharedData";
 
 
 
-const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, height }) => {
+const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy, paddingx }) => {
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>("");
     const [isSearch, setIsSearch] = useState<boolean>(false);
@@ -115,8 +115,12 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, height })
     return (
         <div className="relative w-[100%]">
             <div
-                className={`flex cursor-pointer justify-between  rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]`}
-                style={{ padding: height }}
+                className={`flex cursor-pointer justify-between rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]`}
+                style={{
+                    "--tw-px": paddingx,
+                    "--tw-py": paddingy,
+                    padding: "var(--tw-py) var(--tw-px)",
+                  } as React.CSSProperties} // Type assertion
                 onClick={onToggle}
             >
                 <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
