@@ -16,7 +16,7 @@ export const TalentPool = () => {
       </div>
     );
     setPageCustomHeader(<input placeholder='salam'/>);
-        setTimeout(()=>setIsLoading(false),2000)
+        setTimeout(()=>setIsLoading(false),1000)
     },[setButtonLabel, setModalContent, setPageCustomHeader])
     if(isLoading){
         return <div className='absolute  flex items-center justify-center w-[calc(100%-103px)] h-[calc(100%-360px)]  z-[10]'><div className="loader"></div></div>
@@ -25,6 +25,7 @@ export const TalentPool = () => {
         <div className='w-[calc(100%-50px)] h-full flex flex-col gap-y-[20px]'>
             <TableChanger/>
             <FilterTab/>
+            
         </div>
     )
 }
