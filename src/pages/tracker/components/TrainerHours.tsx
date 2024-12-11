@@ -1,4 +1,5 @@
 import { BootcampFilter } from './BootcampFilter.tsx'
+import { TrainerHoursTable } from './TrainerHoursTable.tsx'
 
 export const TrainerHours = () => {
     return (
@@ -24,6 +25,6 @@ export const TrainerHours = () => {
 
                 />
             </div>
-
+            <TrainerHoursTable />
         </div>)
 }
