@@ -10,7 +10,10 @@ const DateFilter: React.FC = () => {
 
   return (
     <div className="max-w-md z-20 mx-auto mt-[10rem]">
-      <label htmlFor="date-range" className="block text-gray-700 font-medium mb-2">
+      <label
+        htmlFor="date-range"
+        className="block text-gray-700 font-medium mb-2"
+      >
         Select a date range:
       </label>
       <div className="relative">
@@ -32,7 +35,10 @@ const DateFilter: React.FC = () => {
         <div className="mt-4 p-4 border border-gray-200 rounded-md bg-gray-50">
           <div className="flex flex-col space-y-4">
             <div>
-              <label htmlFor="start-date" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="start-date"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Start Date:
               </label>
               <DatePicker
@@ -43,7 +49,10 @@ const DateFilter: React.FC = () => {
               />
             </div>
             <div>
-              <label htmlFor="end-date" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="end-date"
+                className="block text-sm font-medium text-gray-700"
+              >
                 End Date:
               </label>
               <DatePicker
@@ -61,4 +70,3 @@ const DateFilter: React.FC = () => {
 };
 
 export default DateFilter;
-
