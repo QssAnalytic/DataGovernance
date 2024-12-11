@@ -12,12 +12,13 @@ const TableChanger = () => {
 
   return (
     <div className="border border-solid border-[#E9E9E9] rounded-[12px] flex gap-[12px]">
+      {/* Icmal & Tam part */}
       <div className="flex">
         <div
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Icmal"
               ? "bg-[#22385F] text-white rounded-tl-[11px] rounded-bl-[11px]"
-              : "bg-[#F4F7FD] text-[#22385F]"
+              : "bg-[#F4F7FD] text-[#22385F] rounded-tl-[12px] rounded-bl-[12px]"
           }`}
           onClick={() => setActiveTab("Icmal")}
         >
@@ -27,7 +28,7 @@ const TableChanger = () => {
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Tam"
               ? "bg-[#22385F] text-white rounded-tr-[11px] rounded-br-[11px]"
-              : "bg-[#F4F7FD] text-[#22385F]"
+              : "bg-[#F4F7FD] text-[#22385F] rounded-tl-[11px] rounded-bl-[11px]"
           }`}
           onClick={() => setActiveTab("Tam")}
         >
@@ -35,11 +36,13 @@ const TableChanger = () => {
         </div>
       </div>
 
+      {/* Other 3 options part  */}
+
       <div className="flex items-center">
         {options.map((option) => (
           <div
             key={option}
-            className={`py-[12px] px-[16px] text-[14px] font-[600] flex items-center gap-[8px] cursor-pointer ${
+            className={`py-[12px] px-[16px] text-[14px] font-[500] flex items-center gap-[8px] cursor-pointer ${
               activeTab === "Icmal" && activeOption === option
                 ? "text-[#22385F]"
                 : activeTab === "Icmal"
