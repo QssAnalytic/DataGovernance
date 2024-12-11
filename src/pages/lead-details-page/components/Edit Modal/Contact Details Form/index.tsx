@@ -46,7 +46,12 @@ const ContactDetailsForm = () => {
           </Select>
         </div>
         <div className="flex flex-col gap-[10px] flex-1">
-          <TrainingName isOpen={isTrainingName} onToggle={toggleTrainingName} />
+          <TrainingName
+            isOpen={isTrainingName}
+            onToggle={toggleTrainingName}
+            paddingx="16px"
+            paddingy="11px"
+          />
           <DatePickerDemo placeholder="When to Call Again" />
           <Select>
             <SelectTrigger className="w-[100%]">

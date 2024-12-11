@@ -56,4 +56,3 @@ const DateFilter: React.FC = () => {
 };
 
 export default DateFilter;
-

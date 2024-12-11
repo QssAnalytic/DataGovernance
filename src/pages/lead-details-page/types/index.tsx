@@ -26,6 +26,8 @@ export interface RowData {
 export interface ContactTableProps {
   headers: string[];
   data: RowData[];
+  rowsPerPage: number;
+  currentPage: number;
 }
 
 export interface ButtonChangerProps {
