@@ -6,6 +6,7 @@ export interface FilterProps {
  export interface TrainingNameProps {
     isOpen: boolean;
     onToggle: () => void;
+    height: string;
 }
 
 export interface TableRow {

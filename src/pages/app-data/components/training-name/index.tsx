@@ -12,7 +12,7 @@ import { applicationSource, customized } from "../sharedData";
 
 
 
-const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
+const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, height }) => {
     const [isCustomized, setIsCustomized] = useState<boolean>(false);
     const [query, setQuery] = useState<string>("");
     const [isSearch, setIsSearch] = useState<boolean>(false);
@@ -115,7 +115,8 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
     return (
         <div className="relative w-[100%]">
             <div
-                className="flex cursor-pointer justify-between  p-4  h-[56px] rounded-xl border-[0.5px] bg-[#FAFCFF]   border-[#22385F] "
+                className={`flex cursor-pointer justify-between p-4 rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]`}
+                style={{ height: height }}
                 onClick={onToggle}
             >
                 <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
@@ -172,7 +173,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle }) => {
 
                             ) : null}
                         </div>
-                        <div>
+                        <div className="overflow-y-scroll max-h-[305px]">
                             {!isCustomized
                                 ? filteredItems.map((item, index) => (
                                     <div
