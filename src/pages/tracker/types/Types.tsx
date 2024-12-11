@@ -25,4 +25,24 @@ export interface Participant {
     career: boolean;
     experience: boolean;
 }
-    
+
+export interface LessonTime {
+    id: number;
+    days: string;
+    trainer: string;
+    programs: string;
+    startTime_L1: string;
+    endTime_L1: string;
+    startTime_L2: string;
+    endTime_L2: string;
+    startTime_L3: string;
+    endTime_L3: string;
+    minutes: string;
+};
+
+export interface LessonCheckbox {
+    id: number;
+    fullName: string;
+    checkboxes: boolean[];
+    percent:number;
+}
