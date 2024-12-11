@@ -1,6 +1,5 @@
 
-import { Participant } from "../types/Types";
-
+import { LessonCheckbox, Participant, LessonTime } from "../types/Types";
 export const initialParticipants: Participant[] = [
     {
         id: 1,
@@ -112,4 +111,125 @@ export const initialParticipants: Participant[] = [
     },
 
 
+];
+
+
+export const dateData: LessonTime[] = [
+    {
+        id: 1,
+        days: "Saturday",
+        trainer: "Ehmed Agayev",
+        programs: "Big Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+    {
+        id: 2,
+        days: "Wednesday",
+        trainer: "Rufet Ehmedov",
+        programs: "all Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+    {
+        id: 3,
+        days: "Tuesday",
+        trainer: "Ayaz Memmedov",
+        programs: "little Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+    {
+        id: 4,
+        days: "thurshday",
+        trainer: "Turan Agayev",
+        programs: "info Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+    {
+        id: 5,
+        days: "Saturday",
+        trainer: "RIza Abdulla",
+        programs: "bb Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+    {
+        id: 6,
+        days: "Friday",
+        trainer: "Ehmed Agayev",
+        programs: "Big Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    }, {
+        id: 7,
+        days: "Monday",
+        trainer: "Ehmed Agayev",
+        programs: "Big Data",
+        startTime_L1: "10:45",
+        endTime_L1: "11:20",
+        startTime_L2: "10:45",
+        endTime_L2: "11:20",
+        startTime_L3: "10:45",
+        endTime_L3: "11:20",
+        minutes: "129"
+    },
+]
+
+export const LessonCheckboxData: LessonCheckbox[] = [
+    {
+        id: 1,
+        fullName: "Kamran Tehmezov",
+        checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        percent:69
+    },
+    {
+        id: 2,
+        fullName: "Ali Veli",
+        checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        percent:69
+    },
+    {
+        id: 3,
+        fullName: "Turan Aliyev",
+        checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        percent:69
+    },
+    {
+        id: 4,
+        fullName: "Mercan Ahmedova",
+        checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        percent:69
+    },
 ];
