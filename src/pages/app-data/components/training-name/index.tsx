@@ -8,6 +8,7 @@ import { CheckboxTitle } from "../checboxTitle";
 import { TrainingNameProps } from "../../types";
 import SearchInput from "../searchInput";
 import { applicationSource, customized } from "../sharedData";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 
@@ -120,7 +121,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy,
                     "--tw-px": paddingx,
                     "--tw-py": paddingy,
                     padding: "var(--tw-py) var(--tw-px)",
-                  } as React.CSSProperties} // Type assertion
+                } as React.CSSProperties} // Type assertion
                 onClick={onToggle}
             >
                 <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
@@ -208,8 +209,14 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy,
                                 ))}
 
                             {!isCustomized && (
-                                <ShowButton setIsCustomized={toggleCostomized} />
+                                <button onClick={toggleCostomized} className="px-3 mt-5 flex justify-between  w-[305px] text-[#000000] font-montserrat font-medium text-[14px] leading-[17.07px]">
+                                    Customized
+                                    <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
+                                </button>
                             )}
+
+                            <ShowButton />
+
                         </div>
                     </div>
                 </div>

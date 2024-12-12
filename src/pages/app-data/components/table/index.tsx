@@ -6,12 +6,15 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
+import PaginationControls from '@/pages/lead-details-page/components/Pagination Controller';
 
 
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
     const [editRowId, setEditRowId] = useState<number | null>(null);
     const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
+  const [currentPage, setCurrentPage] = useState(1);
+
 
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
@@ -56,18 +59,13 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     );
 
     console.log(filteredData, "filteredData")
-
-    const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 10; // Number of rows to display per page
 
     // Pagination logic
-    const totalPages = Math.ceil(data.length / rowsPerPage);
     const startIndex = (currentPage - 1) * rowsPerPage;
     const currentData = filteredData.slice(startIndex, startIndex + rowsPerPage);
 
-    const handlePageChange = (page: any) => {
-        setCurrentPage(page);
-    };
+ 
     return (
         <div>
             <div className=" overflow-y-scroll flex rounded-lg  ">
@@ -168,18 +166,17 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
             </div>
             <div className="  flex justify-center mt-4">
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handlePageChange(index + 1)}
-                        className={`px-4 py-2 border-[#22385F]  border-[0.5px] rounded-lg ${currentPage === index + 1 ? 'bg-[#22385F] text-white' : 'bg-white'
-                            }`}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
+                <PaginationControls
+                    data={data}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    rowsPerPage={rowsPerPage}
+                />
 
-     </div>
+
+
+
+            </div>
             {showModal && (
                 <ShowModal handleCancelDelete={handleCancelDelete} handleConfirmDelete={handleConfirmDelete} />
             )}
