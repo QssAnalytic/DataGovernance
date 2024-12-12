@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronsDown, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 import { FiChevronDown } from "react-icons/fi";
@@ -47,7 +47,11 @@ interface ComboboxDemoProps {
   triggerWidth?: string; // Add placeholder prop
 }
 
-export function ComboboxDemo({ frameworks, placeholder = "Search framework...", triggerWidth = '182px' }: ComboboxDemoProps) {
+export function ComboboxDemo({
+  frameworks,
+  placeholder = "Search framework...",
+  triggerWidth = "182px",
+}: ComboboxDemoProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
   const [isSearchActive, setIsSearchActive] = React.useState(false);
@@ -55,7 +59,9 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
 
   const handleSelect = (currentValue: string) => {
     if (selectedValues.includes(currentValue)) {
-      setSelectedValues(selectedValues.filter((value) => value !== currentValue));
+      setSelectedValues(
+        selectedValues.filter((value) => value !== currentValue)
+      );
     } else {
       setSelectedValues([...selectedValues, currentValue]);
     }
@@ -86,7 +92,10 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="rounded-[12px] border-[0.5px] border-[rgba(34,56,95,1)]">
+      <PopoverTrigger
+        asChild
+        className="rounded-[12px] border-[0.5px] border-[rgba(34,56,95,1)]"
+      >
         <Button
           variant="outline"
           role="combobox"
@@ -95,7 +104,9 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
           onClick={() => setOpen(!open)}
           style={{ width: triggerWidth }}
         >
-          <span className="text-[14px] text-[rgba(150,150,150,1)] ">{placeholder}</span>
+          <span className="text-[14px] text-[rgba(150,150,150,1)] ">
+            {placeholder}
+          </span>
           <motion.div
             initial={{ rotate: 0 }}
             animate={{ rotate: open ? 180 : 0 }}
@@ -105,24 +116,27 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
           </motion.div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[258px] p-0 pop-content" style={{ overflow: "hidden" }}>
+      <PopoverContent
+        className="w-[258px] p-0 pop-content"
+        style={{ overflow: "hidden" }}
+      >
         <Command>
           {/* Buttons and Search Input Side by Side */}
           <div className="flex px-3 pt-3 items-center justify-between relative z-40 bg-white">
             <div className="flex gap-x-[17px] items-center">
-            <p
-              onClick={handleSelectAll}
-              className="bg-white text-[rgba(29,126,183,1)] cursor-pointer"
-            >
-              Hamısını seç
-            </p>
-            <div className="h-[4px] bg-[rgba(29,126,183,1)] w-[4px] rounded-full"></div>
-            <p
-              onClick={handleReset}
-              className="bg-white text-[rgba(29,126,183,1)] cursor-pointer"
-            >
-              Sıfırla
-            </p>
+              <p
+                onClick={handleSelectAll}
+                className="bg-white text-[rgba(29,126,183,1)] cursor-pointer"
+              >
+                Hamısını seç
+              </p>
+              <div className="h-[4px] bg-[rgba(29,126,183,1)] w-[4px] rounded-full"></div>
+              <p
+                onClick={handleReset}
+                className="bg-white text-[rgba(29,126,183,1)] cursor-pointer"
+              >
+                Sıfırla
+              </p>
             </div>
 
             {/* Search Icon to toggle search input */}
@@ -177,7 +191,9 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
               {/* Framework Options */}
               {frameworks
                 .filter((framework) =>
-                  framework.label.toLowerCase().includes(searchQuery.toLowerCase())
+                  framework.label
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase())
                 )
                 .map((framework) => (
                   <CommandItem
