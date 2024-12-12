@@ -3,7 +3,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 export const TrainerHoursTable = () => {
-    const itemsPerPage = 5;  
+    const itemsPerPage = 9;  
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalItems = dateData.length;
@@ -46,7 +46,7 @@ export const TrainerHoursTable = () => {
 
         <div className="p-[20px_0px_0px_40px]">
             <table>
-                <thead className="flex gap-[2px]">
+                <thead className="flex gap-[2px] sticky top-0 bg-[#F5F5F5] z-10">
                     <div>
                         <tr className="flex   items-start gap-[2px]">
                             <th className="flex w-[501px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-sm font-semibold leading-normal">Details</th>
