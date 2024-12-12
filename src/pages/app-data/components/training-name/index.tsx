@@ -9,6 +9,10 @@ import { TrainingNameProps } from "../../types";
 import SearchInput from "../searchInput";
 import { applicationSource, customized } from "../sharedData";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { CiSearch } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+
+
 
 
 
@@ -107,6 +111,15 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy,
         }
     };
 
+    // const handleSearchIcon = () => {
+    //     if (isSearch) {
+    //         setIsSearch(false)
+    //     } else {
+    //         setIsSearch(true)
+    //     }
+
+    // }
+
     const handleToggleCustomized = () => {
         setIsCustomized(false); // Close the modal
         setIsSearch(false); // Close the input field
@@ -121,7 +134,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy,
                     "--tw-px": paddingx,
                     "--tw-py": paddingy,
                     padding: "var(--tw-py) var(--tw-px)",
-                } as React.CSSProperties} // Type assertion
+                } as React.CSSProperties} // Type assertion  
                 onClick={onToggle}
             >
                 <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
@@ -163,22 +176,33 @@ const TrainingName: React.FC<TrainingNameProps> = ({ isOpen, onToggle, paddingy,
                     )}
 
                     <div className="flex flex-col mt-3  gap-[10px]">
-                        <div className="flex justify-start mt-2 px-3 py-1 gap-[7px] ">
-                            {!isSearch && <CheckboxTitle
+                        <div className=" flex flex-start mt-2 px-2 gap-[7px] ">
+                            <CheckboxTitle
                                 isCustomized={isCustomized}
                                 selectAll={selectAll}
                                 selectCustomized={selectCustomized}
                                 resetAll={resetAll}
                                 resetCustomized={resetCustomized}
-                            />}
+                            />
+                            {isCustomized &&
+                                <div className="flex justify-center gap-[10px]">
+                                    <div className="w-[1.5px] ml-2 bg-[#8F8F8F] h-[20px]"></div>
 
-
-                            {isCustomized ? (
-                                <SearchInput setQuery={setQuery} query={query} isSearch={isSearch} setIsSearch={setIsSearch} />
-
-                            ) : null}
+                                    {!isSearch ?  <CiSearch className="w-5 cursor-pointer h-5" onClick={() => setIsSearch(true)
+                                    } /> : <IoClose className="w-5 h-5 cursor-pointer" onClick={() => setIsSearch(false)
+                                    }  />}
+                                   
+                                </div>
+                            }
                         </div>
-                        <div className="overflow-y-scroll max-h-[155px]">
+
+
+                        {isSearch && <div>
+                            <SearchInput setQuery={setQuery} query={query} isSearch={isSearch} setIsSearch={setIsSearch} />
+                         </div>}
+
+                   
+                         <div className="overflow-y-scroll max-h-[155px]">
                             {!isCustomized
                                 ? filteredItems.map((item, index) => (
                                     <div

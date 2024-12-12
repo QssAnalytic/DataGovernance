@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import { HiOutlinePhone } from "react-icons/hi";
 import { MdOutlineRefresh } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { FiEdit } from "react-icons/fi";
+import { GoTrash } from "react-icons/go";
 import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
 import PaginationControls from '@/pages/lead-details-page/components/Pagination Controller';
+import { HiOutlineChevronUpDown } from "react-icons/hi2";
+
 
 
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
     const [editRowId, setEditRowId] = useState<number | null>(null);
     const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
-  const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
 
 
     const [showModal, setShowModal] = useState(false);
@@ -65,7 +67,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const startIndex = (currentPage - 1) * rowsPerPage;
     const currentData = filteredData.slice(startIndex, startIndex + rowsPerPage);
 
- 
+
     return (
         <div>
             <div className=" overflow-y-scroll flex rounded-lg  ">
@@ -79,12 +81,24 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
                                 </div>
                             </th>
-                            <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Ad və Soyad</th>
+                            <th >
+                                <div className='flex'>
+                                    <HiOutlineChevronUpDown className='w-5 h-5' />
+                                    <p className=" font-montserrat text-[12px]  font-medium leading-normal text-[#000000]">  Ad və Soyad</p>
+                                </div>
+
+                            </th>
                             <th className="font-montserrat text-[12px] font-medium leading-normal text-[#000000] ">Application Source</th>
                             <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Training Name</th>
                             <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Mobil nömrə</th>
-                            <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Tarix</th>
-                            <div className=" ml-[7px]  w-[24px] h-[24px] ">
+                            <th >
+                                <div className='flex'>
+                                    <HiOutlineChevronUpDown className='w-5 h-5' />
+                                    <p className=" font-montserrat text-[12px]  font-medium leading-normal text-[#000000]">  Tarix</p>
+                                </div>
+
+                            </th>
+                            <div className=" ml-[7px] mt-2 w-[24px] h-[24px] ">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
 
@@ -153,8 +167,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                                         <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
                                         <td className=" text-center">
                                             <div className="flex gap-3">
-                                                <FaRegEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
-                                                <RiDeleteBinLine className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
+                                                <FiEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
+                                                <GoTrash className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
                                             </div>
                                         </td>
                                     </>
