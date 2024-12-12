@@ -31,3 +31,17 @@ export const getStatusStyles = (status: string) => {
       return "bg-gray-100 text-gray-600";
   }
 };
+
+export const getSillabusStyles = (sillabus: string) => {
+  const trimmedSillabus = sillabus.trim();
+  switch (trimmedSillabus.toLowerCase()) {
+    case "Məlumatlı":
+      return "bg-[rgba(48,172,4,0.20)] text-[#30AC04]";
+    case "Məlumatsız":
+      return "bg-[rgba(255,203,5,0.20)] text-[#8A6E03]";
+    case "Poor":
+      return "bg-[rgba(226,25,91,0.20)] text-[#E2195B]";
+    default:
+      return "bg-gray-100 text-gray-600";
+  }
+};
