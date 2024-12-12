@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-const TableChanger = () => {
+const TableChanger = ({ setActiveSubTab }: { setActiveSubTab: (tab: string) => void }) => {
     const options = ["Overview", "Education", "Job status"];
     const [activeTab, setActiveTab] = useState("Icmal");
     const [activeOptions, setActiveOptions] = useState<string[]>([options[0]]);
-
 
     const handleOptionClick = (option: string) => {
         if (activeTab === "Tam") {
@@ -15,6 +14,7 @@ const TableChanger = () => {
             }
         } else {
             setActiveOptions([option]);
+            setActiveSubTab(option); // Update the active sub-tab when `Icmal` is active
         }
     };
 
@@ -29,6 +29,7 @@ const TableChanger = () => {
                     onClick={() => {
                         setActiveTab("Icmal");
                         setActiveOptions([options[0]]); // Reset selection when switching tabs
+                        setActiveSubTab(options[0]); // Set the first option as default
                     }}
                 >
                     Icmal
