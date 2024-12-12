@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { useUIStore } from "../../../services/store/useUIStore";
 import TableChanger from './components/TableChanger';
 import { FilterTab } from './components/FilterTab';
+import { OverviewTable } from './components/tables/overview table/tableIndex';
+import { EducationTable } from './components/tables/education/tableIndex';
+import { JobStatusTable } from './components/tables/job status/tableIndex';
 
 
 export const TalentPool = () => {
     const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
-
     const [isLoading, setIsLoading] =  useState(true)
+    const [activeSubTab,setActiveSubTab] = useState("Overview")
     useEffect(()=>{
         setButtonLabel("Recruitment status");
     setModalContent(
@@ -23,9 +26,13 @@ export const TalentPool = () => {
     }
     return (
         <div className='w-[calc(100%-50px)] h-full flex flex-col gap-y-[20px]'>
-            <TableChanger/>
-            <FilterTab/>
-            
+            <TableChanger setActiveSubTab={setActiveSubTab}/>
+            <FilterTab />
+            <div className='w-full'>
+                {activeSubTab === 'Overview' && <OverviewTable />}
+                {activeSubTab === 'Education' && <EducationTable />}
+                {activeSubTab === 'Job status' && <JobStatusTable />}
+            </div>
         </div>
     )
 }

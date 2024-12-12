@@ -100,7 +100,7 @@ export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: bo
                         <AccordionTrigger isOpen={openAccordions.training} className={`text-[#22385F]  ${openAccordions.training ? "bg-[rgba(34,56,95,1)] text-white" : ""}`}>
                             Training
                         </AccordionTrigger>
-                        <AccordionContent className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
+                        <AccordionContent onClick={() => handleNavigation('t')} className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
                             <span className="w-[5px] h-[5px] rounded-full bg-[#22385F] group-hover:bg-white"></span>Tracker
                         </AccordionContent>
                         <AccordionContent className="flex items-center gap-x-[10px] pl-[1.7rem] text-[#22385F] py-[2px] hover:bg-[rgba(34,56,95,0.39)] hover:text-white hover:cursor-pointer duration-200 rounded-xl group">
