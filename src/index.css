@@ -16,12 +16,19 @@ ol {
   list-style: none;
 }
 
+td.h-9.w-9.text-center.text-sm.p-0.relative {
+  color: hsl(var(--muted-foreground)); /* Change to your desired text color */
+}
+
 @layer base {
   .parent:last-child > :nth-child(2) {
     border-bottom: #22385f;
     
   }
 
+  #react-day-picker-2 {
+    color: black
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;

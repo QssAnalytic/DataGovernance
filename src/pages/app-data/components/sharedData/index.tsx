@@ -14,7 +14,7 @@
         { id: 11, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Machine Learning', phone: '+994 702345681', date: '20.05.2024' },
         { id: 12, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 13, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
-        { id: 14, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Machine Learning"', phone: '+994 702345681', date: '20.05.2024' },
+        { id: 14, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Machine Learning', phone: '+994 702345681', date: '20.05.2024' },
         { id: 15, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 16, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 17, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
