@@ -1,8 +1,15 @@
-// DateFilter.tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/pages/app-data/components/uiSelect";
 import React, { useState } from "react";
-import { AiOutlineDown } from "react-icons/ai";
 import { DatePickerWithRange } from "../CustomRange";
 import { DateRange } from "react-day-picker";
+
+import { selectedFrom, selectedTo } from "../CustomRange";
 
 const DateFilter: React.FC = () => {
   const [selectedRange, setSelectedRange] = useState<string>("today");
@@ -10,6 +17,10 @@ const DateFilter: React.FC = () => {
   const [selectedDates, setSelectedDates] = useState<DateRange | undefined>(
     undefined
   );
+
+
+console.log(selectedFrom, "selected from");
+console.log(selectedTo, "selected to");
 
   const handleRangeChange = (value: string) => {
     setSelectedRange(value);
@@ -27,30 +38,47 @@ const DateFilter: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto relative z-50">
-      {/* Dropdown */}
-      <select
-        id="date-range"
-        className="w-full border text-gray-700 rounded-md p-2"
-        value={selectedRange}
-        onChange={(e) => handleRangeChange(e.target.value)}
-      >
-        <option value="today">Today</option>
-        <option value="yesterday">Yesterday</option>
-        <option value="last7days">Last 7 Days</option>
-        <option value="custom">Custom Range</option>
-      </select>
+      <div>
+        <Select value={selectedRange} onValueChange={handleRangeChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem className="text-black" value="today">
+              Today
+            </SelectItem>
+            <SelectItem className="text-black" value="yesterday">
+              Yesterday
+            </SelectItem>
+            <SelectItem className="text-black" value="last7days">
+              Last 7 days
+            </SelectItem>
+            <SelectItem className="text-black" value="last30days">
+              Last 30 days
+            </SelectItem>
+            <SelectItem className="text-black" value="thismonth">
+              This month
+            </SelectItem>
+            <SelectItem className="text-black" value="lastmonth">
+              Last month
+            </SelectItem>
+            <SelectItem className="text-black" value="custom">
+              Custom Range
+            </SelectItem>
+          </SelectContent>
+        </Select>
 
-      {/* Custom Modal for Date Picker */}
-      {isCustomOpen && (
-        <div className="fixed inset-0 bg-black  bg-opacity-60 flex items-center justify-center  ">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <DatePickerWithRange
-              onDateSelect={onCustomDateSelect}
-              closeModal={() => setIsCustomOpen(false)}
-            />
+        {isCustomOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <DatePickerWithRange
+                onDateSelect={onCustomDateSelect}
+                closeModal={() => setIsCustomOpen(false)}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

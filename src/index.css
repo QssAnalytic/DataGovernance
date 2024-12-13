@@ -29,6 +29,11 @@ td.h-9.w-9.text-center.text-sm.p-0.relative {
   #react-day-picker-2 {
     color: black
   }
+
+  button[name="previous-month"],  button[name="next-month"] {
+    color: black; /* Change text color */
+  
+}
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
