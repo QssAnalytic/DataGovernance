@@ -38,10 +38,6 @@ const TrainingName: React.FC<TrainingNameProps> = ({
     });
   };
 
-  // useEffect(() => {
-  //     console.log("isSearch:", isSearch);
-  // }, [isSearch]);
-
   const handleCustomizedsCheckboxChange = (index: number) => {
     setIsCustomizedChecked((prevState) => {
       const newCheckedItems = [...prevState];
@@ -106,15 +102,6 @@ const TrainingName: React.FC<TrainingNameProps> = ({
     }
   };
 
-  // const handleSearchIcon = () => {
-  //     if (isSearch) {
-  //         setIsSearch(false)
-  //     } else {
-  //         setIsSearch(true)
-  //     }
-
-  // }
-
   const handleToggleCustomized = () => {
     setIsCustomized(false); // Close the modal
     setIsSearch(false); // Close the input field
@@ -142,7 +129,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
       {isOpen ? (
         <div
           ref={dropdownRef}
-          className="absolute right-0 rounded-xl shadow-lg p-4 bg-white "
+          className="absolute right-0 z-10 rounded-xl shadow-lg p-4 bg-white "
         >
           {!isCustomized ? (
             <div className="flex justify-between mt-3 px-3 pr-0 w-[295px]  h-[22px]">
@@ -173,7 +160,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
           )}
 
           <div className="flex flex-col mt-3  gap-[10px]">
-            <div className=" flex flex-start mt-2 px-2 gap-[7px] ">
+            <div className=" flex flex-start ml-1 mt-2 px-2 gap-[7px] ">
               <CheckboxTitle
                 isCustomized={isCustomized}
                 selectAll={selectAll}
@@ -201,7 +188,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
             </div>
 
             {isSearch && (
-              <div>
+              <div className="relative h-[40px] z-50">
                 <SearchInput
                   setQuery={setQuery}
                   query={query}

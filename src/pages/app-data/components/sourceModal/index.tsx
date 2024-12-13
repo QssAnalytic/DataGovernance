@@ -71,7 +71,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
       {isOpen ? (
         <div
           ref={dropdownRef}
-          className=" absolute right-0 rounded-xl shadow-lg p-4 bg-white "
+          className=" absolute  z-10 right-0 rounded-xl shadow-lg p-4 bg-white "
         >
           <div className="flex justify-between   pr-[7px] w-[295px]  mt-7 ">
             <p className="font-montserrat w-full ml-3 font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left">
