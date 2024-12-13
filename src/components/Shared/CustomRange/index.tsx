@@ -27,9 +27,13 @@ export function DatePickerWithRange({
     to: addDays(new Date(2022, 0, 20), 20),
   });
 
+
   React.useEffect(() => {
     onDateSelect(date);
   }, [date, onDateSelect]);
+
+  selectedFrom(date?.from);
+  selectedTo(date?.to);
 
   return (
     <div className="p-4">
@@ -41,11 +45,24 @@ export function DatePickerWithRange({
         selected={date}
         onSelect={setDate}
         numberOfMonths={1}
-        
-             />
+
+      />
       <Button onClick={closeModal} className="mt-4">
         Close
       </Button>
     </div>
   );
 }
+
+
+export const selectedFrom: any = (value: any) => {
+  return value;
+}
+
+
+export const selectedTo: any = (value: any) => {
+  return value;
+}
+
+
+
