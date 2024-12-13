@@ -1,15 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface IContactTableProps {
-  headers: string[];
-  data: { [key: string]: any }[];
-}
 
-export interface IPaginationControlsProps {
-  data: any[];
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
-  rowsPerPage: number;
-}
 export interface RowData {
   ID: number;
   "Ad Soyad": string;
@@ -23,7 +13,27 @@ export interface RowData {
   [key: string]: any;
 }
 
+export interface EducationRowData {
+  ID: number;
+  "Ad Soyad": string;
+  "Background Knowledge": string;
+  "English Level": string;
+  "Sillabusla tanışlıq": string;
+  "University Bachelor": string;
+  "Bachelor Major": string;
+  "Entrance score": number;
+  "Master Degree": string;
+  [key: string]: any;
+}
+
 export interface ContactTableProps {
+  headers: string[];
+  data: RowData[];
+  rowsPerPage: number;
+  currentPage: number;
+}
+
+export interface EducationTableProps {
   headers: string[];
   data: RowData[];
   rowsPerPage: number;
