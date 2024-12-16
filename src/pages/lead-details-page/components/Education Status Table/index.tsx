@@ -1,10 +1,6 @@
 import React from "react";
 import { GrRefresh } from "react-icons/gr";
-import {
-  getCapacityStyles,
-  getStatusStyles,
-  getSillabusStyles, // Import the new function
-} from "@/helpers/changinColorTable";
+import { getSillabusStyles } from "@/helpers/changinColorTable";
 import EditDeleteModal from "../Edit Delete Section";
 import { ContactTableProps } from "../../types";
 
@@ -65,16 +61,14 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
                   }`}
                 >
                   {headers.map((header, cellIndex) => {
-                    const isCapacity = header === "Capacity";
-                    const isStatus = header === "Final Status";
                     const isSillabus = header === "Sillabusla tanışlıq"; // Check for "Sillabusla tanışlıq"
+                    const isEntranceScore = header === "Entrance score";
 
-                    const capacityStyles = isCapacity
-                      ? getCapacityStyles(row[header])
-                      : "";
-                    const statusStyles = isStatus
-                      ? getStatusStyles(row[header])
-                      : "";
+                    const entranceScoreStyle =
+                      isEntranceScore && row[header] > 600
+                        ? "text-green-500"
+                        : "";
+
                     const sillabusStyles = isSillabus
                       ? getSillabusStyles(row[header]) // Apply getSillabusStyles
                       : "";
@@ -92,10 +86,8 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
                       >
                         <span
                           className={`inline-block w-full ${
-                            isCapacity || isStatus || isSillabus
-                              ? "py-2 px-[16px] text-center"
-                              : "p-0"
-                          } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles} ${sillabusStyles}`}
+                            isSillabus ? "py-2 px-[16px] text-center" : "p-0"
+                          } text-[14px] rounded-[16px]  ${sillabusStyles}`}
                         >
                           {row[header]}
                         </span>
