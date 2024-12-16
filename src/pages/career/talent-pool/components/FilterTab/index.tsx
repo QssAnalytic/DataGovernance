@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComboboxDemo } from '../CustomDropDown'
 
 export const FilterTab = () => {

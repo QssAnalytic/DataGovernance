@@ -18,6 +18,5 @@
 
 [data-radix-popper-content-wrapper] {
     overflow: hidden;
-
-    /* transition: all ease-in-out .2s; */
+    z-index: 1000 !important;
 }

@@ -86,7 +86,7 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...", 
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="rounded-[12px] border-[0.5px] border-[rgba(34,56,95,1)]">
+      <PopoverTrigger asChild className="rounded-[12px] border-[0.5px] h-[58px] border-[rgba(34,56,95,1)]">
         <Button
           variant="outline"
           role="combobox"
