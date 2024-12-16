@@ -60,8 +60,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         item.trainingName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    console.log(filteredData, "filteredData")
-    const rowsPerPage = 10; // Number of rows to display per page
+
+    const rowsPerPage = 20; // Number of rows to display per page
 
     // Pagination logic
     const startIndex = (currentPage - 1) * rowsPerPage;
@@ -70,38 +70,34 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
     return (
         <div>
-            <div className=" overflow-y-scroll flex rounded-lg  ">
-                <table className="min-w-full table-auto rounded-lg border-collapse border border-gray-200 ">
-                    <thead className="bg-[#FAFAFA]  rounded-lg">
+            <div className='max-w-full flex overflow-y-auto max-h-[500px]'>
+                <table className="min-w-[1300px] table-auto w-full rounded-lg border-collapse border border-gray-200">
+                    <thead className="bg-[#FAFAFA] sticky top-0 z-5">
                         <tr className="text-left">
                             <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
                             <th className="border-none text-center px-3 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
                                 <div className='flex justify-center'>
-                                    < HiOutlinePhone className="w-[24px] h-[24px]" />
-
+                                    <HiOutlinePhone className="w-[24px] h-[24px]" />
                                 </div>
                             </th>
                             <th >
-                                <div className='flex'>
+                                <div className='flex gap-1'>
                                     <HiOutlineChevronUpDown className='w-5 h-5' />
-                                    <p className=" font-montserrat text-[12px]  font-medium leading-normal text-[#000000]">  Ad və Soyad</p>
+                                    <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Ad və Soyad</p>
                                 </div>
-
                             </th>
-                            <th className="font-montserrat text-[12px] font-medium leading-normal text-[#000000] ">Application Source</th>
-                            <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Training Name</th>
-                            <th className=" font-montserrat text-[12px] font-medium leading-normal text-[#000000]">Mobil nömrə</th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Application Source</th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Training Name</th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Mobil nömrə</th>
                             <th >
-                                <div className='flex'>
+                                <div className='flex gap-1'>
                                     <HiOutlineChevronUpDown className='w-5 h-5' />
-                                    <p className=" font-montserrat text-[12px]  font-medium leading-normal text-[#000000]">  Tarix</p>
+                                    <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Tarix</p>
                                 </div>
-
                             </th>
-                            <div className=" ml-[7px] mt-2 w-[24px] h-[24px] ">
+                            <div className="ml-[7px] mt-2 w-[24px] h-[24px] ">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -148,7 +144,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                                         <td className="p-3 text-center">
                                             <button
                                                 onClick={() => handleSave(item.id)}
-                                                className="px-3 py-2 bg-[#22385F] text-white rounded-lg text-sm "
+                                                className="px-3 py-2 bg-[#22385F] text-white rounded-lg text-sm"
                                             >
                                                 Save
                                             </button>
@@ -157,15 +153,15 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                                 ) : (
                                     <>
                                         <td className="p-3 text-sm text-gray-700">{item.id}</td>
-                                        <td className="border-none  text-center  px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
-                                            <input type="checkbox" className="appearance-none w-4 h-4 border  checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa]  checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
+                                        <td className="border-none text-center px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
+                                            <input type="checkbox" className="appearance-none w-4 h-4 border checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
                                         </td>
-                                        <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.name}</td>
-                                        <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.applicationSource}</td>
-                                        <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.trainingName}</td>
-                                        <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.phone}</td>
-                                        <td className=" font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
-                                        <td className=" text-center">
+                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.name}</td>
+                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.applicationSource}</td>
+                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.trainingName}</td>
+                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.phone}</td>
+                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
+                                        <td className="text-center">
                                             <div className="flex gap-3">
                                                 <FiEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
                                                 <GoTrash className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
@@ -177,19 +173,14 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                         ))}
                     </tbody>
                 </table>
-
             </div>
-            <div className="  flex justify-center mt-4">
+            <div className="  flex justify-center">
                 <PaginationControls
                     data={data}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     rowsPerPage={rowsPerPage}
                 />
-
-
-
-
             </div>
             {showModal && (
                 <ShowModal handleCancelDelete={handleCancelDelete} handleConfirmDelete={handleConfirmDelete} />
