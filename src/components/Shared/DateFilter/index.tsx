@@ -34,9 +34,7 @@ console.log(selectedTo, "selected to");
   const onCustomDateSelect = (dateRange: DateRange | undefined) => {
     console.log("Custom selected range:", dateRange);
   };
-  const handleCloseModal = () => {
-    setIsCustomOpen(false);
-  };
+
 
   return (
     <div className="max-w-md mx-auto relative z-50">
