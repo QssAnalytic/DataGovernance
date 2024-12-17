@@ -1,46 +1,95 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import ContactTable from "./components/Contact Table";
-import PaginationControls from "./components/Pagination Controller";
-import TableInfoSection from "./components/Table Info Section";
+
 import { data, dataEducation, headers, headersEducation } from "./static";
-import EmploymentStatusTable from "./components/Employment Status Table";
+import TableInfoSection from "./components/Table Info Section";
+import ContactTable from "./components/Contact Table";
 import EducationStatusTable from "./components/Education Status Table";
+import PaginationControls from "./components/Pagination Controller";
+import CombinedTable from "./components/Combined Table";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedTab, setSelectedTab] = useState("contact"); // State to manage selected tab
-
+  const [selectedTab, setSelectedTab] = useState("contact");
   const rowsPerPage = 7;
+
+  const handlePagination = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+
+  // Combine data for the combined table
+  const combineData = () => {
+    const combined = [...data, ...dataEducation];
+
+    // Filter out duplicates based on a unique identifier, e.g., 'id'
+    const uniqueData = combined.filter(
+      (value, index, self) => index === self.findIndex((t) => t.ID === value.ID)
+    );
+
+    console.log(uniqueData, "unique  data");
+
+    return uniqueData;
+  };
+  combineData();
+
+  const getPaginatedData = (dataArray: any[]) => {
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    return dataArray.slice(startIndex, endIndex);
+  };
+
+  // Handle tab change
+  const handleTabChange = (tab: string | string[]) => {
+    if (Array.isArray(tab)) {
+      setSelectedTab(tab[0]);
+    } else {
+      setSelectedTab(tab);
+    }
+  };
 
   return (
     <div>
-      <TableInfoSection onChangeTable={setSelectedTab} />
+      {/* Table Info Section with Tabs */}
+      <TableInfoSection onChangeTable={handleTabChange} />
 
       {/* Conditionally render the table based on `selectedTab` */}
-      {selectedTab === "contact" ? (
+      {selectedTab === "contact" && (
         <ContactTable
           headers={headers}
-          data={data}
+          data={getPaginatedData(data)}
           currentPage={currentPage}
           rowsPerPage={rowsPerPage}
         />
-      ) : selectedTab === "education" ? (
+      )}
+
+      {selectedTab === "education" && (
         <EducationStatusTable
           headers={headersEducation}
-          data={dataEducation}
+          data={getPaginatedData(dataEducation)}
           currentPage={currentPage}
           rowsPerPage={rowsPerPage}
-        /> // Render Education Status Table when selected
-      ) : selectedTab === "employment" ? (
-        <EmploymentStatusTable />
-      ) : null}
+        />
+      )}
 
-      {/* Pagination controls for ContactTable */}
+      {selectedTab === "combined" && (
+        <CombinedTable
+          data={getPaginatedData(combineData())}
+          currentPage={currentPage}
+          rowsPerPage={rowsPerPage}
+        />
+      )}
 
+      {/* Pagination Controls */}
       <PaginationControls
-        data={data}
+        data={
+          selectedTab === "contact"
+            ? data
+            : selectedTab === "education"
+            ? dataEducation
+            : combineData()
+        }
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        setCurrentPage={handlePagination}
         rowsPerPage={rowsPerPage}
       />
     </div>

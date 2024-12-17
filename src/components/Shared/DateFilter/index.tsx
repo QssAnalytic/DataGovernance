@@ -18,6 +18,8 @@ const DateFilter: React.FC = () => {
     undefined
   );
 
+  console.log(selectedFrom, "selected from");
+  console.log(selectedTo, "selected to");
 
 console.log(selectedFrom, "selected from");
 console.log(selectedTo, "selected to");
@@ -35,6 +37,7 @@ console.log(selectedTo, "selected to");
     setSelectedDates(dateRange);
     console.log("Custom selected range:", dateRange);
   };
+
 
   return (
     <div className="max-w-md mx-auto relative z-50">

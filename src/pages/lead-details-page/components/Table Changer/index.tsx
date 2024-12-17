@@ -1,12 +1,13 @@
 import { useState } from "react";
 
 interface TableChangerProps {
-  onChangeTable: (table: string) => void;
+  onChangeTable: (tables: string | string[]) => void;
 }
 
 const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
   const [activeTab, setActiveTab] = useState<"Icmal" | "Tam">("Icmal");
   const [activeOption, setActiveOption] = useState<string>("contact");
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const options = [
     { label: "Contact Status", value: "contact" },
@@ -16,24 +17,33 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
     setActiveTab(tab);
+
     if (tab === "Icmal") {
-      onChangeTable("contact"); // Show contact table by default for Icmal
+      setActiveOption("contact");
+      setSelectedOptions([]); // Clear Tam selections
+      onChangeTable("contact"); // Default to showing contact table for Icmal
     } else {
-      onChangeTable(""); // No table for Tam tab
+      // Default to Contact and Education tables for Tam
+      const defaultSelections = ["contact", "education"];
+      setActiveOption(""); // Clear single option
+      setSelectedOptions(defaultSelections);
+      onChangeTable(defaultSelections); // Show default combined tables
     }
   };
 
   const handleOptionClick = (option: { label: string; value: string }) => {
-    setActiveOption(option.value);
-    // Show the corresponding table based on the selected option for Icmal tab
-    if (activeTab === "Icmal" && option.value === "contact") {
-      onChangeTable("contact"); // Show Contact Status table
-    } else if (activeTab === "Icmal" && option.value === "education") {
-      onChangeTable("education"); // Show Education Status table
-    } else if (activeTab === "Icmal" && option.value === "employment") {
-      onChangeTable("employment"); // Show Employment Status table
-    } else {
-      onChangeTable(""); // No table for other conditions
+    if (activeTab === "Icmal") {
+      setActiveOption(option.value);
+      onChangeTable(option.value); // Show the single selected table
+    } else if (activeTab === "Tam") {
+      // Toggle the option for multi-selection
+      const updatedSelections = selectedOptions.includes(option.value)
+        ? selectedOptions.filter((item) => item !== option.value)
+        : [...selectedOptions, option.value];
+      setSelectedOptions(updatedSelections);
+
+      // Combine the selected tables
+      onChangeTable(updatedSelections); // Pass updated selections to parent
     }
   };
 
@@ -55,7 +65,7 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Tam"
               ? "bg-[#22385F] text-white rounded-tr-[11px] rounded-br-[11px]"
-              : "bg-[#F4F7FD] text-[#22385F] rounded-tl-[11px] rounded-bl-[11px]"
+              : "bg-[#F4F7FD] text-[#22385F] rounded-tr-[11px] rounded-br-[11px]"
           }`}
           onClick={() => handleTabClick("Tam")}
         >
@@ -80,7 +90,7 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
             {activeTab === "Tam" && (
               <span
                 className={`w-[16px] h-[16px] rounded-full border border-solid ${
-                  activeOption === option.value
+                  selectedOptions.includes(option.value)
                     ? "bg-[#22385F] border-[#22385F]"
                     : "bg-transparent border-[#BCBCBC]"
                 }`}

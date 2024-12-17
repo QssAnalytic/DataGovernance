@@ -16,13 +16,13 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
   const columnWidths: string[] = [
     "w-[3%]", // ID
     "w-[10%]", // Ad Soyad
-    "w-[13%]", // Capacity
-    "w-[5%]", // Value
-    "w-[15%]", // Final Status
-    "w-[15%]", // Contact Number
-    "w-[12%]", // Training Name
-    "w-[14%]", // Last Contact Date
-    "w-[13%]", // When Call Again
+    "w-[13%]", // Background knowledge
+    "w-[5%]", // English level
+    "w-[15%]", // Sillabusl tanislik
+    "w-[15%]", // Bachelor Uni
+    "w-[12%]", // Uni major
+    "w-[14%]", // Entrance score
+    "w-[13%]", // Master Uni
   ];
 
   return (

@@ -59,7 +59,7 @@ const AttendanceTable = () => {
                             {data.fullName}
                         </div>
                         <div className="flex gap-2">
-                            {data.checkboxes?.map((checked: any, i: any) => (
+                            {data.checkboxes?.map((i: any) => (
                                 <label key={i} className="flex w-[121px] h-14 justify-center items-center gap-2.5">
                                     <input
                                         type="checkbox"

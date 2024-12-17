@@ -47,3 +47,32 @@ export interface ButtonChangerProps {
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
   onClose: () => void;
 }
+
+export interface CombinedTableProps {
+  data: Array<{
+    ID: string | number;
+    "Ad Soyad"?: string;
+    Capacity?: string | number;
+    Value?: string | number;
+    "Final Status"?: string;
+    "Contact Number"?: string;
+    "Training Name"?: string;
+    "Last Contact Date"?: string;
+    "When Call Again"?: string;
+  }>; // Array of objects with specific keys
+  currentPage: number;
+  rowsPerPage: number;
+}
+
+
+interface RowData {
+  ID: string | number;
+  "Ad Soyad"?: string;
+  Capacity?: string | number;
+  Value?: string | number;
+  "Final Status"?: string;
+  "Contact Number"?: string;
+  "Training Name"?: string;
+  "Last Contact Date"?: string;
+  "When Call Again"?: string;
+}
