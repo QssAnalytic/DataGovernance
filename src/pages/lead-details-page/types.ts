@@ -59,7 +59,15 @@ export interface CombinedTableProps {
         "Training Name"?: string;
         "Last Contact Date"?: string;
         "When Call Again"?: string;
-    }>; // Array of objects with specific keys
+        [key: string]: any;
+    }>;
     currentPage: number;
     rowsPerPage: number;
+}
+
+export interface IPaginationControlsProps {
+  data: any[];
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  rowsPerPage: number;
 }

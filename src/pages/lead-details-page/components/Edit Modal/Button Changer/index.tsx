@@ -1,4 +1,4 @@
-import { ButtonChangerProps } from "@/pages/lead-details-page/types";
+import { ButtonChangerProps } from "../../../types";
 import { DialogFooter } from "../../Custom Dialog";
 
 const ButtonChanger: React.FC<ButtonChangerProps> = ({

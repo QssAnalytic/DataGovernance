@@ -2,9 +2,9 @@ import React from "react";
 import { GrRefresh } from "react-icons/gr";
 import { getSillabusStyles } from "@/helpers/changinColorTable";
 import EditDeleteModal from "../Edit Delete Section";
-import { ContactTableProps } from "../../types";
+import { EducationTableProps, EducationRowData } from "../../types";
 
-const EducationStatusTable: React.FC<ContactTableProps> = ({
+const EducationStatusTable: React.FC<EducationTableProps> = ({
   headers,
   data,
   currentPage,
@@ -66,12 +66,12 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
                   const isEntranceScore = header === "Entrance score";
 
                   const entranceScoreStyle =
-                    isEntranceScore && row[header] > 600
+                    isEntranceScore && Number(row[header as keyof EducationRowData]) > 600
                       ? "text-green-500"
                       : "";
 
                   const sillabusStyles = isSillabus
-                    ? getSillabusStyles(row[header])
+                    ? getSillabusStyles(String(row[header as keyof EducationRowData]))
                     : "";
 
                   return (
