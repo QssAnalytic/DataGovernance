@@ -290,7 +290,7 @@ export const headersEducation = [
 ];
 
 export const dataEducation = [
-  {
+  { 
     ID: 1,
     "Ad Soyad": "Will Smith",
     "Background Knowledge": "Excel",

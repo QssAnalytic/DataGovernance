@@ -1,18 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-export interface RowData {
-  ID: string | number;
+// Row data for the Contact table
+interface RowData {
+  id: number;
   "Ad Soyad": string;
-  Capacity: string | number;
-  Value: number;
+  Capacity: string;
+  Value: string;
   "Final Status": string;
   "Contact Number": string;
   "Training Name": string;
-  "Last Contact Date": string;
+  "Last Contact Date": number;
   "When Call Again": string;
-  [key: string]: any;
 }
 
+// Row data for the Education table
 export interface EducationRowData {
   ID: number;
   "Ad Soyad": string;
@@ -23,43 +22,28 @@ export interface EducationRowData {
   "Bachelor Major": string;
   "Entrance score": number;
   "Master Degree": string;
-  [key: string]: any;
 }
 
+// Props for Contact Table
 export interface ContactTableProps {
-  headers: string[];
+  headers: (keyof RowData)[];
   data: RowData[];
   rowsPerPage: number;
   currentPage: number;
 }
 
+// Props for Education Table
 export interface EducationTableProps {
-  headers: string[];
-  data: RowData[];
+  headers: (keyof EducationRowData)[];
+  data: EducationRowData[];
   rowsPerPage: number;
   currentPage: number;
 }
 
-export interface ButtonChangerProps {
-  setSuccessMessage: (message: string | null) => void;
-  currentStep: number;
-  steps: string[];
-  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-  onClose: () => void;
-}
-
+// Props for Combined Table (can be used for either Contact or Education)
 export interface CombinedTableProps {
-  data: Array<{
-    ID: string | number;
-    "Ad Soyad"?: string;
-    Capacity?: string | number;
-    Value?: string | number;
-    "Final Status"?: string;
-    "Contact Number"?: string;
-    "Training Name"?: string;
-    "Last Contact Date"?: string;
-    "When Call Again"?: string;
-  }>; // Array of objects with specific keys
+  data: (RowData | EducationRowData)[];
   currentPage: number;
   rowsPerPage: number;
+  headers: string[];
 }

@@ -21,12 +21,9 @@ const DetailsPage = () => {
   const combineData = () => {
     const combined = [...data, ...dataEducation];
 
-    // Filter out duplicates based on a unique identifier, e.g., 'id'
     const uniqueData = combined.filter(
       (value, index, self) => index === self.findIndex((t) => t.ID === value.ID)
     );
-
-    console.log(uniqueData, "unique  data");
 
     return uniqueData;
   };
@@ -49,10 +46,8 @@ const DetailsPage = () => {
 
   return (
     <div>
-      {/* Table Info Section with Tabs */}
       <TableInfoSection onChangeTable={handleTabChange} />
 
-      {/* Conditionally render the table based on `selectedTab` */}
       {selectedTab === "contact" && (
         <ContactTable
           headers={headers}
