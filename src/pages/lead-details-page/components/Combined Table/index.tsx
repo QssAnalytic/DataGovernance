@@ -75,21 +75,15 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                         : ""
                     }`}
                   >
-                    {/* <span
+                    <span
                       className={`inline-block w-full ${
                         cellIndex === 2 || cellIndex === 4
                           ? "py-2 px-[16px] text-center"
                           : "p-0"
-                      } text-[14px] rounded-[16px] ${
-                        cellIndex === 2
-                          ? getCapacityStyles(row["Capacity"])
-                          : cellIndex === 4
-                          ? getStatusStyles(row["Final Status"])
-                          : ""
-                      }`}
+                      } text-[14px] rounded-[16px]`}
                     >
                       {row[header]}
-                    </span> */}
+                    </span>
                   </td>
                 ))}
                 <td className="p-[16px] text-center rounded-tr-[20px] rounded-br-[20px]">

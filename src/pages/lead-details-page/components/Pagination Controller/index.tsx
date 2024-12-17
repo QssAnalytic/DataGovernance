@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { IPaginationControlsProps } from "../../types";
+import { IPaginationControlsProps } from "@/pages/lead-details-page/types";
 
 const PaginationControls: React.FC<IPaginationControlsProps> = ({
   data,
