@@ -13,7 +13,6 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
     "Recommendation source",
   ];
   const [isChecked, setIsChecked] = useState<boolean[]>([]);
-  const [query, setQuery] = useState("");
 
   const handleCheckboxChange = (index: number) => {
     setIsChecked((prevState) => {
@@ -22,9 +21,8 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
       return newCheckedItems;
     });
   };
-  const filteredItems = applicationSource.filter((item) =>
-    item.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredItems = applicationSource; // No filtering needed
+
 
   const selectAll = () => {
     setIsChecked(new Array(applicationSource.length).fill(true));
