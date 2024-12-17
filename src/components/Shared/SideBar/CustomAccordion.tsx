@@ -12,22 +12,23 @@ interface AccordionTriggerProps
 
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+  AccordionPrimitive.AccordionSingleProps
 >(({ children, ...props }, ref) => {
   const isMenuOpen = useMenuStore((state) => state.isMenuOpen);
-  const [openValues, setOpenValues] = React.useState<string[]>([]);
+  const [openValues, setOpenValues] = React.useState<string>('');
 
   React.useEffect(() => {
     if (!isMenuOpen) {
-      setOpenValues([]); // Close all accordions when the menu is closed
+      setOpenValues('');
     }
   }, [isMenuOpen]);
 
   return (
     <AccordionPrimitive.Root
+      //type="single"
       ref={ref}
-      value={openValues} // Controlled open state
-      onValueChange={(values: any) => setOpenValues(values)} // Update open states
+      value={openValues}
+      onValueChange={setOpenValues}
       {...props}
     >
       {children}
@@ -39,7 +40,7 @@ Accordion.displayName = "Accordion";
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
+>(({ ...props }, ref) => (
   <AccordionPrimitive.Item ref={ref} {...props} />
 ));
 AccordionItem.displayName = "AccordionItem";
@@ -53,7 +54,7 @@ const AccordionTrigger = React.forwardRef<
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
-          "flex flex-1 w-[223px] items-center justify-between pb-2 pt-2 px-[23px] mb-[10px] font-medium transition-all rounded-xl hover:bg-[rgba(34,56,95,1)] hover:text-white",
+          "flex flex-1 w-[223px] items-center justify-between pb-2 pt-2 px-[23px] font-medium transition-all rounded-xl hover:bg-[rgba(34,56,95,1)] hover:text-white",
           className,
           isOpen && "bg-[rgba(34,56,95,1)] text-white" // Apply styles when open
         )}

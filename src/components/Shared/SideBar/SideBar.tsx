@@ -16,12 +16,11 @@ export const SideBar = () => {
       style={{
         width: isMenuOpen ? "340px" : "77px",
       }}
-      onMouseLeave={closeMenu}
+     onMouseLeave={closeMenu}
     >
       <MiniMenu
         isMenuOpen={isMenuOpen}
         toggleMenu={toggleMenu}
-        closeMenu={closeMenu}
       />
     </div>
   );
