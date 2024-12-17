@@ -1,4 +1,4 @@
-import{ FC } from 'react';
+import { FC } from 'react';
 import { SaveModalProps } from '../../types';
 
 const SaveModal: FC<SaveModalProps> = ({ isOpen, onClose, rowData, onSave, onChange }) => {
@@ -6,70 +6,84 @@ const SaveModal: FC<SaveModalProps> = ({ isOpen, onClose, rowData, onSave, onCha
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg p-6 w-[400px]">
-                <h2 className="text-lg font-bold mb-4">Edit Row</h2>
-                <form>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Name</label>
-                        <input
-                            type="text"
-                            value={rowData.name || ''}
-                            onChange={(e) => onChange('name', e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-                        />
+            <div className="bg-white rounded-lg shadow-lg p-6 min-w-[700px]">
+                <form className='flex flex-col' >
+                    <h2 className='font-montserrat text-[25px] font-semibold my-2 text-[#22385F]'>Edit Table </h2>
+                    <div className='flex justify-between'>
+                        <div className='flex-col'>
+                            <label className="font-montserrat text-[14px]  font-semibold text-[#22385F]  ">Name</label>
+                            <div className="mb-4">
+                                <input
+                                    type="text"
+                                    value={rowData.name || ''}
+                                    onChange={(e) => onChange('name', e.target.value)}
+                                    className="w-[296px] h-[56px] bg-[#FAFCFF] border-[#22385F] mt-2 border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                                    placeholder='Ad, Soyad'
+                                />
+                            </div>
+                            <div className="mb-4 flex flex-col">
+                                <label className="font-montserrat text-[14px] font-semibold mt-2 text-[#22385F]">Applicattion Source</label>
+
+                                <input
+                                    type="text"
+                                    value={rowData.applicationSource || ''}
+                                    onChange={(e) => onChange('applicationSource', e.target.value)}
+                                    className="w-[296px] h-[56px] bg-[#FAFCFF] mt-2 border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                                />
+                            </div>
+                            <div className="mb-4 flex flex-col">
+                            <label className="font-montserrat text-[14px] font-semibold text-[#22385F] "> Training Name</label>
+
+                            <input
+                                type="text"
+                                value={rowData.trainingName || ''}
+                                onChange={(e) => onChange('trainingName', e.target.value)}
+                                className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                            />
+                            </div >
+                         
+                        </div>
+                        <div className='flex flex-col'>
+                            <div className="mb-4 flex flex-col">
+                                <label className="font-montserrat text-[14px] font-semibold mt-2 text-[#22385F]">Phone</label>
+                                <input
+                                    type="text"
+                                    value={rowData.phone || ''}
+                                    onChange={(e) => onChange('phone', e.target.value)}
+                                    className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                                />
+                            </div>
+                            <div className="mb-4 flex flex-col">
+                                <label className="font-montserrat text-[14px] font-semibold mt-2 text-[#22385F]">Date</label>
+                                <input
+                                    type="date"
+                                    value={rowData.date || ''}
+                                    onChange={(e) => onChange('date', e.target.value)}
+                                    className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Application Source</label>
-                        <input
-                            type="text"
-                            value={rowData.applicationSource || ''}
-                            onChange={(e) => onChange('applicationSource', e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-                        />
+
+                    <div className='flex mt-3 justify-between'>
+                        <div className="flex justify-between w-full gap-3">
+                            <button
+                                type="button"
+                                onClick={onClose}
+                                className="w-[296px] h-56px font-montserrat  leading-[17.07px] font-medium text-[#22385F] py-5 border-[1px] border-[#22385F] rounded-xl"
+                            >
+                                Ləğv et
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onSave}
+                                className="w-[296px] h-56px font-montserrat  leading-[17.07px] font-medium py-5 text-[#fff]   bg-[#22385F] rounded-xl"
+                            >
+                                Yadda Saxla
+                            </button>
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Training Name</label>
-                        <input
-                            type="text"
-                            value={rowData.trainingName || ''}
-                            onChange={(e) => onChange('trainingName', e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Phone</label>
-                        <input
-                            type="text"
-                            value={rowData.phone || ''}
-                            onChange={(e) => onChange('phone', e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Date</label>
-                        <input
-                            type="date"
-                            value={rowData.date || ''}
-                            onChange={(e) => onChange('date', e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-                        />
-                    </div>
-                    <div className="flex justify-end gap-3">
-                        <button
-                            type="button"
-                            onClick={onClose}
-                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            type="button"
-                            onClick={onSave}
-                            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
-                        >
-                            Save
-                        </button>
-                    </div>
+
                 </form>
             </div>
         </div>
