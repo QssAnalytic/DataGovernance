@@ -72,7 +72,7 @@ const ContactTable: React.FC<ContactTableProps> = ({
                       ? getCapacityStyles(String(row[header]))
                       : "";
                     const statusStyles = isStatus
-                      ? getStatusStyles(String(row[header]))
+                      ? getStatusStyles(String(row[header] || ""))
                       : "";
 
                     return (

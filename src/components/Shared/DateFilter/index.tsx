@@ -34,7 +34,6 @@ console.log(selectedTo, "selected to");
   const onCustomDateSelect = (dateRange: DateRange | undefined) => {
     console.log("Custom selected range:", dateRange);
   };
-  
 
   return (
     <div className="max-w-md mx-auto relative z-50">
