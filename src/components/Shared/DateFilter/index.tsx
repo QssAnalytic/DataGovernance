@@ -13,9 +13,7 @@ import { selectedFrom, selectedTo } from "../CustomRange";
 const DateFilter: React.FC = () => {
   const [selectedRange, setSelectedRange] = useState<string>("today");
   const [isCustomOpen, setIsCustomOpen] = useState(false);
-  const [selectedDates, setSelectedDates] = useState<DateRange | undefined>(
-    undefined
-  );
+
 
   console.log(selectedFrom, "selected from");
   console.log(selectedTo, "selected to");
@@ -30,10 +28,8 @@ const DateFilter: React.FC = () => {
   };
 
   const onCustomDateSelect = (dateRange: DateRange | undefined) => {
-    setSelectedDates(dateRange);
     console.log("Custom selected range:", dateRange);
   };
-
   const handleCloseModal = () => {
     setIsCustomOpen(false);
   };

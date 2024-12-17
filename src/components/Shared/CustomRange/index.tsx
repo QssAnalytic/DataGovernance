@@ -1,16 +1,10 @@
 import * as React from "react";
 import { addDays } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 
 interface DatePickerWithRangeProps {
   onDateSelect: (dateRange: DateRange | undefined) => void;
@@ -44,22 +38,22 @@ export function DatePickerWithRange({
         onSelect={setDate}
         className="flex justify-center"
         numberOfMonths={1}
-      />    
-    <div className="flex justify-around">
-  <Button
-    onClick={closeModal}
-    className="mt-4 w-[120px] font-montserrat text-[14px] h-[56px] bg-transparent text-[#22385F] border border-[#22385F] rounded-lg hover:bg-[#22385F] hover:text-white transition duration-300"
-  >
-    Ləğv etmək
-  </Button>
+      />
+      <div className="flex justify-around">
+        <Button
+          onClick={closeModal}
+          className="mt-4 w-[120px] font-montserrat text-[14px] h-[56px] bg-transparent text-[#22385F] border border-[#22385F] rounded-lg hover:bg-[#22385F] hover:text-white transition duration-300"
+        >
+          Ləğv etmək
+        </Button>
 
-  <Button
-    onClick={closeModal}
-    className="mt-4 w-[120px] font-montserrat text-[14px] h-[56px] bg-transparent text-[#22385F] border border-[#22385F] rounded-lg hover:bg-[#22385F] hover:text-white transition duration-300"
-  >
-    Yadda Saxla
-  </Button>
-</div>
+        <Button
+          onClick={closeModal}
+          className="mt-4 w-[120px] font-montserrat text-[14px] h-[56px] bg-transparent text-[#22385F] border border-[#22385F] rounded-lg hover:bg-[#22385F] hover:text-white transition duration-300"
+        >
+          Yadda Saxla
+        </Button>
+      </div>
     </div>
   );
 }
