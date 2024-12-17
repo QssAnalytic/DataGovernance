@@ -18,9 +18,8 @@ const DateFilter: React.FC = () => {
     undefined
   );
 
-
-console.log(selectedFrom, "selected from");
-console.log(selectedTo, "selected to");
+  console.log(selectedFrom, "selected from");
+  console.log(selectedTo, "selected to");
 
   const handleRangeChange = (value: string) => {
     setSelectedRange(value);

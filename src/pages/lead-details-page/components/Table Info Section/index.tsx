@@ -1,10 +1,10 @@
-import TableChanger from "../Table Changer";
 import ContactedFilter from "../Contacted Filter";
 import SearchFilter from "../Search Filter";
+import TableChanger from "../Table Changer";
 import TableInfoTop from "../Table Info Top";
 
 interface TableInfoSectionProps {
-  onChangeTable: (table: string) => void;
+  onChangeTable: (tables: string | string[]) => void; // Accept both a string or an array
 }
 
 const TableInfoSection: React.FC<TableInfoSectionProps> = ({
@@ -14,7 +14,7 @@ const TableInfoSection: React.FC<TableInfoSectionProps> = ({
     <div className="flex flex-col gap-[20px]">
       <TableInfoTop />
       <div className="flex justify-between h-[100%]">
-        <TableChanger onChangeTable={onChangeTable} />
+        <TableChanger onChangeTable={onChangeTable} />{" "}
         <div className="flex gap-[16px]">
           <SearchFilter />
           <ContactedFilter />
