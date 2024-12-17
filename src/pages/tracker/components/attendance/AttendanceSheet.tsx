@@ -1,5 +1,5 @@
 import AttendanceTable from "./AttendanceTable";
-import { BootcampFilter } from "./BootcampFilter";
+import { BootcampFilter } from "../BootcampFilter";
 
 export const AttendanceSheet = () => {
   return (

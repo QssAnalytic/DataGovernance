@@ -1,4 +1,4 @@
-import { dateData } from "../testData/TestData"
+import { dateData } from "../../testData/TestData"
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
@@ -46,19 +46,19 @@ export const TrainerHoursTable = () => {
 
         <div className="p-[20px_0px_0px_40px]">
             <table>
-                <thead className="flex gap-[2px] sticky top-0 bg-[#F5F5F5] z-10">
+                <thead className="flex gap-[2px] sticky top-0  z-10">
                     <div>
-                        <tr className="flex   items-start gap-[2px]">
-                            <th className="flex w-[501px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-sm font-semibold leading-normal">Details</th>
-                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 1</th>
-                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 2</th>
-                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 3</th>
+                        <tr className="flex items-start gap-[2px] ">
+                            <th className="flex w-[501px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22385F] text-white text-center font-montserrat text-sm font-semibold leading-normal">Details</th>
+                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22385F] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 1</th>
+                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22385F] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 2</th>
+                            <th className="flex w-[196px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22385F] text-white text-center font-montserrat text-base font-semibold leading-normal">Lesson 3</th>
 
                         </tr>
-                        <tr className="flex  items-start gap-[2px]">
-                            <th className="flex w-[116px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22385F] text-white text-center font-montserrat text-xs font-semibold leading-normal">Days</th>
-                            <th className="flex w-[204px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22385F] text-white text-center font-montserrat text-xs font-semibold leading-normal">Trains</th>
-                            <th className="text-white text-center font-montserrat text-xs font-semibold leading-normal flex w-[177px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22385F]">Program</th>
+                        <tr className="flex  items-start gap-[2px] pt-[4px]">
+                            <th className="flex w-[116px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-xs font-semibold leading-normal">Days</th>
+                            <th className="flex w-[204px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22BBAD] text-white text-center font-montserrat text-xs font-semibold leading-normal">Trains</th>
+                            <th className="text-white text-center font-montserrat text-xs font-semibold leading-normal flex w-[177px] h-[33px] px-[16px] py-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[#22BBAD]">Program</th>
                             <th className="flex w-[97px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[rgba(48,172,4,0.1)] text-[#30AC04] text-center font-montserrat text-[14px] font-medium leading-normal">Start Time</th>
                             <th className="flex w-[97px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[rgba(255,0,0,0.10)] text-[rgba(255,0,0,0.60)] text-center font-montserrat text-[14px] font-medium leading-normal">End Time</th>
                             <th className="flex w-[97px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-b-[6px] bg-[rgba(48,172,4,0.1)] text-[#30AC04] text-center font-montserrat text-[14px] font-medium leading-normal">Start Time</th>

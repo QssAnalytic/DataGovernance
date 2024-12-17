@@ -204,7 +204,7 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...",t
             className="w-full h-[43px] text-white rounded-[12px] bg-[rgba(34,56,95,1)]"
             onClick={handleSend}
           >
-            Send
+            Göndər
           </button>
         </div>
       </PopoverContent>

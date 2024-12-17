@@ -1,4 +1,4 @@
-import { BootcampFilter } from './BootcampFilter.tsx'
+import { BootcampFilter } from '../BootcampFilter.tsx'
 import { TrainerHoursTable } from './TrainerHoursTable.tsx'
 
 export const TrainerHours = () => {
