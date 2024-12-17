@@ -7,7 +7,7 @@ const ParticipantTable = () => {
 
     const [participants, setParticipants] = useState<Participant[]>(initialParticipants);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 15;
+    const itemsPerPage = 5;
 
     const totalItems = participants.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -36,11 +36,7 @@ const ParticipantTable = () => {
         );
     };
 
-    const headers = [
-        "", "Program", "ad soyad", "r", "sql", "python", "big data",
-        "tableau", "spss", "telim sayi", "mobil nomre", "mail unvani",
-        "mentorship", "covering", "career", "experience", "edit"
-    ];
+
     const renderPaginationButtons = () => {
         const buttons = [];
         for (let i = 1; i <= totalPages; i++) {
