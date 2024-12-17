@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { DatePickerWithRange } from "../CustomRange";
 import { DateRange } from "react-day-picker";
+
 import { selectedFrom, selectedTo } from "../CustomRange";
 
 const DateFilter: React.FC = () => {
@@ -19,6 +20,9 @@ const DateFilter: React.FC = () => {
 
   console.log(selectedFrom, "selected from");
   console.log(selectedTo, "selected to");
+
+console.log(selectedFrom, "selected from");
+console.log(selectedTo, "selected to");
 
   const handleRangeChange = (value: string) => {
     setSelectedRange(value);
@@ -34,12 +38,9 @@ const DateFilter: React.FC = () => {
     console.log("Custom selected range:", dateRange);
   };
 
-  const handleCloseModal = () => {
-    setIsCustomOpen(false);
-  };
 
   return (
-    <div className="max-w-md  bzmx-auto relative z-50">
+    <div className="max-w-md mx-auto relative z-50">
       <div>
         <Select value={selectedRange} onValueChange={handleRangeChange}>
           <SelectTrigger className="w-[180px]">
@@ -72,10 +73,10 @@ const DateFilter: React.FC = () => {
 
         {isCustomOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-            <div className="bg-white w-[408px] rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6">
               <DatePickerWithRange
                 onDateSelect={onCustomDateSelect}
-                closeModal={handleCloseModal}
+                closeModal={() => setIsCustomOpen(false)}
               />
             </div>
           </div>

@@ -1,5 +1,5 @@
 
-import { LessonCheckbox, Participant, LessonTime } from "../types/Types";
+import { LessonCheckbox, Participant, LessonTime, ReportData } from "../types/Types";
 export const initialParticipants: Participant[] = [
     {
         id: 1,
@@ -375,72 +375,123 @@ export const LessonCheckboxData: LessonCheckbox[] = [
         id: 1,
         fullName: "Kamran Tehmezov",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 2,
         fullName: "Ali Veli",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 3,
         fullName: "Turan Aliyev",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 5,
         fullName: "Mercan Ahmedova",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 6,
         fullName: "Kamran Tehmezov",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 7,
         fullName: "Ali Veli",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 8,
         fullName: "Turan Aliyev",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 9,
         fullName: "Mercan Ahmedova",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 10,
         fullName: "Kamran Tehmezov",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 11,
         fullName: "Ali Veli",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 12,
         fullName: "Turan Aliyev",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
     {
         id: 13,
         fullName: "Mercan Ahmedova",
         checkboxes: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        percent:69
+        percent: 69
     },
 ];
+
+export const executiveData: ReportData[] = [
+    {
+        id: 1,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 2,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 3,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 4,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+]

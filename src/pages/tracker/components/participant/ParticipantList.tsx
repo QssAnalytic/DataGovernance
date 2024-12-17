@@ -1,5 +1,5 @@
 import { BootcampFilter } from '../BootcampFilter.tsx';
-import { ComboboxDemo } from '../CustomDrop.tsx';
+// import { ComboboxDemo } from '../CustomDrop.tsx';
 import ParticipantTable from './ParticipantTable.tsx';
 export const ParticipantList = () => {
     // const bootnumber = [

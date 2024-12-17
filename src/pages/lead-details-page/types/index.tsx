@@ -12,7 +12,6 @@ export interface RowData {
   "When Call Again": string;
   [key: string]: any;
 }
-
 export interface EducationRowData {
   ID: number;
   "Ad Soyad": string;
@@ -63,3 +62,4 @@ export interface CombinedTableProps {
   currentPage: number;
   rowsPerPage: number;
 }
+
