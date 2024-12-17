@@ -1,9 +1,5 @@
 import React from "react";
 import { GrRefresh } from "react-icons/gr";
-import {
-  getCapacityStyles,
-  getStatusStyles,
-} from "@/helpers/changinColorTable";
 import EditDeleteModal from "../Edit Delete Section";
 import { CombinedTableProps } from "../../types";
 
@@ -79,7 +75,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                         : ""
                     }`}
                   >
-                    <span
+                    {/* <span
                       className={`inline-block w-full ${
                         cellIndex === 2 || cellIndex === 4
                           ? "py-2 px-[16px] text-center"
@@ -93,7 +89,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                       }`}
                     >
                       {row[header]}
-                    </span>
+                    </span> */}
                   </td>
                 ))}
                 <td className="p-[16px] text-center rounded-tr-[20px] rounded-br-[20px]">
