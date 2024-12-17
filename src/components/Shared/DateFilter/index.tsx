@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { DatePickerWithRange } from "../CustomRange";
 import { DateRange } from "react-day-picker";
-
+import { selectedFrom, selectedTo } from "../CustomRange";
 
 const DateFilter: React.FC = () => {
   const [selectedRange, setSelectedRange] = useState<string>("today");
@@ -19,7 +19,6 @@ const DateFilter: React.FC = () => {
 
   console.log(selectedFrom, "selected from");
   console.log(selectedTo, "selected to");
-
 
   const handleRangeChange = (value: string) => {
     setSelectedRange(value);
@@ -35,11 +34,9 @@ const DateFilter: React.FC = () => {
     console.log("Custom selected range:", dateRange);
   };
 
-
   const handleCloseModal = () => {
-    setIsCustomOpen(false)
-  }
-
+    setIsCustomOpen(false);
+  };
 
   return (
     <div className="max-w-md  bzmx-auto relative z-50">
@@ -89,6 +86,3 @@ const DateFilter: React.FC = () => {
 };
 
 export default DateFilter;
-
-
-
