@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface RowData {
-  ID: number;
+  ID: string | number;
   "Ad Soyad": string;
-  Capacity: string;
+  Capacity: string | number;
   Value: number;
   "Final Status": string;
   "Contact Number": string;
