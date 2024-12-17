@@ -1,8 +1,8 @@
 import React from "react";
 import { GrRefresh } from "react-icons/gr";
-import { getSillabusStyles } from "@/helpers/changinColorTable"; // Ensure the path is correct
-import EditDeleteModal from "../Edit Delete Section"; // Ensure this component exists and is implemented correctly
-import { ContactTableProps } from "../../types"; // Verify that the `ContactTableProps` type is correct
+import { getSillabusStyles } from "@/helpers/changinColorTable";
+import EditDeleteModal from "../Edit Delete Section";
+import { ContactTableProps } from "../../types";
 
 const EducationStatusTable: React.FC<ContactTableProps> = ({
   headers,
@@ -62,17 +62,16 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
                 }`}
               >
                 {headers.map((header, cellIndex) => {
-                  const isSillabus = header === "Sillabusla tanışlıq"; // Check for "Sillabusla tanışlıq"
+                  const isSillabus = header === "Sillabusla tanışlıq";
                   const isEntranceScore = header === "Entrance score";
 
-                  // Conditional styles
                   const entranceScoreStyle =
                     isEntranceScore && row[header] > 600
                       ? "text-green-500"
                       : "";
 
                   const sillabusStyles = isSillabus
-                    ? getSillabusStyles(row[header]) // Apply sillabus styles
+                    ? getSillabusStyles(row[header])
                     : "";
 
                   return (
@@ -96,7 +95,6 @@ const EducationStatusTable: React.FC<ContactTableProps> = ({
                     </td>
                   );
                 })}
-                {/* Action column */}
                 <td
                   className={`p-[16px] rounded-tr-[20px] rounded-br-[20px] text-center whitespace-nowrap`}
                 >
