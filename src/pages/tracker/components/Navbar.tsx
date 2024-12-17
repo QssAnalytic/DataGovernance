@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ParticipantList } from "./ParticipantList";
-import { TrainerHours } from "./TrainerHours";
-import { AttendanceSheet } from "./AttendanceSheet";
+import { ParticipantList } from "./participant/ParticipantList";
+import { TrainerHours } from "./Trainer/TrainerHours";
+import { AttendanceSheet } from "./attendance/AttendanceSheet";
 import { ExecutiveReport } from "./ExecutiveReport";
 import { ParticipantSatisfaction } from "./ParticipantSatisfaction";
 

@@ -16,6 +16,9 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [editRowId, setEditRowId] = useState<number | null>(null);
     const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+    const [dateSortOrder, setDateSortOrder] = useState<'asc' | 'desc'>('asc'); // Sorting for date
+
 
 
     const [showModal, setShowModal] = useState(false);
@@ -34,6 +37,36 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
+
+   
+    const handleSort = () => {
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
+
+    const handleDateSort = () => {
+        setDateSortOrder(dateSortOrder === 'asc' ? 'desc' : 'asc');
+    };
+
+    const sortedData = data.slice().sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+
+        if (sortOrder === 'asc') {
+            return nameA.localeCompare(nameB);
+        } else {
+            return nameB.localeCompare(nameA);
+        }
+    }).sort((a, b) => {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+
+        if (dateSortOrder === 'asc') return dateA - dateB;
+        else return dateB - dateA;
+    });
+
+
+
+    
     const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
@@ -53,13 +86,13 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setEditFormData({});
     };
 
-    const filteredData = data.filter(item =>
+
+    const filteredData = sortedData.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.phone.includes(searchTerm) ||
         item.applicationSource.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.trainingName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
 
     const rowsPerPage = 20; // Number of rows to display per page
 
@@ -70,7 +103,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
     return (
         <div>
-            <div className='max-w-full flex overflow-y-auto max-h-[500px]'>
+            <div className='max-w-full flex overflow-y-auto max-h-[650px]'>
                 <table className="min-w-[1300px] table-auto w-full rounded-lg border-collapse border border-gray-200">
                     <thead className="bg-[#FAFAFA] sticky top-0 z-5">
                         <tr className="text-left">
@@ -80,7 +113,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                                     <HiOutlinePhone className="w-[24px] h-[24px]" />
                                 </div>
                             </th>
-                            <th >
+                            <th onClick={handleSort} >
                                 <div className='flex gap-1'>
                                     <HiOutlineChevronUpDown className='w-5 h-5' />
                                     <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Ad və Soyad</p>
@@ -89,8 +122,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                             <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Application Source</th>
                             <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Training Name</th>
                             <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Mobil nömrə</th>
-                            <th >
-                                <div className='flex gap-1'>
+                            <th className='cursor-pointer' onClick={handleDateSort}>
+                                <div className='flex gap-1'  onClick={handleDateSort}>
                                     <HiOutlineChevronUpDown className='w-5 h-5' />
                                     <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Tarix</p>
                                 </div>
@@ -192,3 +225,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 };
 
 export default Table;
+
+
+
+

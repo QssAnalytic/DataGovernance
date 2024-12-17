@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
-import { Participant } from "../types/Types";
-import { initialParticipants } from "../testData/TestData";
+import { Participant } from "../../types/Types";
+import { initialParticipants } from "../../testData/TestData";
 
 const ParticipantTable = () => {
-    const headers = [
-        "id", "Program", "ad soyad", "r", "sql", "python", "big data",
-        "tableau", "spss", "telim sayi", "mobil nomre", "mail unvani",
-        "mentorship", "covering", "career", "experience", "edit"
-    ];
 
     const [participants, setParticipants] = useState<Participant[]>(initialParticipants);
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +36,11 @@ const ParticipantTable = () => {
         );
     };
 
+    const headers = [
+        "", "Program", "ad soyad", "r", "sql", "python", "big data",
+        "tableau", "spss", "telim sayi", "mobil nomre", "mail unvani",
+        "mentorship", "covering", "career", "experience", "edit"
+    ];
     const renderPaginationButtons = () => {
         const buttons = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -61,111 +61,119 @@ const ParticipantTable = () => {
     };
 
     return (
-        <div className="relative px-[40px] py-[40px] max-w-[1400px]">
+        <div className="relative px-[40px] py-[40px] w-[100%]">
             <div className="overflow-x-auto">
                 <div className="min-w-[1300px]">
                     <table className="table-auto w-full border-collapse">
                         <thead className="sticky top-0 bg-[#F5F5F5] z-10">
                             <tr className="flex w-full px-4 py-0 items-center gap-5 rounded-lg">
-                                {headers.map((header, index) => (
-                                    <th
-                                        key={index}
-                                        className={`flex ${header === "ad soyad" || header === "mail unvani" || header === "mobil nomre" ? "w-[180px]" : "w-[80px]"} h-[54px] p-4 items-center gap-7 flex-shrink-0 text-[#000] font-montserrat text-xs font-medium leading-normal`}
-                                    >
-                                        {header}
-                                    </th>
-                                ))}
+                                <th className="flex w-[80px] h-[54px] pl-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">id</th>
+                                <th className="flex w-[80px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">Program</th>
+                                <th className="flex w-[180px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">ad soyad</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">r</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">sql</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">python</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">big data</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">tableau</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">spss</th>
+                                <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">telim sayi</th>
+                                <th className="flex w-[143px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">mobil nomre</th>
+                                <th className="flex w-[206px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">mail unvani</th>
+                                <th className="flex w-[80px] h-[54px] p-[10px_16px_10px_10px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">mentorship</th>
+                                <th className="flex w-[80px] h-[54px] p-[10px_16px_10px_10px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">covering</th>
+                                <th className="flex w-[80px] h-[54px] p-[10px_16px_10px_10px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">career</th>
+                                <th className="flex w-[80px] h-[54px]  p-[10px_16px_10px_1px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">experience</th>
                             </tr>
                         </thead>
                         <tbody className="overflow-y-auto max-h-[500px] block w-full">
                             {currentItems.map((item, index) => (
                                 <tr
                                     key={item.id}
-                                    className={`flex h-[54px] px-[16px] pl-[30px] items-center gap-[20px] self-stretch rounded-[12px] ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}
+                                    className={`flex h-[54px] px-[16px] pl-[16px] items-center gap-[20px] self-stretch rounded-[12px] ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}
                                 >
-                                    <td className="w-[80px] text-black font-montserrat text-sm font-medium leading-normal">{item.id}</td>
-                                    <td className="w-[80px] text-black font-montserrat text-sm font-medium leading-normal">{item.program}</td>
-                                    <td className="w-[180px] text-black font-montserrat text-sm font-medium leading-normal">{item.surname}</td>
-                                    <td className="w-[80px]">
+                                    <td className="flex h-[49px] p-[16px] w-[80px] items-center gap-[12px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.id}</td>
+                                    <td className="flex w-[80px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.program}</td>
+                                    <td className="flex w-[180px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.surname}</td>
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-centerr">
                                         <input
                                             type="checkbox"
                                             checked={item.r}
                                             onChange={() => handleCheckboxChange(item.id, 'r')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.sql}
                                             onChange={() => handleCheckboxChange(item.id, 'sql')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.python}
                                             onChange={() => handleCheckboxChange(item.id, 'python')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.bigData}
                                             onChange={() => handleCheckboxChange(item.id, 'bigData')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.tableau}
                                             onChange={() => handleCheckboxChange(item.id, 'tableau')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.spss}
                                             onChange={() => handleCheckboxChange(item.id, 'spss')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.trainingCount}
                                             onChange={() => handleCheckboxChange(item.id, 'trainingCount')}
                                         />
                                     </td>
-                                    <td className="w-[180px]">{item.phone}</td>
-                                    <td className="w-[180px]">{item.email}</td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[143px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal text-[14px]">{item.phone}</td>
+                                    <td className="flex w-[206px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] text-[14px] font-medium leading-normal">{item.email}</td>
+                                    <td className="flex w-[80px] h-[50px] p-[13px_43px_13px_13px] items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.mentorship}
                                             onChange={() => handleCheckboxChange(item.id, 'mentorship')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[80px] h-[50px] p-[13px_43px_13px_13px] items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.covering}
                                             onChange={() => handleCheckboxChange(item.id, 'covering')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[80px] h-[50px] px-[13px] p-[13px_43px_13px_13px] items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.career}
                                             onChange={() => handleCheckboxChange(item.id, 'career')}
                                         />
                                     </td>
-                                    <td className="w-[80px]">
+                                    <td className="flex w-[80px] h-[50px]p-[13px_43px_13px_13px] items-center">
                                         <input
                                             type="checkbox"
                                             checked={item.experience}
                                             onChange={() => handleCheckboxChange(item.id, 'experience')}
                                         />
                                     </td>
-                                    <td className="w-[80px]"><FiEdit /></td>
+                                    <td className="flex w-[80px] h-[50px] px-[13px] py-[13px] pl-[43px] items-center"><FiEdit /></td>
                                 </tr>
                             ))}
                         </tbody>

@@ -5,6 +5,7 @@ import { FilterTab } from './components/FilterTab';
 import { OverviewTable } from './components/tables/overview table/tableIndex';
 import { EducationTable } from './components/tables/education/tableIndex';
 import { JobStatusTable } from './components/tables/job status/tableIndex';
+import { AddModal } from './components/AddModal/AddModal';
 
 
 export const TalentPool = () => {
@@ -14,9 +15,7 @@ export const TalentPool = () => {
     useEffect(() => {
         setButtonLabel("Recruitment status");
         setModalContent(
-            <div className="text-black flex flex-col bg-white p-2">
-                Overview Modal
-            </div>
+            <AddModal/>
         );
         setPageCustomHeader(<input placeholder='salam' />);
         setTimeout(() => setIsLoading(false), 1000)
