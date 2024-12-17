@@ -4,22 +4,37 @@ import PaginationControls from "@/pages/lead-details-page/components/Pagination 
 import { FiEdit } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
 import { ExportedData } from "@/pages/career/talent-pool/components/ExportedData";
+import { EditModalStore } from "@/pages/career/talent-pool/services/store/useUIStore";
+import { OverviewEditModal } from "@/pages/career/talent-pool/components/EditModal/OverviewEditModal";
+import {AnimatePresence} from "framer-motion"
+
+interface RowData {
+    id: number;
+    nameSname: string;
+    bootNumber: string;
+    contactNumber: string;
+    status: string;
+}
 
 export const OverviewTable = () => {
+    const { OverviewEditOpen, setOverviewEditOpen } = EditModalStore();
     const [currentPage, setCurrentPage] = useState(1);
+    const [selectedData, setSelectedData] = useState<RowData | null>(null);
     const rowsPerPage = 7;
 
-   const [data, setData] = useState(ExportedData)
+    const [data, setData] = useState(ExportedData);
 
-    // Add delete handler
     const handleDelete = (id: number) => {
         setData(prevData => prevData.filter(item => item.id !== id));
-        
-        // Adjust current page if necessary after deletion
         const totalPages = Math.ceil((data.length - 1) / rowsPerPage);
         if (currentPage > totalPages) {
             setCurrentPage(totalPages);
         }
+    };
+
+    const handleEdit = (rowData: RowData) => {
+        setSelectedData(rowData);
+        setOverviewEditOpen(true);
     };
 
     const paginatedData = data.slice(
@@ -29,7 +44,6 @@ export const OverviewTable = () => {
 
     return (
         <div className="w-full">
-            {/* Table Header */}
             <div className="tableHeader flex justify-between items-center">
                 <div className="leftHeader flex">
                     <div className="headerTD p-[16px] font-bold text-[12px] w-[46px]">ID</div>
@@ -43,7 +57,6 @@ export const OverviewTable = () => {
                 </div>
             </div>
 
-            {/* Table Body */}
             <div className="tableBody h-[408px]">
                 {paginatedData.map((rowData) => (
                     <div className="row flex justify-between items-center" key={rowData.id}>
@@ -56,7 +69,10 @@ export const OverviewTable = () => {
                         </div>
                         <div className="rowRight flex gap-x-[12px] w-[95px] justify-center">
                             <div className="">
-                                <FiEdit className="w-[24px] h-[24px] hover:cursor-pointer"/>
+                                <FiEdit 
+                                    className="w-[24px] h-[24px] hover:cursor-pointer"
+                                    onClick={() => handleEdit(rowData)}
+                                />
                             </div>
                             <div className="">
                                 <FiTrash2 
@@ -69,7 +85,6 @@ export const OverviewTable = () => {
                 ))}
             </div>
 
-            {/* Pagination Controls */}
             <div className="flex justify-center">
                 <PaginationControls
                     data={data}
@@ -78,6 +93,9 @@ export const OverviewTable = () => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
+            <AnimatePresence>
+              {OverviewEditOpen && <OverviewEditModal data={selectedData} />}
+            </AnimatePresence>
         </div>
     );
 };
