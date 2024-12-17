@@ -35,7 +35,6 @@ console.log(selectedTo, "selected to");
     console.log("Custom selected range:", dateRange);
   };
 
-
   return (
     <div className="max-w-md mx-auto relative z-50">
       <div>
