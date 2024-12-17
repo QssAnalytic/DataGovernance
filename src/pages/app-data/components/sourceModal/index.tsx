@@ -76,7 +76,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
               Application Source
             </p>
             <button className="bg-none border-none " onClick={onToggle}>
-              <IoCloseSharp className="text-[24px]  " />
+              <IoCloseSharp className="text-[24px]"/>
             </button>
           </div>
 

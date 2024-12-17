@@ -8,6 +8,7 @@ import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
 import PaginationControls from '@/pages/lead-details-page/components/Pagination Controller';
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
+import SaveModal from '../SaveModal';
 
 
 
@@ -23,6 +24,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
+    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+    const [selectedRow, setSelectedRow] = useState<Partial<TableRow>>({});
 
     const handleDeleteClick = (id: number) => {
         setDeleteRowId(id);
@@ -36,6 +39,10 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
+    const handleEditClick = (row: TableRow) => {
+        setSelectedRow(row);
+        setIsSaveModalOpen(true);
+    };
 
 
     const handleSort = () => {
@@ -70,10 +77,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setShowModal(false);
         setDeleteRowId(null);
     };
-    const handleEditClick = (row: TableRow) => {
-        setEditRowId(row.id);
-        setEditFormData(row);
-    };
+
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
         setEditFormData({ ...editFormData, [field]: e.target.value });
@@ -83,6 +87,18 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
         setEditRowId(null);
         setEditFormData({});
+    };
+    const handleModalChange = (field: keyof TableRow, value: string) => {
+        setSelectedRow({ ...selectedRow, [field]: value });
+    };
+
+    const handleSaveModal = () => {
+        setData(data.map(row => (row.id === selectedRow.id ? { ...row, ...selectedRow } : row)));
+        setIsSaveModalOpen(false);
+    };
+
+    const handleCloseModal = () => {
+        setIsSaveModalOpen(false);
     };
 
 
@@ -138,72 +154,25 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                     <tbody>
                         {currentData.map(item => (
                             <tr key={item.id} className="border-b even:bg-[#fafafa] odd:bg-white">
-                                {editRowId === item.id ? (
-                                    <>
-                                        <td className="p-3 text-sm text-gray-700">{item.id}</td>
-                                        <td className="p-3">
-                                            <input
-                                                value={editFormData.name || ''}
-                                                onChange={(e) => handleFormChange(e, 'name')}
-                                                className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </td>
-                                        <td className="p-3">
-                                            <input
-                                                value={editFormData.applicationSource || ''}
-                                                onChange={(e) => handleFormChange(e, 'applicationSource')}
-                                                className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </td>
-                                        <td className="p-3">
-                                            <input
-                                                value={editFormData.trainingName || ''}
-                                                onChange={(e) => handleFormChange(e, 'trainingName')}
-                                                className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </td>
-                                        <td className="p-3">
-                                            <input
-                                                value={editFormData.phone || ''}
-                                                onChange={(e) => handleFormChange(e, 'phone')}
-                                                className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </td>
-                                        <td className="p-3">
-                                            <input
-                                                value={editFormData.date || ''}
-                                                onChange={(e) => handleFormChange(e, 'date')}
-                                                className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </td>
-                                        <td className="p-3 text-center">
-                                            <button
-                                                onClick={() => handleSave(item.id)}
-                                                className="px-3 py-2 bg-[#22385F] text-white rounded-lg text-sm"
-                                            >
-                                                Save
-                                            </button>
-                                        </td>
-                                    </>
-                                ) : (
-                                    <>
-                                        <td className="p-3 text-sm text-gray-700">{item.id}</td>
-                                        <td className="border-none text-center px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
-                                            <input type="checkbox" className="appearance-none w-4 h-4 border checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
-                                        </td>
-                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.name}</td>
-                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.applicationSource}</td>
-                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.trainingName}</td>
-                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.phone}</td>
-                                        <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
-                                        <td className="text-center">
-                                            <div className="flex gap-3">
-                                                <FiEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
-                                                <GoTrash className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
-                                            </div>
-                                        </td>
-                                    </>
-                                )}
+
+                                <>
+                                    <td className="p-3 text-sm text-gray-700">{item.id}</td>
+                                    <td className="border-none text-center px-4 py-2 font-montserrat text-[14px] font-medium leading-normal text-[#000000]" >
+                                        <input type="checkbox" className="appearance-none w-4 h-4 border checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2" />
+                                    </td>
+                                    <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.name}</td>
+                                    <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.applicationSource}</td>
+                                    <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.trainingName}</td>
+                                    <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.phone}</td>
+                                    <td className="font-montserrat text-[14px] font-medium leading-normal text-[#000000]">{item.date}</td>
+                                    <td className="text-center">
+                                        <div className="flex gap-3">
+                                            <FiEdit className="cursor-pointer w-5 h-5" onClick={() => handleEditClick(item)} />
+                                            <GoTrash className="cursor-pointer w-5 h-5" onClick={() => handleDeleteClick(item.id)} />
+                                        </div>
+                                    </td>
+                                </>
+
                             </tr>
                         ))}
                     </tbody>
@@ -217,6 +186,14 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
+            <SaveModal
+                isOpen={isSaveModalOpen}
+                onClose={handleCloseModal}
+                rowData={selectedRow}
+                onSave={handleSaveModal}
+                onChange={handleModalChange}
+            />
+
             {showModal && (
                 <ShowModal handleCancelDelete={handleCancelDelete} handleConfirmDelete={handleConfirmDelete} />
             )}

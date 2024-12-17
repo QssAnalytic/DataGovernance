@@ -60,3 +60,11 @@ export interface CheckBoxesProps {
     isOpen: boolean;
     onToggle: () => void;
 }
+
+export interface SaveModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    rowData: Partial<TableRow>;
+    onSave: () => void;
+    onChange: (field: keyof TableRow, value: string) => void;
+}
