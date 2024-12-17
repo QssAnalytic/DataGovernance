@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface RowData {
-  ID: number;
+  ID: string | number;
   "Ad Soyad": string;
-  Capacity: string;
+  Capacity: string | number;
   Value: number;
   "Final Status": string;
   "Contact Number": string;
@@ -62,17 +62,4 @@ export interface CombinedTableProps {
   }>; // Array of objects with specific keys
   currentPage: number;
   rowsPerPage: number;
-}
-
-
-interface RowData {
-  ID: string | number;
-  "Ad Soyad"?: string;
-  Capacity?: string | number;
-  Value?: string | number;
-  "Final Status"?: string;
-  "Contact Number"?: string;
-  "Training Name"?: string;
-  "Last Contact Date"?: string;
-  "When Call Again"?: string;
 }
