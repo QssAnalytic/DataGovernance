@@ -24,7 +24,6 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
 
-
     const handleDeleteClick = (id: number) => {
         setDeleteRowId(id);
         setShowModal(true);
@@ -38,7 +37,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     };
 
 
-   
+
     const handleSort = () => {
         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
@@ -66,7 +65,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
 
 
-    
+
     const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
@@ -106,7 +105,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
             <div className='max-w-full flex overflow-y-auto max-h-[650px]'>
                 <table className="min-w-[1300px] table-auto w-full rounded-lg border-collapse border border-gray-200">
                     <thead className="bg-[#FAFAFA] sticky top-0 z-5">
-                        <tr className="text-left">
+                        {/* <tr className="text-left">
                             <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
                             <th className="border-none text-center px-3 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
                                 <div className='flex justify-center'>
@@ -128,10 +127,39 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                                     <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Tarix</p>
                                 </div>
                             </th>
-                            <div className="ml-[7px] mt-2 w-[24px] h-[24px] ">
+                            
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
-                            </div>
+                        
+                        </tr> */}
+                        <tr className="text-left">
+                            <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
+                            <th className="border-none text-center px-3 py-2 font-montserrat text-[22px] font-bold leading-normal text-[#000000]">
+                                <div className="flex justify-center">
+                                    <HiOutlinePhone className="w-[24px] h-[24px]" />
+                                </div>
+                            </th>
+                            <th onClick={handleSort}>
+                                <div className="flex gap-1">
+                                    <HiOutlineChevronUpDown className="w-5 h-5" />
+                                    <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Ad və Soyad</p>
+                                </div>
+                            </th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Application Source</th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Training Name</th>
+                            <th className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Mobil nömrə</th>
+                            <th className="cursor-pointer" onClick={handleDateSort}>
+                                <div className="flex gap-1">
+                                    <HiOutlineChevronUpDown className="w-5 h-5" />
+                                    <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">Tarix</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
+                                    <MdOutlineRefresh className="w-[24px] h-[24px]" />
+                                </div>
+                            </th>
                         </tr>
+
                     </thead>
                     <tbody>
                         {currentData.map(item => (
