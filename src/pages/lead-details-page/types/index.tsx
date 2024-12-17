@@ -11,7 +11,6 @@ interface RowData {
   "When Call Again": string;
 }
 
-// Row data for the Education table
 export interface EducationRowData {
   ID: number;
   "Ad Soyad": string;
@@ -47,3 +46,4 @@ export interface CombinedTableProps {
   rowsPerPage: number;
   headers: string[];
 }
+

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {  ChevronsDown, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 import { FiChevronDown } from "react-icons/fi";
@@ -47,7 +47,7 @@ interface ComboboxDemoProps {
   triggerWidth?: string; // Add placeholder prop
 }
 
-export function ComboboxDemo({ frameworks, placeholder = "Search framework...",triggerWidth='182px' }: ComboboxDemoProps) {
+export function ComboboxDemo({ frameworks, placeholder = "Search framework...", triggerWidth = '182px' }: ComboboxDemoProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
   const [isSearchActive, setIsSearchActive] = React.useState(false);
@@ -93,7 +93,7 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...",t
           aria-expanded={open}
           className=" justify-between"
           onClick={() => setOpen(!open)}
-          style={{width:triggerWidth}}
+          style={{ width: triggerWidth }}
         >
           <span className="text-[14px] text-[rgba(150,150,150,1)] ">{placeholder}</span>
           <motion.div
@@ -125,16 +125,16 @@ export function ComboboxDemo({ frameworks, placeholder = "Search framework...",t
 
             {/* Search Icon to toggle search input */}
             {
-              isSearchActive ? 
-              <IoMdClose 
-              className="cursor-pointer text-[rgba(29,126,183,1)] w-[24px] h-[24px]"
-              onClick={handleSearchToggle}
-              />
-              : 
-              <Search
-              className="cursor-pointer text-[rgba(29,126,183,1)]"
-              onClick={handleSearchToggle}
-              />
+              isSearchActive ?
+                <IoMdClose
+                  className="cursor-pointer text-[rgba(29,126,183,1)] w-[24px] h-[24px]"
+                  onClick={handleSearchToggle}
+                />
+                :
+                <Search
+                  className="cursor-pointer text-[rgba(29,126,183,1)]"
+                  onClick={handleSearchToggle}
+                />
             }
           </div>
 

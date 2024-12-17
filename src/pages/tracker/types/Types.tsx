@@ -46,3 +46,15 @@ export interface LessonCheckbox {
     checkboxes: boolean[];
     percent:number;
 }
+
+export interface ReportData{
+    id:number;
+    fullName:string;
+    status:string;
+    percent:string;
+    submisson:string;
+    averange:string;
+    exam:string;
+    finalExam:string;
+    note:string
+}

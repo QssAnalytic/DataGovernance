@@ -9,7 +9,7 @@ import { FiBriefcase } from "react-icons/fi";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./CustomAccordion";
 import { useNavigate } from 'react-router-dom';
 
-export const MiniMenu = ({ isMenuOpen, toggleMenu, closeMenu }: { isMenuOpen: boolean; toggleMenu: () => void;closeMenu: () => void; }) => {
+export const MiniMenu = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean; toggleMenu: () => void}) => {
     const navigate = useNavigate();
 
     const handleNavigation = (path:string) => {

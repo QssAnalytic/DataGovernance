@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ParticipantList } from "./participant/ParticipantList";
 import { TrainerHours } from "./Trainer/TrainerHours";
 import { AttendanceSheet } from "./attendance/AttendanceSheet";
-import { ExecutiveReport } from "./ExecutiveReport";
+import { ExecutiveReport } from "../executiveReport/ExecutiveReport";
 import { ParticipantSatisfaction } from "./ParticipantSatisfaction";
 
 export const Navbar = () => {
