@@ -7,7 +7,7 @@ const ParticipantTable = () => {
 
     const [participants, setParticipants] = useState<Participant[]>(initialParticipants);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const itemsPerPage = 9;
 
     const totalItems = participants.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -57,15 +57,15 @@ const ParticipantTable = () => {
     };
 
     return (
-        <div className="relative px-[40px] py-[40px] w-[100%]">
-            <div className="overflow-x-auto">
-                <div className="min-w-[1300px]">
+        <div className="relative ">
+            <div className="px-[40px] py-[40px] w-[100%] overflow-x-auto">
+                <div className="w-[100%]">
                     <table className="table-auto w-full border-collapse">
-                        <thead className="sticky top-0 bg-[#F5F5F5] z-10">
-                            <tr className="flex w-full px-4 py-0 items-center gap-5 rounded-lg">
-                                <th className="flex w-[80px] h-[54px] pl-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">id</th>
-                                <th className="flex w-[80px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">Program</th>
-                                <th className="flex w-[180px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal">ad soyad</th>
+                        <thead className="sticky top-0 bg-[#F5F5F5]">
+                            <tr className="flex w-full px-4 py-0 items-center gap-5 rounded-lg  bg-[#F5F5F5] ">
+                                <th className="flex w-[80px] h-[54px] pl-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal sticky top-0 left-0 z-10 bg-[#F5F5F5]">id</th>
+                                <th className="flex w-[80px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal sticky top-0 left-[80px] z-10  bg-[#F5F5F5]">Program</th>
+                                <th className="flex w-[180px] h-[54px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary,#000)] font-montserrat text-[12px] font-medium leading-normal sticky top-0 left-[160px] z-10 bg-[#F5F5F5]">ad soyad</th>
                                 <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">r</th>
                                 <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">sql</th>
                                 <th className="flex w-[50px] h-[54px] p-[10px] pl-[16px] flex-col justify-center items-start gap-[10px] text-[#000] font-montserrat text-[12px] font-medium leading-normal">python</th>
@@ -81,15 +81,15 @@ const ParticipantTable = () => {
                                 <th className="flex w-[80px] h-[54px]  p-[10px_16px_10px_1px] flex-col justify-center items-start gap-[10px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[12px] font-medium leading-normal">experience</th>
                             </tr>
                         </thead>
-                        <tbody className="overflow-y-auto max-h-[500px] block w-full">
+                        <tbody className="">
                             {currentItems.map((item, index) => (
                                 <tr
                                     key={item.id}
-                                    className={`flex h-[54px] px-[16px] pl-[16px] items-center gap-[20px] self-stretch rounded-[12px] ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}
+                                    className={`flex h-[54px] px-[16px] pl-[16px] items-center gap-[20px] self-stretch rounded-[12px] ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'} relative`}
                                 >
-                                    <td className="flex h-[49px] p-[16px] w-[80px] items-center gap-[12px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.id}</td>
-                                    <td className="flex w-[80px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.program}</td>
-                                    <td className="flex w-[180px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal">{item.surname}</td>
+                                    <td className={`flex h-[49px] p-[16px] w-[80px] items-center gap-[12px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal sticky top-0 left-0 z-10 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}>{item.id}</td>
+                                    <td className={`flex w-[80px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal sticky top-0 left-[80px] z-10 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}>{item.program}</td>
+                                    <td className={`flex w-[180px] h-[56px] p-[16px] items-center gap-[28px] text-[var(--Content-Text-Primary, #000)] font-montserrat text-[14px] font-medium leading-normal sticky top-0 left-[160px] z-10 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-200'}`}>{item.surname}</td>
                                     <td className="flex w-[50px] h-[50px] p-[13px] justify-center items-centerr">
                                         <input
                                             type="checkbox"
