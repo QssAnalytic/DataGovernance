@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState } from 'react';
 import { HiOutlinePhone } from "react-icons/hi";
 import { MdOutlineRefresh } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
@@ -11,17 +11,15 @@ import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import SaveModal from '../SaveModal';
 
 
-
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
-    const [editRowId, setEditRowId] = useState<number | null>(null);
-    const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
+    // const [editRowId, setEditRowId] = useState<number | null>(null);
+    // const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
+
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
     const [dateSortOrder, setDateSortOrder] = useState<'asc' | 'desc'>('asc'); // Sorting for date
-
-
-
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
@@ -46,48 +44,97 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
 
 
     const handleSort = () => {
+        setSortOrderBy('name');
         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
 
     const handleDateSort = () => {
+        setSortOrderBy('date');
         setDateSortOrder(dateSortOrder === 'asc' ? 'desc' : 'asc');
+     
     };
+        
+    const parseDate = (dateStr:any) => {
+        if (!dateStr) return NaN;
+    
+        const parts = dateStr.split('.');
+        if (parts.length !== 3) {
+            console.error(`Invalid date format: ${dateStr}`);
+            return NaN;
+        }
+    
+        const [day, month, year] = parts;
+        const formattedDate = `${year}-${month}-${day}`;
+        const timestamp = new Date(formattedDate).getTime();
+    
+        if (isNaN(timestamp)) {
+            console.error(`Invalid date parsing for: ${dateStr}`);
+            return NaN;
+        }
+    
+        console.log(`Parsed date ${dateStr} -> ${formattedDate} -> Timestamp: ${timestamp}`);
+    
+        return timestamp;
+    };
+    
 
     const sortedData = data.slice().sort((a, b) => {
-        const nameA = a.name.toLowerCase();
-        const nameB = b.name.toLowerCase();
 
-        if (sortOrder === 'asc') {
-            return nameA.localeCompare(nameB);
-        } else {
-            return nameB.localeCompare(nameA);
+        if (sortOrderBy === 'name') {
+            const nameA = a.name?.toLowerCase() ?? '';
+            const nameB = b.name?.toLowerCase() ?? '';
+            return sortOrder === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
         }
-    }).sort((a, b) => {
-        const dateA = new Date(a.date).getTime();
-        const dateB = new Date(b.date).getTime();
+    
 
-        if (dateSortOrder === 'asc') return dateA - dateB;
-        else return dateB - dateA;
+
+        if (sortOrderBy === 'date') {
+            const dateA = parseDate(a.date);
+            const dateB = parseDate(b.date);
+    
+            console.log(`Row A Date: ${a.date} -> Parsed: ${dateA}`);
+            console.log(`Row B Date: ${b.date} -> Parsed: ${dateB}`);
+    
+            if (isNaN(dateA) && isNaN(dateB) ) {
+                console.error('Both dates are invalid:', a.date, b.date);
+                return 0;
+            }
+    
+            if (isNaN(dateA)) return 1;  // Place invalid dates at the end
+            if (isNaN(dateB)) return -1;
+    
+            return dateSortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+        }
+        return 0;
     });
+    
 
+ 
+    
+    
 
-
-
+    console.log('Data before sorting:', data.map(row => ({
+        id: row.id,
+        name: row.name,
+        date: row.date
+    })));
+ 
     const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
     };
 
 
-    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
-        setEditFormData({ ...editFormData, [field]: e.target.value });
-    };
+     // const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
+    //     setEditFormData({ ...editFormData, [field]: e.target.value });
+    // };
 
-    const handleSave = (id: number) => {
-        setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
-        setEditRowId(null);
-        setEditFormData({});
-    };
+    // const handleSave = (id: number) => {
+    //     setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
+    //     setEditRowId(null);
+    //     setEditFormData({});
+    // };
+
     const handleModalChange = (field: keyof TableRow, value: string) => {
         setSelectedRow({ ...selectedRow, [field]: value });
     };

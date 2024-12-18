@@ -449,7 +449,7 @@ export const executiveData: ReportData[] = [
     {
         id: 1,
         fullName: "Elnur Memmedov",
-        status: "normal",
+        status: "outstanding",
         percent: "100",
         submisson: "0.99",
         averange: "9.2",
@@ -461,7 +461,7 @@ export const executiveData: ReportData[] = [
     {
         id: 2,
         fullName: "Elnur Memmedov",
-        status: "normal",
+        status: "poor",
         percent: "100",
         submisson: "0.99",
         averange: "9.2",
@@ -473,7 +473,7 @@ export const executiveData: ReportData[] = [
     {
         id: 3,
         fullName: "Elnur Memmedov",
-        status: "normal",
+        status: "critical",
         percent: "100",
         submisson: "0.99",
         averange: "9.2",
