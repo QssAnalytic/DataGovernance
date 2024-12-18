@@ -1,23 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React from "react";
 import { GrRefresh } from "react-icons/gr";
-import { FiEdit } from "react-icons/fi";
-import { GoTrash } from "react-icons/go";
+
 import {
   getCapacityStyles,
   getStatusStyles,
 } from "@/helpers/changinColorTable";
-import PaginationControls from "../Pagination Buttons";
+import EditDeleteModal from "../Edit Delete Section";
+import { ContactTableProps } from "../../types";
 
-interface TableProps {
-  headers: string[];
-  data: { [key: string]: any }[];
-}
+const ContactTable: React.FC<ContactTableProps> = ({
+  headers,
+  data,
+  currentPage,
+  rowsPerPage,
+}) => {
+  const startIndex = (currentPage - 1) * rowsPerPage;
 
-const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
-  const rowsPerPage = 7;
-  const totalPages = Math.ceil(data.length / rowsPerPage);
-  const startIndex = (totalPages - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
   const columnWidths: string[] = [
@@ -71,10 +69,10 @@ const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
                     const isCapacity = header === "Capacity";
                     const isStatus = header === "Final Status";
                     const capacityStyles = isCapacity
-                      ? getCapacityStyles(row[header])
+                      ? getCapacityStyles(String(row[header]))
                       : "";
                     const statusStyles = isStatus
-                      ? getStatusStyles(row[header])
+                      ? getStatusStyles(String(row[header] || ""))
                       : "";
 
                     return (
@@ -102,14 +100,11 @@ const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
                   })}
                   <td
                     key={"icons"}
-                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px]  text-center whitespace-nowrap ${
+                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px] text-center whitespace-nowrap ${
                       columnWidths[columnWidths.length - 1]
                     }`}
                   >
-                    <div className="flex justify-center items-center space-x-4">
-                      <FiEdit size={20} />
-                      <GoTrash size={20} />
-                    </div>
+                    <EditDeleteModal />
                   </td>
                 </tr>
               ))}
@@ -117,10 +112,6 @@ const ContactTable: React.FC<TableProps> = ({ headers, data }) => {
           </table>
         </div>
       </div>
-
-      {/* Pagination Controls */}
-
-      <PaginationControls data={data} />
     </div>
   );
 };

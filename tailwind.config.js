@@ -15,7 +15,7 @@ module.exports = {
     		raleway: ["Raleway", 'sans-serif'],
     		lato: ["Lato", 'sans-serif',],
     		noto: ["Noto Sans", 'sans-serif'],
-			montserrat: ['Montserrat', 'sans-serif'],
+    		montserrat: ['Montserrat', 'sans-serif']
     	},
     	container: {
     		center: 'true',
@@ -25,6 +25,9 @@ module.exports = {
     		}
     	},
     	extend: {
+    		boxShadow: {
+    			custom: '0px 0px 20px 0px rgba(0, 0, 0, 0.10)'
+    		},
     		colors: {
     			border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
