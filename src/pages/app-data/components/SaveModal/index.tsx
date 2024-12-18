@@ -1,14 +1,33 @@
 import { FC } from 'react';
+import { MdOutlineClose } from "react-icons/md";
 import { SaveModalProps } from '../../types';
 
 const SaveModal: FC<SaveModalProps> = ({ isOpen, onClose, rowData, onSave, onChange }) => {
+    // Utility function to format a date from YYYY-MM-DD to DD/MM/YYYY
+    const formatDateToDisplay = (date: string): string => {
+        if (!date) return '';
+        const [year, month, day] = date.split('-');
+        return `${day}/${month}/${year}`;
+    };
+
+    // Utility function to format a date from DD/MM/YYYY to YYYY-MM-DD
+    const formatDateToInput = (date: string): string => {
+        if (!date) return '';
+        const [day, month, year] = date.split('/');
+        return `${year}-${month}-${day}`;
+    };
+ 
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 min-w-[700px]">
                 <form className='flex flex-col' >
-                    <h2 className='font-montserrat text-[25px] font-semibold my-2 text-[#22385F]'>Edit Table </h2>
+                    <div className='flex justify-between'>
+                        <h2 className='font-montserrat text-[25px] font-semibold my-2 text-[#22385F]'>Edit Table </h2>
+                        <MdOutlineClose className='text-[35px] cursor-pointer' onClick={onClose} />
+                    </div>
+
                     <div className='flex justify-between'>
                         <div className='flex-col'>
                             <label className="font-montserrat text-[14px]  font-semibold text-[#22385F]  ">Name</label>
@@ -32,16 +51,16 @@ const SaveModal: FC<SaveModalProps> = ({ isOpen, onClose, rowData, onSave, onCha
                                 />
                             </div>
                             <div className="mb-4 flex flex-col">
-                            <label className="font-montserrat text-[14px] font-semibold text-[#22385F] "> Training Name</label>
+                                <label className="font-montserrat text-[14px] font-semibold text-[#22385F] "> Training Name</label>
 
-                            <input
-                                type="text"
-                                value={rowData.trainingName || ''}
-                                onChange={(e) => onChange('trainingName', e.target.value)}
-                                className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
-                            />
+                                <input
+                                    type="text"
+                                    value={rowData.trainingName || ''}
+                                    onChange={(e) => onChange('trainingName', e.target.value)}
+                                    className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
+                                />
                             </div >
-                         
+
                         </div>
                         <div className='flex flex-col'>
                             <div className="mb-4 flex flex-col">
@@ -57,8 +76,12 @@ const SaveModal: FC<SaveModalProps> = ({ isOpen, onClose, rowData, onSave, onCha
                                 <label className="font-montserrat text-[14px] font-semibold mt-2 text-[#22385F]">Date</label>
                                 <input
                                     type="date"
-                                    value={rowData.date || ''}
-                                    onChange={(e) => onChange('date', e.target.value)}
+                                    value={rowData.date?.includes('/') ? formatDateToInput(rowData.date) : rowData.date}
+                                    onChange={(e) => {
+                                        const rawDate = e.target.value; // YYYY-MM-DD
+                                        const formattedDate = formatDateToDisplay(rawDate); // Convert to DD/MM/YYYY
+                                        onChange('date', formattedDate); // Update parent with formatted date
+                                    }}
                                     className="w-[296px] h-[56px] mt-2 bg-[#FAFCFF] border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
                                 />
                             </div>
