@@ -10,6 +10,8 @@ import { EducationRowData, RowData } from "./types";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedMainSection, setSelectedMainSection] = useState<"Icmal" | "Tam">("Icmal");
+
   const [selectedTab, setSelectedTab] = useState("contact");
   const rowsPerPage = 7;
 
