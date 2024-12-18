@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -11,22 +10,30 @@
   list-style-type: none;
 }
 
-
-
 ul,
 li,
 ol {
   list-style: none;
 }
 
-
-
+td.h-9.w-9.text-center.text-sm.p-0.relative {
+  color: hsl(var(--muted-foreground)); /* Change to your desired text color */
+}
 
 @layer base {
   .parent:last-child > :nth-child(2) {
-    border-bottom: #22385F ;
+    border-bottom: #22385f;
+    
   }
+
+  #react-day-picker-2 {
+    color: black
+  }
+
+  button[name="previous-month"],  button[name="next-month"] {
+    color: black; /* Change text color */
   
+}
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -107,9 +114,6 @@ ol {
   }
 }
 
-
-
-
 @layer base {
   * {
     @apply border-border;
@@ -119,3 +123,17 @@ ol {
   }
 }
 
+/* no scrollbar visible */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
