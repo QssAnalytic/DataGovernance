@@ -79,6 +79,15 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     
 
     const sortedData = data.slice().sort((a, b) => {
+
+        if (sortOrderBy === 'name') {
+            const nameA = a.name?.toLowerCase() ?? '';
+            const nameB = b.name?.toLowerCase() ?? '';
+            return sortOrder === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+        }
+    
+
+
         if (sortOrderBy === 'date') {
             const dateA = parseDate(a.date);
             const dateB = parseDate(b.date);
