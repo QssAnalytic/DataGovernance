@@ -1,6 +1,6 @@
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
@@ -10,19 +10,16 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: "dist", // Üretim dosyaları 'dist' dizinine yönlendirilir
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Büyük bağımlılıkları ayrı chunklara ayırmak
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) {
-              return 'react-vendors';
-            }
-            return 'vendor';
+          if (id.includes("node_modules")) {
+            return "vendor";
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Varsayılan limit olan 500 KB yerine 1000 KB olarak belirleme
+    chunkSizeWarningLimit: 1000,
   },
-})
+});
