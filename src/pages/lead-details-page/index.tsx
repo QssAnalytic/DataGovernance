@@ -1,53 +1,54 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-
 import { data, dataEducation, headers, headersEducation } from "./static";
 import TableInfoSection from "./components/Table Info Section";
 import ContactTable from "./components/Contact Table";
 import EducationStatusTable from "./components/Education Status Table";
-import PaginationControls from "./components/Pagination Controller";
 import CombinedTable from "./components/Combined Table";
+import PaginationControls from "./components/Pagination Controller";
+import { EducationRowData, RowData } from "./types";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTab, setSelectedTab] = useState("contact");
   const rowsPerPage = 7;
 
-  const handlePagination = (newPage: number) => {
-    setCurrentPage(newPage);
-  };
+  // Combine headers without duplicates
+  const combinedHeaders = [...new Set([...headers, ...headersEducation])] as (
+    | keyof RowData
+    | keyof EducationRowData
+  )[];
 
   // Combine data for the combined table
   const combineData = () => {
     const combined = [...data, ...dataEducation];
-
     const uniqueData = combined.filter(
-      (value, index, self) => index === self.findIndex((t) => t.ID === value.ID)
+      (item, index, self) => self.findIndex((t) => t.ID === item.ID) === index
     );
-
     return uniqueData;
   };
-  combineData();
 
+  // Get paginated data
   const getPaginatedData = (dataArray: any[]) => {
     const startIndex = (currentPage - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-    return dataArray.slice(startIndex, endIndex);
+    return dataArray.slice(startIndex, startIndex + rowsPerPage);
   };
 
   // Handle tab change
-  const handleTabChange = (tab: string | string[]) => {
-    if (Array.isArray(tab)) {
-      setSelectedTab(tab[0]);
+  const handleTabChange = (tabs: string | string[]) => {
+    if (Array.isArray(tabs)) {
+      setSelectedTab(tabs[0]);
     } else {
-      setSelectedTab(tab);
+      setSelectedTab(tabs);
     }
   };
 
   return (
     <div>
+      {/* Tab Selection */}
       <TableInfoSection onChangeTable={handleTabChange} />
 
+      {/* Render Table Based on Selected Tab */}
       {selectedTab === "contact" && (
         <ContactTable
           headers={headers}
@@ -68,6 +69,7 @@ const DetailsPage = () => {
 
       {selectedTab === "combined" && (
         <CombinedTable
+          headers={combinedHeaders}
           data={getPaginatedData(combineData())}
           currentPage={currentPage}
           rowsPerPage={rowsPerPage}
@@ -84,7 +86,7 @@ const DetailsPage = () => {
             : combineData()
         }
         currentPage={currentPage}
-        setCurrentPage={handlePagination}
+        setCurrentPage={setCurrentPage}
         rowsPerPage={rowsPerPage}
       />
     </div>
