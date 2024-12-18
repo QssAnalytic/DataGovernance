@@ -14,7 +14,7 @@ const TableInfoSection: React.FC<TableInfoSectionProps> = ({
     <div className="flex flex-col gap-[20px]">
       <TableInfoTop />
       <div className="flex justify-between h-[100%]">
-        <TableChanger onChangeTable={onChangeTable} />{" "}
+        <TableChanger onChangeTable={onChangeTable} />
         <div className="flex gap-[16px]">
           <SearchFilter />
           <ContactedFilter />

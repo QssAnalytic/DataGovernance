@@ -20,8 +20,8 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
     if (tab === "Icmal") {
       setActiveOption("contact");
-      setSelectedOptions([]); // Clear Tam selections
-      onChangeTable("contact"); // Default to showing contact table for Icmal
+      setSelectedOptions([]);
+      onChangeTable("contact");
     } else {
       // Default to Contact and Education tables for Tam
       const defaultSelections = ["contact", "education"];
