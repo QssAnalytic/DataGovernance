@@ -4,32 +4,21 @@ import EditDeleteModal from "../Edit Delete Section";
 import { CombinedTableProps } from "../../types";
 
 const CombinedTable: React.FC<CombinedTableProps> = ({
+  headers,
   data,
   currentPage,
   rowsPerPage,
 }) => {
-  const headers = [
-    "ID",
-    "Ad Soyad",
-    "Capacity",
-    "Value",
-    "Final Status",
-    "Contact Number",
-    "Training Name",
-    "Last Contact Date",
-    "When Call Again",
-  ];
-
   const columnWidths = [
-    "w-[3%]", // ID
-    "w-[10%]", // Ad Soyad
-    "w-[13%]", // Capacity
-    "w-[5%]", // Value
-    "w-[15%]", // Final Status
-    "w-[15%]", // Contact Number
-    "w-[12%]", // Training Name
-    "w-[14%]", // Last Contact Date
-    "w-[13%]", // When Call Again
+    "w-[3%]",
+    "w-[10%]",
+    "w-[13%]",
+    "w-[5%]",
+    "w-[15%]",
+    "w-[15%]",
+    "w-[12%]",
+    "w-[14%]",
+    "w-[13%]",
   ];
 
   const startIndex = (currentPage - 1) * rowsPerPage;
@@ -43,9 +32,9 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
             <tr>
               {headers.map((header, index) => (
                 <th
-                  key={header}
+                  key={String(header)} // Convert `header` to string if needed
                   className={`p-[16px] font-[500] text-[12px] text-[#000] ${
-                    columnWidths[index]
+                    columnWidths[index] || "w-auto" // Fallback if widths are missing
                   } text-left ${
                     index === 0 ? "rounded-tl-[20px] rounded-bl-[20px]" : ""
                   }`}
@@ -68,7 +57,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                   <td
                     key={cellIndex}
                     className={`px-[16px] py-[8px] text-left text-[14px] ${
-                      columnWidths[cellIndex]
+                      columnWidths[cellIndex] || "w-auto" // Fallback width
                     } ${
                       cellIndex === 0
                         ? "rounded-tl-[20px] rounded-bl-[20px]"
@@ -82,7 +71,8 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                           : "p-0"
                       } text-[14px] rounded-[16px]`}
                     >
-                      {row[header]}
+                      {/* Safely access row values */}
+                      {row[header as keyof typeof row]}
                     </span>
                   </td>
                 ))}

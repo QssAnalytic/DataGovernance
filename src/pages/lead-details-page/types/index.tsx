@@ -1,6 +1,6 @@
-// Row data for the Contact table
-interface RowData {
-  id: number;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface RowData {
+  ID: number;
   "Ad Soyad": string;
   Capacity: string;
   Value: string;
@@ -23,27 +23,37 @@ export interface EducationRowData {
   "Master Degree": string;
 }
 
-// Props for Contact Table
 export interface ContactTableProps {
-  headers: (keyof RowData)[];
+  headers: (keyof RowData | string)[];
   data: RowData[];
   rowsPerPage: number;
   currentPage: number;
 }
 
-// Props for Education Table
 export interface EducationTableProps {
-  headers: (keyof EducationRowData)[];
+  headers: (keyof EducationRowData | string)[];
   data: EducationRowData[];
   rowsPerPage: number;
   currentPage: number;
 }
 
-// Props for Combined Table (can be used for either Contact or Education)
 export interface CombinedTableProps {
   data: (RowData | EducationRowData)[];
   currentPage: number;
   rowsPerPage: number;
-  headers: string[];
+  headers: (keyof RowData | keyof EducationRowData)[];
 }
 
+export interface ButtonChangerProps {
+  setSuccessMessage: (message: string | null) => void;
+  currentStep: number;
+  steps: string[];
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  onClose: () => void;
+}
+export interface IPaginationControlsProps {
+  data: any[];
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  rowsPerPage: number;
+}
