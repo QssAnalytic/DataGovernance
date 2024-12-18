@@ -14,8 +14,8 @@ import SaveModal from '../SaveModal';
 
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
-    const [editRowId, setEditRowId] = useState<number | null>(null);
-    const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
+    // const [editRowId, setEditRowId] = useState<number | null>(null);
+    // const [editFormData, setEditFormData] = useState<Partial<TableRow>>({});
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
     const [dateSortOrder, setDateSortOrder] = useState<'asc' | 'desc'>('asc'); // Sorting for date
@@ -79,15 +79,15 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     };
 
 
-    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
-        setEditFormData({ ...editFormData, [field]: e.target.value });
-    };
+    // const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof TableRow) => {
+    //     setEditFormData({ ...editFormData, [field]: e.target.value });
+    // };
 
-    const handleSave = (id: number) => {
-        setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
-        setEditRowId(null);
-        setEditFormData({});
-    };
+    // const handleSave = (id: number) => {
+    //     setData(data.map(row => row.id === id ? { ...row, ...editFormData } : row));
+    //     setEditRowId(null);
+    //     setEditFormData({});
+    // };
     const handleModalChange = (field: keyof TableRow, value: string) => {
         setSelectedRow({ ...selectedRow, [field]: value });
     };
