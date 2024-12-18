@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { HiOutlinePhone } from "react-icons/hi";
 import { MdOutlineRefresh } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
