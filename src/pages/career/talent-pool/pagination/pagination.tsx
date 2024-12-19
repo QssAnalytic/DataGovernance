@@ -7,19 +7,19 @@ import {
     PaginationNext,
     PaginationPrevious,
   } from "@/components/ui/pagination";
-  export interface IPaginationControlsProps {
-    data: any[];
+  export interface IPaginationControlsProps<T> {
+    data: T[];
     currentPage: number;
     setCurrentPage: (page: number) => void;
     rowsPerPage: number;
   }
   
-  const PaginationControls: React.FC<IPaginationControlsProps> = ({
+  const PaginationControls = <T,>({
     data,
     currentPage,
     setCurrentPage,
     rowsPerPage,
-  }) => {
+  }: IPaginationControlsProps<T>) => {
     const totalPages = Math.ceil(data.length / rowsPerPage);
   
     // Calculate the range of pages to display

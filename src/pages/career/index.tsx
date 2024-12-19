@@ -2,6 +2,14 @@ import React from "react";
 import { useUIStore } from "../../services/store/useUIStore";
 import { SearchInput } from "./SearchInput";
 import { ComboboxCustom } from "./CustomDropDown";
+
+const frameworks = [
+  { value: "next.js", label: "Next.js" },
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  // ... add more frameworks as needed
+];
+
 const Career: React.FC = () => {
   const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
   React.useEffect(() => {
@@ -18,7 +26,7 @@ const Career: React.FC = () => {
     <div>
       <h2>Overview Page</h2>
       <div>
-        <ComboboxCustom/>
+        <ComboboxCustom frameworks={frameworks} />
       </div>
     </div>
   );

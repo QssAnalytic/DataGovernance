@@ -3,7 +3,7 @@ import { FiRotateCw } from "react-icons/fi";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import { FiEdit } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
-import { ExportedData } from "@/pages/career/talent-pool/components/ExportedData";
+import { OverviewData } from "@/pages/career/talent-pool/components/ExportedData";
 import { EditModalStore } from "@/pages/career/talent-pool/services/store/useUIStore";
 import { OverviewEditModal } from "@/pages/career/talent-pool/components/EditModal/OverviewEditModal";
 import {AnimatePresence} from "framer-motion"
@@ -22,7 +22,7 @@ export const OverviewTable = () => {
     const [selectedData, setSelectedData] = useState<RowData | null>(null);
     const rowsPerPage = 7;
 
-    const [data, setData] = useState(ExportedData);
+    const [data, setData] = useState(OverviewData);
 
     const handleDelete = (id: number) => {
         setData(prevData => prevData.filter(item => item.id !== id));
