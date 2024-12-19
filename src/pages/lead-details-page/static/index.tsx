@@ -1,3 +1,5 @@
+import { EducationRowData, RowData } from "../types";
+
 export const data = [
   {
     ID: 1,
@@ -265,7 +267,7 @@ export const data = [
   },
 ];
 
-export const headers = [
+export const headers: (keyof RowData)[] = [
   "ID",
   "Ad Soyad",
   "Capacity",
@@ -277,7 +279,7 @@ export const headers = [
   "When Call Again",
 ];
 
-export const headersEducation = [
+export const headersEducation: (keyof EducationRowData)[] = [
   "ID",
   "Ad Soyad",
   "Background Knowledge",
@@ -290,7 +292,7 @@ export const headersEducation = [
 ];
 
 export const dataEducation = [
-  { 
+  {
     ID: 1,
     "Ad Soyad": "Will Smith",
     "Background Knowledge": "Excel",

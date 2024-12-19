@@ -45,8 +45,8 @@ export const TrainerHoursTable = () => {
     return (
 
         <div className="p-[20px_0px_0px_40px]">
-            <table>
-                <thead className="flex gap-[2px] sticky top-0  z-10">
+            <table className="">
+                <thead className="flex gap-[2px] sticky top-[-20px]  z-10 bg-[white]">
                     <div>
                         <tr className="flex items-start gap-[2px] ">
                             <th className="flex w-[501px] h-[33px] p-[10px] justify-center items-center gap-[10px] rounded-t-[6px] bg-[#22385F] text-white text-center font-montserrat text-sm font-semibold leading-normal">Details</th>
@@ -72,7 +72,7 @@ export const TrainerHoursTable = () => {
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody >
                     {currentItems.map((item, index) => (
                         <div key={index} className="p-[2px_0] ">
                             <tr className="bg-white pr-[20px]">

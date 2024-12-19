@@ -9,7 +9,7 @@
         { id: 6, name: 'Elchin Rahimov', applicationSource: 'Website', trainingName: 'Cybersecurity', phone: '+994 552345680', date: '16.05.2024' },
         { id: 7, name: 'Sabina Karimova', applicationSource: 'DSA Instagram', trainingName: 'Cloud Computing', phone: '+994 702345679', date: '17.05.2024' },
         { id: 8, name: 'Murad Guliyev', applicationSource: 'LinkedIn', trainingName: 'DevOps', phone: '+994 552345681', date: '18.05.2024' },
-        { id: 9, name: 'Aysel Mehdiyeva', applicationSource: 'Referral', trainingName: 'Product Management', phone: '+994 502345680', date: '19.05.2024' },
+        { id: 9, name: 'Aysel Mehdiyeva', applicationSource: 'Referral', trainingName: 'Product Management', phone: '+994 502345680', date: '02.05.2024' },
         { id: 10, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },
         { id: 11, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Machine Learning', phone: '+994 702345681', date: '20.05.2024' },
         { id: 12, name: 'Rustam Aliyev', applicationSource: 'Google Ads', trainingName: 'Blockchain', phone: '+994 702345681', date: '20.05.2024' },

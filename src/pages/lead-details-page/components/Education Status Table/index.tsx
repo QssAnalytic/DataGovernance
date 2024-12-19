@@ -66,12 +66,15 @@ const EducationStatusTable: React.FC<EducationTableProps> = ({
                   const isEntranceScore = header === "Entrance score";
 
                   const entranceScoreStyle =
-                    isEntranceScore && Number(row[header as keyof EducationRowData]) > 600
+                    isEntranceScore &&
+                    Number(row[header as keyof EducationRowData]) > 600
                       ? "text-green-500"
                       : "";
 
                   const sillabusStyles = isSillabus
-                    ? getSillabusStyles(String(row[header as keyof EducationRowData]))
+                    ? getSillabusStyles(
+                        String(row[header as keyof EducationRowData])
+                      )
                     : "";
 
                   return (
@@ -90,7 +93,8 @@ const EducationStatusTable: React.FC<EducationTableProps> = ({
                           isSillabus ? "py-2 px-[16px] text-center" : "p-0"
                         } text-[14px] rounded-[16px] ${entranceScoreStyle} ${sillabusStyles}`}
                       >
-                        {row[header]}
+                        {/* Ensure `header` is used safely */}
+                        {row[header as keyof EducationRowData]}
                       </span>
                     </td>
                   );

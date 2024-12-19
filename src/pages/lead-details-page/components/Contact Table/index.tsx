@@ -93,7 +93,7 @@ const ContactTable: React.FC<ContactTableProps> = ({
                               : "p-0"
                           } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles}`}
                         >
-                          {row[header]}
+                          {/* {row[header]} */}
                         </span>
                       </td>
                     );
