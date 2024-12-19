@@ -1,114 +1,124 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { data, dataEducation, headers, headersEducation } from "./static";
+import { 
+  data, 
+  dataEducation, 
+  dataEmployment, 
+  headers, 
+  headersEducation, 
+  headersEmployment,
+  unifiedPersonData 
+} from "./static";
 import TableInfoSection from "./components/Table Info Section";
 import ContactTable from "./components/Contact Table";
 import EducationStatusTable from "./components/Education Status Table";
 import CombinedTable from "./components/Combined Table";
 import PaginationControls from "./components/Pagination Controller";
-import { EducationRowData, RowData } from "./types";
+import { EducationRowData, RowData, EmploymentRowData } from "./types";
+import { EmploymentTable } from "./components/Employment Table";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTab, setSelectedTab] = useState("contact");
-  const [activeIcmalTab, setActiveIcmalTab] = useState([
-    "contact",
-    "education",
-  ]);
+  const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
   const rowsPerPage = 7;
-
-  const combinedHeaders = [...new Set([...headers, ...headersEducation])] as (
-    | keyof RowData
-    | keyof EducationRowData
-  )[];
-
-  // Combine data for the combined table
-  const combineData = () => {
-    const combined = [...data, ...dataEducation];
-    const uniqueData = combined.filter(
-      (item, index, self) => self.findIndex((t) => t.ID === item.ID) === index
-    );
-    console.log("Combined Data:", uniqueData); // Debugging line to check combined data
-    return uniqueData;
-  };
 
   // Get paginated data
   const getPaginatedData = (dataArray: any[]) => {
     const startIndex = (currentPage - 1) * rowsPerPage;
-    const paginatedData = dataArray.slice(startIndex, startIndex + rowsPerPage);
-    console.log("Paginated Data:", paginatedData); // Debugging line to check paginated data
-    return paginatedData;
+    return dataArray.slice(startIndex, startIndex + rowsPerPage);
   };
 
-  // Handle tab change
-  const handleTabChange = (tabs: string | string[]) => {
-    console.log("Tab change requested:", tabs); // Debugging line for tab change
-    if (Array.isArray(tabs)) {
-      setSelectedTab(tabs[0]); // If multiple tabs, select the first one (or adjust this logic as needed)
-    } else {
-      setSelectedTab(tabs);
-    }
+  // Get combined data based on selected tables
+  const getCombinedData = () => {
+    const combinedData: Record<string, any>[] = [];
+    
+    unifiedPersonData.forEach(person => {
+      const rowData: Record<string, any> = {
+        ID: person.id,
+        "Ad Soyad": person.contactInfo.adSoyad,
+      };
 
-    // If the selected tab is "combined", ensure both "contact" and "education" are active
-    if (tabs === "combined") {
-      setActiveIcmalTab(["contact", "education"]);
-    } else {
-      setActiveIcmalTab([tabs]);
-    }
+      selectedTables.forEach(table => {
+        switch(table) {
+          case "contact":
+            Object.assign(rowData, {
+              Capacity: person.contactInfo.capacity,
+              Value: person.contactInfo.value,
+              "Final Status": person.contactInfo.finalStatus,
+              "Contact Number": person.contactInfo.contactNumber,
+              "Training Name": person.contactInfo.trainingName,
+              "Last Contact Date": person.contactInfo.lastContactDate,
+              "When Call Again": person.contactInfo.whenCallAgain,
+            });
+            break;
+          case "education":
+            Object.assign(rowData, {
+              "Background Knowledge": person.educationInfo.backgroundKnowledge,
+              "English Level": person.educationInfo.englishLevel,
+              "Sillabusla tanışlıq": person.educationInfo.sillabusla,
+              "University Bachelor": person.educationInfo.universityBachelor,
+              "Bachelor Major": person.educationInfo.bachelorMajor,
+              "Entrance score": person.educationInfo.entranceScore,
+              "Master Degree": person.educationInfo.masterDegree,
+            });
+            break;
+          case "employment":
+            Object.assign(rowData, {
+              Workplace: person.employmentInfo.workplace,
+              Position: person.employmentInfo.position,
+              Note: person.employmentInfo.note,
+            });
+            break;
+        }
+      });
+
+      combinedData.push(rowData);
+    });
+
+    return combinedData;
   };
- 
-  console.log("Selected Tab:", selectedTab); // Debugging line to check the selected tab
-  console.log("Active IC-MAL Tabs:", activeIcmalTab); // Debugging line to check active tabs
+
+  // Handle tab change from Table Changer
+  const handleTabChange = (tabs: string[]) => {
+    setSelectedTables(tabs);
+    setCurrentPage(1);
+  };
+
+  // Get combined headers based on selected tables
+  const getCombinedHeaders = () => {
+    const combinedHeaders: string[] = ["ID", "Ad Soyad"];
+    
+    selectedTables.forEach(table => {
+      switch(table) {
+        case "contact":
+          combinedHeaders.push(...headers.filter(h => !combinedHeaders.includes(h)));
+          break;
+        case "education":
+          combinedHeaders.push(...headersEducation.filter(h => !combinedHeaders.includes(h)));
+          break;
+        case "employment":
+          combinedHeaders.push(...headersEmployment.filter(h => !combinedHeaders.includes(h)));
+          break;
+      }
+    });
+
+    return combinedHeaders;
+  };
 
   return (
     <div>
-      {/* Tab Selection */}
       <TableInfoSection onChangeTable={handleTabChange} />
 
-      {/* Render Table Based on Selected Tab */}
-      {selectedTab === "contact" && (
-        <ContactTable
-          headers={headers}
-          data={getPaginatedData(data)}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-        />
-      )}
+      <CombinedTable
+        headers={getCombinedHeaders()}
+        data={getPaginatedData(getCombinedData())}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+      />
 
-      {selectedTab === "education" && (
-        <EducationStatusTable
-          headers={headersEducation}
-          data={getPaginatedData(dataEducation)}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-        />
-      )}
-
-      {/* Render Combined Table if Both "contact" and "education" Tabs are Active */}
-      {selectedTab === "combined" &&
-        activeIcmalTab.includes("contact") &&
-        activeIcmalTab.includes("education") && (
-          <>
-            <h2>Combined Table Rendered</h2>{" "}
-            {/* Debugging line to check if this part is reached */}
-            <CombinedTable
-              headers={combinedHeaders}
-              data={getPaginatedData(combineData())}
-              currentPage={currentPage}
-              rowsPerPage={rowsPerPage}
-            />
-          </>
-        )}
-
-      {/* Pagination Controls */}
       <PaginationControls
-        data={
-          selectedTab === "contact"
-            ? data
-            : selectedTab === "education"
-            ? dataEducation
-            : combineData()
-        }
+        data={getCombinedData()}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         rowsPerPage={rowsPerPage}

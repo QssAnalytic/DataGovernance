@@ -4,7 +4,7 @@ import TableChanger from "../Table Changer";
 import TableInfoTop from "../Table Info Top";
 
 interface TableInfoSectionProps {
-  onChangeTable: (tables: string | string[]) => void;
+  onChangeTable: (tables: string[]) => void;
 }
 
 const TableInfoSection: React.FC<TableInfoSectionProps> = ({
