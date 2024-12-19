@@ -7,7 +7,7 @@ interface TableChangerProps {
 const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
   const [activeTab, setActiveTab] = useState<"Icmal" | "Tam">("Icmal");
   const [activeOption, setActiveOption] = useState<string>("contact");
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(["contact"]);
 
   const options = [
     { label: "Contact Status", value: "contact" },
@@ -17,13 +17,13 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
     setActiveTab(tab);
-
     if (tab === "Icmal") {
+      const newSelection = ["contact"];
       setActiveOption("contact");
-      setSelectedOptions([]);
-      onChangeTable(["contact"]);
+      setSelectedOptions(newSelection);
+      onChangeTable(newSelection);
     } else {
-      const defaultSelections = ["contact", "education"];
+      const defaultSelections = ["contact"];
       setActiveOption("");
       setSelectedOptions(defaultSelections);
       onChangeTable(defaultSelections);
@@ -34,12 +34,14 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
     if (activeTab === "Icmal") {
       setActiveOption(option.value);
       onChangeTable([option.value]);
-    } else if (activeTab === "Tam") {
+    } else {
       const updatedSelections = selectedOptions.includes(option.value)
-        ? selectedOptions.filter((item) => item !== option.value)
+        ? selectedOptions.length > 1 
+          ? selectedOptions.filter((item) => item !== option.value)
+          : selectedOptions
         : [...selectedOptions, option.value];
+      
       setSelectedOptions(updatedSelections);
-
       onChangeTable(updatedSelections);
     }
   };
