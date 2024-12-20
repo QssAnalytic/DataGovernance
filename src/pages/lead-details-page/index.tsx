@@ -13,6 +13,7 @@ import PaginationControls from "./components/Pagination Controller";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+
   const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
   const rowsPerPage = 7;
 

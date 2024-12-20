@@ -8,62 +8,58 @@ import {
 import React, { useState } from "react";
 import { DatePickerWithRange } from "../CustomRange";
 import { DateRange } from "react-day-picker";
+import { LuCalendar1 } from "react-icons/lu";
 
-import { selectedFrom, selectedTo } from "../CustomRange";
 
 const DateFilter: React.FC = () => {
   const [selectedRange, setSelectedRange] = useState<string>("today");
   const [isCustomOpen, setIsCustomOpen] = useState(false);
+  const [customRangeLabel, setCustomRangeLabel] = useState<string | null>(null); // To display custom range label
 
-
-  console.log(selectedFrom, "selected from");
-  console.log(selectedTo, "selected to");
-
-console.log(selectedFrom, "selected from");
-console.log(selectedTo, "selected to");
+  const dateRanges = [
+    { value: "today", label: "Today" },
+    { value: "yesterday", label: "Yesterday" },
+    { value: "last7days", label: "Last 7 Days" },
+    { value: "last30days", label: "Last 30 Days" },
+    { value: "thismonth", label: "This Month" },
+    { value: "lastmonth", label: "Last Month" },
+    { value: "custom", label: "Custom Range" },
+  ];
 
   const handleRangeChange = (value: string) => {
     setSelectedRange(value);
-    if (value === "custom") {
-      setIsCustomOpen(true);
-    } else {
-      setIsCustomOpen(false);
-    }
+    setCustomRangeLabel(null); // Reset custom range label if a predefined range is selected
+    setIsCustomOpen(value === "custom"); // Open modal only for custom range
   };
 
   const onCustomDateSelect = (dateRange: DateRange | undefined) => {
-    console.log("Custom selected range:", dateRange);
+    if (dateRange) {
+      const formattedRange = `${dateRange.from?.toLocaleDateString("en-GB")} - ${dateRange.to?.toLocaleDateString("en-GB")}`;
+      setCustomRangeLabel(formattedRange); // Save the formatted custom range label
+      setSelectedRange("custom"); // Ensure "custom" value is still selected
+    }
   };
+
+  
 
   return (
     <div className="max-w-md mx-auto relative z-50">
-      <div>
-        <Select value={selectedRange} onValueChange={handleRangeChange}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
+      <div className="flex justify-center" >
+        <Select value={selectedRange}  onValueChange={handleRangeChange}>
+
+          <SelectTrigger className="w-[280px] h-[46px] border-[1px] border-[#22385F] focus:outline-none focus:ring-0 ">
+      <LuCalendar1 className="text-[#22385F]  text-[20px]" />
+
+            <SelectValue  placeholder="Select a range">
+                  {customRangeLabel || dateRanges.find((range) => range.value === selectedRange)?.label || "Select"}
+               </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem className="text-black" value="today">
-              Today
-            </SelectItem>
-            <SelectItem className="text-black" value="yesterday">
-              Yesterday
-            </SelectItem>
-            <SelectItem className="text-black" value="last7days">
-              Last 7 days
-            </SelectItem>
-            <SelectItem className="text-black" value="last30days">
-              Last 30 days
-            </SelectItem>
-            <SelectItem className="text-black" value="thismonth">
-              This month
-            </SelectItem>
-            <SelectItem className="text-black" value="lastmonth">
-              Last month
-            </SelectItem>
-            <SelectItem className="text-black" value="custom">
-              Custom Range
-            </SelectItem>
+            {dateRanges.map((range) => (
+              <SelectItem key={range.value} className="text-[#22385F]" value={range.value}>
+                {range.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
