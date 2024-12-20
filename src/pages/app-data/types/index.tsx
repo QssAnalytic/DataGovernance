@@ -44,8 +44,8 @@ export interface SourceModalProps {
 export interface CheckBoxesProps {
     item: string;
     index: number;
-    isChecked: any;
-    handleCheckboxChange: any;
+    isChecked: boolean;
+    handleCheckboxChange: () => void;
 
 
 }
@@ -70,3 +70,11 @@ export interface SaveModalProps {
     onSave: () => void;
     onChange: (field: keyof TableRow, value: string) => void;
 }
+
+
+
+export interface SearchInputProps {
+    query: string;
+    setQuery: (value: string) => void;
+  } 
+  

@@ -57,7 +57,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     };
 
 
-    const parseDate = (dateStr: any) => {
+    const parseDate = (dateStr: string) => {
         if (!dateStr) return NaN;
 
         const parts = dateStr.split('.');
