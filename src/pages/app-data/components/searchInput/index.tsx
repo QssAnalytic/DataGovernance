@@ -1,7 +1,7 @@
 import { CiSearch } from "react-icons/ci";
+import { SearchInputProps } from "../../types";
 
-
-const SearchInput = ({ query, setQuery }: any) => {
+const SearchInput: React.FC<SearchInputProps> = ({ query, setQuery }) => {
   return (
     <>
       <div className=" flex ml-3  h-[20px] relative z-10 justify-start">
