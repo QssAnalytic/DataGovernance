@@ -1,36 +1,5 @@
-interface PersonData {
-    id: number;
-    personalInfo: {
-        nameS: string;
-        bootN: string;
-        contactNumber: string;
-        status: string;
-    };
-    education?: {
-        bachDegree: string;
-        uniScore: number;
-        bachMajor: string;
-        masterDegree: string;
-        MathScore: number;
-        masterMajor: string;
-        uniPHD: string;
-        phdMajor: string;
-        languageSkills: string;
-    };
-    jobStatus?: {
-        company: string;
-        position: string;
-        sector: string;
-        jobRef: string;
-        refNo: string;
-        linkedIn: string;
-        skills: string;
-        level: string;
-        notes: string;
-    };
-}
+import { PersonData } from '../types/DataTypes';
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const UnifiedData: PersonData[] = [
     {
         id: 1,
@@ -466,47 +435,5 @@ export const UnifiedData: PersonData[] = [
             notes: "CCNP certified"
         }
     }
+    // ... Continue with entries 3-14 from your ExportedData.tsx
 ];
-
-// Helper functions to get specific table data
-export const OverviewData = UnifiedData.map(person => ({
-    id: person.id,
-    nameSname: person.personalInfo.nameS,
-    bootNumber: person.personalInfo.bootN,
-    contactNumber: person.personalInfo.contactNumber,
-    status: person.personalInfo.status
-}));
-
-export const EducationData = UnifiedData
-    .filter(person => person.education)
-    .map(person => ({
-        id: person.id,
-        nameS: person.personalInfo.nameS,
-        bootN: parseInt(person.personalInfo.bootN),
-        bachDegree: person.education!.bachDegree,
-        uniScore: person.education!.uniScore,
-        bachMajor: person.education!.bachMajor,
-        masterDegree: person.education!.masterDegree,
-        MathScore: person.education!.MathScore,
-        masterMajor: person.education!.masterMajor,
-        uniPHD: person.education!.uniPHD,
-        phdMajor: person.education!.phdMajor,
-        languageSkills: person.education!.languageSkills
-    }));
-
-export const JobStatusData = UnifiedData
-    .filter(person => person.jobStatus)
-    .map(person => ({
-        id: person.id,
-        nameS: person.personalInfo.nameS,
-        bootN: parseInt(person.personalInfo.bootN),
-        company: person.jobStatus!.company,
-        position: person.jobStatus!.position,
-        sector: person.jobStatus!.sector,
-        jobRef: person.jobStatus!.jobRef,
-        refNo: person.jobStatus!.refNo,
-        linkedIn: person.jobStatus!.linkedIn,
-        skills: person.jobStatus!.skills,
-        level: person.jobStatus!.level,
-        notes: person.jobStatus!.notes
-    }));
