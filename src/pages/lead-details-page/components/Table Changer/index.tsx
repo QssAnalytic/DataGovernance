@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 interface TableChangerProps {
-  onChangeTable: (tables: string | string[]) => void;
+  onChangeTable: (tables: string[]) => void;
 }
 
 const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
   const [activeTab, setActiveTab] = useState<"Icmal" | "Tam">("Icmal");
   const [activeOption, setActiveOption] = useState<string>("contact");
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(["contact"]);
 
   const options = [
     { label: "Contact Status", value: "contact" },
@@ -17,39 +17,37 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
     setActiveTab(tab);
-
     if (tab === "Icmal") {
+      const newSelection = ["contact"];
       setActiveOption("contact");
-      setSelectedOptions([]); // Clear Tam selections
-      onChangeTable("contact"); // Default to showing contact table for Icmal
+      setSelectedOptions(newSelection);
+      onChangeTable(newSelection);
     } else {
-      // Default to Contact and Education tables for Tam
-      const defaultSelections = ["contact", "education"];
-      setActiveOption(""); // Clear single option
+      const defaultSelections = ["contact"];
+      setActiveOption("");
       setSelectedOptions(defaultSelections);
-      onChangeTable(defaultSelections); // Show default combined tables
+      onChangeTable(defaultSelections);
     }
   };
 
   const handleOptionClick = (option: { label: string; value: string }) => {
     if (activeTab === "Icmal") {
       setActiveOption(option.value);
-      onChangeTable(option.value); // Show the single selected table
-    } else if (activeTab === "Tam") {
-      // Toggle the option for multi-selection
+      onChangeTable([option.value]);
+    } else {
       const updatedSelections = selectedOptions.includes(option.value)
-        ? selectedOptions.filter((item) => item !== option.value)
+        ? selectedOptions.length > 1 
+          ? selectedOptions.filter((item) => item !== option.value)
+          : selectedOptions
         : [...selectedOptions, option.value];
+      
       setSelectedOptions(updatedSelections);
-
-      // Combine the selected tables
-      onChangeTable(updatedSelections); // Pass updated selections to parent
+      onChangeTable(updatedSelections);
     }
   };
 
   return (
     <div className="border border-solid border-[#E9E9E9] rounded-[12px] flex gap-[12px]">
-      {/* Tab selection: Icmal & Tam */}
       <div className="flex">
         <div
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
@@ -73,7 +71,6 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
         </div>
       </div>
 
-      {/* Options selection */}
       <div className="flex items-center">
         {options.map((option) => (
           <div
