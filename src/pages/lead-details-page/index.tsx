@@ -1,27 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { 
-  data, 
-  dataEducation, 
-  dataEmployment, 
-  headers, 
-  headersEducation, 
+import {
+  headers,
+  headersEducation,
   headersEmployment,
-  unifiedPersonData 
+  unifiedPersonData,
 } from "./static";
 import TableInfoSection from "./components/Table Info Section";
-import ContactTable from "./components/Contact Table";
-import EducationStatusTable from "./components/Education Status Table";
+
 import CombinedTable from "./components/Combined Table";
 import PaginationControls from "./components/Pagination Controller";
-import { EducationRowData, RowData, EmploymentRowData } from "./types";
-import { EmploymentTable } from "./components/Employment Table";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedMainSection, setSelectedMainSection] = useState<"Icmal" | "Tam">("Icmal");
 
-  const [selectedTab, setSelectedTab] = useState("contact");
   const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
   const rowsPerPage = 7;
 
@@ -34,15 +26,15 @@ const DetailsPage = () => {
   // Get combined data based on selected tables
   const getCombinedData = () => {
     const combinedData: Record<string, any>[] = [];
-    
-    unifiedPersonData.forEach(person => {
+
+    unifiedPersonData.forEach((person) => {
       const rowData: Record<string, any> = {
         ID: person.id,
         "Ad Soyad": person.contactInfo.adSoyad,
       };
 
-      selectedTables.forEach(table => {
-        switch(table) {
+      selectedTables.forEach((table) => {
+        switch (table) {
           case "contact":
             Object.assign(rowData, {
               Capacity: person.contactInfo.capacity,
@@ -90,17 +82,23 @@ const DetailsPage = () => {
   // Get combined headers based on selected tables
   const getCombinedHeaders = () => {
     const combinedHeaders: string[] = ["ID", "Ad Soyad"];
-    
-    selectedTables.forEach(table => {
-      switch(table) {
+
+    selectedTables.forEach((table) => {
+      switch (table) {
         case "contact":
-          combinedHeaders.push(...headers.filter(h => !combinedHeaders.includes(h)));
+          combinedHeaders.push(
+            ...headers.filter((h) => !combinedHeaders.includes(h))
+          );
           break;
         case "education":
-          combinedHeaders.push(...headersEducation.filter(h => !combinedHeaders.includes(h)));
+          combinedHeaders.push(
+            ...headersEducation.filter((h) => !combinedHeaders.includes(h))
+          );
           break;
         case "employment":
-          combinedHeaders.push(...headersEmployment.filter(h => !combinedHeaders.includes(h)));
+          combinedHeaders.push(
+            ...headersEmployment.filter((h) => !combinedHeaders.includes(h))
+          );
           break;
       }
     });
