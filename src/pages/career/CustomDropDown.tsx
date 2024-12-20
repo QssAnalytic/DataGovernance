@@ -15,7 +15,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { IoClose } from "react-icons/io5";
 
 interface Framework {
   value: string;
