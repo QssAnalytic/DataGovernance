@@ -21,6 +21,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
     "w-[13%]",
   ];
 
+
   console.log(headers, "in the combined table");
   const startIndex = (currentPage - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);

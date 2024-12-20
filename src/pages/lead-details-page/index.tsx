@@ -19,6 +19,8 @@ import { EmploymentTable } from "./components/Employment Table";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedMainSection, setSelectedMainSection] = useState<"Icmal" | "Tam">("Icmal");
+
   const [selectedTab, setSelectedTab] = useState("contact");
   const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
   const rowsPerPage = 7;

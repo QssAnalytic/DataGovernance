@@ -10,7 +10,7 @@ const Home = () => {
         setButtonLabel('Home Page')
         setModalContent(<div className="text-black">home pageModal</div>)
         setPageCustomHeader(<DatePickerWithRange/>)
-    },[])
+    },[setButtonLabel, setModalContent, setPageCustomHeader])
     return (
         <div className="flex items-center justify-center ">
             <div className=" flex flex-col gap-3">
