@@ -48,6 +48,7 @@ export const OverviewEditModal = ({ data }: EditModalProps) => {
                                   type="text"
                                   defaultValue={data.nameSname}
                                   className="w-full p-3 border border-[#22385F] rounded-lg focus:outline-none"
+                                  placeholder="Ad və Soyad"
                                 />
                               </div>
                               <div>
