@@ -6,15 +6,13 @@ import { EmploymentTableProps, EmploymentRowData } from "../../types";
 export const EmploymentTable: React.FC<EmploymentTableProps> = ({
   headers,
   data,
-  currentPage,
-  rowsPerPage,
 }) => {
   const columnWidths: string[] = [
-    "w-[3%]",   // ID
-    "w-[15%]",  // Ad Soyad
-    "w-[25%]",  // Workplace
-    "w-[20%]",  // Position
-    "w-[37%]",  // Note
+    "w-[3%]", // ID
+    "w-[15%]", // Ad Soyad
+    "w-[25%]", // Workplace
+    "w-[20%]", // Position
+    "w-[37%]", // Note
   ];
 
   return (
@@ -53,9 +51,7 @@ export const EmploymentTable: React.FC<EmploymentTableProps> = ({
                 {headers.map((header, cellIndex) => (
                   <td
                     key={cellIndex}
-                    className={`px-[16px] py-[8px] text-left whitespace-nowrap text-[14px] ${
-                      columnWidths[cellIndex]
-                    }`}
+                    className={`px-[16px] py-[8px] text-left whitespace-nowrap text-[14px] ${columnWidths[cellIndex]}`}
                   >
                     {row[header as keyof EmploymentRowData]}
                   </td>
