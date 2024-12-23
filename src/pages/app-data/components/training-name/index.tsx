@@ -129,7 +129,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
       {isOpen ? (
         <div
           ref={dropdownRef}
-          className="absolute right-0 z-10 rounded-xl shadow-lg p-4 bg-white "
+          className="absolute right-0 z-[100] rounded-xl shadow-lg p-4 bg-white "
         >
           {!isCustomized ? (
             <div className="flex justify-between mt-3 px-3 pr-0 w-[295px]  h-[22px]">

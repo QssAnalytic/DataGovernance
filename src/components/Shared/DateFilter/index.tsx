@@ -81,10 +81,6 @@ const DateFilter: React.FC = () => {
   };
 
 
-  const handleCloseModal = () => {
-    setIsCustomOpen(false);
-    setCustomRangeLabel(null);
-  }
 
   return (
     <div className="max-w-md mx-auto relative z-50">
@@ -110,7 +106,7 @@ const DateFilter: React.FC = () => {
             <div className="bg-white rounded-lg shadow-lg p-6">
               <DatePickerWithRange
                 onDateSelect={onCustomDateSelect}
-                closeModal={handleCloseModal}
+                closeModal={() => setIsCustomOpen(false)}
               />
             </div>
           </div>

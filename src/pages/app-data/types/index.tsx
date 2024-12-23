@@ -78,4 +78,15 @@ export interface SearchInputProps {
     query: string;
     setQuery: (value: string) => void;
   } 
+
   
+  // Define the props type for the component
+  export interface TableContentProps {
+    handleSort: () => void;
+    handleDateSort: () => void;
+    handleEditClick: (item: TableRow) => void;
+    handleDeleteClick: (id: number) => void;
+    currentData: TableRow[];
+    sortOrder?: "asc" | "desc";
+    dateSortOrder?: "asc" | "desc";
+  }
