@@ -121,7 +121,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
         } // Type assertion
         onClick={onToggle}
       >
-        <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 leading-[17.07px]">
+        <p className="font-montserrat font-normal text-[16px] text-[#969696] mt-1 leading-[17.07px]">
           Training Name
         </p>
         <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
@@ -133,7 +133,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
         >
           {!isCustomized ? (
             <div className="flex justify-between mt-3 px-3 pr-0 w-[295px]  h-[22px]">
-              <p className="font-montserrat font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left">
+              <p className="font-montserrat font-semibold leading-[19.05px] text-[14px] text-[#000000] text-left">
                 {" "}
                 Training Name
               </p>
@@ -150,9 +150,9 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 onClick={handleToggleCustomized}
                 className="bg-none border-none"
               >
-                <FaArrowLeft className="text-[18px]" />
+                <FaArrowLeft className="text-[18px] cursor-pointer text-[#000]" />
               </button>
-              <p className="font-montserrat font-semibold leading-[19.05px] mt-[2px] text-[16px] text-[#000000] text-left">
+              <p className="font-montserrat  font-semibold leading-[19.05px] mt-[2px] text-[16px] text-[#000000] text-left">
                 {" "}
                 Customized
               </p>
@@ -174,12 +174,12 @@ const TrainingName: React.FC<TrainingNameProps> = ({
 
                   {!isSearch ? (
                     <CiSearch
-                      className="w-5 cursor-pointer h-5"
+                      className="w-5 text-[20px] cursor-pointer text-[#8F8F8F]"
                       onClick={() => setIsSearch(true)}
                     />
                   ) : (
                     <IoClose
-                      className="w-5 h-5 cursor-pointer"
+                      className="w-5 h-5 text-[20px]  text-[#8F8F8F] cursor-pointer"
                       onClick={() => setIsSearch(false)}
                     />
                   )}
@@ -191,9 +191,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
               <div className="relative h-[40px] z-50">
                 <SearchInput
                   setQuery={setQuery}
-                  query={query}
-                  isSearch={isSearch}
-                  setIsSearch={setIsSearch}
+                  query={query}    
                 />
               </div>
             )}
@@ -201,31 +199,31 @@ const TrainingName: React.FC<TrainingNameProps> = ({
             <div className="overflow-y-scroll max-h-[155px]">
               {!isCustomized
                 ? filteredItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex  items-center justify-between px-[10px] mt-[10px]"
-                    >
-                      <CheckBoxes
-                        item={item}
-                        index={index}
-                        isChecked={isChecked}
-                        handleCheckboxChange={handleCheckboxChange}
-                      />
-                    </div>
-                  ))
+                  <div
+                    key={index}
+                    className="flex  items-center justify-between px-[10px] mt-[5px]"
+                  >
+                    <CheckBoxes
+                      item={item}
+                      index={index}
+                      isChecked={isChecked[index]}
+                      handleCheckboxChange={handleCheckboxChange}
+                    />
+                  </div>
+                ))
                 : customizedItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between px-[10px] mt-[10px]"
-                    >
-                      <CheckBoxes
-                        item={item}
-                        index={index}
-                        isChecked={isCustomizedChecked}
-                        handleCheckboxChange={handleCustomizedsCheckboxChange}
-                      />
-                    </div>
-                  ))}
+                  <div
+                    key={index}
+                    className="flex items-center justify-between px-[10px] mt-[5px]"
+                  >
+                    <CheckBoxes
+                      item={item}
+                      index={index}
+                      isChecked={isCustomizedChecked[index]}
+                      handleCheckboxChange={handleCustomizedsCheckboxChange}
+                    />
+                  </div>
+                ))}
 
               {!isCustomized && (
                 <button

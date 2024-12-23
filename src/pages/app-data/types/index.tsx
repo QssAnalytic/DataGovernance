@@ -45,7 +45,7 @@ export interface CheckBoxesProps {
     item: string;
     index: number;
     isChecked: boolean;
-    handleCheckboxChange: () => void;
+    handleCheckboxChange: (index: number) => void;
 
 
 }
@@ -61,6 +61,7 @@ export interface CheckBoxesProps {
  export interface ContactStatusProps {
     isOpen: boolean;
     onToggle: () => void;
+    width:string;
 }
 
 export interface SaveModalProps {
