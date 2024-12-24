@@ -146,7 +146,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     return (
         <div>
             <div className='max-w-full flex overflow-y-auto max-h-[650px]'>
-                <TableContent handleSort = {handleSort} handleDateSort = {handleDateSort} currentData = {currentData} handleEditClick =  {handleEditClick}   handleDeleteClick={handleDeleteClick}/>
+                <TableContent handleSort = {handleSort} handleDateSort = {handleDateSort} currentData = {currentData} handleEditClick =  {handleEditClick}   sortOrder={sortOrder} 
+    dateSortOrder={dateSortOrder}   handleDeleteClick={handleDeleteClick}/>
             </div>
             <div className="  flex justify-center">
                 <PaginationControls

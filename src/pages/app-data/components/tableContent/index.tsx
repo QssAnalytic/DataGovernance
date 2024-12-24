@@ -30,8 +30,15 @@ const TableContent: React.FC<TableContentProps> = ({
                         <div className="flex gap-1">
                             <HiOutlineChevronUpDown
                                 onClick={handleSort}
-                                className={`cursor-pointer w-5 h-5 ${sortOrder === "asc" ? "text-[#ff2c2c]" : sortOrder === "desc" ? "text-[#4BB543]" : "text-gray-600"
-                                    }`}
+                                // className={`cursor-pointer w-5 h-5 ${sortOrder === "asc" ? "text-[#ff2c2c]" : sortOrder === "desc" ? "text-[#4BB543]" : "text-gray-600"
+                                //     }`}
+                                className={`cursor-pointer w-5 h-5 ${
+                                    sortOrder === "asc"
+                                      ? "text-[#ff2c2c]"
+                                      : sortOrder === "desc"
+                                      ? "text-[#4BB543]"
+                                      : "text-gray-600"
+                                  }`}
                             />
                             <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
                                 Ad və Soyad
@@ -53,6 +60,7 @@ const TableContent: React.FC<TableContentProps> = ({
                                 onClick={handleDateSort}
                                 className={`cursor-pointer w-5 h-5 ${dateSortOrder === "asc" ? "text-[#ff2c2c]" : dateSortOrder === "desc" ? "text-[#4BB543]" : "text-gray-600"
                                     }`}
+
                             />
                             <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
                                 Tarix

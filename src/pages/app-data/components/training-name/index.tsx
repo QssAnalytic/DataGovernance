@@ -191,7 +191,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
               <div className="relative h-[40px] z-50">
                 <SearchInput
                   setQuery={setQuery}
-                  query={query}    
+                  query={query}
                 />
               </div>
             )}
@@ -206,7 +206,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                     <CheckBoxes
                       item={item}
                       index={index}
-                      isChecked={isChecked[index]}
+                      isChecked={isChecked[index]} // Pass the specific value for this checkbox
                       handleCheckboxChange={handleCheckboxChange}
                     />
                   </div>

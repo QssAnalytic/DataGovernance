@@ -40,15 +40,12 @@ export interface SourceModalProps {
     setSearchTerm: (value: string) => void;
 }
 
-
 export interface CheckBoxesProps {
     item: string;
     index: number;
-    isChecked: boolean;
+    isChecked: boolean; // Change this from `boolean[]` to `boolean`
     handleCheckboxChange: (index: number) => void;
-
-
-}
+  }
 
  export interface CheckBoxesPropsTitle {
     isCustomized: boolean;
@@ -87,6 +84,6 @@ export interface SearchInputProps {
     handleEditClick: (item: TableRow) => void;
     handleDeleteClick: (id: number) => void;
     currentData: TableRow[];
-    sortOrder?: "asc" | "desc";
-    dateSortOrder?: "asc" | "desc";
+    sortOrder: 'asc' | 'desc' | ''; // Add this
+    dateSortOrder: 'asc' | 'desc' | ''; // Add this
   }
