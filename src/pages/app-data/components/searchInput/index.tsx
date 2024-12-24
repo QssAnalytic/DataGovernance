@@ -13,7 +13,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ query, setQuery }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className=" relative z-10 w-[200px] h-[35px] pl-7 rounded-md  border-[1px] border-[#8F8F8F] focus:outline-none"
+          className=" relative z-10 w-[200px] h-[35px] text-[#8F8F8F] pl-7 rounded-md  border-[1px] border-[#8F8F8F] focus:outline-none"
 
         />
       </div>

@@ -30,11 +30,12 @@ export function DatePickerWithRange({
     closeModal(); // Close the modal
   };
 
+
   const formatDateRange = () => {
     if (!date) return "No date selected";
     const from = date.from ? format(date.from, "MMM d") : "Start";
     const to = date.to ? format(date.to, "MMM d") : "End";
-  
+
     return (
       <>
         <span className="text-black">{from}</span>
@@ -43,14 +44,17 @@ export function DatePickerWithRange({
       </>
     );
   };
+
+
+
   return (
     <div className="w-[320px] mx-5">
       <div className="flex justify-between">
         <h2 className='font-montserrat font-normal text-[16px] text-[#00000099] mt-1 leading-7 '>SELECT DATE RANGE</h2>
-        <div className="w-[44px] cursor-pointer h-[44px] border-[1px] mb-2 rounded-[12px] border-[#22385F] pl-[5px] pt-[5px]"  onClick={closeModal}>
-        <IoCloseOutline  className="text-[#000000]  text-[30px] " />
-         </div>
-       </div>
+        <div className="w-[44px] cursor-pointer h-[44px] border-[1px] mb-2 rounded-[12px] border-[#22385F] pl-[5px] pt-[5px]" onClick={closeModal}>
+          <IoCloseOutline className="text-[#000000]  text-[30px] " />
+        </div>
+      </div>
 
       <h1 className="font-montserrat font-normal leading-3 text-[25px] ">
         {formatDateRange()}
@@ -58,12 +62,24 @@ export function DatePickerWithRange({
       <Calendar
         initialFocus
         mode="range"
-        defaultMonth={date?.from || new Date()} // Default to today's date
+        defaultMonth={date?.from || new Date()}
         selected={date}
         onSelect={setDate}
         className="flex mt-5 justify-center text-black"
         numberOfMonths={1}
+        modifiers={{
+          selected: (day) => !!(date?.from && date?.to && day >= date.from && day <= date.to),
+        }}
+        modifiersClassNames={{
+          selected: "bg-[#22385F] text-[#fff] rounded-full", // Fully rounded for start/end dates
+          range_start: "rounded-l-full rounded-r-full", // Round only the left side for the start date
+          range_end: "rounded-r-full rounded-l-full",   // Round only the right side for the end date
+          range_middle: "bg-[#1976D21F] text-black", // Flat for the middle of the range
+       
+        }}
       />
+
+
       <div className="flex justify-around">
         <Button
           onClick={closeModal}
