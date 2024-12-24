@@ -1,5 +1,6 @@
 export const getCapacityStyles = (capacity: string) => {
   const trimmedCapacity = capacity.trim();
+  console.log(`Capacity: ${trimmedCapacity}`);
   switch (trimmedCapacity) {
     case "No Way":
       return "bg-[rgba(226,25,91,0.20)] text-[#E2195B]";
@@ -16,6 +17,7 @@ export const getCapacityStyles = (capacity: string) => {
 
 export const getStatusStyles = (status: string) => {
   const trimmedStatus = status.trim();
+  console.log(`Status: ${trimmedStatus}`);
   switch (trimmedStatus) {
     case "Cavab gözləyirik":
       return "bg-[rgba(16,49,127,0.20)] text-[#10317F]";
@@ -26,7 +28,7 @@ export const getStatusStyles = (status: string) => {
     case "Görüş istəyir":
       return "bg-[rgba(151,71,255,0.20)] text-[#9747FF]";
     case "Alıb":
-      return "bg-[rgba(48,172,4,0.20);] text-[#30AC04]";
+      return "bg-[rgba(48,172,4,0.20)] text-[#30AC04]";
     default:
       return "bg-gray-100 text-gray-600";
   }

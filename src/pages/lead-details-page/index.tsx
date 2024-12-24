@@ -7,7 +7,6 @@ import {
   unifiedPersonData,
 } from "./static";
 import TableInfoSection from "./components/Table Info Section";
-
 import CombinedTable from "./components/Combined Table";
 import PaginationControls from "./components/Pagination Controller";
 
