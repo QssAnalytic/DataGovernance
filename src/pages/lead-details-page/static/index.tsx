@@ -26,12 +26,66 @@ export const unifiedPersonData: UnifiedPersonData[] = [
       workplace: "Baku Steel Company",
       position: "Data Analyst",
       note: "Karyera qurmaq istəyir, yeni bilik tətbiq edəcək",
-    }
-  }
+    },
+  },
+  {
+    id: 2,
+    contactInfo: {
+      adSoyad: "Emma Johnson",
+      capacity: "High",
+      value: 9,
+      finalStatus: "Maraqlanır",
+      contactNumber: "+994 512436746",
+      trainingName: "Advanced JavaScript",
+      lastContactDate: "2024-01-16",
+      whenCallAgain: "2024-01-23",
+    },
+    educationInfo: {
+      backgroundKnowledge: "JavaScript",
+      englishLevel: "C1",
+      sillabusla: "Məlumatlı",
+      universityBachelor: "XYZ University",
+      bachelorMajor: "Software Engineering",
+      entranceScore: 510,
+      masterDegree: "Baku State University",
+    },
+    employmentInfo: {
+      workplace: "Tech Solutions",
+      position: "Software Developer",
+      note: "İşini sevir, yeni texnologiyaları öyrənmək istəyir",
+    },
+  },
+  {
+    id: 3,
+    contactInfo: {
+      adSoyad: "John Doe",
+      capacity: "Outstanding",
+      value: 10,
+      finalStatus: "Almağı düşünür",
+      contactNumber: "+994 512436747",
+      trainingName: "Data Science",
+      lastContactDate: "2024-01-17",
+      whenCallAgain: "2024-01-24",
+    },
+    educationInfo: {
+      backgroundKnowledge: "Python",
+      englishLevel: "B1",
+      sillabusla: "Məlumatsız",
+      universityBachelor: "DEF University",
+      bachelorMajor: "Data Science",
+      entranceScore: 495,
+      masterDegree: "Azerbaijan University",
+    },
+    employmentInfo: {
+      workplace: "Data Corp",
+      position: "Data Scientist",
+      note: "Məlumat analizi ilə maraqlanır, karyera inkişafı axtarır",
+    },
+  },
 ];
 
 // Helper functions to transform data for different tables
-export const data = unifiedPersonData.map(person => ({
+export const data = unifiedPersonData.map((person) => ({
   ID: person.id,
   "Ad Soyad": person.contactInfo.adSoyad,
   Capacity: person.contactInfo.capacity,
@@ -43,7 +97,7 @@ export const data = unifiedPersonData.map(person => ({
   "When Call Again": person.contactInfo.whenCallAgain,
 }));
 
-export const dataEducation = unifiedPersonData.map(person => ({
+export const dataEducation = unifiedPersonData.map((person) => ({
   ID: person.id,
   "Ad Soyad": person.contactInfo.adSoyad,
   "Background Knowledge": person.educationInfo.backgroundKnowledge,
@@ -55,7 +109,7 @@ export const dataEducation = unifiedPersonData.map(person => ({
   "Master Degree": person.educationInfo.masterDegree,
 }));
 
-export const dataEmployment = unifiedPersonData.map(person => ({
+export const dataEmployment = unifiedPersonData.map((person) => ({
   ID: person.id,
   "Ad Soyad": person.contactInfo.adSoyad,
   Workplace: person.employmentInfo.workplace,
@@ -95,5 +149,3 @@ export const headersEmployment: string[] = [
   "Position",
   "Note",
 ];
-
-

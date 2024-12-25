@@ -21,7 +21,7 @@ var require_dist = __commonJS({
     var pathValueRegExp = /^[\u0020-\u003A\u003D-\u007E]*$/;
     var __toString = Object.prototype.toString;
     var NullObject = (() => {
-      const C = function() {
+      const C = function () {
       };
       C.prototype = /* @__PURE__ */ Object.create(null);
       return C;
@@ -198,7 +198,7 @@ var require_set_cookie = __commonJS({
         name,
         value
       };
-      parts.forEach(function(part) {
+      parts.forEach(function (part) {
         var sides = part.split("=");
         var key = sides.shift().trimLeft().toLowerCase();
         var value2 = sides.join("=");
@@ -247,7 +247,7 @@ var require_set_cookie = __commonJS({
         } else if (input.headers["set-cookie"]) {
           input = input.headers["set-cookie"];
         } else {
-          var sch = input.headers[Object.keys(input.headers).find(function(key) {
+          var sch = input.headers[Object.keys(input.headers).find(function (key) {
             return key.toLowerCase() === "set-cookie";
           })];
           if (!sch && input.headers.cookie && !options.silent) {
@@ -262,12 +262,12 @@ var require_set_cookie = __commonJS({
         input = [input];
       }
       if (!options.map) {
-        return input.filter(isNonEmptyString).map(function(str) {
+        return input.filter(isNonEmptyString).map(function (str) {
           return parseString(str, options);
         });
       } else {
         var cookies = {};
-        return input.filter(isNonEmptyString).reduce(function(cookies2, str) {
+        return input.filter(isNonEmptyString).reduce(function (cookies2, str) {
           var cookie = parseString(str, options);
           cookies2[cookie.name] = cookie;
           return cookies2;
@@ -3096,8 +3096,8 @@ function createRouter(init) {
       } else if (ABSOLUTE_URL_REGEX.test(location)) {
         const url = init.history.createURL(location);
         isDocumentReload = // Hard reload if it's an absolute URL to a new origin
-        url.origin !== routerWindow.location.origin || // Hard reload if it's an absolute URL that does not match our basename
-        stripBasename(url.pathname, basename) == null;
+          url.origin !== routerWindow.location.origin || // Hard reload if it's an absolute URL that does not match our basename
+          stripBasename(url.pathname, basename) == null;
       }
       if (isDocumentReload) {
         if (replace2) {
@@ -4309,8 +4309,8 @@ async function loadLazyRouteModule(route, mapRouteProperties2, manifest) {
   for (let lazyRouteProperty in lazyRoute) {
     let staticRouteValue = routeToUpdate[lazyRouteProperty];
     let isPropertyStaticallyDefined = staticRouteValue !== void 0 && // This property isn't static since it should always be updated based
-    // on the route updates
-    lazyRouteProperty !== "hasErrorBoundary";
+      // on the route updates
+      lazyRouteProperty !== "hasErrorBoundary";
     warning(
       !isPropertyStaticallyDefined,
       `Route "${routeToUpdate.id}" has a static property "${lazyRouteProperty}" defined but its lazy function is also returning a value for this property. The lazy route property "${lazyRouteProperty}" will be ignored.`
@@ -6230,8 +6230,8 @@ function isModifiedEvent(event) {
 }
 function shouldProcessLinkClick(event, target) {
   return event.button === 0 && // Ignore everything but left clicks
-  (!target || target === "_self") && // Let browser handle "target=_blank" etc.
-  !isModifiedEvent(event);
+    (!target || target === "_self") && // Let browser handle "target=_blank" etc.
+    !isModifiedEvent(event);
 }
 function createSearchParams(init = "") {
   return new URLSearchParams(
@@ -6360,7 +6360,7 @@ async function loadRouteModule(route, routeModulesCache) {
     );
     console.error(error);
     if (window.__reactRouterContext && window.__reactRouterContext.isSpaMode && // @ts-expect-error
-    import.meta.hot) {
+      import.meta.hot) {
       throw error;
     }
     window.location.reload();
@@ -7916,13 +7916,13 @@ ${matches.map(
       )};`
     ).join("\n")}
   ${enableFogOfWar ? (
-      // Inline a minimal manifest with the SSR matches
-      `window.__reactRouterManifest = ${JSON.stringify(
-        getPartialManifest(manifest, router2),
-        null,
-        2
-      )};`
-    ) : ""}
+        // Inline a minimal manifest with the SSR matches
+        `window.__reactRouterManifest = ${JSON.stringify(
+          getPartialManifest(manifest, router2),
+          null,
+          2
+        )};`
+      ) : ""}
   window.__reactRouterRouteModules = {${matches.map((match, index) => `${JSON.stringify(match.route.id)}:route${index}`).join(",")}};
 
 import(${JSON.stringify(manifest.entry.module)});`;
@@ -8214,7 +8214,6 @@ var Link = React10.forwardRef(
       }
     }
     let link = (
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
       React10.createElement(
         "a",
         {
@@ -8249,8 +8248,8 @@ var NavLink = React10.forwardRef(
     let routerState = React10.useContext(DataRouterStateContext);
     let { navigator: navigator2, basename } = React10.useContext(NavigationContext);
     let isTransitioning = routerState != null && // Conditional usage is OK here because the usage of a data router is static
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useViewTransitionState(path) && viewTransition === true;
+      // eslint-disable-next-line react-hooks/rules-of-hooks 
+      useViewTransitionState(path) && viewTransition === true;
     let toPathname = navigator2.encodeLocation ? navigator2.encodeLocation(path).pathname : path.pathname;
     let locationPathname = location.pathname;
     let nextLocationPathname = routerState && routerState.navigation && routerState.navigation.location ? routerState.navigation.location.pathname : null;
@@ -8372,7 +8371,6 @@ function ScrollRestoration({
       return userKey !== location.key ? userKey : null;
     },
     // Nah, we only need this the first time for the SSR render
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
   if (!remixContext || remixContext.isSpaMode) {
@@ -10590,7 +10588,7 @@ function createHydratedRouter() {
     router2.initialize();
   }
   router2.createRoutesForHMR = /* spacer so ts-ignore does not affect the right hand of the assignment */
-  createClientRoutesWithHMRRevalidationOptOut;
+    createClientRoutesWithHMRRevalidationOptOut;
   window.__reactRouterDataRouter = router2;
   return router2;
 }
