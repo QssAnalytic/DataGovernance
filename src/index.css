@@ -31,8 +31,11 @@ td.h-9.w-9.text-center.text-sm.p-0.relative {
   
 }
 
-
-
+.select-item.selected::after {
+  content: "✔";  /* Check icon */
+  display: inline-block;
+  margin-left: 8px;
+}
 
 
 :root {

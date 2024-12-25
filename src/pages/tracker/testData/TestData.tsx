@@ -1,5 +1,5 @@
 
-import { LessonCheckbox, Participant, LessonTime, ReportData } from "../types/Types";
+import { LessonCheckbox, Participant, LessonTime, ReportData, Feedback } from "../types/Types";
 export const initialParticipants: Participant[] = [
     {
         id: 1,
@@ -493,5 +493,322 @@ export const executiveData: ReportData[] = [
         finalExam: "88",
         note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
+    }, {
+        id: 5,
+        fullName: "Elnur Memmedov",
+        status: "outstanding",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 6,
+        fullName: "Elnur Memmedov",
+        status: "poor",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 7,
+        fullName: "Elnur Memmedov",
+        status: "critical",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 8,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    }, {
+        id: 9,
+        fullName: "Elnur Memmedov",
+        status: "outstanding",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 10,
+        fullName: "Elnur Memmedov",
+        status: "poor",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 11,
+        fullName: "Elnur Memmedov",
+        status: "critical",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
+    },
+    {
+        id: 12,
+        fullName: "Elnur Memmedov",
+        status: "normal",
+        percent: "100",
+        submisson: "0.99",
+        averange: "9.2",
+        exam: "Tabloeu 59 spss",
+        finalExam: "88",
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+
     },
 ]
+
+export const paginateData:Feedback[] = [
+    {
+        ID: "1",
+        Participant: "Lalə Əliyeva",
+        Overall_satisfaction: 4.16,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 3.6,
+        Homework_rate: 3.6,
+        Dataset_rate: 3.6,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 1
+    },
+    {
+        ID: "2",
+        Participant: "Rəşid Qasımov",
+        Overall_satisfaction: 4.5,
+        Muəllimdən_raziliq_rate: 4.8,
+        Təqdimatdan_raziliq_rate: 4.2,
+        Homework_rate: 3.9,
+        Dataset_rate: 4.1,
+        Mentordan_raziliq_rate: 4.9,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "3",
+        Participant: "Aygün Məmmədova",
+        Overall_satisfaction: 3.9,
+        Muəllimdən_raziliq_rate: 4.2,
+        Təqdimatdan_raziliq_rate: 3.8,
+        Homework_rate: 4.0,
+        Dataset_rate: 3.7,
+        Mentordan_raziliq_rate: 4.5,
+        Feedback_sayi: 1
+    },
+    {
+        ID: "4",
+        Participant: "Turan Əliyev",
+        Overall_satisfaction: 4.7,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 4.6,
+        Homework_rate: 4.8,
+        Dataset_rate: 4.5,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "5",
+        Participant: "Leyla Həsənova",
+        Overall_satisfaction: 4.3,
+        Muəllimdən_raziliq_rate: 4.7,
+        Təqdimatdan_raziliq_rate: 4.1,
+        Homework_rate: 4.2,
+        Dataset_rate: 3.9,
+        Mentordan_raziliq_rate: 4.6,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "6",
+        Participant: "Orxan İsmayılov",
+        Overall_satisfaction: 4.8,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 4.5,
+        Homework_rate: 4.9,
+        Dataset_rate: 4.7,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "7",
+        Participant: "Sevinc Muradova",
+        Overall_satisfaction: 4.1,
+        Muəllimdən_raziliq_rate: 4.6,
+        Təqdimatdan_raziliq_rate: 3.9,
+        Homework_rate: 4.0,
+        Dataset_rate: 4.2,
+        Mentordan_raziliq_rate: 4.7,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "8",
+        Participant: "Elvin Rzayev",
+        Overall_satisfaction: 4.2,
+        Muəllimdən_raziliq_rate: 4.8,
+        Təqdimatdan_raziliq_rate: 4.0,
+        Homework_rate: 4.1,
+        Dataset_rate: 4.0,
+        Mentordan_raziliq_rate: 4.9,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "9",
+        Participant: "Zeynəb Hüseynova",
+        Overall_satisfaction: 4.0,
+        Muəllimdən_raziliq_rate: 4.3,
+        Təqdimatdan_raziliq_rate: 3.8,
+        Homework_rate: 3.9,
+        Dataset_rate: 3.8,
+        Mentordan_raziliq_rate: 4.5,
+        Feedback_sayi: 1
+    },
+    {
+        ID: "10",
+        Participant: "Natiq Məmmədov",
+        Overall_satisfaction: 4.6,
+        Muəllimdən_raziliq_rate: 4.9,
+        Təqdimatdan_raziliq_rate: 4.3,
+        Homework_rate: 4.5,
+        Dataset_rate: 4.4,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "11",
+        Participant: "Aysel Quliyeva",
+        Overall_satisfaction: 3.8,
+        Muəllimdən_raziliq_rate: 4.2,
+        Təqdimatdan_raziliq_rate: 3.7,
+        Homework_rate: 3.8,
+        Dataset_rate: 3.9,
+        Mentordan_raziliq_rate: 4.4,
+        Feedback_sayi: 1
+    },
+    {
+        ID: "12",
+        Participant: "Samir Əliyev",
+        Overall_satisfaction: 4.9,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 4.8,
+        Homework_rate: 4.7,
+        Dataset_rate: 4.9,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "13",
+        Participant: "Günel Əliyeva",
+        Overall_satisfaction: 4.3,
+        Muəllimdən_raziliq_rate: 4.7,
+        Təqdimatdan_raziliq_rate: 4.1,
+        Homework_rate: 4.3,
+        Dataset_rate: 4.2,
+        Mentordan_raziliq_rate: 4.8,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "14",
+        Participant: "Fərid Qasımov",
+        Overall_satisfaction: 4.5,
+        Muəllimdən_raziliq_rate: 4.9,
+        Təqdimatdan_raziliq_rate: 4.4,
+        Homework_rate: 4.6,
+        Dataset_rate: 4.5,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "15",
+        Participant: "Lalə Məmmədova",
+        Overall_satisfaction: 4.2,
+        Muəllimdən_raziliq_rate: 4.6,
+        Təqdimatdan_raziliq_rate: 3.9,
+        Homework_rate: 4.1,
+        Dataset_rate: 4.0,
+        Mentordan_raziliq_rate: 4.7,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "16",
+        Participant: "İlqar Hüseynov",
+        Overall_satisfaction: 4.7,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 4.6,
+        Homework_rate: 4.8,
+        Dataset_rate: 4.5,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "17",
+        Participant: "Nigar Həsənova",
+        Overall_satisfaction: 4.0,
+        Muəllimdən_raziliq_rate: 4.5,
+        Təqdimatdan_raziliq_rate: 4.1,
+        Homework_rate: 4.2,
+        Dataset_rate: 4.0,
+        Mentordan_raziliq_rate: 4.6,
+        Feedback_sayi: 1
+    },
+    {
+        ID: "18",
+        Participant: "Rəşad Əliyev",
+        Overall_satisfaction: 4.6,
+        Muəllimdən_raziliq_rate: 4.9,
+        Təqdimatdan_raziliq_rate: 4.3,
+        Homework_rate: 4.4,
+        Dataset_rate: 4.3,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    },
+    {
+        ID: "19",
+        Participant: "Elnarə İbrahimova",
+        Overall_satisfaction: 4.4,
+        Muəllimdən_raziliq_rate: 4.8,
+        Təqdimatdan_raziliq_rate: 4.2,
+        Homework_rate: 4.3,
+        Dataset_rate: 4.1,
+        Mentordan_raziliq_rate: 4.9,
+        Feedback_sayi: 2
+    },
+    {
+        ID: "20",
+        Participant: "Tahir Məmmədov",
+        Overall_satisfaction: 4.8,
+        Muəllimdən_raziliq_rate: 5,
+        Təqdimatdan_raziliq_rate: 4.7,
+        Homework_rate: 4.9,
+        Dataset_rate: 4.8,
+        Mentordan_raziliq_rate: 5.0,
+        Feedback_sayi: 3
+    }
+];
