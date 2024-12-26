@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SourceModal from "../sourceModal";
-import TrainingName from "../training-name";
-import ContactStatus from "../contact-status";
+import TrainingName from "../trainingName";
+import ContactStatus from "../contactStatus";
 
 const FilterData: React.FC = () => {
   const [isSourceModal, setSourceModal] = useState(false);

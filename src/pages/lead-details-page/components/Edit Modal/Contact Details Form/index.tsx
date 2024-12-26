@@ -1,4 +1,4 @@
-import TrainingName from "@/pages/app-data/components/training-name";
+import TrainingName from "@/pages/app-data/components/trainingName";
 import { DatePickerDemo } from "../../Custom Calendar";
 import {
   Select,

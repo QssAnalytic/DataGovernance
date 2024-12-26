@@ -3,9 +3,9 @@ import { FiCalendar } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TrainingName from "@/pages/app-data/components/training-name";
+import TrainingName from "@/pages/app-data/components/trainingName";
 import SourceModal from "@/pages/app-data/components/sourceModal";
-import ContactStatus from "@/pages/app-data/components/contact-status";
+import ContactStatus from "@/pages/app-data/components/contactStatus";
 import { useUIStore } from "../../../services/store/useUIStore";
 
 
