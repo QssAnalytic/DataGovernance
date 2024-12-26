@@ -1,4 +1,4 @@
-import ParticipantSatisfactionTable from "../ParticipantSatisfactionTable";
+import ParticipantSatisfactionTable from "./ParticipantSatisfactionTable";
 import { bootcampData, week } from "../testData/testButtonData";
 import ButtonFilter from "../components/buttonFilter/ButtonFilter";
 

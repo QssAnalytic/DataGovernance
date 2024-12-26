@@ -40,15 +40,12 @@ export interface SourceModalProps {
     setSearchTerm: (value: string) => void;
 }
 
-
 export interface CheckBoxesProps {
     item: string;
     index: number;
-    isChecked: boolean;
-    handleCheckboxChange: () => void;
-
-
-}
+    isChecked: boolean; // Change this from `boolean[]` to `boolean`
+    handleCheckboxChange: (index: number) => void;
+  }
 
  export interface CheckBoxesPropsTitle {
     isCustomized: boolean;
@@ -61,6 +58,7 @@ export interface CheckBoxesProps {
  export interface ContactStatusProps {
     isOpen: boolean;
     onToggle: () => void;
+    width:string;
 }
 
 export interface SaveModalProps {
@@ -77,4 +75,15 @@ export interface SearchInputProps {
     query: string;
     setQuery: (value: string) => void;
   } 
+
   
+  // Define the props type for the component
+  export interface TableContentProps {
+    handleSort: () => void;
+    handleDateSort: () => void;
+    handleEditClick: (item: TableRow) => void;
+    handleDeleteClick: (id: number) => void;
+    currentData: TableRow[];
+    sortOrder: 'asc' | 'desc' | ''; // Add this
+    dateSortOrder: 'asc' | 'desc' | ''; // Add this
+  }

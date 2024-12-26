@@ -3,7 +3,7 @@ import { ParticipantList } from "./participant/ParticipantList";
 import { TrainerHours } from "./Trainer/TrainerHours";
 import { AttendanceSheet } from "./attendance/AttendanceSheet";
 import { ExecutiveReport } from "../executiveReport/ExecutiveReport";
-import { ParticipantSatisfaction } from "./ParticipantSatisfaction";
+import { ParticipantSatisfaction } from "../participantSatisFaction/ParticipantSatisfaction";
 
 export const Navbar = () => {
   const [activeComponent, setActiveComponent] = useState("ParticipantList");

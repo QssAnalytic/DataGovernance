@@ -34,13 +34,13 @@ const FilterData: React.FC = () => {
   };
 
   return (
-    <div className="flex w-[60%] justify-end gap-[20px]">
+    <div className="flex w-[60%]  justify-end gap-[20px]">
       <SourceModal isOpen={isSourceModal} onToggle={toggleSourceModal} />
       <TrainingName paddingx ="16px" paddingy = "16px" isOpen={isTrainingName} onToggle={toggleTrainingName} />
-
       <ContactStatus
         isOpen={isContactStatus}
         onToggle={toggleContactStatus}
+        width = "100%"
       />
     </div>
 

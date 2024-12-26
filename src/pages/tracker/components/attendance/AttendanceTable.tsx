@@ -48,7 +48,7 @@ const AttendanceTable = () => {
 
 
     return (
-        <div>
+        <div >
             <div className="relative pl-[40px] pt-[20px]  max-h-screen w-[100%] ">
                 <div className="flex justify-start sticky top-[-20px] bg-[#F5F5F5] z-10 ">
                     <div className="sticky top-0 z-20">
@@ -100,16 +100,16 @@ const AttendanceTable = () => {
                     </div>
                 </div>
                 <div >
-                    {paginatedData.map((data: any, index) => (
-                        <div key={data.id} className={`flex gap-4 items-center py-0 relative ${index % 2 === 0 ? 'bg-white' : 'bg-[#FAFAFA]'
+                    {paginatedData.map((data, index) => (
+                        <div key={data.id} className={`flex gap-4 items-center py-0 relative ${index % 2 === 0 ? 'bg-white' : 'bg-[#FAFAFA] w-[100%]'
                             }`} >
-                            <div className={`text-[#22385F] font-montserrat text-[12px] font-semibold leading-normal rounded-xl flex w-[100px] h-10 pl-[35px] pr-[135px] pt-[18px] items-center gap-3 rounded-md self-stretch whitespace-nowrap sticky top-0 left-[-45px] z-10 ${index % 2 === 0 ? 'bg-white' : 'bg-[#FAFAFA]'
+                            <div className={`text-[#22385F] font-montserrat text-[12px] font-semibold leading-normal rounded-xl flex w-[100px] h-10 pl-[35px] pr-[135px] pt-[18px] items-center gap-3 rounded-md self-stretch whitespace-nowrap sticky top-0 left-[-45px] z-100 ${index % 2 === 0 ? 'bg-white' : 'bg-[#FAFAFA]'
                                 }`} >
                                 {data.fullName}
                             </div>
                             <div className="flex gap-2">
-                                {data.checkboxes?.map((i: any) => (
-                                    <label key={i} className="flex w-[121px] h-14 justify-center items-center gap-2.5">
+                                {data.checkboxes?.map((i: boolean, index: number) => (
+                                    <label key={index+`${i}`} className="flex w-[121px] h-14 justify-center items-center gap-2.5">
                                         <input
                                             type="checkbox"
                                             className="w-4 h-4 cursor-pointer"
@@ -127,23 +127,26 @@ const AttendanceTable = () => {
                 </div>
 
             </div>
-            <div className="pagination-controls flex items-center justify-center mt-4">
-                <button
-                    onClick={handlePreviousPage}
-                    disabled={currentPage === 1}
-                    className="w-[40px] h-[40px] flex justify-center items-center mx-1 rounded-[8px] border bg-white"
-                >
-                    &lt;
-                </button>
-                {renderPaginationButtons()}
-                <button
-                    onClick={handleNextPage}
-                    disabled={currentPage === itemsPerPage}
-                    className="w-[40px] h-[40px] flex justify-center items-center mx-1 rounded-[8px] border bg-white"
-                >
-                    &gt;
-                </button>
+            <div className="sticky top-0 z-2 bg-white">
+                <div className="pagination-controls flex items-center justify-center mt-4">
+                    <button
+                        onClick={handlePreviousPage}
+                        disabled={currentPage === 1}
+                        className="w-[40px] h-[40px] flex justify-center items-center mx-1 rounded-[8px] border bg-white"
+                    >
+                        &lt;
+                    </button>
+                    {renderPaginationButtons()}
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === itemsPerPage}
+                        className="w-[40px] h-[40px] flex justify-center items-center mx-1 rounded-[8px] border bg-white"
+                    >
+                        &gt;
+                    </button>
+                </div>
             </div>
+
         </div>
     );
 };

@@ -61,7 +61,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
         className="flex cursor-pointer justify-between p-4  w-full rounded-xl border-[0.5px] bg-[#FAFCFF]   border-[#22385F] "
         onClick={onToggle}
       >
-        <p className="font-montserrat font-normal text-[14px] text-[#969696] mt-1 bg-[#FAFCFF] leading-[17.07px]">
+        <p className="font-montserrat font-normal text-[16px] text-[#969696] mt-1 bg-[#FAFCFF] leading-[17.07px]">
           Application Source
         </p>
         <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
@@ -69,7 +69,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
       {isOpen ? (
         <div
           ref={dropdownRef}
-          className=" absolute  z-10 right-0 rounded-xl shadow-lg p-4 bg-white "
+          className=" absolute  z-[100] right-0 rounded-xl shadow-lg p-4 bg-white "
         >
           <div className="flex justify-between   pr-[7px] w-[295px]  mt-7 ">
             <p className="font-montserrat w-full ml-3 font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left">
