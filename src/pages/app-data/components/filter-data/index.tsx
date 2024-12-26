@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SourceModal from "../sourceModal";
-import TrainingName from "../training-name";
-import ContactStatus from "../contact-status";
+import TrainingName from "../trainingName";
+import ContactStatus from "../contactStatus";
 
 const FilterData: React.FC = () => {
   const [isSourceModal, setSourceModal] = useState(false);
@@ -34,13 +34,13 @@ const FilterData: React.FC = () => {
   };
 
   return (
-    <div className="flex w-[60%] justify-end gap-[20px]">
+    <div className="flex w-[60%]  justify-end gap-[20px]">
       <SourceModal isOpen={isSourceModal} onToggle={toggleSourceModal} />
       <TrainingName paddingx ="16px" paddingy = "16px" isOpen={isTrainingName} onToggle={toggleTrainingName} />
-
       <ContactStatus
         isOpen={isContactStatus}
         onToggle={toggleContactStatus}
+        width = "100%"
       />
     </div>
 

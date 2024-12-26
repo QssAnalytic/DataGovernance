@@ -1,36 +1,67 @@
+import { useState } from "react";
+
 const TableInfoTop = () => {
   const texts = [
-    "Zəng edilməli nömrə sayı",
-    "Əlaqə saxlanılmayan",
     "Connect today",
-    "Vacib və təcili",
-    "Təcili",
-    "Neytral",
+    "Satış Ödənişi Gözlənir",
+    "Alacaq mı Deyəcək",
+    "Görüş Salınan / Keçirilən",
+    "Potensial Müştəri Ola Bilər",
+    "Digər",
   ];
 
-  const numbers = [10, 20, 30, 40, 50, 60];
+  const numbers = [150, 30, 25, 32, 18, 2];
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+
+  const handleClick = (index: number) => {
+    setSelectedIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
   return (
     <div className="grid grid-cols-6 text-center">
-      {texts.map((text, index) => (
-        <div
-          key={`text-${index}`}
-          className={`bg-[#22385F]  text-white flex items-center py-[12px] px-[16px] justify-center ${
-            index === 0 ? "rounded-tl-lg" : ""
-          } ${index === texts.length - 1 ? "rounded-tr-lg" : ""}`}
-        >
-          {text}
+      {numbers.map((number, index) => (
+        <div className="flex" key={`number-wrapper-${index}`}>
+          <div
+            key={`number-${index}`}
+            className={`flex py-[14px] w-[100%] px-[16px] items-center text-[24px] font-[500] cursor-pointer transition-all duration-300 ease-in-out ${
+              index === 0 ? "rounded-tl-[12px]" : ""
+            } ${index === numbers.length - 1 ? "rounded-tr-[12px]" : ""} ${
+              selectedIndices.includes(index)
+                ? "bg-[#5D7988] text-white"
+                : "bg-[#F4F7FD] text-black"
+            }`}
+            onClick={() => handleClick(index)}
+          >
+            {number}
+          </div>
+          {index < numbers.length - 1 && (
+            <div
+              className={`flex items-center h-full transition-colors duration-300 ${
+                selectedIndices.includes(index) ||
+                selectedIndices.includes(index + 1) ||
+                selectedIndices.includes(index + numbers.length) ||
+                selectedIndices.includes(index + numbers.length + 1)
+                  ? "bg-[#5D7988]"
+                  : "bg-[#F4F7FD]"
+              }`}
+            >
+              <div className="h-[30px] w-[2px] bg-[#5D7988] rounded-full"></div>
+            </div>
+          )}
         </div>
       ))}
 
-      {numbers.map((number, index) => (
+      {texts.map((text, index) => (
         <div
-          key={`number-${index}`}
-          className={`flex items-center  justify-center bg-[#F4F7FD] py-[12px] px-[16px] ${
-            index === 0 ? "rounded-bl-lg" : ""
-          } ${index === numbers.length - 1 ? "rounded-br-lg" : ""}`}
+          key={`text-${index}`}
+          className={`bg-[#5D7988] py-[14px] px-[16px] text-[12px] text-white flex items-center transition-opacity duration-300 ease-in-out cursor-pointer ${
+            index === 0 ? "rounded-bl-[12px]" : ""
+          } ${index === texts.length - 1 ? "rounded-br-[12px]" : ""} `}
+          onClick={() => handleClick(index + numbers.length)}
         >
-          {number}
+          {text}
         </div>
       ))}
     </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 interface TableChangerProps {
-  onChangeTable: (tables: string | string[]) => void;
+  onChangeTable: (tables: string[]) => void;
 }
 
 const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
   const [activeTab, setActiveTab] = useState<"Icmal" | "Tam">("Icmal");
   const [activeOption, setActiveOption] = useState<string>("contact");
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(["contact"]);
 
   const options = [
     { label: "Contact Status", value: "contact" },
@@ -17,45 +17,43 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
     setActiveTab(tab);
-
     if (tab === "Icmal") {
+      const newSelection = ["contact"];
       setActiveOption("contact");
-      setSelectedOptions([]); // Clear Tam selections
-      onChangeTable("contact"); // Default to showing contact table for Icmal
+      setSelectedOptions(newSelection);
+      onChangeTable(newSelection);
     } else {
-      // Default to Contact and Education tables for Tam
-      const defaultSelections = ["contact", "education"];
-      setActiveOption(""); // Clear single option
+      const defaultSelections = ["contact"];
+      setActiveOption("");
       setSelectedOptions(defaultSelections);
-      onChangeTable(defaultSelections); // Show default combined tables
+      onChangeTable(defaultSelections);
     }
   };
 
   const handleOptionClick = (option: { label: string; value: string }) => {
     if (activeTab === "Icmal") {
       setActiveOption(option.value);
-      onChangeTable(option.value); // Show the single selected table
-    } else if (activeTab === "Tam") {
-      // Toggle the option for multi-selection
+      onChangeTable([option.value]);
+    } else {
       const updatedSelections = selectedOptions.includes(option.value)
-        ? selectedOptions.filter((item) => item !== option.value)
+        ? selectedOptions.length > 1
+          ? selectedOptions.filter((item) => item !== option.value)
+          : selectedOptions
         : [...selectedOptions, option.value];
-      setSelectedOptions(updatedSelections);
 
-      // Combine the selected tables
-      onChangeTable(updatedSelections); // Pass updated selections to parent
+      setSelectedOptions(updatedSelections);
+      onChangeTable(updatedSelections);
     }
   };
 
   return (
     <div className="border border-solid border-[#E9E9E9] rounded-[12px] flex gap-[12px]">
-      {/* Tab selection: Icmal & Tam */}
       <div className="flex">
         <div
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Icmal"
-              ? "bg-[#22385F] text-white rounded-tl-[11px] rounded-bl-[11px]"
-              : "bg-[#F4F7FD] text-[#22385F] rounded-tl-[12px] rounded-bl-[12px]"
+              ? "bg-[#5D7988] text-white rounded-tl-[11px] rounded-bl-[11px]"
+              : "bg-[#F4F7FD] text-[#5D7988] rounded-tl-[12px] rounded-bl-[12px]"
           }`}
           onClick={() => handleTabClick("Icmal")}
         >
@@ -64,8 +62,8 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
         <div
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Tam"
-              ? "bg-[#22385F] text-white rounded-tr-[11px] rounded-br-[11px]"
-              : "bg-[#F4F7FD] text-[#22385F] rounded-tr-[11px] rounded-br-[11px]"
+              ? "bg-[#5D7988] text-white rounded-tr-[11px] rounded-br-[11px]"
+              : "bg-[#F4F7FD] text-[#5D7988] rounded-tr-[11px] rounded-br-[11px]"
           }`}
           onClick={() => handleTabClick("Tam")}
         >
@@ -73,17 +71,16 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
         </div>
       </div>
 
-      {/* Options selection */}
       <div className="flex items-center">
         {options.map((option) => (
           <div
             key={option.value}
             className={`py-[12px] px-[16px] text-[14px] font-[500] flex items-center gap-[8px] cursor-pointer ${
               activeTab === "Icmal" && activeOption === option.value
-                ? "text-[#22385F]"
+                ? "text-[#5D7988]"
                 : activeTab === "Icmal"
                 ? "text-[#BCBCBC]"
-                : "text-[#22385F]"
+                : "text-[#5D7988]"
             }`}
             onClick={() => handleOptionClick(option)}
           >
@@ -91,7 +88,7 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
               <span
                 className={`w-[16px] h-[16px] rounded-full border border-solid ${
                   selectedOptions.includes(option.value)
-                    ? "bg-[#22385F] border-[#22385F]"
+                    ? "bg-[#5D7988] border-[#5D7988]"
                     : "bg-transparent border-[#BCBCBC]"
                 }`}
               ></span>

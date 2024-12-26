@@ -4,19 +4,15 @@ import { useState } from "react";
 import Filter from "./components/filter"
 import Table from './components/table'
 import  DateFilter  from "@/components/Shared/DateFilter";
+import NewLeadModal from "@/components/Shared/newLeadModal";
 
 const ApplicationData: React.FC = () => {
 
   const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
   const [searchTerm, setSearchTerm] = useState<string>('');
-
   React.useEffect(() => {
     setButtonLabel("Add Candidate");
-    setModalContent(
-      <div className="text-black flex flex-col bg-white p-2">
-        Overview Modal
-      </div>
-    );
+    setModalContent(<NewLeadModal/>);
     setPageCustomHeader(<DateFilter />);
   }, [setButtonLabel, setModalContent, setPageCustomHeader]);
   return (

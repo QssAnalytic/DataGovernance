@@ -1,34 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { data, dataEducation, headers, headersEducation } from "./static";
+import {
+  headers,
+  headersEducation,
+  headersEmployment,
+  unifiedPersonData,
+} from "./static";
 import TableInfoSection from "./components/Table Info Section";
-import ContactTable from "./components/Contact Table";
-import EducationStatusTable from "./components/Education Status Table";
 import CombinedTable from "./components/Combined Table";
 import PaginationControls from "./components/Pagination Controller";
-import { EducationRowData, RowData } from "./types";
 
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedMainSection, setSelectedMainSection] = useState<"Icmal" | "Tam">("Icmal");
 
-  const [selectedTab, setSelectedTab] = useState("contact");
+  const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
   const rowsPerPage = 7;
-
-  // Combine headers without duplicates
-  const combinedHeaders = [...new Set([...headers, ...headersEducation])] as (
-    | keyof RowData
-    | keyof EducationRowData
-  )[];
-
-  // Combine data for the combined table
-  const combineData = () => {
-    const combined = [...data, ...dataEducation];
-    const uniqueData = combined.filter(
-      (item, index, self) => self.findIndex((t) => t.ID === item.ID) === index
-    );
-    return uniqueData;
-  };
 
   // Get paginated data
   const getPaginatedData = (dataArray: any[]) => {
@@ -36,57 +22,102 @@ const DetailsPage = () => {
     return dataArray.slice(startIndex, startIndex + rowsPerPage);
   };
 
-  // Handle tab change
-  const handleTabChange = (tabs: string | string[]) => {
-    if (Array.isArray(tabs)) {
-      setSelectedTab(tabs[0]);
-    } else {
-      setSelectedTab(tabs);
-    }
+  // Get combined data based on selected tables
+  const getCombinedData = () => {
+    const combinedData: Record<string, any>[] = [];
+
+    unifiedPersonData.forEach((person) => {
+      const rowData: Record<string, any> = {
+        ID: person.id,
+        "Ad Soyad": person.contactInfo.adSoyad,
+      };
+
+      selectedTables.forEach((table) => {
+        switch (table) {
+          case "contact":
+            Object.assign(rowData, {
+              Capacity: person.contactInfo.capacity,
+              Value: person.contactInfo.value,
+              "Final Status": person.contactInfo.finalStatus,
+              "Contact Number": person.contactInfo.contactNumber,
+              "Training Name": person.contactInfo.trainingName,
+              "Last Contact Date": person.contactInfo.lastContactDate,
+              "When Call Again": person.contactInfo.whenCallAgain,
+            });
+            break;
+          case "education":
+            Object.assign(rowData, {
+              "Background Knowledge": person.educationInfo.backgroundKnowledge,
+              "English Level": person.educationInfo.englishLevel,
+              "Sillabusla tanışlıq": person.educationInfo.sillabusla,
+              "University Bachelor": person.educationInfo.universityBachelor,
+              "Bachelor Major": person.educationInfo.bachelorMajor,
+              "Entrance score": person.educationInfo.entranceScore,
+              "Master Degree": person.educationInfo.masterDegree,
+            });
+            break;
+          case "employment":
+            Object.assign(rowData, {
+              Workplace: person.employmentInfo.workplace,
+              Position: person.employmentInfo.position,
+              Note: person.employmentInfo.note,
+            });
+            break;
+        }
+      });
+
+      combinedData.push(rowData);
+    });
+
+    return combinedData;
+  };
+
+  // Handle tab change from Table Changer
+  const handleTabChange = (tabs: string[]) => {
+    setSelectedTables(tabs);
+    setCurrentPage(1);
+  };
+
+  // Get combined headers based on selected tables
+  const getCombinedHeaders = () => {
+    const combinedHeaders: string[] = ["ID", "Ad Soyad"];
+
+    selectedTables.forEach((table) => {
+      switch (table) {
+        case "contact":
+          combinedHeaders.push(
+            ...headers.filter((h) => !combinedHeaders.includes(h))
+          );
+          break;
+        case "education":
+          combinedHeaders.push(
+            ...headersEducation.filter((h) => !combinedHeaders.includes(h))
+          );
+          break;
+        case "employment":
+          combinedHeaders.push(
+            ...headersEmployment.filter((h) => !combinedHeaders.includes(h))
+          );
+          break;
+      }
+    });
+
+    return combinedHeaders;
   };
 
   return (
     <div>
-      {/* Tab Selection */}
       <TableInfoSection onChangeTable={handleTabChange} />
 
-      {/* Render Table Based on Selected Tab */}
-      {selectedTab === "contact" && (
-        <ContactTable
-          headers={headers}
-          data={getPaginatedData(data)}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-        />
-      )}
+      <CombinedTable
+        headers={getCombinedHeaders()}
+        data={getPaginatedData(getCombinedData())}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+      />
 
-      {selectedTab === "education" && (
-        <EducationStatusTable
-          headers={headersEducation}
-          data={getPaginatedData(dataEducation)}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-        />
-      )}
-
-      {selectedTab === "combined" && (
-        <CombinedTable
-          headers={combinedHeaders}
-          data={getPaginatedData(combineData())}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-        />
-      )}
-
-      {/* Pagination Controls */}
       <PaginationControls
-        data={
-          selectedTab === "contact"
-            ? data
-            : selectedTab === "education"
-            ? dataEducation
-            : combineData()
-        }
+        data={getCombinedData()}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         rowsPerPage={rowsPerPage}

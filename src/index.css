@@ -26,15 +26,20 @@ td.h-9.w-9.text-center.text-sm.p-0.relative {
     
   }
 
-  #react-day-picker-2 {
-    color: black
-  }
-
   button[name="previous-month"],  button[name="next-month"] {
     color: black; /* Change text color */
   
 }
-  :root {
+
+.select-item.selected::after {
+  content: "✔";  /* Check icon */
+  display: inline-block;
+  margin-left: 8px;
+}
+
+
+
+:root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;

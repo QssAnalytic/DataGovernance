@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GrRefresh } from "react-icons/gr";
 
 import {
@@ -14,9 +14,10 @@ const ContactTable: React.FC<ContactTableProps> = ({
   currentPage,
   rowsPerPage,
 }) => {
+  // Calculate current data
   const startIndex = (currentPage - 1) * rowsPerPage;
-
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
+  console.log("Current Data:", currentData);
 
   const columnWidths: string[] = [
     "w-[3%]", // ID
@@ -29,6 +30,11 @@ const ContactTable: React.FC<ContactTableProps> = ({
     "w-[14%]", // Last Contact Date
     "w-[13%]", // When Call Again
   ];
+
+  // Watch props updates
+  useEffect(() => {
+    console.log("Props changed:", { headers, data, currentPage, rowsPerPage });
+  }, [headers, data, currentPage, rowsPerPage]);
 
   return (
     <div>
@@ -68,41 +74,43 @@ const ContactTable: React.FC<ContactTableProps> = ({
                   {headers.map((header, cellIndex) => {
                     const isCapacity = header === "Capacity";
                     const isStatus = header === "Final Status";
+
+                    // Log data for debugging
+                    const cellData = row[header];
+                    console.log(
+                      `Row ${rowIndex}, Header: ${header}, Data:`,
+                      cellData
+                    );
+
+                    const capacityData = String(cellData);
+                    console.log("Capacity Data:", capacityData);
                     const capacityStyles = isCapacity
-                      ? getCapacityStyles(String(row[header]))
+                      ? getCapacityStyles(capacityData)
                       : "";
+
+                    const statusData = String(cellData || "");
+                    console.log("Status Data:", statusData);
                     const statusStyles = isStatus
-                      ? getStatusStyles(String(row[header] || ""))
+                      ? getStatusStyles(statusData)
                       : "";
 
                     return (
                       <td
                         key={cellIndex}
-                        className={`px-[16px] py-[8px] text-left whitespace-nowrap text-[14px] ${
-                          columnWidths[cellIndex]
-                        } ${
-                          cellIndex === 0
-                            ? "rounded-tl-[20px] rounded-bl-[20px]"
-                            : ""
-                        }`}
+                        className={`px-[16px] py-[8px] text-left whitespace-nowrap text-[14px] ${columnWidths[cellIndex]}`}
                       >
                         <span
                           className={`inline-block w-full ${
-                            isCapacity || isStatus
-                              ? "py-2 px-[16px] text-center"
-                              : "p-0"
-                          } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles}`}
+                            isCapacity || isStatus ? "py-2 px-[16px]" : "p-0"
+                          } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles} text-left`}
                         >
-                          {/* {row[header]} */}
+                          {cellData}
                         </span>
                       </td>
                     );
                   })}
                   <td
-                    key={"icons"}
-                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px] text-center whitespace-nowrap ${
-                      columnWidths[columnWidths.length - 1]
-                    }`}
+                    className={`p-[16px] rounded-tr-[20px] rounded-br-[20px] whitespace-nowrap`}
                   >
                     <EditDeleteModal />
                   </td>
