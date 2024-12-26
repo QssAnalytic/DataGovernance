@@ -37,7 +37,16 @@ const TableInfoTop = () => {
             {number}
           </div>
           {index < numbers.length - 1 && (
-            <div className="flex items-center h-full bg-[#F4F7FD]">
+            <div
+              className={`flex items-center h-full transition-colors duration-300 ${
+                selectedIndices.includes(index) ||
+                selectedIndices.includes(index + 1) ||
+                selectedIndices.includes(index + numbers.length) ||
+                selectedIndices.includes(index + numbers.length + 1)
+                  ? "bg-[#5D7988]"
+                  : "bg-[#F4F7FD]"
+              }`}
+            >
               <div className="h-[30px] w-[2px] bg-[#5D7988] rounded-full"></div>
             </div>
           )}
@@ -49,11 +58,7 @@ const TableInfoTop = () => {
           key={`text-${index}`}
           className={`bg-[#5D7988] py-[14px] px-[16px] text-[12px] text-white flex items-center transition-opacity duration-300 ease-in-out cursor-pointer ${
             index === 0 ? "rounded-bl-[12px]" : ""
-          } ${index === texts.length - 1 ? "rounded-br-[12px]" : ""} ${
-            selectedIndices.includes(index + numbers.length)
-              ? "bg-[#F4F7FD] text-black"
-              : "bg-[#5D7988] text-white"
-          }`}
+          } ${index === texts.length - 1 ? "rounded-br-[12px]" : ""} `}
           onClick={() => handleClick(index + numbers.length)}
         >
           {text}
