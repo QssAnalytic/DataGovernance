@@ -21,6 +21,7 @@ const DateFilter: React.FC = () => {
   useEffect(() => {
     const todayRange = calculateDateRange("today");
     setCustomRangeLabel(todayRange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const calculateDateRange = (range: string): string | null => {
