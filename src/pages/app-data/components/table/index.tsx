@@ -3,7 +3,7 @@ import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
 import PaginationControls from '@/pages/lead-details-page/components/Pagination Controller';
-import SaveModal from '../saveModal';
+import SaveModal from '../SaveModal';
 import TableContent from '../tableContent';
 
 
