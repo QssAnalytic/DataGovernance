@@ -10,6 +10,8 @@ import DetailsPage from "./pages/lead-details-page";
 import Tracker from "./pages/tracker";
 import { Vacancies } from "./pages/career/vacancies";
 import { TalentPool } from "./pages/career/talent-pool";
+import RawData from "./pages/raw-data";
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +23,7 @@ const router = createBrowserRouter(
                 <Route path="t" element={<Tracker/>} />
                 <Route path="/vacancies" element={<Vacancies/>} />
                 <Route path="/talent-pool" element={<TalentPool/>} />
+                <Route path="/raw-data" element={<RawData/>} />
             </Route>
         </Route>,
     ),)

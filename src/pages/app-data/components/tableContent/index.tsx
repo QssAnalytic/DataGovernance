@@ -17,7 +17,7 @@ const TableContent: React.FC<TableContentProps> = ({
     dateSortOrder,
 }) => {
     return (
-        <table className="min-w-[1300px] table-auto w-full rounded-lg border-collapse border border-gray-200">
+        <table className="min-w-[1300px]  table-auto w-full rounded-lg border-collapse border border-gray-200">
             <thead className="bg-[#FAFAFA] sticky top-0 z-10 shadow-md">
                 <tr className="text-left">
                     <th className="p-3 text-sm font-semibold text-gray-600">ID</th>
