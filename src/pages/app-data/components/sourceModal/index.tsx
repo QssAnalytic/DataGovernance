@@ -28,7 +28,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
     setIsChecked(new Array(applicationSource.length).fill(true));
   };
 
-  const reseAll = () => {
+  const resetAll = () => {
     setIsChecked(new Array(applicationSource.length).fill(false));
   };
 
@@ -91,7 +91,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
               <div className="w-[5px] h-[5px] rounded bg-[#1D7EB7] mt-[0.5rem]"></div>
               <span
                 className=" cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]"
-                onClick={reseAll}
+                onClick={resetAll}
               >
                 Sıfırla
               </span>
