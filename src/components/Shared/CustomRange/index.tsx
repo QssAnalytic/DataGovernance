@@ -73,9 +73,9 @@ export function DatePickerWithRange({
         modifiersClassNames={{
           selected: "bg-[#22385F] text-[#fff] rounded-full", // Fully rounded for start/end dates
           range_start: "rounded-l-full rounded-r-full", // Round only the left side for the start date
-          range_end: "rounded-r-full rounded-l-full",   // Round only the right side for the end date
-          range_middle: "bg-[#1976D21F] text-black", // Flat for the middle of the range
-       
+          range_end: " rounded-r-full rounded-l-full",   // Round only the right side for the end date
+          range_middle: "bg-[#E2EFFA] text-black", // Flat for the middle of the range
+  
         }}
       />
 
