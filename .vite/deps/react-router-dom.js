@@ -8248,7 +8248,6 @@ var NavLink = React10.forwardRef(
     let routerState = React10.useContext(DataRouterStateContext);
     let { navigator: navigator2, basename } = React10.useContext(NavigationContext);
     let isTransitioning = routerState != null && // Conditional usage is OK here because the usage of a data router is static
-      // eslint-disable-next-line react-hooks/rules-of-hooks 
       useViewTransitionState(path) && viewTransition === true;
     let toPathname = navigator2.encodeLocation ? navigator2.encodeLocation(path).pathname : path.pathname;
     let locationPathname = location.pathname;
