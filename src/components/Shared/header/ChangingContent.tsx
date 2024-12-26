@@ -17,7 +17,7 @@ export const ChangingContent = () => {
 
       {pageCustomHeader}
 
-      {isAdmin && (
+      {isAdmin &&  (
         <button
           className="px-[16px] min-w-fit py-3 flex items-center gap-x-[12px] rounded-xl bg-[#22385F] text-sm font-medium text-white"
           onClick={() => { setIsModalOpen(!isModalOpen); }} // Toggle modal visibility
