@@ -3,6 +3,8 @@ import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { ContactStatusProps } from "../../types";
 
+//contact status filter
+
 const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle, width }) => {
     const [isChecked1, setIsChecked1] = useState(false);
     const [isChecked2, setIsChecked2] = useState(false);
@@ -22,6 +24,7 @@ const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle, width }
     document.addEventListener('mousedown', handleCheckbox);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
+    // Close the dropdown when clicking outside
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -40,6 +43,7 @@ const ContactStatus: React.FC<ContactStatusProps> = ({ isOpen, onToggle, width }
     }, [isOpen, onToggle]);
 
     return (
+    //component content 
         <div className={`relative w-[${width}]`} >
             <div className='flex cursor-pointer p-4 rounded-xl border-[0.5px] bg-[#FAFCFF] justify-between  border-[#22385F] ' onClick={onToggle}>
                 <p className='font-montserrat font-normal text-[16px] text-[#969696] mt-1 leading-[17.07px]'>Contact Status</p>

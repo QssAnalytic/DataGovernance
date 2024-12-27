@@ -3,9 +3,11 @@ import ShowModal from '../showModal';
 import { SharedData } from '../sharedData';
 import { TableRow, TableProps } from '../../types';
 import PaginationControls from '@/pages/lead-details-page/components/Pagination Controller';
-import SaveModal from '../SaveModal';
 import TableContent from '../tableContent';
+import SaveModal from '../saveModal';
 
+
+//TABLE FILTER
 
 const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
@@ -18,6 +20,8 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
     const [selectedRow, setSelectedRow] = useState<Partial<TableRow>>({});
 
+
+    //Deleting items from table
     const handleDeleteClick = (id: number) => {
         setDeleteRowId(id);
         setShowModal(true);
@@ -31,18 +35,22 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
+  //editing items in the table
+
     const handleEditClick = (row: TableRow) => {
         setSelectedRow(row);
         setIsSaveModalOpen(true);
     };
 
 
+    //sorting by name 
     const handleSort = () => {
         setDateSortOrder('')
         setSortOrderBy('name');
         setSortOrder(sortOrder === 'asc' ? 'desc' : sortOrder === 'desc' ? '' : 'asc');
     };
 
+    //sorting by date 
     const handleDateSort = () => {
 
         setSortOrder('')
@@ -146,8 +154,9 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     return (
         <div>
             <div className='max-w-full flex overflow-y-auto max-h-[650px]'>
-                <TableContent handleSort = {handleSort} handleDateSort = {handleDateSort} currentData = {currentData} handleEditClick =  {handleEditClick}   sortOrder={sortOrder} 
-    dateSortOrder={dateSortOrder}   handleDeleteClick={handleDeleteClick}/>
+                {/* table content */}
+                <TableContent handleSort={handleSort} handleDateSort={handleDateSort} currentData={currentData} handleEditClick={handleEditClick} sortOrder={sortOrder}
+                    dateSortOrder={dateSortOrder} handleDeleteClick={handleDeleteClick} />
             </div>
             <div className="  flex justify-center">
                 <PaginationControls
@@ -157,6 +166,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
+            {/* save content after editing */}
             <SaveModal
                 isOpen={isSaveModalOpen}
                 onClose={handleCloseModal}
@@ -166,6 +176,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
             />
 
             {showModal && (
+            // my delete modal
                 <ShowModal handleCancelDelete={handleCancelDelete} handleConfirmDelete={handleConfirmDelete} />
             )}
         </div>
