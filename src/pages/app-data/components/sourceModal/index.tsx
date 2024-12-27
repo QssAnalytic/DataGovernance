@@ -4,6 +4,9 @@ import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { SourceModalProps } from "../../types";
 
+
+//Application Source filter 
+
 const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
   const applicationSource: string[] = [
     "DSA Whatsapp",
@@ -32,9 +35,12 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
     setIsChecked(new Array(applicationSource.length).fill(false));
   };
 
+
   const handleCheckbox = () => !isOpen;
   document.addEventListener("mousedown", handleCheckbox);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+// Close the dropdown when clicking outside
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,7 +48,7 @@ const SourceModal: React.FC<SourceModalProps> = ({ isOpen, onToggle }) => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        onToggle(); // Close the dropdown when clicking outside
+        onToggle(); 
       }
     };
 
