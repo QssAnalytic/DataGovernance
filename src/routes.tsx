@@ -11,6 +11,7 @@ import Tracker from "./pages/tracker";
 import { Vacancies } from "./pages/career/vacancies";
 import { TalentPool } from "./pages/career/talent-pool";
 import RawData from "./pages/raw-data";
+import Sales from "./pages/sales";
 
 
 const router = createBrowserRouter(
@@ -24,6 +25,8 @@ const router = createBrowserRouter(
                 <Route path="/vacancies" element={<Vacancies/>} />
                 <Route path="/talent-pool" element={<TalentPool/>} />
                 <Route path="/raw-data" element={<RawData/>} />
+                <Route path="/sales" element={<Sales/>} />
+
             </Route>
         </Route>,
     ),)

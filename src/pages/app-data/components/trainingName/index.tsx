@@ -155,7 +155,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
               </button>
             </div>
           ) : (
-            <div className="flex justify-start gap-[15px] mt-3  px-3 w-[311px]  h-[22px]">
+            <div className="flex justify-between gap-[25px] mt-3  px-3 w-[311px]  h-[22px]">
               <button
                 onClick={handleToggleCustomized}
                 className="bg-none border-none"
@@ -166,6 +166,13 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 {" "}
                 Customized
               </p>
+              <button
+                className="bg-none border-none ml-[10px]"
+                onClick={onToggle}
+              >
+                <IoCloseSharp className="text-[24px] " />
+              </button>
+
             </div>
           )}
 
