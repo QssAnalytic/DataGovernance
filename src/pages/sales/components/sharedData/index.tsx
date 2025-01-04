@@ -49,6 +49,7 @@ export const OtherTableData = [
     { id: 8, name: 'Farid Cafarov', BC: '34', trainingName: 'Data Analytics(training only)', phone: '+994 552345678', score: 614, workPlace: "Azerbaijan Railways" },
     { id: 9, name: 'Sona Abdullayeva', BC: '34', trainingName: 'Tableau, SQL, SPSS', phone: '+994 552345678', score: 613, workPlace: "Azercosmos" },
     { id: 10, name: 'Kamran Hasanov', BC: '34', trainingName: "Tableau (training only)", phone: '+994 552345678', score: 613, workPlace: "Unibank" },
+    { id: 11, name: 'Kamran Hasanov', BC: '34', trainingName: "Tableau (training only)", phone: '+994 552345678', score: 613, workPlace: "Unibank" },
     { id: 12, name: "Zeynəb Qasımova", BC: '34', trainingName: 'Tableau', phone: '+994 552345678', score: 673, workPlace: "Azerenergy" },
     { id: 13, name: "Ramin Sultanov", BC: '34', trainingName: 'DS FULL (available abroad)', phone: '+994 552345678', score: 593, workPlace: "Azerbaijan Tourism Board" },
     { id: 14, name: "Gulnar Mammadova", BC: '34', trainingName: 'Data Analytics with SPSS', phone: '+994 552345678', score: 613, workPlace: "Azerbaijan Investment" },
