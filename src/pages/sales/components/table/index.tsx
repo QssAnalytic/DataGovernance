@@ -3,8 +3,9 @@ import TableHeader from "../tableHeader";
 import OtherTable from "../otherTable";
 import PaymentTable from "../paymentTable";
 import ServicesTable from "../servicesTable";
+import { SalesTablePInputProps } from "../../types";
 
-const Table = () => {
+const Table: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
     const [isOtherActive, setIsOtherActive] = useState(true);
     const [isPaymentActive, setIsPaymentActive] = useState(false);
@@ -25,7 +26,7 @@ const Table = () => {
                 setIsFull={setIsFull} />
               <div className="mt-3">
               {
-                    isOtherActive  ? <OtherTable /> :  isPaymentActive ?  <PaymentTable/> : isServicesActive ? <ServicesTable /> : "TAM"
+                    isOtherActive  ? <OtherTable searchTerm={searchTerm} /> :  isPaymentActive ?  <PaymentTable/> : isServicesActive ? <ServicesTable /> : "TAM"
                 }
               </div>
                

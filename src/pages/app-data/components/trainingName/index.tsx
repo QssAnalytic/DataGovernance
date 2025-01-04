@@ -222,7 +222,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 ? filteredItems.map((item, index) => (
                   <div
                     key={index}
-                    className="flex  items-center justify-between px-[10px] mt-[5px]"
+                    className="flex  items-center justify-between px-[10px] mt-[10px]"
                   >
                     {/* checkboxes components here for uncostomized  */}
                     <CheckBoxes
@@ -236,7 +236,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 : customizedItems.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between px-[10px] mt-[5px]"
+                    className="flex items-center justify-between px-[10px] mt-[10px]"
                   >
                     {/* checkboxes components here for costomized  */}
 
