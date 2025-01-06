@@ -17,7 +17,7 @@ const TableInfoTop = () => {
     setSelectedIndices((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
-  };
+  }; 
 
   return (
     <div className="grid grid-cols-6 text-center">
@@ -38,11 +38,9 @@ const TableInfoTop = () => {
           </div>
           {index < numbers.length - 1 && (
             <div
-              className={`flex items-center h-full transition-colors duration-300 ${
+              className={`flex items-center h-full ${
                 selectedIndices.includes(index) ||
-                selectedIndices.includes(index + 1) ||
-                selectedIndices.includes(index + numbers.length) ||
-                selectedIndices.includes(index + numbers.length + 1)
+                selectedIndices.includes(index + 1)
                   ? "bg-[#5D7988]"
                   : "bg-[#F4F7FD]"
               }`}
