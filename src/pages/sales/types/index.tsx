@@ -29,6 +29,16 @@ export interface SaveOtherModalProps {
   onChange: (field: keyof OtherTableRow, value: string | number | boolean) => void; // Ensure this matches usage
 }
 
+// SaveModalProps definition in ../../types
+export interface PaymentModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  rowData: Partial<PaymentDataProps>; // Matches the structure of PaymentDataProps
+  onSave: () => void;
+  onChange: (field: keyof PaymentDataProps, value: string | number | boolean) => void;
+}
+
+
 
 export interface SalesTablePInputProps {
   searchTerm: string; // The current value of the input
@@ -39,3 +49,18 @@ export interface SalesInputProps {
     searchTerm: string; // The current value of the input
     setSearchTerm: (value: string) => void; // Function to update the search term
   }
+
+
+export interface PaymentDataProps {
+    id: number;
+    name: string;
+    amount: number;
+    discount: number;
+    totalAmount: number;
+    payment1: number;
+    plannedDate1: string;
+    payment2: number;
+    plannedDate2: string;
+    payment3: number;
+    plannedDate3: string;
+}
