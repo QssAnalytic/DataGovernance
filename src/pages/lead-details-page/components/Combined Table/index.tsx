@@ -21,7 +21,6 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
     "w-[13%]",
   ];
 
-
   console.log(headers, "in the combined table");
   const startIndex = (currentPage - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
@@ -30,7 +29,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
     <div className="overflow-x-auto mt-[20px]">
       <div className="max-h-[450px] overflow-y-auto no-scrollbar">
         <table className="table-auto w-full border-collapse">
-          <thead className="bg-[#F6F6F6] sticky top-0 z-10">
+          <thead className="bg-[#E9EDCA] sticky top-0 z-10">
             <tr>
               {headers.map((header, index) => (
                 <th
