@@ -1,4 +1,7 @@
 import { useState } from "react";
+import DetailsIcon from "../../../../assets/icons/detailsIcon.svg";
+import EducationIcon from "../../../../assets/icons/educationIcon.svg";
+import EmploymentIcon from "../../../../assets/icons/employmentIcon.svg";
 
 interface TableChangerProps {
   onChangeTable: (tables: string[]) => void;
@@ -10,9 +13,9 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>(["contact"]);
 
   const options = [
-    { label: "Contact Status", value: "contact" },
-    { label: "Education Status", value: "education" },
-    { label: "Employment Status", value: "employment" },
+    { label: "Details", value: "details", icon: DetailsIcon },
+    { label: "Education Status", value: "education", icon: EducationIcon },  
+    { label: "Employment Status", value: "employment", icon: EmploymentIcon },
   ];
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
@@ -93,6 +96,11 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
                 }`}
               ></span>
             )}
+            <img
+              src={option.icon}
+              alt={`${option.label} icon`}
+              className="w-4 h-4"
+            />
             {option.label}
           </div>
         ))}
