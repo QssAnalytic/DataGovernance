@@ -14,7 +14,7 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const options = [
     { label: "Details", value: "details", icon: DetailsIcon },
-    { label: "Education Status", value: "education", icon: EducationIcon },  
+    { label: "Education Status", value: "education", icon: EducationIcon },
     { label: "Employment Status", value: "employment", icon: EmploymentIcon },
   ];
 
