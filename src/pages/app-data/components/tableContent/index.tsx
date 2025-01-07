@@ -30,8 +30,6 @@ const TableContent: React.FC<TableContentProps> = ({
                         <div className="flex gap-1">
                             <HiOutlineChevronUpDown
                                 onClick={handleSort}
-                                // className={`cursor-pointer w-5 h-5 ${sortOrder === "asc" ? "text-[#ff2c2c]" : sortOrder === "desc" ? "text-[#4BB543]" : "text-gray-600"
-                                //     }`}
                                 className={`cursor-pointer w-5 h-5 ${
                                     sortOrder === "asc"
                                       ? "text-[#ff2c2c]"

@@ -12,6 +12,9 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 
+
+//Training Name filter content
+
 const TrainingName: React.FC<TrainingNameProps> = ({
   isOpen,
   onToggle,
@@ -29,6 +32,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
     new Array(customized.length).fill(false)
   );
 
+
   const handleCheckboxChange = (index: number) => {
     setIsChecked((prevState) => {
       const newCheckedItems = [...prevState];
@@ -45,10 +49,14 @@ const TrainingName: React.FC<TrainingNameProps> = ({
       return newCheckedItems;
     });
   };
+   
 
+  //  filters items for uncostomized 
   const filteredItems = applicationSource.filter((item) =>
     item.toLowerCase().includes(query.toLowerCase())
   );
+
+  //  filters items forcostomized 
 
   const customizedItems = customized.filter((item) =>
     item.toLowerCase().includes(query.toLowerCase())
@@ -74,13 +82,15 @@ const TrainingName: React.FC<TrainingNameProps> = ({
   document.addEventListener("mousedown", handleCheckbox);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
+
+  // Close the dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        onToggle(); // Close the dropdown when clicking outside
+        onToggle(); 
         setIsCustomized(false);
       }
     };
@@ -145,7 +155,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
               </button>
             </div>
           ) : (
-            <div className="flex justify-start gap-[15px] mt-3  px-3 w-[311px]  h-[22px]">
+            <div className="flex justify-between gap-[25px] mt-3  px-3 w-[311px]  h-[22px]">
               <button
                 onClick={handleToggleCustomized}
                 className="bg-none border-none"
@@ -156,11 +166,21 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 {" "}
                 Customized
               </p>
+              <button
+                className="bg-none border-none ml-[10px]"
+                onClick={onToggle}
+              >
+                <IoCloseSharp className="text-[24px] " />
+              </button>
+
             </div>
           )}
 
           <div className="flex flex-col mt-3  gap-[10px]">
             <div className=" flex flex-start ml-1 mt-2 px-2 gap-[7px] ">
+           
+           {/* title component for checkboxex */}
+
               <CheckboxTitle
                 isCustomized={isCustomized}
                 selectAll={selectAll}
@@ -189,6 +209,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
 
             {isSearch && (
               <div className="relative h-[40px] z-50">
+                {/* search input component */}
                 <SearchInput
                   setQuery={setQuery}
                   query={query}
@@ -201,8 +222,9 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 ? filteredItems.map((item, index) => (
                   <div
                     key={index}
-                    className="flex  items-center justify-between px-[10px] mt-[5px]"
+                    className="flex  items-center justify-between px-[10px] mt-[10px]"
                   >
+                    {/* checkboxes components here for uncostomized  */}
                     <CheckBoxes
                       item={item}
                       index={index}
@@ -214,8 +236,10 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                 : customizedItems.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between px-[10px] mt-[5px]"
+                    className="flex items-center justify-between px-[10px] mt-[10px]"
                   >
+                    {/* checkboxes components here for costomized  */}
+
                     <CheckBoxes
                       item={item}
                       index={index}
@@ -234,7 +258,7 @@ const TrainingName: React.FC<TrainingNameProps> = ({
                   <MdKeyboardArrowRight className="font-montserrat ml-[20px] font-medium text-[24px] " />
                 </button>
               )}
-
+               {/* button component */}
               <ShowButton />
             </div>
           </div>
