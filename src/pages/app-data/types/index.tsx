@@ -5,7 +5,7 @@ export interface FilterProps {
     setSearchTerm: (value: string) => void;
 }
 
- export interface TrainingNameProps {
+export interface TrainingNameProps {
     isOpen: boolean;
     onToggle: () => void;
     paddingx: string;
@@ -28,14 +28,14 @@ export interface TableProps {
 export interface SourceModalProps {
     isOpen: boolean;
     onToggle: () => void;
-  }
-  
- export interface ShowModalProps {
-     handleCancelDelete: () => void;
-     handleConfirmDelete: () => void;
- }; 
+}
 
- export interface FilterProps {
+export interface ShowModalProps {
+    handleCancelDelete: () => void;
+    handleConfirmDelete: () => void;
+};
+
+export interface FilterProps {
     searchTerm: string;
     setSearchTerm: (value: string) => void;
 }
@@ -45,28 +45,33 @@ export interface CheckBoxesProps {
     index: number;
     isChecked: boolean; // Change this from `boolean[]` to `boolean`
     handleCheckboxChange: (index: number) => void;
-  }
+}
 
- export interface CheckBoxesPropsTitle {
+export interface CheckBoxesPropsTitle {
     isCustomized: boolean;
     selectAll: () => void;
     selectCustomized: () => void;
     resetAll: () => void;
     resetCustomized: () => void;
- }
+}
 
- export interface ContactStatusProps {
+export interface ContactStatusProps {
     isOpen: boolean;
     onToggle: () => void;
-    width:string;
+    width: string;
 }
 
 export interface SaveModalProps {
+
+    onChange: (field: keyof TableRow, value: string) => void;
     isOpen: boolean;
     onClose: () => void;
-    rowData: Partial<TableRow>;
-    onSave: () => void;
-    onChange: (field: keyof TableRow, value: string) => void;
+    rowData: any; // Replace `any` with the specific type of `rowData`
+
+    setData: React.Dispatch<React.SetStateAction<any>>; // Replace `any` with the type of `data`
+    data: any; // Replace `any` with the specific type of `data`
+    selectedRow: any; // Replace `any` with the specific type of `selectedRow`
+    setIsSaveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
@@ -74,11 +79,11 @@ export interface SaveModalProps {
 export interface SearchInputProps {
     query: string;
     setQuery: (value: string) => void;
-  } 
+}
 
-  
-  // Define the props type for the component
-  export interface TableContentProps {
+
+// Define the props type for the component
+export interface TableContentProps {
     handleSort: () => void;
     handleDateSort: () => void;
     handleEditClick: (item: TableRow) => void;
@@ -86,4 +91,4 @@ export interface SearchInputProps {
     currentData: TableRow[];
     sortOrder: 'asc' | 'desc' | ''; // Add this
     dateSortOrder: 'asc' | 'desc' | ''; // Add this
-  }
+}

@@ -26,7 +26,7 @@ const Table: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                 setIsFull={setIsFull} />
               <div className="mt-3">
               {
-                    isOtherActive  ? <OtherTable searchTerm={searchTerm} /> :  isPaymentActive ?  <PaymentTable searchTerm={searchTerm}/> : isServicesActive ? <ServicesTable /> : "TAM"
+                    isOtherActive  ? <OtherTable searchTerm={searchTerm} /> :  isPaymentActive ?  <PaymentTable searchTerm={searchTerm}/> : isServicesActive ? <ServicesTable searchTerm={searchTerm} /> : "TAM"
                 }
               </div>
                

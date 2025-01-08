@@ -5,13 +5,13 @@ import Table from "./components/table";
 
 
 const Sales = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  return (
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    return (
         <div className="flex flex-col">
-            <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+            <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <Table searchTerm={searchTerm} />
         </div>
     )
 }
 
-export default Sales ;
+export default Sales;

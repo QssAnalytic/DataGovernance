@@ -3,9 +3,9 @@ import { PaymentTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
-import SavePaymentModal from "../savePaymentModal";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
+import EditModal from "../editModal";
 import { useState } from "react";
 import { PaymentDataProps, SalesTablePInputProps } from "../../types";
 
@@ -13,14 +13,13 @@ import { PaymentDataProps, SalesTablePInputProps } from "../../types";
 const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
     const [data, setData] = useState<PaymentDataProps[]>(PaymentTableData);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
-    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-    const [selectedRow, setSelectedRow] = useState<Partial<PaymentDataProps>>({});
-
+  
     //Deleting items from table
     const handleDeleteClick = (id: number) => {
         setDeleteRowId(id);
@@ -65,30 +64,13 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
-    //editing items in the table
 
-    const handleEditClick = (row: PaymentDataProps) => {
-        setSelectedRow(row);
-        setIsSaveModalOpen(true);
-    };
     const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
     };
 
 
-    const handleModalChange = (field: keyof PaymentDataProps, value: string | number | boolean) => {
-        setSelectedRow({ ...selectedRow, [field]: value });
-    };
-
-    const handleSaveModal = () => {
-        setData(data.map(row => (row.id === selectedRow.id ? { ...row, ...selectedRow } : row)));
-        setIsSaveModalOpen(false);
-    };
-
-    const handleCloseModal = () => {
-        setIsSaveModalOpen(false);
-    };
     const rowsPerPage = 5; // Number of rows to display per page
 
 
@@ -144,11 +126,11 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                         </th>
 
                         <th className="font-montserrat  text-center  text-[12px] p-2 font-bold leading-normal text-[#000000]">
-                          Ödəmə 3
+                            Ödəmə 3
                         </th>
 
                         <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
-                        Planned Date
+                            Planned Date
                         </th>
                         <th className="p-2">
                             <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
@@ -211,7 +193,7 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                     <div className="flex gap-3">
                                         <FiEdit
                                             className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleEditClick(item)}
+                                            onClick={() => setIsEditModalOpen(true)}
                                         />
                                         <GoTrash
                                             className="cursor-pointer w-5 h-5"
@@ -232,14 +214,11 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
-           
-           {/* save content after editing */}
-           <SavePaymentModal
-                isOpen={isSaveModalOpen}
-                onClose={handleCloseModal}
-                rowData={selectedRow}
-                onSave={handleSaveModal}
-                onChange={handleModalChange}
+
+            {/* save content after editing */}
+            <EditModal
+                isOpen={isEditModalOpen}
+                onClose={() => setIsEditModalOpen(false)}
             />
             {showModal && (
                 // my delete modal

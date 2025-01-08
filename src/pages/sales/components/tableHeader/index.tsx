@@ -4,10 +4,9 @@ import { TbCategory2 } from "react-icons/tb";
 import { TableHeaderProps } from "../../types";
 
 
-const TableHeader: React.FC<TableHeaderProps>  = ( {isOtherActive, setIsOtherActive, isPaymentActive, setIsPaymentActive, isServicesActive, setIsServicesActive, isFull, setIsFull}) => {
- 
+const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActive, isPaymentActive, setIsPaymentActive, isServicesActive, setIsServicesActive, isFull, setIsFull }) => {
 
-    const HandleOtherButton = () => {
+   const HandleOtherButton = () => {
         if (isOtherActive) {
             setIsOtherActive(false)
         } else {
@@ -18,7 +17,6 @@ const TableHeader: React.FC<TableHeaderProps>  = ( {isOtherActive, setIsOtherAct
         setIsServicesActive(false)
 
     }
-
 
     const HandlePaymentButton = () => {
         if (isPaymentActive) {
@@ -53,7 +51,7 @@ const TableHeader: React.FC<TableHeaderProps>  = ( {isOtherActive, setIsOtherAct
 
     const HandleFullButton = () => {
         setIsFull(true);
-         setIsOtherActive(false);
+        setIsOtherActive(false);
         setIsPaymentActive(false);
         setIsServicesActive(false);
     }
@@ -67,15 +65,15 @@ const TableHeader: React.FC<TableHeaderProps>  = ( {isOtherActive, setIsOtherAct
 
             <div className={`flex justify-center h-[56px] w-[105px] rounded-xl gap-2  cursor-pointer ${isFull && "bg-[#E9EDCA]"}`} onClick={HandleOtherButton}>
                 <MdOutlinePermContactCalendar className={`text-[18px] mt-4 ${isOtherActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
-                <p  className={` font-montserrat font-medium  mt-4 text-[14px] ${isOtherActive ? 'text-[#5D7988]': isFull? "text-[#000]" : "text-[#BCBCBC]" }  `} >Digər</p>
+                <p className={` font-montserrat font-medium  mt-4 text-[14px] ${isOtherActive ? 'text-[#5D7988]' : isFull ? "text-[#000]" : "text-[#BCBCBC]"}  `} >Digər</p>
             </div>
             <div className={`flex justify-center h-[56px] w-[175px] rounded-xl gap-2  cursor-pointer ${isFull && "bg-[#E2DDD5]"}`} onClick={HandlePaymentButton}>
-                <BsCreditCard  className={`text-[18px] mt-4 ${isPaymentActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
-                <p   className={` font-montserrat font-medium  mt-4 text-[14px] ${isPaymentActive ? 'text-[#5D7988]': isFull? "text-[#000]" : "text-[#BCBCBC]" }  `}>Ödəniş şərtləri</p>
+                <BsCreditCard className={`text-[18px] mt-4 ${isPaymentActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
+                <p className={` font-montserrat font-medium  mt-4 text-[14px] ${isPaymentActive ? 'text-[#5D7988]' : isFull ? "text-[#000]" : "text-[#BCBCBC]"}  `}>Ödəniş şərtləri</p>
             </div>
             <div className={`flex justify-center h-[56px]  w-[135px] rounded-xl gap-2  cursor-pointer ${isFull && "bg-[#FEFADF]"}`} onClick={HandleServicesButton}>
-                <TbCategory2  className={`text-[18px] mt-4 ${isServicesActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
-                <p className={` font-montserrat font-medium  mt-4 text-[14px] ${isServicesActive ? 'text-[#5D7988]': isFull? "text-[#000]" : "text-[#BCBCBC]" }  `}>Xidmətlər</p>
+                <TbCategory2 className={`text-[18px] mt-4 ${isServicesActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
+                <p className={` font-montserrat font-medium  mt-4 text-[14px] ${isServicesActive ? 'text-[#5D7988]' : isFull ? "text-[#000]" : "text-[#BCBCBC]"}  `}>Xidmətlər</p>
             </div>
         </div>
 
