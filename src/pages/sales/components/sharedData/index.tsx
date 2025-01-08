@@ -54,7 +54,8 @@ export const OtherTableData = [
     { id: 13, name: "Ramin Sultanov", BC: '34', trainingName: 'DS FULL (available abroad)', phone: '+994 552345678', score: 593, workPlace: "Azerbaijan Tourism Board" },
     { id: 14, name: "Gulnar Mammadova", BC: '34', trainingName: 'Data Analytics with SPSS', phone: '+994 552345678', score: 613, workPlace: "Azerbaijan Investment" },
     { id: 15, name: "Vugar Nasibov", BC: '34', trainingName: 'DS FULL (available abroad)', phone: '+994 552345678', score: 533, workPlace: "Azercosmos" },
-
+    
+    
 
 ];
 
@@ -80,3 +81,6 @@ export const PaymentTableData = [
 
 
 ];
+
+
+

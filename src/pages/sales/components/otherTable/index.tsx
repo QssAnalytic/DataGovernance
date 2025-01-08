@@ -3,11 +3,12 @@ import { OtherTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
-import SaveModal from "../saveModal";
+
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
 import { OtherTableRow, SalesTablePInputProps } from "../../types";
+import EditModal from "../editModal";
 
 
 const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
@@ -15,11 +16,12 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     const [data, setData] = useState<OtherTableRow[]>(OtherTableData);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
-    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-    const [selectedRow, setSelectedRow] = useState<Partial<OtherTableRow>>({});
+    
 
     //Deleting items from table
     const handleDeleteClick = (id: number) => {
@@ -65,30 +67,12 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
-    //editing items in the table
-
-    const handleEditClick = (row: OtherTableRow) => {
-        setSelectedRow(row);
-        setIsSaveModalOpen(true);
-    };
-    const handleCancelDelete = () => {
+ 
+   const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
     };
 
-
-    const handleModalChange = (field: keyof OtherTableRow, value: string | number | boolean) => {
-        setSelectedRow({ ...selectedRow, [field]: value });
-    };
-
-    const handleSaveModal = () => {
-        setData(data.map(row => (row.id === selectedRow.id ? { ...row, ...selectedRow } : row)));
-        setIsSaveModalOpen(false);
-    };
-
-    const handleCloseModal = () => {
-        setIsSaveModalOpen(false);
-    };
     const rowsPerPage = 5; // Number of rows to display per page
 
 
@@ -186,7 +170,7 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                     <div className="flex gap-3">
                                         <FiEdit
                                             className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleEditClick(item)}
+                                            onClick={() => setIsEditModalOpen(true)}
                                         />
                                         <GoTrash
                                             className="cursor-pointer w-5 h-5"
@@ -207,15 +191,12 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
-            {/* save content after editing */}
-            <SaveModal
-                isOpen={isSaveModalOpen}
-                onClose={handleCloseModal}
-                rowData={selectedRow}
-                onSave={handleSaveModal}
-                onChange={handleModalChange}
+           
+             {/* save content after editing */}
+             <EditModal
+                isOpen={isEditModalOpen}
+                onClose={() => setIsEditModalOpen(false)}
             />
-
             {showModal && (
                 // my delete modal
                 <ShowModal handleCancelDelete={handleCancelDelete} handleConfirmDelete={handleConfirmDelete} />

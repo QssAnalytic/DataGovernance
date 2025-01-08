@@ -13,7 +13,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const [data, setData] = useState<TableRow[]>(SharedData);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
-    const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
+   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [dateSortOrder, setDateSortOrder] = useState<'asc' | 'desc' | ''>(''); // Sorting for date
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
@@ -127,10 +127,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
         setSelectedRow({ ...selectedRow, [field]: value });
     };
 
-    const handleSaveModal = () => {
-        setData(data.map(row => (row.id === selectedRow.id ? { ...row, ...selectedRow } : row)));
-        setIsSaveModalOpen(false);
-    };
+  
 
     const handleCloseModal = () => {
         setIsSaveModalOpen(false);
@@ -150,7 +147,7 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
     const startIndex = (currentPage - 1) * rowsPerPage;
     const currentData = filteredData.slice(startIndex, startIndex + rowsPerPage);
 
-
+   
     return (
         <div>
             <div className='max-w-full flex overflow-y-auto max-h-[650px]'>
@@ -171,8 +168,14 @@ const Table: React.FC<TableProps> = ({ searchTerm }) => {
                 isOpen={isSaveModalOpen}
                 onClose={handleCloseModal}
                 rowData={selectedRow}
-                onSave={handleSaveModal}
-                onChange={handleModalChange}
+                 onChange={handleModalChange}
+                 setData = {setData} 
+                 data = {data}
+                 selectedRow = {selectedRow}
+                 setIsSaveModalOpen = {setIsSaveModalOpen}
+
+           
+              
             />
 
             {showModal && (

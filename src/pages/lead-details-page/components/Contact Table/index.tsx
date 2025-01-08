@@ -46,11 +46,9 @@ const ContactTable: React.FC<ContactTableProps> = ({
                 {headers.map((header, index) => (
                   <th
                     key={index}
-                    className={`p-[16px] font-[500] text-[12px] text-[#000] ${
-                      columnWidths[index]
-                    } text-left ${
-                      index === 0 ? "rounded-tl-[20px] rounded-bl-[20px]" : ""
-                    }`}
+                    className={`p-[16px] font-[500] text-[12px] text-[#000] ${columnWidths[index]
+                      } text-left ${index === 0 ? "rounded-tl-[20px] rounded-bl-[20px]" : ""
+                      }`}
                   >
                     {header}
                   </th>
@@ -67,9 +65,8 @@ const ContactTable: React.FC<ContactTableProps> = ({
               {currentData.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  className={`${
-                    rowIndex % 2 === 1 ? "bg-[#FAFAFA]" : "bg-white"
-                  }`}
+                  className={`${rowIndex % 2 === 1 ? "bg-[#FAFAFA]" : "bg-white"
+                    }`}
                 >
                   {headers.map((header, cellIndex) => {
                     const isCapacity = header === "Capacity";
@@ -100,9 +97,8 @@ const ContactTable: React.FC<ContactTableProps> = ({
                         className={`px-[16px] py-[8px] text-left whitespace-nowrap text-[14px] ${columnWidths[cellIndex]}`}
                       >
                         <span
-                          className={`inline-block w-full ${
-                            isCapacity || isStatus ? "py-2 px-[16px]" : "p-0"
-                          } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles} text-left`}
+                          className={`inline-block w-full ${isCapacity || isStatus ? "py-2 px-[16px]" : "p-0"
+                            } text-[14px] rounded-[16px] ${capacityStyles} ${statusStyles} text-left`}
                         >
                           {cellData}
                         </span>
