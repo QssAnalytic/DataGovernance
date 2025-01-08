@@ -3,30 +3,50 @@ import DetailsIcon from "../../../../assets/icons/detailsIcon.svg";
 import EducationIcon from "../../../../assets/icons/educationIcon.svg";
 import EmploymentIcon from "../../../../assets/icons/employmentIcon.svg";
 
+import ActiveDetailsIcon from "../../../../assets/icons/activeDetailsIcon.svg";
+import ActiveEducationIcon from "../../../../assets/icons/activeEducationIcon.svg";
+import ActiveEmploymentIcon from "../../../../assets/icons/activeEmploymentIcon.svg";
+
 interface TableChangerProps {
   onChangeTable: (tables: string[]) => void;
 }
 
 const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
+  // Set "Details" as the default active option
   const [activeTab, setActiveTab] = useState<"Icmal" | "Tam">("Icmal");
-  const [activeOption, setActiveOption] = useState<string>("contact");
-  const [selectedOptions, setSelectedOptions] = useState<string[]>(["contact"]);
+  const [activeOption, setActiveOption] = useState<string>("details");
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(["details"]);
 
   const options = [
-    { label: "Details", value: "details", icon: DetailsIcon },
-    { label: "Education Status", value: "education", icon: EducationIcon },
-    { label: "Employment Status", value: "employment", icon: EmploymentIcon },
+    {
+      label: "Details",
+      value: "details",
+      icon: DetailsIcon,
+      activeIcon: ActiveDetailsIcon,
+    },
+    {
+      label: "Education Status",
+      value: "education",
+      icon: EducationIcon,
+      activeIcon: ActiveEducationIcon,
+    },
+    {
+      label: "Employment Status",
+      value: "employment",
+      icon: EmploymentIcon,
+      activeIcon: ActiveEmploymentIcon,
+    },
   ];
 
   const handleTabClick = (tab: "Icmal" | "Tam") => {
     setActiveTab(tab);
     if (tab === "Icmal") {
-      const newSelection = ["contact"];
-      setActiveOption("contact");
+      const newSelection = ["details"]; // Default to "Details" for Icmal
+      setActiveOption("details");
       setSelectedOptions(newSelection);
       onChangeTable(newSelection);
     } else {
-      const defaultSelections = ["contact"];
+      const defaultSelections = ["details"]; // Default selection for Tam
       setActiveOption("");
       setSelectedOptions(defaultSelections);
       onChangeTable(defaultSelections);
@@ -35,8 +55,12 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
 
   const handleOptionClick = (option: { label: string; value: string }) => {
     if (activeTab === "Icmal") {
-      setActiveOption(option.value);
-      onChangeTable([option.value]);
+      if (activeOption !== option.value) {
+        setActiveOption(option.value);
+        const newSelection = [option.value];
+        setSelectedOptions(newSelection);
+        onChangeTable(newSelection);
+      }
     } else {
       const updatedSelections = selectedOptions.includes(option.value)
         ? selectedOptions.length > 1
@@ -66,7 +90,7 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
           className={`w-[72px] flex items-center justify-center h-[56px] text-[14px] px-[16px] py-[12px] cursor-pointer ${
             activeTab === "Tam"
               ? "bg-[#5D7988] text-white rounded-tr-[11px] rounded-br-[11px]"
-              : "bg-[#F4F7FD] text-[#5D7988] rounded-tr-[11px] rounded-br-[11px]"
+              : "bg-[#F4F7FD] text-[#5D7988] rounded-tr-[12px] rounded-br-[12px]"
           }`}
           onClick={() => handleTabClick("Tam")}
         >
@@ -97,7 +121,9 @@ const TableChanger: React.FC<TableChangerProps> = ({ onChangeTable }) => {
               ></span>
             )}
             <img
-              src={option.icon}
+              src={
+                activeOption === option.value ? option.activeIcon : option.icon
+              }
               alt={`${option.label} icon`}
               className="w-4 h-4"
             />

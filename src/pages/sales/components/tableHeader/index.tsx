@@ -51,7 +51,6 @@ const TableHeader: React.FC<TableHeaderProps>  = ( {isOtherActive, setIsOtherAct
     }
 
 
-
     const HandleFullButton = () => {
         setIsFull(true);
          setIsOtherActive(false);
