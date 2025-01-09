@@ -3,7 +3,6 @@ import { PaymentTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
-import SavePaymentModal from "../savePaymentModal";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
@@ -139,7 +138,7 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                         <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             SPSS
                         </th>
-                        <th className="p-2">
+                        <th className="py-2 px-5">
                             <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>

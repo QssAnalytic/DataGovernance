@@ -11,12 +11,10 @@ import {
 } from '@/pages/lead-details-page/components/Custom Selector';
 
 const OtherTableModal = () => {
-
-
     // const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
     const [selectedRow, setSelectedRow] = useState<Partial<OtherTableRow>>({});
     // if (!isSaveModalOpen) return null;
-       console.log('rawdata', selectedRow)
+    console.log('rawdata', selectedRow)
 
     const handleModalChange = (field: keyof OtherTableRow, value: string | number | boolean) => {
         setSelectedRow({ ...selectedRow, [field]: value });
@@ -24,7 +22,7 @@ const OtherTableModal = () => {
     return <div>
         <form className='flex flex-col'>
 
-               <div className='flex justify-between'>
+            <div className='flex justify-between'>
                 <div className='flex flex-col'>
 
 
@@ -61,6 +59,7 @@ const OtherTableModal = () => {
                         type="text"
                         value={selectedRow.workPlace || ''}
                         onChange={(e) => handleModalChange('workPlace', e.target.value)}
+                        placeholder='Enter workplace'
                         className="w-[296px] h-[56px] bg-[#FAFCFF] mt-2 border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
                     />
                 </div>
@@ -68,9 +67,10 @@ const OtherTableModal = () => {
                 <div className='flex flex-col'>
                     <label className="font-montserrat text-[14px] font-semibold mt-4 text-[#22385F]">Phone</label>
                     <input
-                        type="text"
+                        type="number"
                         value={selectedRow.phone || ''}
                         onChange={(e) => handleModalChange('phone', e.target.value)}
+                        placeholder='Enter phone number'
                         className="w-[296px] h-[56px] bg-[#FAFCFF] mt-2 border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
                     />
 
@@ -79,6 +79,7 @@ const OtherTableModal = () => {
                         type="number"
                         value={selectedRow.score || ''}
                         onChange={(e) => handleModalChange('score', e.target.value)}
+                        placeholder='Enter score'
                         className="w-[296px] h-[56px] bg-[#FAFCFF] mt-2 border-[#22385F] border-[0.5px] py-[12px] px-[16px] rounded-xl"
                     />
 
