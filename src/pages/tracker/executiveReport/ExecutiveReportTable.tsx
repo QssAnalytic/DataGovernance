@@ -90,7 +90,7 @@ const ExecutiveReportTable = () => {
                             <td className="flex w-[90px] h-[54px] p-4 items-center justify-center gap-3 text-[#30AC04] font-montserrat text-[14px] font-medium">{item.averange + "%"}</td>
                             <td className="flex w-[180px] h-[54px] p-4 items-center gap-2 text-black font-montserrat text-[14px] font-medium">{item.exam}</td>
                             <td className="flex w-[66px] h-[54px] p-4 items-center gap-3 text-black font-montserrat text-[14px] font-medium">{item.finalExam}</td>
-                            <td className="flex w-[290px] h-[54px] p-4 items-center gap-3"><div className="flex w-[294px] h-[30px] shrink-0 text-black font-montserrat text-[14px] font-medium">{item.note}</div></td>
+                            <td className="flex w-[290px] h-[54px] p-4 items-center gap-3"><div className="flex w-[294px] h-[39px] shrink-0 text-black font-montserrat text-[14px] font-medium  overflow-hidden  hover:bg-white hover:h-auto transition-all duration-300 hover:p-[10px] hover:z-10">{item.note}</div></td>
                         </tr>
                     ))
                     }

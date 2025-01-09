@@ -455,7 +455,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -467,7 +467,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -479,7 +479,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -491,7 +491,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     }, {
         id: 5,
@@ -502,7 +502,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -514,7 +514,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -526,7 +526,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -538,7 +538,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     }, {
         id: 9,
@@ -549,7 +549,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -561,7 +561,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -573,7 +573,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
     {
@@ -585,7 +585,7 @@ export const executiveData: ReportData[] = [
         averange: "9.2",
         exam: "Tabloeu 59 spss",
         finalExam: "88",
-        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
+        note: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, recusandae!"
 
     },
 ]

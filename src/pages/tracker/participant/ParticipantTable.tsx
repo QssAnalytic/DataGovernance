@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
-import { Participant } from "../../types/Types";
-import { initialParticipants } from "../../testData/TestData";
+import { Participant } from "../types/Types";
+import { initialParticipants } from "../testData/TestData";
 
 const ParticipantTable = () => {
 

@@ -1,5 +1,5 @@
-import { bootcampData, programName } from "../../testData/testButtonData";
-import ButtonFilter from "../buttonFilter/ButtonFilter";
+import { bootcampData, programName } from "../testData/testButtonData";
+import ButtonFilter from "../components/buttonFilter/ButtonFilter";
 import AttendanceTable from "./AttendanceTable";
 
 export const AttendanceSheet = () => {

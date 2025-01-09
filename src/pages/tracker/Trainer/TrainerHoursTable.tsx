@@ -1,16 +1,24 @@
-import { dateData } from "../../testData/TestData"
+import { dateData } from "../testData/TestData"
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 export const TrainerHoursTable = () => {
-    const itemsPerPage = 9;  
+    const itemsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(1);
-
     const totalItems = dateData.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentItems = dateData.slice(startIndex, startIndex + itemsPerPage);
+
+    const [OpenModal, setOpenModal] = useState(false)
+
+    const modalOpen = () => {
+        setOpenModal(true)
+    }
+    const modalClose = () => {
+        setOpenModal(false)
+    }
 
     const handleNextPage = () => {
         if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -140,7 +148,7 @@ export const TrainerHoursTable = () => {
                                     </button>
                                 </td>
                                 <td className="px-4 py-2 text-center">
-                                    <button className="text-[#22385F] hover:text-red-700">
+                                    <button className="text-[#22385F] hover:text-red-700" onClick={modalOpen}>
                                         <RiDeleteBin6Line />
                                     </button>
                                 </td>
@@ -167,6 +175,33 @@ export const TrainerHoursTable = () => {
                     &gt;
                 </button>
             </div>
+
+            {OpenModal ? (
+                <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+                    <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all  w-[328px] h-[153px] rounded-[12px] bg-white shadow-[0px_0px_20px_0px_rgba(0,0,0,0.10)]">
+                                <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                    <div className="sm:flex sm:items-start">
+                                        
+                                        <div className="text-center  w-[100%]    ">
+                                            <h3 className="text-black font-montserrat text-base font-semibold leading-normal" id="modal-title">Əminsinizmi ?</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex justify-center gap-[15px]">
+                                    <button type="button" className="text-[#22385F] font-montserrat text-sm font-medium leading-normal flex w-[140px] h-[43px] p-[12px_16px] justify-center items-center gap-3 flex-shrink-0 rounded-[12px] border border-[#22385F]" onClick={modalClose}>Xeyir</button>
+                                    <button type="button" className="flex w-[140px] h-[43px] p-[12px_16px] justify-center items-center gap-[12px] flex-shrink-0 rounded-[12px] bg-[#DC4242] text-white font-montserrat text-sm font-medium leading-normal">Bəli,Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ) : <div></div>}
         </div>
     )
 }

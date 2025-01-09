@@ -1,4 +1,3 @@
-import ParticipantSatisfactionTable from "../ParticipantSatisfactionTable";
 import { bootcampData, week } from "../testData/testButtonData";
 import ButtonFilter from "../components/buttonFilter/ButtonFilter";
 
@@ -9,7 +8,6 @@ export const ParticipantSatisfaction = () => {
             <ButtonFilter title="Bootcamp" data={bootcampData} />
             <ButtonFilter title="Week" data={week} />
             </div>
-        <ParticipantSatisfactionTable/>
       </div>
     )
 };

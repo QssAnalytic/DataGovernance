@@ -1,6 +1,6 @@
-import ButtonFilter from "../buttonFilter/ButtonFilter";
+import ButtonFilter from "../components/buttonFilter/ButtonFilter";
 import ParticipantTable from "./ParticipantTable";
-import { bootcampData, week } from "../../testData/testButtonData";
+import { bootcampData, week } from "../testData/testButtonData";
  
 
 export const ParticipantList = () => {

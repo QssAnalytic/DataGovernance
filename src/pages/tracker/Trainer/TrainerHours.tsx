@@ -1,5 +1,5 @@
-import { bootcampData, week } from '../../testData/testButtonData.tsx'
-import ButtonFilter from '../buttonFilter/ButtonFilter.tsx'
+import { bootcampData, week } from '../testData/testButtonData.tsx'
+import ButtonFilter from '../components/buttonFilter/ButtonFilter.tsx'
 import { TrainerHoursTable } from './TrainerHoursTable.tsx'
 
 export const TrainerHours = () => {
@@ -8,7 +8,6 @@ export const TrainerHours = () => {
             <div className='inline-flex gap-[20px] px-[40px]'>
             <ButtonFilter title="Bootcamp" data={bootcampData} />
             <ButtonFilter title="Week" data={week}/>
-               
             </div>
             <TrainerHoursTable />
         </div>)

@@ -1,5 +1,5 @@
 
-import { Navbar } from './components/Navbar.tsx'
+import { Navbar } from './navbar/Navbar.tsx'
 
 const Tracker = () => {
   return (

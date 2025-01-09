@@ -1,4 +1,4 @@
-import { LessonCheckboxData } from "../../testData/TestData";
+import { LessonCheckboxData } from "../testData/TestData";
 import { useState } from "react";
 
 const AttendanceTable = () => {
@@ -56,7 +56,7 @@ const AttendanceTable = () => {
                             <div className="flex h-[40px] justify-center items-center gap-[28px] self-stretch rounded-[6px] bg-[#D3F1EF]">
                                 <div className="text-[#22385F] font-montserrat text-xs font-semibold leading-normal flex h-[40px] rounded-[6px] bg-[#D3F1EF] justify-center items-center gap-[28px] self-stretch w-[171px]">Day</div>
                             </div>
-                            {/* Tarih başlıkları */}
+                            
                             <div className="flex h-[40px] px-[16px] justify-center items-center gap-[12px] self-stretch rounded-[6px] bg-[#22385F] text-white font-montserrat text-[12px] font-semibold leading-none w-[778px]">
                                 <div>20 July</div>
                             </div>
