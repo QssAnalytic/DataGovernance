@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useUIStore } from "../../../services/store/useUIStore";
-import TableChanger from './components/TableChanger';
+import { TableChanger } from './components/TableChanger/index';
 import { FilterTab } from './components/FilterTab';
 import { OverviewTable } from './components/tables/overview table/tableIndex';
 import { EducationTable } from './components/tables/education/tableIndex';
 import { JobStatusTable } from './components/tables/job status/tableIndex';
 import { AddModal } from './components/AddModal/AddModal';
 import { CombinedTable } from './components/tables/combined/CombinedTable';
+import { EditModalWrapper } from "./components/EditModal/EditModalWrapper";
 
 export const TalentPool = () => {
     const { setButtonLabel, setModalContent, setPageCustomHeader } = useUIStore();
@@ -54,6 +55,7 @@ export const TalentPool = () => {
             <div className='w-full'>
                 {renderTable()}
             </div>
+            <EditModalWrapper />
         </div>
     )
 }
