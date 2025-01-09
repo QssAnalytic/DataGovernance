@@ -39,8 +39,10 @@ export const EducationTable = () => {
     };
 
     const handleEdit = (rowData: EducationRowData) => {
-        setSelectedData(rowData);
-        setOverviewEditOpen(true);
+        const store = EditModalStore.getState();
+        store.setEducationData(rowData);
+        store.setActiveTab('education');
+        store.setOverviewEditOpen(true);
     };
 
     const paginatedData = data.slice(
