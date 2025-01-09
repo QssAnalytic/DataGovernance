@@ -13,18 +13,6 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
   currentPage,
   rowsPerPage,
 }) => {
-  const columnWidths = [
-    "w-[3%]",
-    "w-[10%]",
-    "w-[13%]",
-    "w-[5%]",
-    "w-[15%]",
-    "w-[15%]",
-    "w-[12%]",
-    "w-[14%]",
-    "w-[13%]",
-  ];
-
   const startIndex = (currentPage - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
 
@@ -37,9 +25,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
               {headers.map((header, index) => (
                 <th
                   key={String(header)}
-                  className={`p-[16px] font-[500] text-[12px] text-[#000] ${
-                    columnWidths[index] || "w-auto"
-                  } text-left ${
+                  className={`p-[16px] whitespace-nowrap font-[500] text-[12px] text-[#000] text-left ${
                     index === 0 ? "rounded-tl-[20px] rounded-bl-[20px]" : ""
                   }`}
                 >
@@ -74,9 +60,7 @@ const CombinedTable: React.FC<CombinedTableProps> = ({
                   return (
                     <td
                       key={cellIndex}
-                      className={`px-[16px] py-[8px] text-left text-[14px] ${
-                        columnWidths[cellIndex] || "w-auto"
-                      } ${
+                      className={`px-[16px] whitespace-nowrap py-[8px] text-left text-[14px] ${
                         cellIndex === 0
                           ? "rounded-tl-[20px] rounded-bl-[20px]"
                           : ""
