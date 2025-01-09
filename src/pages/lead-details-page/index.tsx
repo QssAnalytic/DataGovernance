@@ -15,7 +15,6 @@ const DetailsPage = () => {
 
   const [selectedTables, setSelectedTables] = useState<string[]>(["details"]);
   const rowsPerPage = 7;
-  console.log("Selected Tables:", selectedTables);
 
   // Get paginated data
   const getPaginatedData = (dataArray: any[]) => {
