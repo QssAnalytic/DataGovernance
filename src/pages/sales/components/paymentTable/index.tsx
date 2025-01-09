@@ -19,7 +19,7 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
-  
+
     //Deleting items from table
     const handleDeleteClick = (id: number) => {
         setDeleteRowId(id);
@@ -132,7 +132,7 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                         <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
-                        <th className="p-2">
+                        <th className=" py-2 px-5">
                             <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
