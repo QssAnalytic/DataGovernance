@@ -17,7 +17,6 @@ const ContactTable: React.FC<ContactTableProps> = ({
   // Calculate current data
   const startIndex = (currentPage - 1) * rowsPerPage;
   const currentData = data.slice(startIndex, startIndex + rowsPerPage);
-  console.log("Current Data:", currentData);
 
   const columnWidths: string[] = [
     "w-[3%]", // ID

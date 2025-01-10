@@ -105,8 +105,8 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
                 <thead className="bg-[#E9EDCA] sticky rounded-xl top-0 z-10 shadow-md">
                     <tr className="text-left">
-                        <th className=" p-5  font-semibold  font-montserrat text-[12px text-[#000000]">ID</th>
-                        <th className="p-5">
+                        <th className=" p-2  font-semibold text-center font-montserrat text-[12px text-[#000000]">ID</th>
+                        <th className="p-2">
                             <div className="flex gap-1">
                                 <HiOutlineChevronUpDown
                                     onClick={handleSort}
@@ -117,28 +117,28 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                                 : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat text-[12px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat text-[12px]  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                        <th className="border-none text-center   p-5 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+                        <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
                             BC №
                         </th>
-                        <th className="font-montserrat text-[12px] p-5 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text=center text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Qoşulur
                         </th>
-                        <th className="font-montserrat  text-[12px] p-5 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-start text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Mobil nömrə
                         </th>
-                        <th className="font-montserrat text-center text-[12px] p-5 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Müqavilə
                         </th>
-                        <th className="font-montserrat  text-[12px] p-5 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Entrance Score
                         </th>
-                        <th className="font-montserrat text-[12px] p-5 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             İş yeri
                         </th>
-                        <th className="p-5">
+                        <th className="p-2">
                             <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
@@ -149,10 +149,10 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     {currentData.map((item) => (
                         <tr
                             key={item.id}
-                            className="border-b even:bg-[#fafafa] odd:bg-white"
+                            className="border-b   even:bg-[#fafafa] odd:bg-white"
                         >
                             <>
-                                <td className="p-5 text-sm text-gray-700">{item.id}</td>
+                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
 
                                 <td className="font-montserrat  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.name}
@@ -160,10 +160,10 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                 <td className="font-montserrat  text-center p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.BC}
                                 </td>
-                                <td className="font-montserrat p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.trainingName}
                                 </td>
-                                <td className="font-montserrat p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat  text-start  p-2 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.phone}
                                 </td>
                                 <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
@@ -179,10 +179,10 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                     {item.score}
                                 </td>
 
-                                <td className="font-montserrat p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.workPlace}
                                 </td>
-                                <td className="p-5 text-center">
+                                <td className="p-2 text-center">
                                     <div className="flex gap-3">
                                         <FiEdit
                                             className="cursor-pointer w-5 h-5"

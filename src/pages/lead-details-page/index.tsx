@@ -13,7 +13,7 @@ import PaginationControls from "./components/Pagination Controller";
 const DetailsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [selectedTables, setSelectedTables] = useState<string[]>(["contact"]);
+  const [selectedTables, setSelectedTables] = useState<string[]>(["details"]);
   const rowsPerPage = 7;
 
   // Get paginated data
@@ -34,7 +34,7 @@ const DetailsPage = () => {
 
       selectedTables.forEach((table) => {
         switch (table) {
-          case "contact":
+          case "details":
             Object.assign(rowData, {
               Capacity: person.contactInfo.capacity,
               Value: person.contactInfo.value,
@@ -84,7 +84,7 @@ const DetailsPage = () => {
 
     selectedTables.forEach((table) => {
       switch (table) {
-        case "contact":
+        case "details":
           combinedHeaders.push(
             ...headers.filter((h) => !combinedHeaders.includes(h))
           );
