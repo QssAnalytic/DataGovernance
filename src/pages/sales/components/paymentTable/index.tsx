@@ -7,10 +7,10 @@ import PaginationControls from "@/pages/lead-details-page/components/Pagination 
 import ShowModal from "@/pages/app-data/components/showModal";
 import EditModal from "../editModal";
 import { useState } from "react";
-import { PaymentDataProps, SalesTablePInputProps } from "../../types";
+import { PaymentDataProps, OtherTableProps } from "../../types";
 
 
-const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
+const PaymentTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
 
     const [data, setData] = useState<PaymentDataProps[]>(PaymentTableData);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);

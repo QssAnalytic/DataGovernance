@@ -102,7 +102,7 @@ const PaymentTableModal = ( ) => {
 
                                 />
 
-                            </div>
+                            </div >
 
                         </div>
 
