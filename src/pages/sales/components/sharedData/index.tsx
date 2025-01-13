@@ -54,29 +54,74 @@ export const OtherTableData = [
     { id: 13, name: "Ramin Sultanov", BC: '34', trainingName: 'DS FULL (available abroad)', phone: '+994 552345678', score: 593, workPlace: "Azerbaijan Tourism Board" },
     { id: 14, name: "Gulnar Mammadova", BC: '34', trainingName: 'Data Analytics with SPSS', phone: '+994 552345678', score: 613, workPlace: "Azerbaijan Investment" },
     { id: 15, name: "Vugar Nasibov", BC: '34', trainingName: 'DS FULL (available abroad)', phone: '+994 552345678', score: 533, workPlace: "Azercosmos" },
-    
-    
+
+
 
 ];
 
 
 
 export const PaymentTableData = [
-    { id: 1, name: 'Mammadqasım Xanmammadov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 2, name: 'Raşad Huseynov', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 3, name: 'Leyla Quliyeva ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 4, name: 'Elvin Mammadov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 5, name: 'Aysel Ismayılova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 6, name: 'Tural Rahimov', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 7, name: 'Nigar Safarlı ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 8, name: 'Farid Cafarov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 9, name: 'Sona Abdullayeva ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 10, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 11, name: 'Gulnar Mammadova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 12, name: 'Vugar Nasibov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 13, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 14, name: 'Kamran Hasanov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
-    { id: 15, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024" },
+    {
+        id: 1, name: 'Mammadqasım Xanmammadov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: true,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 2, name: 'Raşad Huseynov', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 3, name: 'Leyla Quliyeva ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 4, name: 'Elvin Mammadov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 5, name: 'Aysel Ismayılova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 6, name: 'Tural Rahimov', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 7, name: 'Nigar Safarlı ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 8, name: 'Farid Cafarov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 9, name: 'Sona Abdullayeva ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 10, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 11, name: 'Gulnar Mammadova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 12, name: 'Vugar Nasibov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 13, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 14, name: 'Kamran Hasanov ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
+    {
+        id: 15, name: 'Zeynab Gasimova ', amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", career: false,
+        coWorking: false, mentorship: false, experience: false, r: false, sql: false, python: false, bigData: false, tableau: false, spss: false,
+    },
 
 
 
@@ -84,3 +129,21 @@ export const PaymentTableData = [
 
 
 
+export const CombinedTableData = [
+    { id: 1, name: 'Mammadqasım Xanmammadov ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 2, name: 'Raşad Huseynov', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 3, name: 'Leyla Quliyeva ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 4, name: 'Elvin Mammadov', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 5, name: 'Aysel Ismayılova ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 6, name: 'Tural Rahimov', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 7, name: 'Nigar Safarlı', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 8, name: 'Farid Cafarov', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 9, name: 'Sona Abdullayeva ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 10, name: 'Zeynab Gasimova  ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 11, name: 'Gulnar Mammadova ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 12, name: 'Vugar Nasibov ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 13, name: 'Zeynab Gasimova ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 14, name: 'Kamran Hasanov  ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+    { id: 15, name: 'Zeynab Gasimova ', BC: '34', trainingName: 'DS FULL', phone: '+994 552345678', score: 656, workPlace: "SOCAR", amount: 4649, discount: 600, totalAmount: 3250, payment1: 950, plannedDate1: "24/11/2024", payment2: 950, plannedDate2: "24/11/2024", payment3: 950, plannedDate3: "24/11/2024", },
+
+]

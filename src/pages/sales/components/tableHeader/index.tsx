@@ -6,38 +6,36 @@ import { TableHeaderProps } from "../../types";
 
 const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActive, isPaymentActive, setIsPaymentActive, isServicesActive, setIsServicesActive, isFull, setIsFull }) => {
 
-   const HandleOtherButton = () => {
-        if (isOtherActive) {
-            setIsOtherActive(false)
-        } else {
-            setIsOtherActive(true)
-        }
+    const HandleOtherButton = () => {
+  
 
-        setIsPaymentActive(false);
-        setIsServicesActive(false)
+        if(!isFull) {
+            setIsOtherActive(true)
+            setIsPaymentActive(false);
+            setIsServicesActive(false)
+        }
+           
 
     }
 
     const HandlePaymentButton = () => {
-        if (isPaymentActive) {
-            setIsPaymentActive(false)
-        } else {
-            setIsPaymentActive(true)
-        }
-
+        
+       if(!isFull) {
+        setIsPaymentActive(true)
         setIsOtherActive(false);
         setIsServicesActive(false);
+       }
+       
     }
 
     const HandleServicesButton = () => {
-        if (isServicesActive) {
-            setIsServicesActive(false)
-        } else {
+        
+        if(!isFull) {
             setIsServicesActive(true)
+            setIsOtherActive(false);
+            setIsPaymentActive(false);
         }
-
-        setIsOtherActive(false);
-        setIsPaymentActive(false);
+      
     }
 
 
@@ -51,9 +49,13 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
 
     const HandleFullButton = () => {
         setIsFull(true);
-        setIsOtherActive(false);
-        setIsPaymentActive(false);
-        setIsServicesActive(false);
+      
+
+        if (!isFull) {
+            setIsOtherActive(false);
+            setIsPaymentActive(false);
+            setIsServicesActive(false);
+        }
     }
 
     return (
@@ -64,7 +66,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
             </div>
 
             <div className={`flex justify-center h-[56px] w-[105px] rounded-xl gap-2  cursor-pointer ${isFull && "bg-[#E9EDCA]"}`} onClick={HandleOtherButton}>
-                <MdOutlinePermContactCalendar className={`text-[18px] mt-4 ${isOtherActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
+                <MdOutlinePermContactCalendar className={`text-[18px] mt-4 ${!isFull && isOtherActive ? 'text-[#5D7988]' : isFull ? "text-[#5D7988]" : "text-[#BCBCBC] "}  `} />
                 <p className={` font-montserrat font-medium  mt-4 text-[14px] ${isOtherActive ? 'text-[#5D7988]' : isFull ? "text-[#000]" : "text-[#BCBCBC]"}  `} >Digər</p>
             </div>
             <div className={`flex justify-center h-[56px] w-[175px] rounded-xl gap-2  cursor-pointer ${isFull && "bg-[#E2DDD5]"}`} onClick={HandlePaymentButton}>

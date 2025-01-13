@@ -7,11 +7,11 @@ import { GoTrash } from "react-icons/go";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
-import { OtherTableRow, SalesTablePInputProps } from "../../types";
+import { OtherTableRow, OtherTableProps } from "../../types";
 import EditModal from "../editModal";
 
 
-const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
+const OtherTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
 
     const [data, setData] = useState<OtherTableRow[]>(OtherTableData);
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,7 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
-    
+
 
     //Deleting items from table
     const handleDeleteClick = (id: number) => {
@@ -67,8 +67,8 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
- 
-   const handleCancelDelete = () => {
+
+    const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
     };
@@ -95,10 +95,10 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                 <HiOutlineChevronUpDown
                                     onClick={handleSort}
                                     className={`cursor-pointer w-5 h-5 ${sortOrder === "asc"
-                                            ? "text-[#ff2c2c]"
-                                            : sortOrder === "desc"
-                                                ? "text-[#4BB543]"
-                                                : "text-gray-600"
+                                        ? "text-[#ff2c2c]"
+                                        : sortOrder === "desc"
+                                            ? "text-[#4BB543]"
+                                            : "text-gray-600"
                                         }`}
                                 />
                                 <p className="font-montserrat text-[12px]  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
@@ -191,9 +191,9 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
-           
-             {/* save content after editing */}
-             <EditModal
+
+            {/* save content after editing */}
+            <EditModal
                 isOpen={isEditModalOpen}
                 onClose={() => setIsEditModalOpen(false)}
             />
