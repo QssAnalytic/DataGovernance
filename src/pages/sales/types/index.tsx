@@ -6,10 +6,25 @@ export interface TableHeaderProps {
   setIsPaymentActive: React.Dispatch<React.SetStateAction<boolean>>;
   isServicesActive: boolean;
   setIsServicesActive: React.Dispatch<React.SetStateAction<boolean>>;
+  isPaymentActiveFull: boolean;
+  setIsPaymentActiveFull: React.Dispatch<React.SetStateAction<boolean>>;
+  isOtherActiveFull: boolean;
+  setIsOtherActiveFull: React.Dispatch<React.SetStateAction<boolean>>;
+  isServiceActiveFull : boolean;
+  setIsServiceActiveFull : React.Dispatch<React.SetStateAction<boolean>>;
   isFull: boolean;
   setIsFull: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+
+
+export interface CombinedDataProps {
+  isOtherActiveFull: boolean;
+  isServiceActiveFull : boolean;
+  isPaymentActiveFull: boolean;
+
+  
+}
 export type OtherTableRow = {
   id: number;
   name: string;
@@ -33,9 +48,9 @@ export interface SaveOtherModalProps {
 export interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  rowData: Partial<PaymentDataProps>; // Matches the structure of PaymentDataProps
+  rowData: Partial<CombinedDataTypes>; // Matches the structure of PaymentDataProps
   onSave: () => void;
-  onChange: (field: keyof PaymentDataProps, value: string | number | boolean) => void;
+  onChange: (field: keyof CombinedDataTypes, value: string | number | boolean) => void;
 }
 
 
@@ -45,20 +60,20 @@ export interface SalesTablePInputProps {
 }
 
 
-export interface OtherTableProps {
-  searchTerm: string; // The current value of the input
-  isFull : boolean
-}
-
 export interface SalesInputProps {
     searchTerm: string; // The current value of the input
     setSearchTerm: (value: string) => void; // Function to update the search term
   }
 
 
-export interface PaymentDataProps {
+  export interface CombinedDataTypes {
     id: number;
     name: string;
+    BC: string;
+    trainingName: string;
+    phone: string;
+    score: number;
+    workPlace: string;
     amount: number;
     discount: number;
     totalAmount: number;
@@ -68,14 +83,4 @@ export interface PaymentDataProps {
     plannedDate2: string;
     payment3: number;
     plannedDate3: string;
-    career: boolean;
-    coWorking: boolean;
-    mentorship: boolean;
-    experience: boolean;
-    r: boolean;
-    sql: boolean;
-    python: boolean;
-    bigData: boolean;
-    tableau: boolean;
-    spss: boolean;
-}
+  }

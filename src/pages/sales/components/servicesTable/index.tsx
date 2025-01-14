@@ -1,18 +1,18 @@
 import { FiEdit } from "react-icons/fi";
-import { PaymentTableData } from "../sharedData";
+import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
-import { PaymentDataProps, OtherTableProps } from "../../types";
+import { CombinedDataTypes, SalesTablePInputProps } from "../../types";
 import EditModal from "../editModal";
 
 
-const ServicesTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
+const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
-    const [data, setData] = useState<PaymentDataProps[]>(PaymentTableData);
+    const [data, setData] = useState<CombinedDataTypes[]>(CombinedTableData);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
@@ -90,7 +90,7 @@ const ServicesTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
 
                 <thead className="bg-[#FEFADF]  sticky rounded-xl top-0 z-10 shadow-md">
                     <tr className="text-left">
-                        {!isFull && <>
+                       
                                     
                             <th className=" p-2   font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
                         <th className="p-2">
@@ -107,7 +107,7 @@ const ServicesTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
                                 <p className="font-montserrat text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                                    </> }
+                                    
                        
                         <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
                             Career
@@ -156,17 +156,14 @@ const ServicesTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
                             className="border-b even:bg-[#fafafa] odd:bg-white"
                         >
                             <>
-                                {
-                                    !isFull && <>
+                           
                                         <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
 
                                         <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                             {item.name}
                                         </td>
 
-                                    </>
-
-                                }
+                                
 
                                 <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
                                     <input
