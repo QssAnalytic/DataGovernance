@@ -1,5 +1,5 @@
 import { FiEdit } from "react-icons/fi";
-import { PaymentTableData } from "../sharedData";
+import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
@@ -7,12 +7,12 @@ import PaginationControls from "@/pages/lead-details-page/components/Pagination 
 import ShowModal from "@/pages/app-data/components/showModal";
 import EditModal from "../editModal";
 import { useState } from "react";
-import { PaymentDataProps, OtherTableProps } from "../../types";
+import {CombinedDataTypes, SalesTablePInputProps } from "../../types";
 
 
-const PaymentTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
+const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
-    const [data, setData] = useState<PaymentDataProps[]>(PaymentTableData);
+    const [data, setData] = useState<CombinedDataTypes[]>(CombinedTableData);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 

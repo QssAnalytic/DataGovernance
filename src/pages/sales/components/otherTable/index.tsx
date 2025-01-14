@@ -1,19 +1,18 @@
 import { FiEdit } from "react-icons/fi";
-import { OtherTableData } from "../sharedData";
+import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GoTrash } from "react-icons/go";
-
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
-import { OtherTableRow, OtherTableProps } from "../../types";
+import { CombinedDataTypes, SalesTablePInputProps } from "../../types";
 import EditModal from "../editModal";
 
 
-const OtherTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
+const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
-    const [data, setData] = useState<OtherTableRow[]>(OtherTableData);
+    const [data, setData] = useState<CombinedDataTypes[]>(CombinedTableData);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -47,7 +46,6 @@ const OtherTable: React.FC<OtherTableProps> = ({ searchTerm, isFull }) => {
             const nameB = b.name?.toLowerCase() ?? '';
             return sortOrder === 'asc' ? nameA.localeCompare(nameB) : sortOrder === 'desc' ? nameB.localeCompare(nameA) : 0;
         }
-
 
         return 0;
     });
