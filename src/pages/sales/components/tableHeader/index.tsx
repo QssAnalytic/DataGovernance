@@ -15,7 +15,13 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
             setIsServicesActive(false)
         }
 
-        setIsOtherActiveFull((prevState) => !prevState);
+        setIsOtherActiveFull((prevState) => {
+            const newState = !prevState;
+            if (!newState && !isPaymentActiveFull && !isServiceActiveFull) {
+                setIsPaymentActiveFull(true); // Activate "Payment" if all would be inactive
+            }
+            return newState;
+        });
 
     }
 
@@ -27,7 +33,13 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
         }
 
         // Toggle isPaymentActiveFull state
-        setIsPaymentActiveFull((prevState) => !prevState);
+        setIsPaymentActiveFull((prevState) => {
+            const newState = !prevState;
+            if (!newState && !isOtherActiveFull && !isServiceActiveFull) {
+                setIsServiceActiveFull(true); // Activate "Services" if all would be inactive
+            }
+            return newState;
+        });
     };
 
     const HandleServicesButton = () => {
@@ -37,8 +49,13 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
             setIsOtherActive(false);
             setIsPaymentActive(false);
         }
-        setIsServiceActiveFull((prevState) => !prevState);
-
+        setIsServiceActiveFull((prevState) => {
+            const newState = !prevState;
+            if (!newState && !isOtherActiveFull && !isPaymentActiveFull) {
+                setIsOtherActiveFull(true); // Activate "Other" if all would be inactive
+            }
+            return newState;
+        });
     }
 
 
@@ -57,14 +74,17 @@ const TableHeader: React.FC<TableHeaderProps> = ({ isOtherActive, setIsOtherActi
     const HandleFullButton = () => {
         setIsFull(true);
 
+        // Ensure at least one button is active
+        if (!isOtherActiveFull && !isPaymentActiveFull && !isServiceActiveFull) {
+            setIsOtherActiveFull(true); // Set "Other" as active by default
+        }
 
         if (!isFull) {
             setIsOtherActive(false);
             setIsPaymentActive(false);
             setIsServicesActive(false);
         }
-    }
-
+    };
     return (
         <div className={`w-[618px] mt-5 justify-between pr-2  gap-[20px]  h-[56px] flex rounded-xl ${!isFull ? 'border-[#E9E9E9]  border-[1px] ' : "border-none"}`}>
             <div className="flex justify-start">

@@ -22,7 +22,7 @@ export interface CombinedDataProps {
   isOtherActiveFull: boolean;
   isServiceActiveFull : boolean;
   isPaymentActiveFull: boolean;
-
+  searchTerm: string; // The current value of the input
   
 }
 export type OtherTableRow = {

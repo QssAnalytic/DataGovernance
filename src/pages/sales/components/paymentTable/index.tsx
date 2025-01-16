@@ -83,12 +83,12 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
     return (
         <div>
-            <table className="min-w-[1300px]  table-auto w-full rounded-xl border-collapse ">
+            <table className=" whitespace-nowrap table-auto w-full rounded-xl border-collapse ">
 
-                <thead className="bg-[#E2DDD5]  sticky rounded-xl top-0 z-10 shadow-md">
-                    <tr className="text-left">
-                        <th className=" p-2   font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
-                        <th className="p-2">
+                <thead className="bg-[#E2DDD5]   sticky rounded-xl top-0 z-10 shadow-md">
+                    <tr className="text-left  whitespace-nowrap">
+                        <th className="font-semibold  text-center  whitespace-nowrap font-montserrat  text-[#000000]">ID</th>
+                        <th className="p-2 whitespace-nowrap">
                             <div className="flex gap-1">
                                 <HiOutlineChevronUpDown
                                     onClick={handleSort}
@@ -99,16 +99,16 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                             : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat  whitespace-nowrap text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                        <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+                        <th className="border-none text-center p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
                             Məbləğ
                         </th>
                         <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Endirimlər
                         </th>
-                        <th className="font-montserrat  text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center  whitespace-nowrap  text-[12px] p-2 font-bold leading-normal text-[#000000]">
                             Total Amount
                         </th>
                         <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
@@ -143,53 +143,53 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     {currentData.map((item) => (
                         <tr
                             key={item.id}
-                            className="border-b even:bg-[#fafafa] odd:bg-white"
+                            className="border-b even:bg-[#fafafa]  whitespace-nowrap odd:bg-white"
                         >
                             <>
-                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
+                                <td className="p-5 text-center text-sm text-gray-700  whitespace-nowrap">{item.id}</td>
 
-                                <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.name}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.amount}
                                 </td>
 
-                                <td className="font-montserrat  text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat  text-center  whitespace-nowrap p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.discount}
                                 </td>
 
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.totalAmount}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment1}
                                 </td>
 
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate1}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment2}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate2}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment3}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate3}
                                 </td>
-                                <td className="p-5 text-center">
+                                <td className="p-5  whitespace-nowrap text-center">
                                     <div className="flex gap-3">
                                         <FiEdit
                                             className="cursor-pointer w-5 h-5"
