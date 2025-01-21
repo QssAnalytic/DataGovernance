@@ -5,32 +5,23 @@ import { IoClose, IoCloseSharp } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { statusData } from "../sharedData";
 
-
 const Bootcamp = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isChecked, setIsChecked] = useState<boolean[]>([]);
+    const [isChecked, setIsChecked] = useState<boolean[]>(new Array(statusData.length).fill(false));
     const [isSearch, setIsSearch] = useState<boolean>(false);
     const [query, setQuery] = useState<string>("");
 
-
     const handleDropdown = () => {
-        if (isOpen) {
-            setIsOpen(false)
-        } else {
-            setIsOpen(true);
-        }
-    }
-
+        setIsOpen(!isOpen);
+    };
 
     const handleCheckboxChange = (index: number) => {
         setIsChecked((prevState) => {
             const newCheckedItems = [...prevState];
-            newCheckedItems[index] = !newCheckedItems[index]; // Toggle the checked state at the specific index
+            newCheckedItems[index] = !newCheckedItems[index];
             return newCheckedItems;
         });
     };
-    const filteredItems = statusData; // No filtering needed
-
 
     const selectAll = () => {
         setIsChecked(new Array(statusData.length).fill(true));
@@ -40,17 +31,13 @@ const Bootcamp = () => {
         setIsChecked(new Array(statusData.length).fill(false));
     };
 
-    const handleCheckbox = () => !isOpen;
-    document.addEventListener("mousedown", handleCheckbox);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(event.target as Node)
-            ) {
-                handleDropdown(); // Close the dropdown when clicking outside
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+                setIsSearch(false)
             }
         };
 
@@ -61,31 +48,40 @@ const Bootcamp = () => {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [isOpen, handleDropdown]);
+    }, [isOpen]);
 
+    // Filter items based on the query
+    const filteredItems = statusData.filter((item) =>
+        item.toLowerCase().includes(query.toLowerCase())
+    );
 
     return (
         <div className="relative w-[100%]">
-            <div onClick={handleDropdown} className="flex cursor-pointer justify-between p-4  w-full rounded-xl border-[0.5px] bg-[#FAFCFF]   border-[#22385F]">
-                <p className="font-montserrat font-normal text-[16px] text-[#969696] mt-1 leading-[17.07px]">Bootcamp № ( 1-36 )</p>
+            <div
+                onClick={handleDropdown}
+                className="flex cursor-pointer justify-between p-4 w-full rounded-xl border-[0.5px] bg-[#FAFCFF] border-[#22385F]"
+            >
+                <p className="font-montserrat font-normal text-[16px] text-[#969696] mt-1 leading-[17.07px]">
+                    Bootcamp № ( 1-36 )
+                </p>
                 <IoIosArrowDown className="font-montserrat font-medium text-[20px] text-[#969696] mt-1 leading-[17.07px]" />
             </div>
-            {
-                isOpen && <div
+            {isOpen && (
+                <div
                     ref={dropdownRef}
-                    className=" absolute  z-[100] right-0 rounded-xl shadow-lg p-4 bg-white "
+                    className="absolute z-[100] right-0 rounded-xl shadow-lg p-4 bg-white"
                 >
-                    <div className="flex justify-between   w-[225px]  mt-1 ">
+                    <div className="flex justify-between w-[225px] mt-1">
                         <p className="font-montserrat w-full my-2 ml-3 font-semibold leading-[19.05px] text-[16px] text-[#000000] text-left">
                             Bootcamp № ( 1-36 )
                         </p>
-                        <button className="bg-none border-none " onClick={handleDropdown}>
-                            <IoCloseSharp className="text-[24px] " />
+                        <button className="bg-none border-none" onClick={handleDropdown}>
+                            <IoCloseSharp className="text-[24px]" />
                         </button>
                     </div>
 
                     <div className="flex flex-col gap-[10px]">
-                        <div className="flex justify-start" >
+                        <div className="flex justify-start">
                             <div className="flex justify-start mt-2 px-3 py-1 gap-[7px]">
                                 <span
                                     className="cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]"
@@ -95,17 +91,15 @@ const Bootcamp = () => {
                                 </span>
                                 <div className="w-[5px] h-[5px] rounded bg-[#1D7EB7] mt-[0.5rem]"></div>
                                 <span
-                                    className=" cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]"
+                                    className="cursor-pointer font-montserrat font-normal text-[16px] text-[#1D7EB7] leading-[19.05px]"
                                     onClick={resetAll}
                                 >
                                     Sıfırla
                                 </span>
-
-
                             </div>
 
                             <div className="flex justify-center mt-3 gap-[10px]">
-                                <div className="w-[1.5px]  ml-2 bg-[#8F8F8F] h-[20px]"></div>
+                                <div className="w-[1.5px] ml-2 bg-[#8F8F8F] h-[20px]"></div>
 
                                 {!isSearch ? (
                                     <CiSearch
@@ -114,23 +108,19 @@ const Bootcamp = () => {
                                     />
                                 ) : (
                                     <IoClose
-                                        className="w-5 h-5 text-[20px]  text-[#8F8F8F] cursor-pointer"
+                                        className="w-5 h-5 text-[20px] text-[#8F8F8F] cursor-pointer"
                                         onClick={() => setIsSearch(false)}
                                     />
                                 )}
                             </div>
-
-
-
                         </div>
+
                         {isSearch && (
                             <div className="relative h-[40px] z-50">
-                                <SearchInput
-                                    setQuery={setQuery}
-                                    query={query}
-                                />
+                                <SearchInput setQuery={setQuery} query={query} />
                             </div>
                         )}
+
                         <div className="overflow-y-scroll max-h-[155px]">
                             {filteredItems.map((item, index) => (
                                 <div
@@ -163,9 +153,9 @@ const Bootcamp = () => {
                         </div>
                     </div>
                 </div>
-            }
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default Bootcamp;

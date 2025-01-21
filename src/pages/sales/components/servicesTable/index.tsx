@@ -90,9 +90,7 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
                 <thead className="bg-[#FEFADF]  sticky rounded-xl top-0 z-10 shadow-md">
                     <tr className="text-left">
-                       
-                                    
-                            <th className=" p-2   font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
+                     <th className=" p-2  font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
                         <th className="p-2">
                             <div className="flex gap-1">
                                 <HiOutlineChevronUpDown
@@ -104,42 +102,42 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                             : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat text-sm mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                                    
-                       
-                        <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+
+
+                        <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
                             Career
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Co-working
                         </th>
-                        <th className="font-montserrat  text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Mentorship
                         </th>
-                        <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
                             Experience
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center  text-sm  p-2 font-bold leading-normal text-[#000000]">
                             R
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             SQL
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm  p-2 font-bold leading-normal text-[#000000]">
                             Python
                         </th>
 
-                        <th className="font-montserrat  text-center  text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center  text-sm p-2 font-bold leading-normal text-[#000000]">
                             Big Data
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Tableau
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             SPSS
                         </th>
                         <th className="py-2 px-5">
@@ -156,14 +154,14 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                             className="border-b even:bg-[#fafafa] odd:bg-white"
                         >
                             <>
-                           
-                                        <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
 
-                                        <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
-                                            {item.name}
-                                        </td>
+                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
 
-                                
+                                <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                    {item.name}
+                                </td>
+
+
 
                                 <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
                                     <input

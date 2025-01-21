@@ -84,10 +84,9 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     return (
         <div>
             <table className=" whitespace-nowrap table-auto w-full rounded-xl border-collapse ">
-
-                <thead className="bg-[#E2DDD5]   sticky rounded-xl top-0 z-10 shadow-md">
+                    <thead className="bg-[#E2DDD5]   sticky rounded-xl top-0 z-10 shadow-md">
                     <tr className="text-left  whitespace-nowrap">
-                        <th className="font-semibold  text-center  whitespace-nowrap font-montserrat  text-[#000000]">ID</th>
+                        <th className="font-semibold  text-center whitespace-nowrap font-montserrat  text-[#000000]">ID</th>
                         <th className="p-2 whitespace-nowrap">
                             <div className="flex gap-1">
                                 <HiOutlineChevronUpDown
@@ -99,37 +98,37 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                             : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat  whitespace-nowrap text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat  whitespace-nowrap text-sm mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                        <th className="border-none text-center p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+                        <th className="border-none text-center p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
                             Məbləğ
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Endirimlər
                         </th>
-                        <th className="font-montserrat  text-center  whitespace-nowrap  text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center  whitespace-nowrap  text-sm  p-2 font-bold leading-normal text-[#000000]">
                             Total Amount
                         </th>
-                        <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
                             Ödəmə 1
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Ödəmə 2
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
 
-                        <th className="font-montserrat  text-center  text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center  text-sm p-2 font-bold leading-normal text-[#000000]">
                             Ödəmə 3
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
                         <th className=" py-2 px-5">

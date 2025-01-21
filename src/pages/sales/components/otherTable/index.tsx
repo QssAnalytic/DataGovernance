@@ -99,25 +99,25 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                             : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat text-[12px]  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat text-sm  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                        <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+                        <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
                             BC №
                         </th>
-                        <th className="font-montserrat  text=center text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center text-sm p-2 font-bold leading-normal text-[#000000]">
                             Qoşulur
                         </th>
-                        <th className="font-montserrat  text-start text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-start text-sm p-2 font-bold leading-normal text-[#000000]">
                             Mobil nömrə
                         </th>
-                        <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
                             Müqavilə
                         </th>
-                        <th className="font-montserrat  text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-sm p-2 font-bold leading-normal text-[#000000]">
                             Entrance Score
                         </th>
-                        <th className="font-montserrat text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-sm p-2 font-bold leading-normal text-[#000000]">
                             İş yeri
                         </th>
                         <th className="p-2">
