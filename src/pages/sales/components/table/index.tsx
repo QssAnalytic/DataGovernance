@@ -20,23 +20,23 @@ const Table: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         <div>
             <TableHeader
                 isOtherActive={isOtherActive}
-                setIsOtherActive={ setIsOtherActive}
+                setIsOtherActive={setIsOtherActive}
                 isPaymentActive={isPaymentActive}
                 setIsPaymentActive={setIsPaymentActive}
                 isServicesActive={isServicesActive}
                 setIsServicesActive={setIsServicesActive}
-                isPaymentActiveFull = {isPaymentActiveFull}
-                setIsPaymentActiveFull = {setIsPaymentActiveFull}
-                isOtherActiveFull = {isOtherActiveFull}
-                setIsOtherActiveFull = {setIsOtherActiveFull}
-                isServiceActiveFull = {isServicesActiveFull}
-                setIsServiceActiveFull = {setIsServicesActiveFull}
+                isPaymentActiveFull={isPaymentActiveFull}
+                setIsPaymentActiveFull={setIsPaymentActiveFull}
+                isOtherActiveFull={isOtherActiveFull}
+                setIsOtherActiveFull={setIsOtherActiveFull}
+                isServiceActiveFull={isServicesActiveFull}
+                setIsServiceActiveFull={setIsServicesActiveFull}
                 isFull={isFull}
                 setIsFull={setIsFull} />
             <div className="mt-3">
                 {
-                    isOtherActive ? <OtherTable searchTerm={searchTerm} /> : isPaymentActive ? <PaymentTable searchTerm={searchTerm} /> : isServicesActive ? <ServicesTable searchTerm={searchTerm} /> : <CombinedTable   isPaymentActiveFull = {isPaymentActiveFull}  searchTerm={searchTerm}   isOtherActiveFull = {isOtherActiveFull}  isServiceActiveFull = {isServicesActiveFull}/>
-                   
+                    isOtherActive ? <OtherTable searchTerm={searchTerm} /> : isPaymentActive ? <PaymentTable searchTerm={searchTerm} /> : isServicesActive ? <ServicesTable searchTerm={searchTerm} /> : <CombinedTable isPaymentActiveFull={isPaymentActiveFull} searchTerm={searchTerm} isOtherActiveFull={isOtherActiveFull} isServiceActiveFull={isServicesActiveFull} />
+
                 }
 
             </div>
