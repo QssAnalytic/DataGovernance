@@ -66,11 +66,10 @@ export interface SaveModalProps {
     onChange: (field: keyof TableRow, value: string) => void;
     isOpen: boolean;
     onClose: () => void;
-    rowData: any; // Replace `any` with the specific type of `rowData`
-
-    setData: React.Dispatch<React.SetStateAction<any>>; // Replace `any` with the type of `data`
-    data: any; // Replace `any` with the specific type of `data`
-    selectedRow: any; // Replace `any` with the specific type of `selectedRow`
+    rowData: TableRow; 
+    setData: React.Dispatch<React.SetStateAction<TableRow[]>>; // Replaced `any` with `TableRow[]` for consistency
+    data: TableRow[]; // Already correctly typed as an array of TableRow
+     selectedRow: TableRow | null; 
     setIsSaveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
