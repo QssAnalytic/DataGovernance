@@ -1,13 +1,12 @@
-import { FiEdit } from "react-icons/fi";
 import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
-import { GoTrash } from "react-icons/go";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
 import { CombinedDataTypes, SalesTablePInputProps } from "../../types";
 import EditModal from "../editModal";
+import EditAndDelete from "../editAndDelete";
 
 
 const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
@@ -74,7 +73,7 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     };
 
 
-    const rowsPerPage = 5; // Number of rows to display per page
+    const rowsPerPage = 10; // Number of rows to display per page
 
 
 
@@ -85,176 +84,170 @@ const ServicesTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
 
     return (
-        <div>
-            <table className="min-w-[1300px]  table-auto w-full rounded-xl border-collapse ">
+        <div >
+            <div className=" relative overflow-x-auto overflow-y-auto h-[350px]">
+                <table className="min-w-[1300px]  table-auto w-full rounded-xl border-collapse ">
 
-                <thead className="bg-[#FEFADF]  sticky rounded-xl top-0 z-10 shadow-md">
-                    <tr className="text-left">
-                     <th className=" p-2  font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
-                        <th className="p-2">
-                            <div className="flex gap-1">
-                                <HiOutlineChevronUpDown
-                                    onClick={handleSort}
-                                    className={`cursor-pointer w-5 h-5 ${sortOrder === "asc"
-                                        ? "text-[#ff2c2c]"
-                                        : sortOrder === "desc"
-                                            ? "text-[#4BB543]"
-                                            : "text-gray-600"
-                                        }`}
-                                />
-                                <p className="font-montserrat text-sm mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
-                            </div>
-                        </th>
-
-
-                        <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
-                            Career
-                        </th>
-                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Co-working
-                        </th>
-                        <th className="font-montserrat  text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Mentorship
-                        </th>
-                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Experience
-                        </th>
-                        <th className="font-montserrat text-center  text-sm  p-2 font-bold leading-normal text-[#000000]">
-                            R
-                        </th>
-                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
-                            SQL
-                        </th>
-
-                        <th className="font-montserrat text-center   text-sm  p-2 font-bold leading-normal text-[#000000]">
-                            Python
-                        </th>
-
-                        <th className="font-montserrat  text-center  text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Big Data
-                        </th>
-
-                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Tableau
-                        </th>
-                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
-                            SPSS
-                        </th>
-                        <th className="py-2 px-5">
-                            <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
-                                <MdOutlineRefresh className="w-[24px] h-[24px]" />
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentData.map((item) => (
-                        <tr
-                            key={item.id}
-                            className="border-b even:bg-[#fafafa] odd:bg-white"
-                        >
-                            <>
-
-                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
-
-                                <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.name}
-                                </td>
-
-
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                    <thead className="bg-[#FEFADF]  sticky rounded-xl top-0 z-10 shadow-md">
+                        <tr className="text-left">
+                            <th className=" p-2  font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
+                            <th className="p-2">
+                                <div className="flex gap-1">
+                                    <HiOutlineChevronUpDown
+                                        onClick={handleSort}
+                                        className={`cursor-pointer w-5 h-5 ${sortOrder === "asc"
+                                            ? "text-[#ff2c2c]"
+                                            : sortOrder === "desc"
+                                                ? "text-[#4BB543]"
+                                                : "text-gray-600"
+                                            }`}
                                     />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
+                                    <p className="font-montserrat text-sm mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                </div>
+                            </th>
 
 
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
+                            <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
+                                Career
+                            </th>
+                            <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Co-working
+                            </th>
+                            <th className="font-montserrat  text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Mentorship
+                            </th>
+                            <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Experience
+                            </th>
+                            <th className="font-montserrat text-center  text-sm  p-2 font-bold leading-normal text-[#000000]">
+                                R
+                            </th>
+                            <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                                SQL
+                            </th>
 
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
+                            <th className="font-montserrat text-center   text-sm  p-2 font-bold leading-normal text-[#000000]">
+                                Python
+                            </th>
 
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
+                            <th className="font-montserrat  text-center  text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Big Data
+                            </th>
 
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
-                                    />
-                                </td>
-                                <td className="p-5 text-center">
-                                    <div className="flex gap-3">
-                                        <FiEdit
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => setIsEditModalOpen(true)}
-                                        />
-                                        <GoTrash
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleDeleteClick(item.id)}
-                                        />
-                                    </div>
-                                </td>
-                            </>
+                            <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Tableau
+                            </th>
+                            <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                                SPSS
+                            </th>
+                            <th className="py-2 px-5">
+                                <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
+                                    <MdOutlineRefresh className="w-[24px] h-[24px]" />
+                                </div>
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {currentData.map((item) => (
+                            <tr
+                                key={item.id}
+                                className="border-b even:bg-[#fafafa] odd:bg-white"
+                            >
+                                <>
+
+                                    <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
+
+                                    <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.name}
+                                    </td>
+
+
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+                                    <td className="p-5 text-center">
+                                    <EditAndDelete  setIsEditModalOpen = {setIsEditModalOpen} handleDeleteClick = {handleDeleteClick} ItemId = {item.id}/>
+                                    </td>
+                                </>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
             <div className="  flex justify-center">
                 <PaginationControls
                     data={data}
