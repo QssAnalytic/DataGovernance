@@ -94,7 +94,7 @@ export interface CombinedTableContentProps {
   isOtherActiveFull: boolean; // Boolean flag indicating if "Other Active Full" is active
   isPaymentActiveFull: boolean; // Boolean flag indicating if "Payment Active Full" is active
   isServiceActiveFull: boolean; // Boolean flag indicating if "Service Active Full" is active
-  currentData: CombinedDataProps[]; // Array of current data; replace `any` with the specific data type if known
+  currentData: CombinedDataTypes[]; // Array of current data; replace `any` with the specific data type if known
   setIsEditModalOpen: (isOpen: boolean) => void; // Function to open/close the edit modal
   handleDeleteClick: (id: number) => void; // Function to handle delete action, typically takes an ID
 

@@ -120,8 +120,8 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                             <th className="font-montserrat text-sm p-2 font-bold leading-normal text-[#000000]">
                                 İş yeri
                             </th>
-                            <th className="p-2">
-                                <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
+                            <th className="p-2 flex justify-center">
+                                <div className="mt-2 w-[30px] h-[24px]">
                                     <MdOutlineRefresh className="w-[24px] h-[24px]" />
                                 </div>
                             </th>

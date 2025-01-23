@@ -131,8 +131,8 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                         <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
-                        <th className=" py-2 px-5">
-                            <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
+                        <th className=" py-2 px-5 flex justify-center">
+                            <div className=" mt-2 w-[30px] h-[24px]">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
                         </th>

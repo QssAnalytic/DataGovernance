@@ -65,7 +65,7 @@ const CombineTableContent: React.FC<CombinedTableContentProps> = ({handleSort, s
                 </>
               )}
 
-              <th className="py-3 px-4">
+              <th className="py-3 px-4 flex justify-center">
                 <div className="flex justify-center items-center">
                   <MdOutlineRefresh className="w-6 h-6" />
                 </div>
