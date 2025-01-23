@@ -1,13 +1,12 @@
-import { FiEdit } from "react-icons/fi";
 import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
-import { GoTrash } from "react-icons/go";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import EditModal from "../editModal";
 import { useState } from "react";
 import {CombinedDataTypes, SalesTablePInputProps } from "../../types";
+import EditAndDelete from "../editAndDelete";
 
 
 const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
@@ -71,7 +70,7 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
     };
 
 
-    const rowsPerPage = 5; // Number of rows to display per page
+    const rowsPerPage = 10; // Number of rows to display per page
 
 
 
@@ -82,7 +81,8 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
 
     return (
-        <div>
+        <div >
+            <div className=" relative overflow-x-auto overflow-y-auto h-[350px]">
             <table className=" whitespace-nowrap table-auto w-full rounded-xl border-collapse ">
                     <thead className="bg-[#E2DDD5]   sticky rounded-xl top-0 z-10 shadow-md">
                     <tr className="text-left  whitespace-nowrap">
@@ -189,22 +189,15 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                     {item.plannedDate3}
                                 </td>
                                 <td className="p-5  whitespace-nowrap text-center">
-                                    <div className="flex gap-3">
-                                        <FiEdit
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => setIsEditModalOpen(true)}
-                                        />
-                                        <GoTrash
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleDeleteClick(item.id)}
-                                        />
-                                    </div>
+                                <EditAndDelete  setIsEditModalOpen = {setIsEditModalOpen} handleDeleteClick = {handleDeleteClick} ItemId = {item.id}/>
                                 </td>
                             </>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
+           
             <div className="  flex justify-center">
                 <PaginationControls
                     data={data}

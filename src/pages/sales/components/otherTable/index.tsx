@@ -1,13 +1,12 @@
-import { FiEdit } from "react-icons/fi";
 import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
-import { GoTrash } from "react-icons/go";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
 import { useState } from "react";
 import { CombinedDataTypes, SalesTablePInputProps } from "../../types";
 import EditModal from "../editModal";
+import EditAndDelete from "../editAndDelete";
 
 
 const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
@@ -71,7 +70,7 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
-    const rowsPerPage = 5; // Number of rows to display per page
+    const rowsPerPage = 10; // Number of rows to display per page
 
 
 
@@ -82,105 +81,99 @@ const OtherTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
 
     return (
-        <div>
-            <table className="min-w-[1300px]   table-auto w-full rounded-xl border-collapse ">
+        <div >
+            <div className=" relative overflow-x-auto overflow-y-auto h-[350px]">
+                <table className="min-w-[1300px]   table-auto w-full rounded-xl border-collapse ">
 
-                <thead className="bg-[#E9EDCA] sticky rounded-xl top-0 z-10 shadow-md">
-                    <tr className="text-left">
-                        <th className=" p-2  font-semibold text-center font-montserrat text-[12px text-[#000000]">ID</th>
-                        <th className="p-2">
-                            <div className="flex gap-1">
-                                <HiOutlineChevronUpDown
-                                    onClick={handleSort}
-                                    className={`cursor-pointer w-5 h-5 ${sortOrder === "asc"
-                                        ? "text-[#ff2c2c]"
-                                        : sortOrder === "desc"
-                                            ? "text-[#4BB543]"
-                                            : "text-gray-600"
-                                        }`}
-                                />
-                                <p className="font-montserrat text-sm  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
-                            </div>
-                        </th>
-                        <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
-                            BC №
-                        </th>
-                        <th className="font-montserrat  text-center text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Qoşulur
-                        </th>
-                        <th className="font-montserrat  text-start text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Mobil nömrə
-                        </th>
-                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Müqavilə
-                        </th>
-                        <th className="font-montserrat  text-sm p-2 font-bold leading-normal text-[#000000]">
-                            Entrance Score
-                        </th>
-                        <th className="font-montserrat text-sm p-2 font-bold leading-normal text-[#000000]">
-                            İş yeri
-                        </th>
-                        <th className="p-2">
-                            <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
-                                <MdOutlineRefresh className="w-[24px] h-[24px]" />
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentData.map((item) => (
-                        <tr
-                            key={item.id}
-                            className="border-b   even:bg-[#fafafa] odd:bg-white"
-                        >
-                            <>
-                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
-
-                                <td className="font-montserrat  p-5 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.name}
-                                </td>
-                                <td className="font-montserrat  text-center p-5 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.BC}
-                                </td>
-                                <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.trainingName}
-                                </td>
-                                <td className="font-montserrat  text-start  p-2 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.phone}
-                                </td>
-                                <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
-                                    <input
-                                        type="checkbox"
-                                        className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                    <thead className="bg-[#E9EDCA] sticky rounded-xl top-0 z-10 shadow-md">
+                        <tr className="text-left">
+                            <th className=" p-2  font-semibold text-center font-montserrat text-[12px text-[#000000]">ID</th>
+                            <th className="p-2">
+                                <div className="flex gap-1">
+                                    <HiOutlineChevronUpDown
+                                        onClick={handleSort}
+                                        className={`cursor-pointer w-5 h-5 ${sortOrder === "asc"
+                                            ? "text-[#ff2c2c]"
+                                            : sortOrder === "desc"
+                                                ? "text-[#4BB543]"
+                                                : "text-gray-600"
+                                            }`}
                                     />
-                                </td>
-                                <td
-                                    className={`font-montserrat p-5 text-[14px] font-medium leading-normal ${item.score > 600 ? 'text-[#30AC04]' : 'text-[#000000]'
-                                        }`}
-                                >
-                                    {item.score}
-                                </td>
-
-                                <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
-                                    {item.workPlace}
-                                </td>
-                                <td className="p-2 text-center">
-                                    <div className="flex gap-3">
-                                        <FiEdit
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => setIsEditModalOpen(true)}
-                                        />
-                                        <GoTrash
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleDeleteClick(item.id)}
-                                        />
-                                    </div>
-                                </td>
-                            </>
+                                    <p className="font-montserrat text-sm  mt-[2px]  font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                </div>
+                            </th>
+                            <th className="border-none text-center   p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
+                                BC №
+                            </th>
+                            <th className="font-montserrat  text-center text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Qoşulur
+                            </th>
+                            <th className="font-montserrat  text-start text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Mobil nömrə
+                            </th>
+                            <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Müqavilə
+                            </th>
+                            <th className="font-montserrat  text-sm p-2 font-bold leading-normal text-[#000000]">
+                                Entrance Score
+                            </th>
+                            <th className="font-montserrat text-sm p-2 font-bold leading-normal text-[#000000]">
+                                İş yeri
+                            </th>
+                            <th className="p-2">
+                                <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
+                                    <MdOutlineRefresh className="w-[24px] h-[24px]" />
+                                </div>
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {currentData.map((item) => (
+                            <tr
+                                key={item.id}
+                                className="border-b   even:bg-[#fafafa] odd:bg-white"
+                            >
+                                <>
+                                    <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
+
+                                    <td className="font-montserrat  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.name}
+                                    </td>
+                                    <td className="font-montserrat  text-center p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.BC}
+                                    </td>
+                                    <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.trainingName}
+                                    </td>
+                                    <td className="font-montserrat  text-start  p-2 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.phone}
+                                    </td>
+                                    <td className="border-none text-center p-5 font-montserrat text-[14px] font-medium leading-normal text-[#000000]">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 border rounded-[2px] checked:bg-green-500 checked:border-transparent checked:before:text-[10px] focus:outline-none cursor-pointer relative checked:before:content-['✔'] checked:before:absolute checked:before:text-[#fafafa] checked:before:font-normal checked:before:left-1/2 checked:before:top-1/2 checked:before:transform checked:before:-translate-x-1/2 checked:before:-translate-y-1/2"
+                                        />
+                                    </td>
+                                    <td
+                                        className={`font-montserrat p-5 text-[14px] font-medium leading-normal ${item.score > 600 ? 'text-[#30AC04]' : 'text-[#000000]'
+                                            }`}
+                                    >
+                                        {item.score}
+                                    </td>
+
+                                    <td className="font-montserrat p-2 text-[14px] font-medium leading-normal text-[#000000]">
+                                        {item.workPlace}
+                                    </td>
+                                    <td className="p-2 text-center">
+                                    <EditAndDelete  setIsEditModalOpen = {setIsEditModalOpen} handleDeleteClick = {handleDeleteClick} ItemId = {item.id}/>
+                                    </td>
+                                </>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
             <div className="  flex justify-center">
                 <PaginationControls
                     data={data}
