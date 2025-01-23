@@ -1,5 +1,5 @@
 import { IoIosArrowDown } from "react-icons/io";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 
 const Status = () => {
@@ -47,24 +47,6 @@ const Status = () => {
   document.addEventListener("mousedown", handleCheckbox);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        handleDropdown(); // Close the dropdown when clicking outside
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, handleDropdown]);
 
 
     return (
