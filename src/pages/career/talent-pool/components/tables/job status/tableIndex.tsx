@@ -39,8 +39,10 @@ export const JobStatusTable = () => {
     };
 
     const handleEdit = (rowData: JobStatusRowData) => {
-        setSelectedData(rowData);
-        setOverviewEditOpen(true);
+        const store = EditModalStore.getState();
+        store.setJobStatusData(rowData);
+        store.setActiveTab('jobStatus');
+        store.setOverviewEditOpen(true);
     };
 
     const paginatedData = data.slice(

@@ -1,25 +1,23 @@
-import { FiEdit } from "react-icons/fi";
-import { PaymentTableData } from "../sharedData";
+import { CombinedTableData } from "../sharedData";
 import { HiOutlineChevronUpDown } from "react-icons/hi2";
 import { MdOutlineRefresh } from "react-icons/md";
-import { GoTrash } from "react-icons/go";
-import SavePaymentModal from "../savePaymentModal";
 import PaginationControls from "@/pages/lead-details-page/components/Pagination Controller";
 import ShowModal from "@/pages/app-data/components/showModal";
+import EditModal from "../editModal";
 import { useState } from "react";
-import { PaymentDataProps, SalesTablePInputProps } from "../../types";
+import {CombinedDataTypes, SalesTablePInputProps } from "../../types";
+import EditAndDelete from "../editAndDelete";
 
 
 const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
-    const [data, setData] = useState<PaymentDataProps[]>(PaymentTableData);
+    const [data, setData] = useState<CombinedDataTypes[]>(CombinedTableData);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrderBy, setSortOrderBy] = useState<'name' | 'date'>('name');  // 
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [showModal, setShowModal] = useState(false);
     const [deleteRowId, setDeleteRowId] = useState<number | null>(null);
-    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-    const [selectedRow, setSelectedRow] = useState<Partial<PaymentDataProps>>({});
 
     //Deleting items from table
     const handleDeleteClick = (id: number) => {
@@ -65,31 +63,14 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
         setDeleteRowId(null);
     };
 
-    //editing items in the table
 
-    const handleEditClick = (row: PaymentDataProps) => {
-        setSelectedRow(row);
-        setIsSaveModalOpen(true);
-    };
     const handleCancelDelete = () => {
         setShowModal(false);
         setDeleteRowId(null);
     };
 
 
-    const handleModalChange = (field: keyof PaymentDataProps, value: string | number | boolean) => {
-        setSelectedRow({ ...selectedRow, [field]: value });
-    };
-
-    const handleSaveModal = () => {
-        setData(data.map(row => (row.id === selectedRow.id ? { ...row, ...selectedRow } : row)));
-        setIsSaveModalOpen(false);
-    };
-
-    const handleCloseModal = () => {
-        setIsSaveModalOpen(false);
-    };
-    const rowsPerPage = 5; // Number of rows to display per page
+    const rowsPerPage = 10; // Number of rows to display per page
 
 
 
@@ -100,13 +81,13 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
 
 
     return (
-        <div>
-            <table className="min-w-[1300px]  table-auto w-full rounded-xl border-collapse ">
-
-                <thead className="bg-[#E2DDD5]  sticky rounded-xl top-0 z-10 shadow-md">
-                    <tr className="text-left">
-                        <th className=" p-2   font-semibold  text-center font-montserrat  text-[#000000]">ID</th>
-                        <th className="p-2">
+        <div >
+            <div className=" relative overflow-x-auto overflow-y-auto h-[350px]">
+            <table className=" whitespace-nowrap table-auto w-full rounded-xl border-collapse ">
+                    <thead className="bg-[#E2DDD5]   sticky rounded-xl top-0 z-10 shadow-md">
+                    <tr className="text-left  whitespace-nowrap">
+                        <th className="font-semibold  text-center whitespace-nowrap font-montserrat  text-[#000000]">ID</th>
+                        <th className="p-2 whitespace-nowrap">
                             <div className="flex gap-1">
                                 <HiOutlineChevronUpDown
                                     onClick={handleSort}
@@ -117,40 +98,40 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                                             : "text-gray-600"
                                         }`}
                                 />
-                                <p className="font-montserrat text-[12px] mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
+                                <p className="font-montserrat  whitespace-nowrap text-sm mt-[2px] font-bold leading-normal text-[#000000]">  Ad və Soyad    </p>
                             </div>
                         </th>
-                        <th className="border-none text-center   p-2 font-montserrat text-[12px] font-bold leading-normal text-[#000000]">
+                        <th className="border-none text-center p-2 font-montserrat text-sm font-bold leading-normal text-[#000000]">
                             Məbləğ
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Endirimlər
                         </th>
-                        <th className="font-montserrat  text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat  text-center  whitespace-nowrap  text-sm  p-2 font-bold leading-normal text-[#000000]">
                             Total Amount
                         </th>
-                        <th className="font-montserrat text-center text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center text-sm p-2 font-bold leading-normal text-[#000000]">
                             Ödəmə 1
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Ödəmə 2
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
                             Planned Date
                         </th>
 
-                        <th className="font-montserrat  text-center  text-[12px] p-2 font-bold leading-normal text-[#000000]">
-                          Ödəmə 3
+                        <th className="font-montserrat  text-center  text-sm p-2 font-bold leading-normal text-[#000000]">
+                            Ödəmə 3
                         </th>
 
-                        <th className="font-montserrat text-center   text-[12px] p-2 font-bold leading-normal text-[#000000]">
-                        Planned Date
+                        <th className="font-montserrat text-center   text-sm p-2 font-bold leading-normal text-[#000000]">
+                            Planned Date
                         </th>
-                        <th className="p-2">
+                        <th className=" py-2 px-5">
                             <div className="ml-[7px] mt-2 w-[24px] h-[24px]">
                                 <MdOutlineRefresh className="w-[24px] h-[24px]" />
                             </div>
@@ -161,69 +142,62 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     {currentData.map((item) => (
                         <tr
                             key={item.id}
-                            className="border-b even:bg-[#fafafa] odd:bg-white"
+                            className="border-b even:bg-[#fafafa]  whitespace-nowrap odd:bg-white"
                         >
                             <>
-                                <td className="p-5 text-center text-sm text-gray-700">{item.id}</td>
+                                <td className="p-5 text-center text-sm text-gray-700  whitespace-nowrap">{item.id}</td>
 
-                                <td className="font-montserrat   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.name}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.amount}
                                 </td>
 
-                                <td className="font-montserrat  text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat  text-center  whitespace-nowrap p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.discount}
                                 </td>
 
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.totalAmount}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment1}
                                 </td>
 
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate1}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center  whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment2}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate2}
                                 </td>
 
-                                <td className="font-montserrat text-center  p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.payment3}
                                 </td>
 
-                                <td className="font-montserrat text-center   p-5 text-[14px] font-medium leading-normal text-[#000000]">
+                                <td className="font-montserrat text-center   whitespace-nowrap  p-5 text-[14px] font-medium leading-normal text-[#000000]">
                                     {item.plannedDate3}
                                 </td>
-                                <td className="p-5 text-center">
-                                    <div className="flex gap-3">
-                                        <FiEdit
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleEditClick(item)}
-                                        />
-                                        <GoTrash
-                                            className="cursor-pointer w-5 h-5"
-                                            onClick={() => handleDeleteClick(item.id)}
-                                        />
-                                    </div>
+                                <td className="p-5  whitespace-nowrap text-center">
+                                <EditAndDelete  setIsEditModalOpen = {setIsEditModalOpen} handleDeleteClick = {handleDeleteClick} ItemId = {item.id}/>
                                 </td>
                             </>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
+           
             <div className="  flex justify-center">
                 <PaginationControls
                     data={data}
@@ -232,14 +206,11 @@ const PaymentTable: React.FC<SalesTablePInputProps> = ({ searchTerm }) => {
                     rowsPerPage={rowsPerPage}
                 />
             </div>
-           
-           {/* save content after editing */}
-           <SavePaymentModal
-                isOpen={isSaveModalOpen}
-                onClose={handleCloseModal}
-                rowData={selectedRow}
-                onSave={handleSaveModal}
-                onChange={handleModalChange}
+
+            {/* save content after editing */}
+            <EditModal
+                isOpen={isEditModalOpen}
+                onClose={() => setIsEditModalOpen(false)}
             />
             {showModal && (
                 // my delete modal

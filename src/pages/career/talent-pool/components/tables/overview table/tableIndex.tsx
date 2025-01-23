@@ -33,8 +33,10 @@ export const OverviewTable = () => {
     };
 
     const handleEdit = (rowData: RowData) => {
-        setSelectedData(rowData);
-        setOverviewEditOpen(true);
+        const store = EditModalStore.getState();
+        store.setOverviewData(rowData);
+        store.setActiveTab('overview');
+        store.setOverviewEditOpen(true);
     };
 
     const paginatedData = data.slice(

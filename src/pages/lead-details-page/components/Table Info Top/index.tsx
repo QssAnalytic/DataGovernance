@@ -26,9 +26,9 @@ const TableInfoTop = () => {
           key={`number-wrapper-${index}`}
           className={`flex flex-col transition-all duration-300 ease-in-out cursor-pointer ${
             index === 0
-              ? "rounded-tl-[12px] rounded-bl-[12px]" // Always add to the first section
+              ? "rounded-tl-[12px] rounded-bl-[12px]"
               : index === numbers.length - 1
-              ? "rounded-tr-[12px] rounded-br-[12px]" // Always add to the last section
+              ? "rounded-tr-[12px] rounded-br-[12px]"
               : ""
           } ${
             selectedIndices.includes(index) ? "bg-[#5D7988]" : "bg-[#F4F7FD]"

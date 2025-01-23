@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 type UIState = {
   isModalOpen: boolean; // New state to control modal visibility
-  buttonLabel: string;
+  buttonLabel: null | string;
   modalContent: React.ReactNode;
   pageCustomHeader: React.ReactNode;
   setPageCustomHeader: (header: React.ReactNode) => void;
@@ -13,7 +13,7 @@ type UIState = {
 
 export const useUIStore = create<UIState>((set) => ({
   isModalOpen: false, // Initial state for modal visibility
-  buttonLabel: "Default Button",
+  buttonLabel: null,
   modalContent: null,
   pageCustomHeader: null,
   setPageCustomHeader: (header) => set({ pageCustomHeader: header }),
